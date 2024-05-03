@@ -24,5 +24,5 @@ public class ZonaPeligrosa extends Viaje {
 		double incrementodist = aux * 0.2 * this.getKM();
 		return aux + incrementopax + incrementodist;
 	}
-
+  // Mensaje de prueba
 }
