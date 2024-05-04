@@ -14,5 +14,7 @@ public class DecoratorConMascota extends DecoratorMascota {
 	}
 
 	
-
+	public String getEstado() {
+		return super.getEstado();
+	}
 }

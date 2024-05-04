@@ -8,6 +8,7 @@ public interface IViaje {
 	double getCosto();
 	Chofer getChofer();
 	LocalDateTime getFecha();
+	String getEstado();
 	void setEstado(String e);
 	Cliente getCliente();
 }

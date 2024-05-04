@@ -1,5 +1,7 @@
 package clases;
 import java.util.Objects;
+
+import excepciones.NoHayPlataException;
 /**
  * @author gc
  * <br>
@@ -99,9 +101,15 @@ public abstract class Chofer {
         return Objects.hash(DNI);
     }
 
-	public void finalizaViaje(IViaje viaje) {
-		viaje.setEstado("Finalizado");
-		
+	public void finalizaViaje(IViaje viaje) throws NoHayPlataException{
+		if (viaje.getEstado().equalsIgnoreCase("Pagado"))
+		{
+		  viaje.setEstado("Finalizado");
+		  this.sumaKMrecorridosMes(viaje.getKM());
+		  this.sumaViajesMes();
+		}
+		else
+		  throw new NoHayPlataException("El cliente es un rata, no me pago");
 	}
 
 

@@ -33,4 +33,11 @@ public abstract class DecoratorBaul implements IViaje{
 		this.encapsulado.setEstado(e);
 	}
 
+
+	@Override
+	public String getEstado() {
+		// TODO Auto-generated method stub
+		return this.encapsulado.getEstado();
+	}
+
 }

@@ -13,4 +13,9 @@ public class DecoratorConBaul extends DecoratorBaul {
 		return aux + incrementopax + incrementodist;
 	}
 
+	
+	public String getEstado() {
+		return super.getEstado();
+	}
+
 }

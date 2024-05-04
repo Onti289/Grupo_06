@@ -11,4 +11,8 @@ public class DecoratorSinBaul extends DecoratorBaul {
 		return this.encapsulado.getCosto();
 	}
 
+	public String getEstado() {
+		return super.getEstado();
+	}
+
 }

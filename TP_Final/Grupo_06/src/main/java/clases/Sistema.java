@@ -370,4 +370,15 @@ public class Sistema {
 	public String listarViajes(Administrador a) {
 		return a.listarViajes();
 	}
+	
+	public void pagarViaje(IViaje viaje)
+	{
+		viaje.getCliente().pagaViaje(viaje);
+	}
+	
+	public void finalizarViaje(IViaje viaje) throws NoHayPlataException
+	{
+	
+			viaje.getChofer().finalizaViaje(viaje);	
+	}
 }
