@@ -46,7 +46,8 @@ public class Administrador extends Usuario{
     /**
      * Metodo de tipo void que agrega un chofer a la colaChofer. El chofer es agregado al final de la cola. <br>
      *
-     * <b>Pre: </b>parametro Chofer chofer distinto de null. <br>
+     * <b>Pre: </b>parametro Chofer chofer distinto de null. El chofer a agregar no se encuentra en la lista. <br>
+     * <b>Post: </b>Chofer nuevo agregado a su correspondiente cola en la ultima posicion. <br>
      *
      * @param chofer parametro de tipo Chofer que sera agregado al final de la cola correspondiente. <br>
      */
@@ -56,6 +57,8 @@ public class Administrador extends Usuario{
 
     /**
      * Metodo de tipo Chofer que saca de colaChofer al primer chofer de la misma. <br>
+     * 
+     * <b>Pre: </b>Existe por lo menos un chofer en la cola correspondiente. <br>
      *
      * @return Devuelve primer chofer de la cola correspondiente. <br>
      */
@@ -71,6 +74,8 @@ public class Administrador extends Usuario{
      * @param chofer parametro de tipo Chofer que recibe el chofer el cual se le aplicar�n las modificaciones <br>
      * @param dni parametro de tipo String que contiene el DNI actualizado del chofer. <br>
      * @param nombre parametro de tipo String que contiene el nombre actualizado del chofer. <br>
+     * 
+     * @exception ChoferNoEncontradoException Excepcion lanzada cunado el Chofer c pasado por parametro no se encuentra dentro de la cola correspondiente. <br>
      */
     public void ModificaChofer(Chofer c) throws ChoferNoEncontradoException {
         int i = 0;
@@ -92,7 +97,8 @@ public class Administrador extends Usuario{
     /**
      * Metodo de tipo void que agrega un nuevo vehiculo a colaVehiculos. El vehiculo es agregado al final de la cola. <br>
      *
-     * <b>Pre: </b>parametro Vehiculo vehiculo distinto de null. <br>
+     * <b>Pre: </b>parametro Vehiculo vehiculo distinto de null. Vehiculo a agregar no se encuentra previamente en la cola correspondiente. <br>
+     * <b>Post: </b>Vehiculo nuevo agregado a su correspondiente cola en la ultima posicion. <br>	
      *
      * @param vehiculo parametro de tipo Vehiculo que sera agregado al final de la cola correspondiente. <br>
      */
@@ -132,7 +138,10 @@ public class Administrador extends Usuario{
 	 *
 	 * @param v parametro de tipo Vehiculo que recibe el vehiculo al cual se le aplicar� la modificacion. <br>
 	 * @param patente parametro de tipo String que recibe la patente actualizada del vehiculo. <br>
+	 * 
+	 * @exception VehiculoNoEncontradoException Excepcion lanzada cuando el Vehiculo v a modificar no se encuentra en la cola correspondiente. <br>
 	 */
+    //CORREGIR
     public void modificaVehiculo(Vehiculo v) throws VehiculoNoEncontradoException {
         int i = 0;
         boolean encontrado = false;
@@ -152,8 +161,9 @@ public class Administrador extends Usuario{
 
 	/**
 	 * Metodo de tipo void que agrega un nuevo cliente a listaCliente. <br>
-	 *  <b>Pre: </b>Cliente c distinto de null. <br>
-	 *
+	 * <b>Pre: </b>Cliente c distinto de null. Cliente a agregar no se encuentra previamente en la lista correspondiente. <br>
+	 * <b>Post: </b>Cliente nuevo agregado a su correspondiente lista. <br>
+	 * 
 	 * @param c parametro de tipo Cliente que contiene al nuevo cliente e agregar a la lista cosrrespondiente. <br>
 	 */
 	public void agregarCliente(Cliente c) {
@@ -163,9 +173,12 @@ public class Administrador extends Usuario{
 
 	/**
 	 * Metodo de tipo void que elimina un cliente de la listaCliente en caso de darse de baja del sistema. <br>
+	 * 
+	 * <b>Pre: </b>Parametro de tipo Cliente c distinto de null. <br>
 	 *
-	 * @return this.listaCliente.poll()
-	 * @throws NoHayClientesException
+	 * 
+	 * @throws NoHayClientesException Excepcion lanzada cuando no hay ningun cliente en la lista correspondiente. <br>
+	 * @throws ClienteNoExistenteException Excepcion lanzada cuando el Cliente c pasado por parametro no existe en la lista correspondiente. <br> 
 	 */
 	//Modificar para sacar un Cliente c de la lista
 	public void sacaCliente(Cliente c) throws NoHayClientesException, ClienteNoExistenteException {
@@ -189,6 +202,7 @@ public class Administrador extends Usuario{
 	 * @param contrasena parametro de tipo String que contiene la contrase�a actualizada del cliente. <br>
 	 * @param nombreReal parametro de tipo String que contiene el nombre real actualizado del cliente. <br>
 	 */
+	//CORREGIR
 	public void ModificaCliente(Cliente c) throws ClienteNoEncontradoException {
 	    int i = 0;
 	    boolean encontrado = false;
@@ -234,7 +248,7 @@ public class Administrador extends Usuario{
 		return salida;
 	}
 
-	//Falta listado de viajes chofer y viajes clientes, deberian tener ellos guardado un historico de sus propios viajes?
+	
 
 	/**
 	 * Metodo de tipo String que genera el listado de los diferentes vehiculos del Sistema. Permite mostrar patente y tipo de vehiculo de cada uno en formato de tabla por consola. <br>
@@ -253,9 +267,11 @@ public class Administrador extends Usuario{
 	/**
 	 * Metodo de tipo double que permite calcular el salario de un Chofer c perteneciente al sistema. <br>
 	 *
+	 * <b>Pre: </b>Parametro de tipo Chofer c distinto de null. <br>
+	 *
 	 * @param c parametro de tipo Chofer que contiene al chofer al cual se desea conocer el salario. <br>
-	 * @return c.calculaSueldo(): Metodo de tipo double que devuelve el valor del salario del Chofer c, dependiendo del tipo del mismo.
-	 * @throws NoHayChoferesDisponiblesException Excepcion lanzada por el metodo en caso de que la lista de choferes se encuentre vacia
+	 * @return c.calculaSueldo(): Metodo de tipo double que devuelve el valor del salario del Chofer c, dependiendo del tipo del mismo. <br>
+	 * @throws ChoferNoExistenteException Excepcion lanzada por el metodo en caso de que el Chofer c no se encuentre en la cola correspondiente.  <br>
 	 */
 	public double calculoSalario(Chofer c) throws ChoferNoExistenteException{
 		if(!colaChoferes.contains(c)) {
@@ -282,6 +298,8 @@ public class Administrador extends Usuario{
 	/**
 	 * Metodo de tipo boolean que verifica que un determinado cliente pertenezca a la listaCliente. <br>
 	 *
+	 * <b>Pre: </b>Parametro de tipo Cliente c distinto de null. <br>
+	 *
 	 * @param c parametro de tipo Cliente que contiene al cliente el cual quiere determinarse si se encuentra dentro de la lista correspondiente. <br>
 	 * @return this.listaCliente.contains(c): devuelve true en caso de que el Cliente c pertenezca a la listaCliente, false en caso contrario. <br>
 	 */
@@ -300,6 +318,8 @@ public class Administrador extends Usuario{
 
 	/**
 	 * Metodo de tipo boolean que evalua si los vehiculos disponibles en el sistema cumplen con undeterminado Pedido p. <br>
+	 *
+	 * <b>Pre: </b>Parametro de tipo Pedido p distinto de null. <br>
 	 *
 	 * @param p parametro de tipo Pedido que contiene la informacion necesaria para saber si alguno de los vehiculos de la cola comple con lo solicitado. <br>
 	 * @return cond: parametro de tipo boolean que devuelve true en caso de que exista por lo menos un vehiculo que cumple con las condiciones del pedido, false en caso contrario. <br>
@@ -354,10 +374,24 @@ public class Administrador extends Usuario{
 			  this.colaChoferes.get(j).setPuntos(15);
 	}
 	
+	/**
+	 * Metodo de tipo void que permite agregar n nuevo Viaje a su lista correspondiente. <br>
+	 * 
+	 * <b>Pre: </b>Parametro de tipo IViaje viaje distinto de null. <br>
+	 * <b>Post: </b>Viaje nuevo agregado a su correspondiente lista. <br>
+	 * 
+	 * @param viaje Parametro de tipo IViaje que sera agregado a la lista de los viajes realizados a traves del sistema. <br>
+	 */
 	public void agregarViaje(IViaje viaje) {
 		this.listaViajes.add(viaje);
 	}
 
+	/**
+	 * Metodo de tipo String que devuleve una cadena tabulada para mostrar por consola el listado de todos los viajes realizados en el sistema en orden de meayor a menor costo. <br>
+	 * El metodo utiliza un clon de la listaViajes para poder ordenar la misma sin modificar la original. Una vez generado el clon, se utiliza un ComparadorPorCosto que permite ordenar la lista clonada de viajes segun su costo de mayor a menor. <br>
+	 * 
+	 * @return salida Parametro de tipo String que contiene titulo, subtitulo y listado de viajes ordenados por costo de mayo a menor tabulados para ser mostrados en formato de lista por consola. <br>
+	 */
 	public String listarViajes() {
 		IViaje viaje = null;
 		String salida = "Listado de viajes ordenados por costo de viaje";
@@ -379,6 +413,18 @@ public class Administrador extends Usuario{
 		return salida;
 	}
 	
+	/**
+	 * Metodo de tipo String que devuleve una cadena tabulada para mostrar por consola el listado de todos los viajes realizados en el sistema por un determinado chofer en un determinado periodo de tiempo. <br>
+	 * El metodo utuliza un DateTimeFormatter para poder transformar a cadena las fechas entre las cuales se va a solicitar el listado. <br>
+	 * 
+	 * <b>Pre: </b>parametro Chofer chofer distinto de null. Parametro fechaMinima contiene una fecha anterior a fechaMaxima, y ambas son fechas validas. <br>
+	 * 
+	 * @param chofer Parametro de tipo Chofer que contiene los datos del chofer del cual se quieren conocer sus viajes en el periodo fechaMinima/fechaMaxima. <br>
+	 * @param fechaMinima Parametro de tipo LocalTimeDate que contiene la fecha inicial desde donde se generara el listado. <br>
+	 * @param fechaMaxima Parametro de tipo LocalTimeDate que contiene la fecha final hasta la cual se generara el listado. <br>
+	 * 
+	 * @return salida: Parametro de tipo String que contiene titulo, subtitulo y listado de viajes realizados por el chofer en el periodo de tiempo indicado por las fechas ingreasadas por parametro. <br>
+	 */
 	public String listarViajesChofer(Chofer chofer, LocalDateTime fechaMinima, LocalDateTime fechaMaxima)
 	{
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -405,6 +451,19 @@ public class Administrador extends Usuario{
 		return salida;
 	}
 
+	/**
+	 * Metodo de tipo String que devuleve una cadena tabulada para mostrar por consola el listado de todos los viajes realizados en el sistema por un determinado cliente en un determinado periodo de tiempo. <br>
+	 * El metodo utuliza un DateTimeFormatter para poder transformar a cadena las fechas entre las cuales se va a solicitar el listado. <br>
+	 * 
+	 * <b>Pre: </b>parametro Cliente cliente distinto de null. Parametro fechaMinima contiene una fecha anterior a fechaMaxima, y ambas son fechas validas. <br>
+	 * 
+	 * @param cliente Parametro de tipo Cliente que contiene los datos del cliente del cual se quieren conocer sus viajes en el periodo fechaMinima/fechaMaxima. <br>
+	 * @param fechaMinima Parametro de tipo LocalTimeDate que contiene la fecha inicial desde donde se generara el listado. <br>
+	 * @param fechaMaxima Parametro de tipo LocalTimeDate que contiene la fecha final hasta la cual se generara el listado. <br>
+	 * 
+	 * @return salida: Parametro de tipo String que contiene titulo, subtitulo y listado de viajes realizados por el cliente en el periodo de tiempo indicado por las fechas ingreasadas por parametro. <br>
+
+	 */
 	public String listarViajesCliente(Cliente cliente, LocalDateTime fechaMinima, LocalDateTime fechaMaxima) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String fechaMinimaTexto = fechaMinima.format(formatter);

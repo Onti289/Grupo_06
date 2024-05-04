@@ -53,6 +53,7 @@ public class Sistema {
 	 * Metodo de tipo void que agrega un Chofer c a la colaChofer de un determinado Administrador a. <br>
 	 *
 	 * <b>Pre: </b>parametros Administrador a y Chofer c distinto de null. <br>
+	 * <b>Post: </b>Chofer c agregado a la lista correspondiente en Administrador a. <br>
 	 *
 	 * @param a parametro de tipo Administrador en el cual se insertar� el Chofer c. <br>
 	 * @param c parametro de tipo Chofer que ser� insertado en la lista correspondiente del Administrador a. <br>
@@ -61,10 +62,19 @@ public class Sistema {
 		a.AgregarChofer(c);
 	}
 
-	/*
-  public Chofer sacaChofer(Administrador a) throws NoHayChoferesDisponiblesException {
-    return a.SacarChofer();
-  }*/
+
+	/**
+	 * Metodo de tipo Chofer que saca de la cola correspondiente en Administrador a al primer chofer disponible. <br>
+	 * 
+	 * <b>Pre: </b>parametro Administrador a distinto de null. <br>
+	 * 
+	 * @param a Parametro de tipo Administrador que contiene la cola de choferes a utilizar. <br>
+	 * @return a.SacarChofer(): devuelve al primer chofer de la cola correspondiente. <br>
+	 * @throws NoHayChoferesDisponiblesException Excepcion lanzada en caso de que la cola de choferes de Administrador a este vacia. <br>
+	 */
+	public Chofer sacaChofer(Administrador a) throws NoHayChoferesDisponiblesException {
+		return a.SacarChofer();
+	}
 
 	/**
 	 * Metodo de tipo void que permite cambiar los datos personales de un Chofer c (dni y nombre) perteneciente a la lista de choferes de un Administrador a. <br>
@@ -100,6 +110,10 @@ public class Sistema {
 
 	/**
 	 * Metodo de tipo void que permite modificar la patente de un Vheiculo v perteneciente e la lista de vehiculos del Administrador a. <br>
+	 * 
+	 * <b>Pre: </b>Parametros Administrador a y Vehiculo v distintos de null. <br>
+	 * 
+	 * 
 	 * @param a
 	 * @param v
 	 * @param patente
@@ -108,6 +122,7 @@ public class Sistema {
 	public void modificaVehiculo(Administrador a, Vehiculo v) throws VehiculoNoEncontradoException {
 		a.modificaVehiculo(v);
 	}
+	
 
 	/**
 	 * Metodo de tipo void que permite agregar un Cliente c a una listaCliente de un determinado Administrador a. <br>
@@ -137,14 +152,14 @@ public class Sistema {
 	/**
 	 * Metodo de tipo void que permite modificar los datos de un Cliente c (nombre usuario, nombre real y contrase�a), el caul pertenece a su correspondiente lista dentro del Administrador a. <br>
 	 *
-	 * <b>Pre: </b>El Cliente c debe existir dentro de la lista correspondiente en Administrador a. <br>
+	 * <b>Pre: </b>Parametros Administrador a y Cliente c distinto de null.<br>
 	 *
 	 * @param a parametro de tipo Administrador el cual contiene al Cliebnte c dentro de su correspondiente lista. <br>
 	 * @param c parametro de tipo Cliente el cual sera modificado. <br>
 	 * @param nombre parametro de tipo String que contiene el nombre de usuario actualizado del Cliente c. <br>
 	 * @param contrasena parametro de tipo String que contiene la contrase�a actualizada del Cliente c. <br>
 	 * @param nombreReal parametro de tipo String que contiene el nombre real actualizado del Cliente c. <br>
-	 * @throws ClienteNoEncontradoException
+	 * @throws ClienteNoEncontradoException Excepcion lanzada en caso de que el Cliente c no exista en la lista correspondiente dentro de Administrador a. <br>
 	 */
 
 	public void modificaCliente(Administrador a, Cliente c) throws ClienteNoEncontradoException
@@ -155,6 +170,8 @@ public class Sistema {
 	/**
 	 * Metodo de tipo void que permite listar los vehiculos pertenecientes a la cola de vehiculos del Administrador a. <br>
 	 *
+	 * <b>Pre: </b>Parametro Administrador a distinto de null. <br>
+	 *
 	 * @param a parametro de tipo Administrador que contiene la lista correspondiente a mostrar. <br>
 	 */
 	public void listaVehiculos(Administrador a) {
@@ -163,6 +180,8 @@ public class Sistema {
 
 	/**
 	 * Metodo de tipo void que permite listar los vehiculos pertenecientes a la lista de clientes del Administrador a. <br>
+	 *
+	 * <b>Pre: </b>Parametro Administrador a distinto de null. <br>
 	 *
 	 * @param a parametro de tipo Administrador que contiene la lista correspondiente a mostrar. <br>
 	 */
@@ -174,6 +193,8 @@ public class Sistema {
 	/**
 	 * Metodo de tipo void que permite listar los vehiculos pertenecientes a la cola de choferes del Administrador a. <br>
 	 *
+	 * <b>Pre: </b>Parametro Administrador a distinto de null. <br>
+	 *
 	 * @param a parametro de tipo Administrador que contiene la lista correspondiente a mostrar. <br>
 	 */
 	public void listaChoferes(Administrador a) {
@@ -182,6 +203,8 @@ public class Sistema {
 
 	/**
 	 * Metodo de tipo void que calcula el salario del Chofer c contenido en la cola de choferes del Administrador a. <br>
+	 *
+	 * <b>Pre: </b>Parametro Administrador a distinto de null. <br>
 	 *
 	 * @param a parametro de tipo Administrador que contiene al Chofer c en su correspondiente lista. <br>
 	 * @param c parametro de tipo Chofer que al cual se le calcular� su sueldo. <br>
@@ -195,6 +218,8 @@ public class Sistema {
 	/**
 	 * Metodo de tipo double que realiza la suma de los salarios de todos los choferes de la lista correspondiente del Administrador a. <br>
 	 *
+	 * <b>Pre: </b>Parametro Administrador a distinto de null. <br>
+	 *
 	 * @param a parametro de tipo Administrador del cual se tomar� la lista de choferes para el calculo total de sueldos. <br>
 	 * @return a.calculoSalarioTotal(): devuelve parametro de tipo double que representa la suma de todos los salarios de los choferes de la lista correspondiente en el Administrador a. <br>
 	 */
@@ -205,7 +230,8 @@ public class Sistema {
 	/**
 	 * Metodo de tipo Pedido que se encarga de generar un nuevo pedido en base a distintas peticiones solicitadas por el cliente. <br>
 	 *
-	 * <b>Pre: </b> el parametro fecha contiene un valor de fecha valido.
+	 * <b>Pre: </b> Parametros Administrador a y Cliente c distintos de null.
+	 * 				El parametro fecha contiene un valor de fecha valido.
 	 * 				El parametro zona contiene un valor de zona valido en base a las zonas posibles.
 	 * 				El parametro cantidadPasajeros contiene un valor valido (entre 1 y 8 inclusive). <br>
 	 *
@@ -213,9 +239,9 @@ public class Sistema {
 	 * @param c parametro de tipo Cliente que se encarga de generar el pedido. <br>
 	 * @param fecha parametro de tipo LocalTimeDate que indica la fecha en la que se raliza el pedido. <br>
 	 * @param zona parametro de tipo String que indica el tipo de zona por donde se realizar� el viaje (Estandar, Peligrosa, Sin asfaltar). <br>
-	 * @param mascotas parametro de tipo boolean que indica si el cliente viajar� con una mascota (true) o sin (false). <br>
-	 * @param equipaje parametro de tipo boolean que indica si el cliente llevar� equipaje manual (false) o en ba�l (true). <br>
-	 * @param cantidadPasajeros parametro de tipo int que indica la cantidad de pasajeros que tendr� el viaje. Debe ser entre 1 y 8 pasajeros. <br>
+	 * @param mascotas parametro de tipo boolean que indica si el cliente viajara con una mascota (true) o sin (false). <br>
+	 * @param equipaje parametro de tipo boolean que indica si el cliente llevara equipaje manual (false) o en ba�l (true). <br>
+	 * @param cantidadPasajeros parametro de tipo int que indica la cantidad de pasajeros que tendra el viaje. Debe ser entre 1 y 8 pasajeros. <br>
 	 * @param distancia parametro de tipo int que indica la cantidad de kilometros que ser�n recorridos durante el viaje. <br>
 	 * @return p parametro de tipo Pedido que contiene toda la inforamcion sobre lo solicitado por el cliente para su viaje. <br>
 	 * @throws ClienteNoExistenteException Excepcion lanzada en caso de que el cliente no exista dentro de la lista correspondiente del Administrador a. <br>
@@ -241,7 +267,7 @@ public class Sistema {
 	/**
 	 * Metodo de tipo void que genera un viaje en base a un Pedido p y a los choferes y vehiculos disponibles y que cumplen las condicioens en Administrador a en su correspondiente lista. <br>
 	 *
-	 * <b>Pre: </b> Pedido p est� validado y todos sus campos contienen valores validos. <br>
+	 * <b>Pre: </b>Parametros Administrador a y Pedido p distintos de null. Pedido p esta validado y todos sus campos contienen valores validos. <br>
 	 *
 	 * @param a parametro de tipo Administrador que contiene la lista de choferes y vehiculos disponibles para satisfacer el Pedido p. <br>
 	 * @param p parametro de tipo Pedido que contiene el pedido realizado por el cliente, el cual se encuentra dentro del mismo.
@@ -275,6 +301,13 @@ public class Sistema {
 		chofer.finalizaViaje(viaje);
 	}
 
+	/**
+	 * Metodo de tipo void que setea el estado de un determinado viaje como Iniciado. <br> 
+	 * 
+	 * <b>Pre: </b>Parametro IViaje viaje distinto de null. <br>
+	 * 
+	 * @param viaje Parametro de tipo IViaje al cual se le actualizara su estado a Iniciado.
+	 */
 	private void iniciaViaje(IViaje viaje) {
 		viaje.setEstado("Iniciado");
 	}
@@ -282,14 +315,59 @@ public class Sistema {
 	/**
 	 * Metodo de tipo void que calcula los puntos en el mes de los choferes pertenecientes a la lista correspondiente del Administrador a. <br>
 	 *
+	 * <b>Pre: </b>Parametro Administrador a distinto de null. <br>
+	 *
 	 * @param a parametro de tipo Administrador, el cual contiene la lista de los choferes a los cuales se les calcular� su puntaje mensual. <br>
 	 */
 	public void calculoPuntosMes(Administrador a) {
 		a.calculoPuntosMes();
 	}
 
-	public String listarViajesChofer(Chofer chofer, LocalDateTime fechaMinima, LocalDateTime fechaMaxima, Administrador a)
+	/**
+	 * Metodo de tipo String que permite mostrar el listado de viajes realizados por un determinado chofer en un determinado periodo de tiempo. <br>
+	 * 
+	 * <b>Pre: </b>parametros Administrador a y Chofer chofer distinto de null. Parametro fechaMinima contiene una fecha anterior a fechaMaxima, y ambas son fechas validas. <br>
+	 * 
+	 * @param a Parametro de tipo Administrador que contiene la lista de viajes realizados. <br>
+	 * @param chofer Parametro de tipo Chofer que contiene los datos del chofer del cual se quieren conocer sus viajes en el periodo fechaMinima/fechaMaxima. <br>
+	 * @param fechaMinima Parametro de tipo LocalTimeDate que contiene la fecha inicial desde donde se generara el listado. <br>
+	 * @param fechaMaxima Parametro de tipo LocalTimeDate que contiene la fecha final hasta la cual se generara el listado. <br>
+	 * 
+	 * @return a.listarViajesChofer(chofer, fechaMinima, fechaMaxima): Parametro de tipo String que contiene titulo, subtitulo y listado de viajes realizados por el chofer en el periodo de tiempo indicado por las fechas ingreasadas por parametro. <br>
+
+	 */
+	public String listarViajesChofer(Administrador a, Chofer chofer, LocalDateTime fechaMinima, LocalDateTime fechaMaxima)
 	{
 		return a.listarViajesChofer(chofer, fechaMinima, fechaMaxima);
+	}
+	
+	/**
+	 * Metodo de tipo String que permite mostrar el listado de viajes realizados por un determinado cliente en un determinado periodo de tiempo. <br>
+	 * 
+	 * <b>Pre: </b>parametros Administrador a y Cliente cliente distinto de null. Parametro fechaMinima contiene una fecha anterior a fechaMaxima, y ambas son fechas validas. <br>
+	 * 
+	 * @param a Parametro de tipo Administrador que contiene la lista de viajes realizados. <br>
+	 * @param cliente Parametro de tipo Cliente que contiene los datos del cliente del cual se quieren conocer sus viajes en el periodo fechaMinima/fechaMaxima. <br>
+	 * @param fechaMinima Parametro de tipo LocalTimeDate que contiene la fecha inicial desde donde se generara el listado. <br>
+	 * @param fechaMaxima Parametro de tipo LocalTimeDate que contiene la fecha final hasta la cual se generara el listado. <br>
+	 * 
+	 * @return a.listarViajesCliente(c, fechaMinima, fechaMaxima): Parametro de tipo String que contiene titulo, subtitulo y listado de viajes realizados por el cliente en el periodo de tiempo indicado por las fechas ingreasadas por parametro. <br>
+
+	 */
+	public String listarViajesCliente(Administrador a, Cliente c, LocalDateTime fechaMinima, LocalDateTime fechaMaxima) {
+		return a.listarViajesCliente(c, fechaMinima, fechaMaxima);
+	}
+	
+	/**
+	 * Metodo de tipo String que devuleve una cadena tabulada para mostrar por consola el listado de todos los viajes realizados en el sistema en orden de meayor a menor costo. <br>	 * 
+	 * 
+	 * <b>Pre: </b>Parametro Administrador a distinto de null. <br>
+	 * 
+	 * @param a Parametro de tipo Administrador que contiene el listado de todos los viajes realizados en el sistema.<br>
+	 * 
+	 * @return a.listarViajes() Parametro de tipo String que contiene titulo, subtitulo y listado de viajes ordenados por costo de mayo a menor tabulados para ser mostrados en formato de lista por consola. <br>
+	 */
+	public String listarViajes(Administrador a) {
+		return a.listarViajes();
 	}
 }
