@@ -1,11 +1,13 @@
 package clases;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author gc
  *
  * Clase que implementa la interfaz IViaje que representa los viajes generados en el sistema por los clientes. Contiene
- * un estado (Solicitado, Iniciazo, Finalizado, Pagado), una referencia al pedido hehco por el cliente, una referencia al chofer que llevará a cabo el viaje, el costo del mismo
+ * un estado (Solicitado, Iniciazo, Finalizado, Pagado), una referencia al pedido hehco por el cliente, una referencia al chofer que llevarï¿½ a cabo el viaje, el costo del mismo
  * y la distancia real recorrida. <br>
  *
  */
@@ -17,15 +19,16 @@ public abstract class Viaje implements IViaje {
 		private Vehiculo vehiculo;
 		private double costo;
 		private static double valorBase = 1000.0;
-		private double distanciaRealRecorrida;
+		private int distanciaRealRecorrida;
 		private int pasajeros;
+		private LocalDateTime fecha;
 
 		/**
-		 * Constructor con tres parametros para setear el Pedido realizado por el cliente el Chofer que llevará a cabo el viaje y el Vehiculo en el que se realizará el viaje. <br>
+		 * Constructor con tres parametros para setear el Pedido realizado por el cliente el Chofer que llevarï¿½ a cabo el viaje y el Vehiculo en el que se realizarï¿½ el viaje. <br>
 		 *
-		 * @param pedido: parametro de tipo Pedido que contiene toda la informacion otorgada por el cliente (Cliente, zona, mascota, equipaje, cantidad de pasajeros, distancia recorrida, costo). <br>
-		 * @param chofer: parametro de tipo Chofer que contiene la informacion del chofer (Temporario, Contratado, Permanente) que llevara a cabo el viaje. <br>
-		 * @param vehiculo: parametro de tipo Vehiculo que contiene la informacion del vehiculo (Automovil, Moto, Combi) en el cual se realizará el viaje. <br>
+		 * @param pedido parametro de tipo Pedido que contiene toda la informacion otorgada por el cliente (Cliente, zona, mascota, equipaje, cantidad de pasajeros, distancia recorrida, costo). <br>
+		 * @param chofer parametro de tipo Chofer que contiene la informacion del chofer (Temporario, Contratado, Permanente) que llevara a cabo el viaje. <br>
+		 * @param vehiculo parametro de tipo Vehiculo que contiene la informacion del vehiculo (Automovil, Moto, Combi) en el cual se realizarï¿½ el viaje. <br>
 		 *
 		 * El costo se obtiene del Pedido, como asi tambien la distancia recorrida. <br>
 		 * Al crearse el viaje, el estado se setea en situacion de "Solicitado"
@@ -37,10 +40,24 @@ public abstract class Viaje implements IViaje {
 			this.pasajeros = pedido.getCantidadPasajeros();
 			this.cliente = pedido.getCliente();
 			this.distanciaRealRecorrida = pedido.getDistancia();
+			this.fecha = pedido.getFecha();
 		}
 
 		public Chofer getChofer() {
 			return chofer;
+		}
+		
+		
+		public Cliente getCliente() {
+			return cliente;
+		}
+
+		public int getPax() {
+			return this.pasajeros;
+		}
+		
+		public int getKM() {
+			return this.distanciaRealRecorrida;
 		}
 
 		public abstract double getCosto();
@@ -60,20 +77,39 @@ public abstract class Viaje implements IViaje {
 		public String getEstado() {
 			return estado;
 		}
-
-		public void setEstadoIniciado() {
-			this.estado = "Iniciado";
+			
+		public LocalDateTime getFecha() {
+			return fecha;
 		}
 
-		public void setEstadoPagado() {
-			this.estado = "Pagado";
+		public void setEstado(String e) {
+			if(e.equalsIgnoreCase("Iniciado")){
+				this.estado = "Iniciado";
+			}
+			else if(e.equalsIgnoreCase("Pagado")){
+				this.estado = "Pagado";
+			}
+			else if(e.equalsIgnoreCase("Finalizado")){
+				this.estado = "Finalizado";
+			}
 		}
 
-		public void setEstadoFinalizado() {
-			this.estado = "Finalizado";
+		@Override
+		public String toString() {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			String fecha = this.fecha.format(formatter);
+			return  this.cliente.getNombre() +
+					"\t" + this.chofer.getNombre() + 
+					"\t" + vehiculo.toString() + 
+					"\t$" + String.valueOf(this.costo) + 
+					"\t" + String.valueOf(this.distanciaRealRecorrida) + 
+					"\t" + String.valueOf(this.pasajeros) + 
+					"\t" + fecha + "\n";
 		}
+		
+	
 
-
+		
 
 
 }

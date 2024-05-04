@@ -15,13 +15,13 @@ public abstract class Usuario {
 
 
     /**
-     * Constructor con tres parametros para setear el nombre, nombreReal y contraseña de un nuevo usuario. <br>
+     * Constructor con tres parametros para setear el nombre, nombreReal y contraseï¿½a de un nuevo usuario. <br>
      *
      * <b>Pre: </b> Valores de los parametros String distintos de null, String nombre no se repite en ninguno de los usuarios ya existentes. <br>
      * <b>Post: </b> Se crea un nuevo Usuario en el sistema. <br>
      *
      * @param nombre: parametro de tipo String que representa nombre de usuario del Usuario dentro del sistema, debe ser unico para cada usuario. <br>
-     * @param contrasena: parametro de tipo String que representa la contraseña del Usuario dentro del sistema. Se utilizará en la segunda parte para Login. <br>
+     * @param contrasena: parametro de tipo String que representa la contraseï¿½a del Usuario dentro del sistema. Se utilizarï¿½ en la segunda parte para Login. <br>
      * @param nombreReal: parametro de tipo String que representa el nombre y apellio del Usuario. <br>
      *
      *
@@ -45,7 +45,7 @@ public abstract class Usuario {
 	 */
 	@Override
 	public String toString() {
-		return  nombre + " \t " + nombreReal + "\n";
+		return  nombre + " \t \t " + nombreReal + "\n";
 	}
 
 

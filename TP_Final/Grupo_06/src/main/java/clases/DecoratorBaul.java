@@ -1,21 +1,36 @@
 package clases;
 
-public class DecoratorBaul implements IViaje{
+import java.time.LocalDateTime;
+
+public abstract class DecoratorBaul implements IViaje{
   protected IViaje encapsulado;
 	public DecoratorBaul(IViaje encapsulado) {
 		this.encapsulado = encapsulado;
 	}
+	
 	public int getPax() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.encapsulado.getPax();
 	}
+
 	public int getKM() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.encapsulado.getKM();
 	}
-	public double getCosto() {
-		// TODO Auto-generated method stub
-		return 0;
+
+	public Chofer getChofer() {
+		return this.encapsulado.getChofer();
+	}
+	
+	public LocalDateTime getFecha() {
+		return this.encapsulado.getFecha();
+	}
+	
+	public Cliente getCliente() {
+		return this.encapsulado.getCliente();
+	}
+	
+	@Override
+	public void setEstado(String e) {
+		this.encapsulado.setEstado(e);
 	}
 
 }

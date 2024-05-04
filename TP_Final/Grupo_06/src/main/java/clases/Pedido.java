@@ -46,7 +46,11 @@ public class Pedido {
 		return cliente;
 	}
 
-	public double ObtieneCosto()  {
+	public LocalDateTime getFecha() {
+		return fecha;
+	}
+
+	/*public double ObtieneCosto()  {
         double ValorBase = 1000.0;
         double aux=1000.0;
 
@@ -62,9 +66,9 @@ public class Pedido {
             aux += ValorBase*0.1*this.getCantidadPasajeros();
             aux += ValorBase*0.2*this.getDistancia();
         }
-        /*else{
+        else{
             throw new ZonaNoDefinidaException("La zona " + this.getZona() + " no esta definida.");
-        }*/
+        }
         if(this.isMascotas()) {
             aux += ValorBase*0.1*this.getCantidadPasajeros();
             aux += ValorBase*0.2*this.getDistancia();
@@ -75,6 +79,6 @@ public class Pedido {
             aux += ValorBase*0.05*this.getDistancia();
         }
         return aux;
-    }
+    }*/
 
 }

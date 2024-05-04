@@ -16,8 +16,8 @@ public abstract class Chofer {
     /**
      * Constructor con dos parametros para setear el documento y el nombre del nuevo chofer perteneciente al sistema. <br>
      *
-     * @param DNI: parametro de tipo String que contiene el DNI del nuevo chofer. <br>
-     * @param nombre: parametro de tipo String que contiene el nombre del nuevo chofer. <br>
+     * @param DNI parametro de tipo String que contiene el DNI del nuevo chofer. <br>
+     * @param nombre parametro de tipo String que contiene el nombre del nuevo chofer. <br>
      *
      * Los parametros de puntos, viajesMes y KMrecorridos se setean en cero al agregar al nuevo chofer. <br>
      */
@@ -98,6 +98,11 @@ public abstract class Chofer {
     public int hashCode() {
         return Objects.hash(DNI);
     }
+
+	public void finalizaViaje(IViaje viaje) {
+		viaje.setEstado("Finalizado");
+		
+	}
 
 
 }

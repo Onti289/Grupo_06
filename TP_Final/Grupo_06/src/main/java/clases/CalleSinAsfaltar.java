@@ -7,19 +7,9 @@ public class CalleSinAsfaltar extends Viaje {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getPax() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getKM() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	@Override
 	public double getCosto() {
-		double aux = this.getValorBase();
+		double aux = getValorBase();
 		double incrementopax = aux * 0.2 * this.getPax();
 		double incrementodist = aux * 0.15 * this.getKM();
 		return aux + incrementopax + incrementodist;

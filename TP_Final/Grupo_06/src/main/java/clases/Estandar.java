@@ -7,16 +7,6 @@ public class Estandar extends Viaje {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getPax() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getKM() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	@Override
 	public double getCosto() {
 		double aux = this.getValorBase();
