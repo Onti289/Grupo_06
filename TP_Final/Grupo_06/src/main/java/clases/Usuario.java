@@ -27,7 +27,12 @@ public abstract class Usuario {
      *
      */
     public Usuario(String nombre, String contrasena, String nombreReal) {
-        this.nombre = nombre;
+        assert nombre != null;
+        assert contrasena != null;
+        assert nombreReal != null;
+        
+    	
+    	this.nombre = nombre;
         this.contrasena = contrasena;
         this.nombreReal= nombreReal;
     }

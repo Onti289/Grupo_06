@@ -13,7 +13,11 @@ public class Pedido {
     private int distancia;
 
     public Pedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, Cliente cliente, int distancia) {
-        this.fecha = fecha;
+        assert zona != null;
+        assert cantidadPasajeros > 0;
+        assert distancia > 0;
+    	
+    	this.fecha = fecha;
         this.zona = zona;
         this.mascotas = mascotas;
         this.equipaje = equipaje;
