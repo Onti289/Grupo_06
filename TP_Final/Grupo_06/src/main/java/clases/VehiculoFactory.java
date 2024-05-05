@@ -26,7 +26,7 @@ public class VehiculoFactory {
     		respuesta = new Automovil(patente,true,true,4);
     	}
     	else if(tipo.equalsIgnoreCase("Combi")) {
-    		respuesta = new Combi(patente,false,false,10);
+    		respuesta = new Combi(patente,true,false,10);
     	}
     	return respuesta;
     }

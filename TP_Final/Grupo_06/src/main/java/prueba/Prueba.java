@@ -1,4 +1,6 @@
 package prueba;
+import java.time.LocalDateTime;
+
 import clases.*;
 import excepciones.*;
 
@@ -16,7 +18,7 @@ public class Prueba {
 		Cliente cliente3 = new Cliente("user3","abssda","Javier");
 		
 		Chofer chofer1 = new ChoferContratado("40569874", "Juancito", 1000);
-		Chofer chofer2 = new ChoferPermanente("23666987", "Juan Carlos", 80000, 10, 2, 15, "1998-02-02");
+		Chofer chofer2 = new ChoferPermanente("23666987", "Juan Carlos", 80000, 10, 2, 1998);
 		Chofer chofer3 = new ChoferTemporario("36998741", "Juan Cruz", 50000, 10);
 		
 		Vehiculo v1 = vehiculoFactory.crear("Automovil", "AD-123-CD");
@@ -41,7 +43,7 @@ public class Prueba {
 		
 		try
 		{
-		    sistema.generaViaje(admin, null);
+		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", false, true, 2, cliente1, 50));
 		}
 		catch(NoHayPlataException e) {
 			System.out.println(e);
