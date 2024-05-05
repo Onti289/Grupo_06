@@ -219,7 +219,7 @@ public class Administrador extends Usuario{
 	    if (!encontrado) {
 	        throw new ClienteNoEncontradoException("El Cliente no fue encontrado en la lista.");
 	    }
-	    this.listaClientes.get(i).
+	    this.listaClientes.get(i).modificacliente(nombre,contrasena);
 	}
 
 

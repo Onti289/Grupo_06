@@ -67,5 +67,10 @@ public class Cliente extends Usuario {
 		viaje.setEstado("Pagado");
 		
 	}
-
+	
+	public void modificacliente(String nombre,String contrasena) 
+	{
+		this.nombre = nombre;
+		this.contrasena = contrasena;
+	}
 }
