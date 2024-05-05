@@ -1,13 +1,6 @@
 package prueba;
-import clases.Administrador;
-import clases.Chofer;
-import clases.ChoferContratado;
-import clases.ChoferPermanente;
-import clases.ChoferTemporario;
-import clases.Cliente;
-import clases.Sistema;
-import clases.Vehiculo;
-import clases.VehiculoFactory;
+import clases.*;
+import excepciones.*;
 
 public class Prueba {
 
@@ -46,8 +39,19 @@ public class Prueba {
 		
 		System.out.println(sistema.listaClientes(admin));
 		
-		
-		
+		try
+		{
+		    sistema.generaViaje(admin, null);
+		}
+		catch(NoHayPlataException e) {
+			System.out.println(e);
+		}
+		catch(NoHayChoferesDisponiblesException e) {
+			System.out.println(e);
+		}
+		catch(NoHayVehiculoException e) {
+			System.out.println(e);
+		}
 	}
 
 }

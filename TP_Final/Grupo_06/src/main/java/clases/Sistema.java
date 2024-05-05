@@ -274,7 +274,7 @@ public class Sistema {
 	 * @throws NoHayChoferesDisponiblesException Excepcion lanzada en caso de que no se cuente con ningun chofer disponible al momento de iniciar el viaje. <br>
 	 * @throws NoHayVehiculoException Excepcion lanzada en caso de que ninguno de los vehiculos disponibles cumpla con lo solicitado en el pedido. <br>
 	 */
-	public void generaViaje(Administrador a, Pedido p) throws NoHayChoferesDisponiblesException,NoHayVehiculoException {
+	public void generaViaje(Administrador a, Pedido p) throws NoHayChoferesDisponiblesException,NoHayVehiculoException, NoHayPlataException {
 		Chofer chofer = null;
 		Vehiculo vehiculo = null;
 		IViaje viaje = null;
@@ -371,14 +371,6 @@ public class Sistema {
 		return a.listarViajes();
 	}
 	
-	public void pagarViaje(IViaje viaje)
-	{
-		viaje.getCliente().pagaViaje(viaje);
-	}
-	
-	public void finalizarViaje(IViaje viaje) throws NoHayPlataException
-	{
-	
-			viaje.getChofer().finalizaViaje(viaje);	
-	}
+
+
 }
