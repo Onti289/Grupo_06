@@ -174,8 +174,8 @@ public class Sistema {
 	 *
 	 * @param a parametro de tipo Administrador que contiene la lista correspondiente a mostrar. <br>
 	 */
-	public void listaVehiculos(Administrador a) {
-		a.listarVehiculos();
+	public String listaVehiculos(Administrador a) {
+		return a.listarVehiculos();
 	}
 
 	/**
@@ -197,8 +197,8 @@ public class Sistema {
 	 *
 	 * @param a parametro de tipo Administrador que contiene la lista correspondiente a mostrar. <br>
 	 */
-	public void listaChoferes(Administrador a) {
-		a.listarChoferes();
+	public String listaChoferes(Administrador a) {
+		return a.listarChoferes();
 	}
 
 	/**

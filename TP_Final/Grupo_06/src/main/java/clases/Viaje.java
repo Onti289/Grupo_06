@@ -31,7 +31,7 @@ public abstract class Viaje implements IViaje {
 		 * @param vehiculo parametro de tipo Vehiculo que contiene la informacion del vehiculo (Automovil, Moto, Combi) en el cual se realizar� el viaje. <br>
 		 *
 		 * El costo se obtiene del Pedido, como asi tambien la distancia recorrida. <br>
-		 * Al crearse el viaje, el estado se setea en situacion de "Solicitado"
+		 * Al crearse el viaje, el estado se setea en situacion de "Solicitado". <br>
 		 */
 		public Viaje(Pedido pedido, Chofer chofer, Vehiculo vehiculo) {
 			this.chofer = chofer;
@@ -94,6 +94,16 @@ public abstract class Viaje implements IViaje {
 			}
 		}
 
+		/**
+		 * Devuelve un String con los datos del viaje: <br>
+		 * Nombre del cliente <br>
+		 * Nombre del chofer <br>
+		 * Patente y tipo del vehiculo <br>
+		 * Costo del viaje <br>
+		 * Distancia recorrida <br>
+		 * Cantidad de pasajeros <br>
+		 * Fecha del viaje <br>
+		 */
 		@Override
 		public String toString() {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
