@@ -79,8 +79,7 @@ public abstract class Chofer {
     	this.KMrecorridosMes += kilometros;
     }
 
-    public void modificaChofer(String DNI, String nombre) {
-    	this.DNI = DNI;
+    public void modificaChofer(String nombre) {
         this.nombre = nombre;
     }
 

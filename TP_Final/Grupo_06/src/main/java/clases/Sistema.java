@@ -87,9 +87,9 @@ public class Sistema {
 	 * @param nombre parametro de tipo String que contiene el nombre actualizado del Chofer c. <br>
 	 * @throws ChoferNoEncontradoException
 	 */
-	public void modificaChofer(Administrador a, Chofer c) throws ChoferNoEncontradoException
+	public void modificaChofer(Administrador a, Chofer c, String nombre) throws ChoferNoEncontradoException
 	  {
-	    a.ModificaChofer(c);
+	    a.ModificaChofer(c,nombre);
 	  }
 	/**
 	 * Metodo de tipo void que permite agregar un Vehiculo v a una colaVheiculos de un determinado Administrador a. <br>
@@ -119,8 +119,8 @@ public class Sistema {
 	 * @param patente
 	 * @throws VehiculoNoEncontradoException
 	 */
-	public void modificaVehiculo(Administrador a, Vehiculo v) throws VehiculoNoEncontradoException {
-		a.modificaVehiculo(v);
+	public void modificaVehiculo(Administrador a, Vehiculo v, String patente) throws VehiculoNoEncontradoException {
+		a.modificaVehiculo(v,patente);
 	}
 	
 
@@ -150,7 +150,7 @@ public class Sistema {
 
 
 	/**
-	 * Metodo de tipo void que permite modificar los datos de un Cliente c (nombre usuario, nombre real y contrase�a), el caul pertenece a su correspondiente lista dentro del Administrador a. <br>
+	 * Metodo de tipo void que permite modificar los datos de un Cliente c (nombre usuario y contrase�a), el caul pertenece a su correspondiente lista dentro del Administrador a. <br>
 	 *
 	 * <b>Pre: </b>Parametros Administrador a y Cliente c distinto de null.<br>
 	 *
@@ -162,9 +162,9 @@ public class Sistema {
 	 * @throws ClienteNoEncontradoException Excepcion lanzada en caso de que el Cliente c no exista en la lista correspondiente dentro de Administrador a. <br>
 	 */
 
-	public void modificaCliente(Administrador a, Cliente c) throws ClienteNoEncontradoException
+	public void modificaCliente(Administrador a, Cliente c, String nombre, String contrasena) throws ClienteNoEncontradoException
 	{
-		a.ModificaCliente(c);
+		a.ModificaCliente(c,nombre,contrasena);
 	}
 
 	/**
@@ -292,13 +292,13 @@ public class Sistema {
 
 		viaje = viajeFactory.getViaje(p, chofer, vehiculo);
 
-		a.agregarViaje(viaje);
-
 		iniciaViaje(viaje);
 		
 		p.getCliente().pagaViaje(viaje);
 		
 		chofer.finalizaViaje(viaje);
+		
+		a.agregarViaje(viaje);
 	}
 
 	/**
