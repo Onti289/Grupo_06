@@ -267,15 +267,25 @@ public class Administrador extends Usuario{
 	/**
 	 * Metodo de tipo double que permite calcular el salario de un Chofer c perteneciente al sistema. <br>
 	 *
-	 * <b>Pre: </b>Parametro de tipo Chofer c distinto de null. <br>
+	 * <b>Pre: </b>Parametro de tipo Chofer c distinto de null y contenido en la lista correspondiente <br>
+	 * 
+	 * En caso de que el cliente sea Contratado, se debe recorrer la lista de viajes para conocer los montos de los valores de los mismos, sumarlos y asi aplicarle a dicha suma el porcentaje que le corresponde cobrar al chofer. <br>
 	 *
 	 * @param c parametro de tipo Chofer que contiene al chofer al cual se desea conocer el salario. <br>
 	 * @return c.calculaSueldo(): Metodo de tipo double que devuelve el valor del salario del Chofer c, dependiendo del tipo del mismo. <br>
-	 * @throws ChoferNoExistenteException Excepcion lanzada por el metodo en caso de que el Chofer c no se encuentre en la cola correspondiente.  <br>
 	 */
-	public double calculoSalario(Chofer c) throws ChoferNoExistenteException{
-		if(!colaChoferes.contains(c)) {
+	public double calculoSalario(Chofer c) {
+		/*if(!colaChoferes.contains(c)) {
 			throw new ChoferNoExistenteException("El chofer buscado no existe"); //Creo que siempre va a existir el chofer en este caso, no se me ocurre en que situacion podria no existir
+		}
+		else */if(c.getTipo().equalsIgnoreCase("Contratado")){
+			double ganancia = 0;
+			for(int i=0; i<this.listaViajes.size(); i++) {
+				if(this.listaViajes.get(i).getChofer().equals(c)) {
+					ganancia += this.listaViajes.get(i).getCosto();
+				}
+			}
+			return c.calculaSueldo()*ganancia;
 		}
 		else {
 			return c.calculaSueldo();
@@ -286,11 +296,12 @@ public class Administrador extends Usuario{
 	 * Metodo de tipo double que calcula el total de los salarios de los choferes pertenecientes al sistema. <br>
 	 *
 	 * @return total: parametro de tipo double que acumula los salarios de los choferes. <br>
+	 * 
 	 */
-	public double calculoSalarioTotal() {
+	public double calculoSalarioTotal(){
 		double total = 0.0;
 		for (Chofer chofer : colaChoferes) {
-			total += chofer.calculaSueldo();
+			total += this.calculoSalario(chofer);
         }
 		return total;
 	}

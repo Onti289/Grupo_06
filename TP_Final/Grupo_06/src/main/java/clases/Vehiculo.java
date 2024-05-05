@@ -1,12 +1,30 @@
 package clases;
 import java.util.Objects;
 
+/**
+ * @author Grupo6
+ * Clase abstracta que implementa la interfaz IVehiculo que representa las funcionalidades comunes con las que cuentan los tres tipos de vehiculos que ofrece la empresa (Automovil, Moto, Combi). <br>
+ *
+ */
 public abstract class Vehiculo implements IVehiculo {
     private String patente;
     private boolean baul;
     private boolean petFriendly;
     private int maxPasajeros;
 
+    /**
+     * Constructor que permite crear un nuevo vehiculo. Dispone de las caracteristicas comunes entre los tres tipos, las cuales seran seteadas dependiendo 
+     * del tipo de vehiculo que busque representarse. <br>
+     *  
+  	 *  <b>Pre: </b> Valor de String patente distinto de null y con formato valido de patente (AA-111-AA o AAA-111), maxPasajeros con valor 1, 4 u 8 dependiendo del tipo de vehiculo. <br>
+     * 	<b>Post: </b> Se crea un nuevo Vehiculo en el sistema. <br>
+     *
+     *  
+     * @param patente Parametro de tipo String que representa la patente del vehiculo. <br>
+     * @param baul Parametro de tipo boolean que indica si el vehiculo ofrece baul (true) o no (false). <br>
+     * @param petFriendly Parametro de tipo boolean que indica si el vehiculo es pet Friendly (true) o no (false). <br>
+     * @param maxPasajeros Parametro de tipo int que indica la cantidad maxima de pasajeros que puede llevar el vehiculo. <br>
+     */
     public Vehiculo(String patente, boolean baul, boolean petFriendly, int maxPasajeros) {
         super();
         this.patente = patente;
@@ -15,10 +33,10 @@ public abstract class Vehiculo implements IVehiculo {
         this.maxPasajeros = maxPasajeros;
     }
 
-	public int compareTo(Vehiculo otroVehiculo) {
+	/*public int compareTo(Vehiculo otroVehiculo) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
+	}*/
 
 	public String getPatente() {
 		return patente;
@@ -41,6 +59,12 @@ public abstract class Vehiculo implements IVehiculo {
 		this.patente = patente;
 	}
 
+	/**
+	 * Metodo de tipo boolean que permite saber si un vehiculo cumple con las condiciones de un determinado pedido. <br>
+	 * 
+	 * @param p Parametro de tipo Pedido que contiene las condiciones que debe cumplir el vehiculo para satisfacerlo. <br>
+	 * @return true en caso de que el vehiculo satisfaga las condiciones y false en caso contrario. <br>
+	 */
 	public boolean cumpleCondicion(Pedido p) {
 		return
 			this.isBaul() == p.isEquipaje() &&
@@ -48,6 +72,9 @@ public abstract class Vehiculo implements IVehiculo {
 			this.getMaxPasajeros() >= p.getCantidadPasajeros();
 	}
 
+	/**
+	 * Metodo sobreescrito que devuelve un String con la patente del vehiculo. <br>
+	 */
 	@Override
 	public String toString() {
 		return this.getPatente();

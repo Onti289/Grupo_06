@@ -2,6 +2,13 @@ package clases;
 
 import java.time.LocalDateTime;
 
+/**
+ * @author Grupo6
+ * 
+ * Clase abstacta que permite aplicar el patron Decorator, añadiendo funcionalidades a los viajes en cuanto a si es necesario el traslado de mascotas o no de manera dinamica. <br>
+ * Se implementa con el uso de un encapsulado que representa el viaje sin decorar. <br>
+ *
+ */
 public abstract class DecoratorMascota implements IViaje{
   protected IViaje encapsulado;
 

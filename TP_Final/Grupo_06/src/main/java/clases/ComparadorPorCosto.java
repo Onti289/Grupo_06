@@ -2,6 +2,12 @@ package clases;
 
 import java.util.Comparator;
 
+/**
+ * @author Grupo6
+ * 
+ * Clase que permite comparar los valores de costo de diferentes viajes para luego utilizar al momento de generar el listado de viajes ordenados por costo de mayor a menor. <br>
+ *
+ */
 public class ComparadorPorCosto implements Comparator<IViaje> {
 
 	@Override

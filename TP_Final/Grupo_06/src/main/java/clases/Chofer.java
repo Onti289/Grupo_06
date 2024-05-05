@@ -43,6 +43,8 @@ public abstract class Chofer {
      *
      */
     public abstract double calculaSueldo();
+    
+    public abstract String getTipo();
 
 	public int getPuntos() {
 		return puntos;
@@ -82,6 +84,9 @@ public abstract class Chofer {
         this.nombre = nombre;
     }
 
+	/**
+	 * Metodo que devuelve String con nombre del chofer para poder listarlos. <br>
+	 */
 	@Override
 	public String toString() {
 		return nombre + " \t";
@@ -101,15 +106,22 @@ public abstract class Chofer {
         return Objects.hash(DNI);
     }
 
-	public void finalizaViaje(IViaje viaje) throws NoHayPlataException{
+	/**
+	 * Metodo de tipo void que permite setear el estado del viaje en "Finalizado", ademas de sumar los kilometros recorridos y suma un viaje al chofer que lo realizo. <br>
+	 * 
+	 * <b>Pre: </b> parametro viaje distinto de null. <br>
+	 * 
+	 * @param viaje Parametro de tipo IViaje al cual se le modificara su estado a "Finalizado". <br>
+	 */
+	public void finalizaViaje(IViaje viaje) /*throws NoHayPlataException*/{
 		if (viaje.getEstado().equalsIgnoreCase("Pagado"))
 		{
 		  viaje.setEstado("Finalizado");
 		  this.sumaKMrecorridosMes(viaje.getKM());
 		  this.sumaViajesMes();
 		}
-		else
-		  throw new NoHayPlataException("El cliente es un rata, no me pago");
+		/*else
+		  throw new NoHayPlataException("El cliente es un rata, no me pago");*/
 	}
 
 

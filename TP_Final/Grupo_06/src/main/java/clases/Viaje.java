@@ -3,6 +3,8 @@ package clases;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import excepciones.ChoferNoExistenteException;
+
 /**
  * @author gc
  *
@@ -82,6 +84,9 @@ public abstract class Viaje implements IViaje {
 			return fecha;
 		}
 
+		/**
+		 * Metodo de tipo void que permite modificar el estado de un viaje. <br>
+		 */
 		public void setEstado(String e) {
 			if(e.equalsIgnoreCase("Iniciado")){
 				this.estado = "Iniciado";
