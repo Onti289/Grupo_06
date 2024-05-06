@@ -10,7 +10,7 @@ public class CalleSinAsfaltar extends Viaje {
 
 	public CalleSinAsfaltar(Pedido pedido, Chofer chofer, Vehiculo vehiculo) {
 		super(pedido, chofer, vehiculo);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**

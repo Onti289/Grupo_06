@@ -12,7 +12,7 @@ public class ChoferPermanente extends Chofer {
     private int antiguedad;
     private int cantHijos;
     private int aportes;
-    private LocalDateTime fechaIngreso;
+    private int anioIngreso;
 
     /**
      * Constructor de la clase ChoferPermanente que permite instanciar un nuevo chofer de este tipo. Se debe conocer, ademas de sus datos personales, el sueldo basico, la fecha de ingreso, 
@@ -29,7 +29,7 @@ public class ChoferPermanente extends Chofer {
      * @param antiguedad Parametro de tipo int que contiene la antiguedad del chofer en base a su fecha de ingreso a la empresa. <br>
      * @param hijos Parametro de tipo int que contiene la cantidad de hijos del chofer. <br>
      * @param aportes Parametro de tipo int que contiene un valor entre 0 y 100 que representa el porcentaje de aportes del chofer. <br>
-     * @param fechaIngreso Parametro de tipo LocalDateTime que representa la fecha de ingreso del chofer a la empresa. <br>
+     * @param anioIngreso Parametro de tipo int que representa el anio de ingreso del chofer a la empresa. <br>
      */
     public ChoferPermanente(String dni, String nombre, double sueldobasico, int hijos, int aportes, int anioIngreso) {
         super(dni, nombre);
@@ -38,7 +38,7 @@ public class ChoferPermanente extends Chofer {
         this.antiguedad = fechaActual.getYear() - anioIngreso;
         this.cantHijos = hijos;
         this.aportes = aportes;
-        this.fechaIngreso = fechaIngreso;
+        this.anioIngreso = anioIngreso;
     }
 
 
