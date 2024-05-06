@@ -33,7 +33,6 @@ public class Administrador extends Usuario{
      *  <b>Post: </b> Se crea un nuevo Administrador en el sistema. <br>
      *
      * Llama a constructor super(nombre, contrasena, nombreReal) de Usuario. <br>
-     * Se instancian los parametros colaChoferes, colaVehiculos, listaClientes y listaViajes. <br>
      *
      */
     public Administrador(String nombre, String contrasena, String nombreReal) {
@@ -140,7 +139,7 @@ public class Administrador extends Usuario{
 	 * 
 	 * @exception VehiculoNoEncontradoException Excepcion lanzada cuando el Vehiculo v a modificar no se encuentra en la cola correspondiente. <br>
 	 */
-    //CORREGIR
+  
     public void modificaVehiculo(Vehiculo v, String patente) throws VehiculoNoEncontradoException {
         int i = 0;
         boolean encontrado = false;
@@ -186,7 +185,7 @@ public class Administrador extends Usuario{
 	 * @throws NoHayClientesException Excepcion lanzada cuando no hay ningun cliente en la lista correspondiente. <br>
 	 * @throws ClienteNoExistenteException Excepcion lanzada cuando el Cliente c pasado por parametro no existe en la lista correspondiente. <br> 
 	 */
-	//Modificar para sacar un Cliente c de la lista
+
 	public void sacaCliente(Cliente c) throws NoHayClientesException, ClienteNoExistenteException {
 		if(listaClientes == null)
 			throw new NoHayClientesException("No hay clientes en la lista");
@@ -208,7 +207,7 @@ public class Administrador extends Usuario{
 	 * @param contrasena parametro de tipo String que contiene la contrase�a actualizada del cliente. <br>
 	 * @param nombreReal parametro de tipo String que contiene el nombre real actualizado del cliente. <br>
 	 */
-	//CORREGIR
+	
 	public void ModificaCliente(Cliente c, String nombre, String contrasena) throws ClienteNoExistenteException {
 	    int i = 0;
 	    boolean encontrado = false;
@@ -282,10 +281,7 @@ public class Administrador extends Usuario{
 	 * @return c.calculaSueldo(): Metodo de tipo double que devuelve el valor del salario del Chofer c, dependiendo del tipo del mismo. <br>
 	 */
 	public double calculoSalario(Chofer c) {
-		/*if(!colaChoferes.contains(c)) {
-			throw new ChoferNoExistenteException("El chofer buscado no existe"); //Creo que siempre va a existir el chofer en este caso, no se me ocurre en que situacion podria no existir
-		}
-		else */if(c.getTipo().equalsIgnoreCase("Contratado")){
+		if(c.getTipo().equalsIgnoreCase("Contratado")){
 			double ganancia = 0;
 			for(int i=0; i<listaViajes.size(); i++) {
 				if(listaViajes.get(i).getChofer().equals(c)) {
