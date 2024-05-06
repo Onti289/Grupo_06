@@ -116,7 +116,7 @@ public abstract class Viaje implements IViaje {
 			return  this.cliente.getNombre() +
 					"\t" + this.chofer.getNombre() + 
 					"\t" + vehiculo.toString() + 
-					"\t$" + String.valueOf(this.costo) + 
+					"\t$" + String.valueOf(this.getCosto()) + 
 					"\t" + String.valueOf(this.distanciaRealRecorrida) + 
 					"\t" + String.valueOf(this.pasajeros) + 
 					"\t" + fecha + "\n";

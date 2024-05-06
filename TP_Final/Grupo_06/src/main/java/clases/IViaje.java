@@ -17,4 +17,5 @@ public interface IViaje {
 	String getEstado();
 	Cliente getCliente();
 	void setEstado(String e);
+	String toString();
 }

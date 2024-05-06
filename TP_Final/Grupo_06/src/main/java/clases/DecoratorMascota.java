@@ -47,4 +47,8 @@ public abstract class DecoratorMascota implements IViaje{
 		// TODO Auto-generated method stub
 		return this.encapsulado.getEstado();
 	}
+	@Override
+	public String toString() {
+		return encapsulado.toString();
+	}
 }

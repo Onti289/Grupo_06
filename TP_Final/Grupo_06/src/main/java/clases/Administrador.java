@@ -20,10 +20,10 @@ import java.util.LinkedList;
  * <b>listaViajes: </b> parametro de tipo LinkedList que se encarga de almacenar el historico de todos los viajes realizados en el sistema. <br> 
  */
 public class Administrador extends Usuario{
-    private LinkedList<Chofer> colaChoferes;
-    private LinkedList<Vehiculo> colaVehiculos;
-    private LinkedList<Cliente> listaClientes;
-    private LinkedList<IViaje> listaViajes;
+    private static LinkedList<Chofer> colaChoferes = new LinkedList<Chofer>();
+    private static LinkedList<Vehiculo> colaVehiculos = new LinkedList<Vehiculo>();
+    private static LinkedList<Cliente> listaClientes = new LinkedList<Cliente>();
+    private static LinkedList<IViaje> listaViajes = new LinkedList<IViaje>();
 
     /**
      * Constructor con tres parametros para setear el nombre, nombreReal y contrase�a de un nuevo Administrador. <br>
@@ -37,10 +37,7 @@ public class Administrador extends Usuario{
      */
     public Administrador(String nombre, String contrasena, String nombreReal) {
             super(nombre,contrasena,nombreReal);
-            this.colaChoferes = new LinkedList<Chofer>();
-            this.colaVehiculos = new LinkedList<Vehiculo>();
-            this.listaClientes = new LinkedList<Cliente>();
-            this.listaViajes = new LinkedList<IViaje>();
+
     }
 
     /**
@@ -124,7 +121,7 @@ public class Administrador extends Usuario{
     	for(int i = 0; i<this.colaVehiculos.size(); i++) {
     		aux = this.colaVehiculos.get(i);
     		if(aux.cumpleCondicion(p)) {
-    			if(v == null || aux.beats(v))
+    			if(v == null || !aux.beats(v))
     				v = aux;
     		}
     	}
@@ -168,9 +165,15 @@ public class Administrador extends Usuario{
 	 * 
 	 * @param c parametro de tipo Cliente que contiene al nuevo cliente e agregar a la lista cosrrespondiente. <br>
 	 */
-	public void agregarCliente(Cliente c) {
-		this.listaClientes.add(c);
-
+	public void agregarCliente(Cliente c) throws NombreDeUsuarioYaExistenteExceptions{
+		int i = 0;
+		boolean resp = false;
+		while (i < this.listaClientes.size() && !resp)
+		  resp = this.listaClientes.get(i++).getNombre().equalsIgnoreCase(c.getNombre());
+		if (!resp)
+		  this.listaClientes.add(c);
+		else
+          throw new NombreDeUsuarioYaExistenteException("El nombre de usuario elegido ya existe");
 	}
 
 	/**
@@ -288,7 +291,7 @@ public class Administrador extends Usuario{
 					ganancia += this.listaViajes.get(i).getCosto();
 				}
 			}
-			return c.calculaSueldo()*ganancia;
+			return c.calculaSueldo()*ganancia/100;
 		}
 		else {
 			return c.calculaSueldo();

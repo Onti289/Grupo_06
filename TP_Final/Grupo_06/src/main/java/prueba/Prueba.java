@@ -12,6 +12,7 @@ public class Prueba {
 		VehiculoFactory vehiculoFactory = new VehiculoFactory();
 		
 		Administrador admin = new Administrador("Admin", "Admin123", "Elad Ministrador");
+
 		
 		Cliente cliente1 = new Cliente("user1","abc123","Carlos");
 		Cliente cliente2 = new Cliente("user2","41561","Juana");
@@ -44,6 +45,22 @@ public class Prueba {
 		try
 		{
 		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", false, true, 2, cliente1, 50));
+		    System.out.println("Viaje realizado con exito");
+		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Estandar", false, true, 2, cliente1, 50));
+		    System.out.println("Viaje realizado con exito");
+		    
+		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", false, false, 1, cliente1, 40));
+		    System.out.println("Viaje realizado con exito");
+		    
+		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Calle sin asfaltar", false, true, 8, cliente2, 10));
+		    System.out.println("Viaje realizado con exito");
+		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", true, true, 4, cliente3, 50));
+		    System.out.println("Viaje realizado con exito");
+		    System.out.println(sistema.listaChoferes(admin));
+		    System.out.println(sistema.listarViajes(admin));
+		    System.out.println(sistema.listaClientes(admin));
+		   
+		    
 		}
 		catch(NoHayPlataException e) {
 			System.out.println(e);
@@ -55,5 +72,5 @@ public class Prueba {
 			System.out.println(e);
 		}
 	}
-
+   
 }

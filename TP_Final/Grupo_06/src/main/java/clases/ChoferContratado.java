@@ -36,7 +36,7 @@ public class ChoferContratado extends Chofer {
     @Override
 	public String toString() {
 
-		return super.toString() + " Contratado \t" + String.valueOf(this.calculaSueldo()) + "\n";
+		return super.toString() + " Contratado \t" + this.calculaSueldo();
 	}
 
 	@Override
