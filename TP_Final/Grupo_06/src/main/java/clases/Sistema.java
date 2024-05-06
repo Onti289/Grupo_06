@@ -87,7 +87,7 @@ public class Sistema {
 	 * @param nombre parametro de tipo String que contiene el nombre actualizado del Chofer c. <br>
 	 * @throws ChoferNoEncontradoException
 	 */
-	public void modificaChofer(Administrador a, Chofer c, String nombre) throws ChoferNoEncontradoException
+	public void modificaChofer(Administrador a, Chofer c, String nombre) throws ChoferNoExistenteException
 	  {
 	    a.ModificaChofer(c,nombre);
 	  }
@@ -163,7 +163,7 @@ public class Sistema {
 	 * @throws ClienteNoEncontradoException Excepcion lanzada en caso de que el Cliente c no exista en la lista correspondiente dentro de Administrador a. <br>
 	 */
 
-	public void modificaCliente(Administrador a, Cliente c, String nombre, String contrasena) throws ClienteNoEncontradoException
+	public void modificaCliente(Administrador a, Cliente c, String nombre, String contrasena) throws ClienteNoExistenteException
 	{
 		a.ModificaCliente(c,nombre,contrasena);
 	}

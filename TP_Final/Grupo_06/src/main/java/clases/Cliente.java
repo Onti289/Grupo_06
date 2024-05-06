@@ -63,8 +63,13 @@ public class Cliente extends Usuario {
         return Objects.hash(nombre);
     }
 
+	/**
+	 * Genera un numero aleatorio entre 1 y 10 y el cliente paga siempre que dicho numero sea distinto de 1
+	 */
 	public void pagaViaje(IViaje viaje) {
-		viaje.setEstado("Pagado");
+		int numero = (int) (Math.random() * 10) + 1;
+		if (numero != 1)
+		  viaje.setEstado("Pagado");
 		
 	}
 	

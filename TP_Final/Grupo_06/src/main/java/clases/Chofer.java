@@ -112,15 +112,15 @@ public abstract class Chofer {
 	 * 
 	 * @param viaje Parametro de tipo IViaje al cual se le modificara su estado a "Finalizado". <br>
 	 */
-	public void finalizaViaje(IViaje viaje) /*throws NoHayPlataException*/{
+	public void finalizaViaje(IViaje viaje) throws NoHayPlataException{
 		if (viaje.getEstado().equalsIgnoreCase("Pagado"))
 		{
 		  viaje.setEstado("Finalizado");
 		  this.sumaKMrecorridosMes(viaje.getKM());
 		  this.sumaViajesMes();
 		}
-		/*else
-		  throw new NoHayPlataException("El cliente es un rata, no me pago");*/
+		else
+		  throw new NoHayPlataException("El cliente es un rata, no me pago");
 	}
 
 

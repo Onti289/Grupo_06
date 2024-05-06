@@ -75,7 +75,7 @@ public class Administrador extends Usuario{
      * 
      * @exception ChoferNoEncontradoException Excepcion lanzada cunado el Chofer c pasado por parametro no se encuentra dentro de la cola correspondiente. <br>
      */
-    public void ModificaChofer(Chofer c,String nombre) throws ChoferNoEncontradoException {
+    public void ModificaChofer(Chofer c,String nombre) throws ChoferNoExistenteException {
         int i = 0;
         boolean encontrado = false;
         while (!encontrado && i < colaChoferes.size()) {
@@ -87,7 +87,7 @@ public class Administrador extends Usuario{
             i++;
         }
         if (!encontrado) {
-            throw new ChoferNoEncontradoException("El Chofer no fue encontrado en la cola.");
+            throw new ChoferNoExistenteException("El Chofer no fue encontrado en la cola.");
         }
         colaChoferes.get(i).modificaChofer(nombre);
     }
@@ -209,7 +209,7 @@ public class Administrador extends Usuario{
 	 * @param nombreReal parametro de tipo String que contiene el nombre real actualizado del cliente. <br>
 	 */
 	//CORREGIR
-	public void ModificaCliente(Cliente c, String nombre, String contrasena) throws ClienteNoEncontradoException {
+	public void ModificaCliente(Cliente c, String nombre, String contrasena) throws ClienteNoExistenteException {
 	    int i = 0;
 	    boolean encontrado = false;
 	    while (!encontrado && i < listaClientes.size()) {
@@ -221,7 +221,7 @@ public class Administrador extends Usuario{
 	        i++;
 	    }
 	    if (!encontrado) {
-	        throw new ClienteNoEncontradoException("El Cliente no fue encontrado en la lista.");
+	        throw new ClienteNoExistenteException("El Cliente no fue encontrado en la lista.");
 	    }
 	    listaClientes.get(i).modificacliente(nombre,contrasena);
 	}
