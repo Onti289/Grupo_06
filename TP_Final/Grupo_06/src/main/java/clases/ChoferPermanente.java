@@ -76,7 +76,7 @@ public class ChoferPermanente extends Chofer {
     @Override
 	public String toString() {
 
-		return super.toString() + " Permanente \t" + String.valueOf(this.calculaSueldo());
+		return super.toString() + " Permanente \t$" + String.format("%.2f",this.calculaSueldo());
 	}
 
 

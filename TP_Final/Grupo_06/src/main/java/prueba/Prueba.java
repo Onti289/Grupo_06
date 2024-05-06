@@ -18,13 +18,13 @@ public class Prueba {
 		Cliente cliente2 = new Cliente("user2","41561","Juana");
 		Cliente cliente3 = new Cliente("user3","abssda","Javier");
 		
-		Chofer chofer1 = new ChoferContratado("40569874", "Juancito", 1000);
+		Chofer chofer1 = new ChoferContratado("40569874", "Juancito", 30);
 		Chofer chofer2 = new ChoferPermanente("23666987", "Juan Carlos", 80000, 10, 2, 1998);
 		Chofer chofer3 = new ChoferTemporario("36998741", "Juan Cruz", 50000, 10);
 		
 		Vehiculo v1 = vehiculoFactory.crear("Automovil", "AD-123-CD");
 		Vehiculo v2 = vehiculoFactory.crear("Automovil", "BC-122-AA");
-		Vehiculo v3 = vehiculoFactory.crear("Combi", "OPP-123");
+		Vehiculo v3 = vehiculoFactory.crear("Combi", "OP-123-AD");
 		Vehiculo v4 = vehiculoFactory.crear("Moto", "AA-111-BA");
 		try
 		{
@@ -45,23 +45,23 @@ public class Prueba {
 		sistema.agregaChofer(admin,chofer1);
 		sistema.agregaChofer(admin,chofer2);
 		sistema.agregaChofer(admin,chofer3);
-		
-		System.out.println(sistema.listaClientes(admin));
+
 		
 		try
 		{
 		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", false, true, 2, cliente1, 50));
 		    System.out.println("Viaje realizado con exito");
-		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Estandar", false, true, 2, cliente1, 50));
+		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Estandar", false, true, 2, cliente1, 20));
 		    System.out.println("Viaje realizado con exito");
 		    
-		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", false, false, 1, cliente1, 40));
-		    System.out.println("Viaje realizado con exito");
+		    //sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", false, false, 1, cliente1, 40));
+		    //System.out.println("Viaje realizado con exito");
 		    
 		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Calle sin asfaltar", false, true, 8, cliente2, 10));
 		    System.out.println("Viaje realizado con exito");
 		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", true, true, 4, cliente3, 50));
 		    System.out.println("Viaje realizado con exito");
+		    System.out.println(sistema.listaVehiculos(admin));
 		    System.out.println(sistema.listaChoferes(admin));
 		    System.out.println(sistema.listarViajes(admin));
 		    System.out.println(sistema.listaClientes(admin));

@@ -72,7 +72,7 @@ public class ChoferTemporario extends Chofer {
 	@Override
 	public String toString() {
 
-		return super.toString() + " Temporario \t" + String.valueOf(this.calculaSueldo());
+		return super.toString() + " Temporario \t$" + String.format("%.2f",this.calculaSueldo());
 	}
 
 	@Override

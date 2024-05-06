@@ -45,7 +45,7 @@ public class Combi extends Vehiculo {
 
 	@Override
 	public String toString() {
-		return super.toString() + " \t Combi \n";
+		return super.toString() + " \t Combi ";
 	}
 
 }

@@ -44,7 +44,7 @@ public class Moto extends Vehiculo {
 
 	@Override
 	public String toString() {
-		return super.toString() + " \t Moto \n";
+		return super.toString() + " \t Moto ";
 	}
 
 }

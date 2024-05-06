@@ -233,7 +233,7 @@ public class Administrador extends Usuario{
 	 */
 	public String listarChoferes() {
 		String salida = "Listado de choferes y salarios: \n";
-		salida += "Nombre \t Tipo \t Salario neto/Ganancia viaje \n";
+		salida += "Nombre \t\t Tipo \t\tSalario neto/Ganancia viaje \n";
 		for (Chofer chofer : colaChoferes) {
             salida += chofer.toString() + " \n";
         }
@@ -265,7 +265,7 @@ public class Administrador extends Usuario{
 		String salida = "Listado de vehiculos: \n";
 		salida += "Patente \t Tipo vehiculo \n";
 		for (Vehiculo vehiculo : colaVehiculos) {
-            salida = vehiculo.toString();
+            salida += vehiculo.toString() + "\n";
         }
 		return salida;
 	}
@@ -411,14 +411,14 @@ public class Administrador extends Usuario{
 	 */
 	public String listarViajes() {
 		IViaje viaje = null;
-		String salida = "Listado de viajes ordenados por costo de viaje";
+		String salida = "Listado de viajes ordenados por costo de viaje \n";
 		salida += "Cliente" + 
-				"\t Chofer" +  
-				"\t Vehiculo" +  
-				"\t Costo" +  
-				"\t Distancia Real Recorrida" +  
-				"\t Pasajeros" + 
-				"\t Fecha\n";
+				"\tChofer" +  
+				"\t\tVehiculo" +  
+				"\t\tCosto" +  
+				"\t\tDistancia Real Recorrida" +  
+				"\tPasajeros" + 
+				"\tFecha\n";
 		LinkedList<IViaje> listaViajesClon = (LinkedList<IViaje>) this.listaViajes.clone();
 		Collections.sort(listaViajesClon, new ComparadorPorCosto());
 		

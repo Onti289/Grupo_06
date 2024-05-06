@@ -115,11 +115,11 @@ public abstract class Viaje implements IViaje {
 			String fecha = this.fecha.format(formatter);
 			return  this.cliente.getNombre() +
 					"\t" + this.chofer.getNombre() + 
-					"\t" + vehiculo.toString() + 
-					"\t$" + String.valueOf(this.getCosto()) + 
-					"\t" + String.valueOf(this.distanciaRealRecorrida) + 
-					"\t" + String.valueOf(this.pasajeros) + 
-					"\t" + fecha + "\n";
+					"\t" + vehiculo.getPatente() + 
+					"\t\t$" + String.format("%.2f", this.getCosto()) + 
+					"\t\t" + String.valueOf(this.distanciaRealRecorrida) + 
+					"\t\t\t" + String.valueOf(this.pasajeros) + 
+					"\t\t" + fecha + "\n";
 		}
 		
 	
