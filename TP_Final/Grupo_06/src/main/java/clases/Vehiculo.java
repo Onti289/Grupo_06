@@ -33,11 +33,6 @@ public abstract class Vehiculo implements IVehiculo {
         this.maxPasajeros = maxPasajeros;
     }
 
-	/*public int compareTo(Vehiculo otroVehiculo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}*/
-
 	public String getPatente() {
 		return patente;
 	}

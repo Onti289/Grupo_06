@@ -33,7 +33,6 @@ public class Sistema {
 	 */
 	private Sistema() {
 		this.nombre = "Subi que te llevo";
-		//this.listaViajes = new LinkedList<IViaje>();
 	}
 
 	/**
@@ -106,10 +105,6 @@ public class Sistema {
 		a.agregaVehiculo(v);
 	}
 
-	/* public Vehiculo sacaVehiculo(Administrador a)
-  {
-    return a.sacarVehiculo();
-  }*/
 
 	/**
 	 * Metodo de tipo void que permite modificar la patente de un Vheiculo v perteneciente e la lista de vehiculos del Administrador a. <br>

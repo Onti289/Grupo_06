@@ -11,7 +11,6 @@ import excepciones.*;
  */
 public class Pedido {
     private LocalDateTime fecha;
-    //private String tipoServicio;
     private String zona;
     private boolean mascotas;
     private boolean equipaje;
@@ -76,36 +75,5 @@ public class Pedido {
 	public LocalDateTime getFecha() {
 		return fecha;
 	}
-
-	/*public double ObtieneCosto()  {
-        double ValorBase = 1000.0;
-        double aux=1000.0;
-
-        if(this.getZona().equalsIgnoreCase("Estandar")) {
-            aux += ValorBase*0.1*this.getCantidadPasajeros();
-            aux += ValorBase*0.1*this.getDistancia();
-        }
-        else if(this.getZona().equalsIgnoreCase("Sin asfaltar")) {
-            aux += ValorBase*0.2*this.getCantidadPasajeros();
-            aux += ValorBase*0.15*this.getDistancia();
-        }
-        else if(this.getZona().equalsIgnoreCase("Peligrosa")){
-            aux += ValorBase*0.1*this.getCantidadPasajeros();
-            aux += ValorBase*0.2*this.getDistancia();
-        }
-        else{
-            throw new ZonaNoDefinidaException("La zona " + this.getZona() + " no esta definida.");
-        }
-        if(this.isMascotas()) {
-            aux += ValorBase*0.1*this.getCantidadPasajeros();
-            aux += ValorBase*0.2*this.getDistancia();
-        }
-
-        if(this.isEquipaje()) {
-            aux += ValorBase*0.1*this.getCantidadPasajeros();
-            aux += ValorBase*0.05*this.getDistancia();
-        }
-        return aux;
-    }*/
 
 }

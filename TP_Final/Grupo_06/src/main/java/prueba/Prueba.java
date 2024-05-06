@@ -54,9 +54,6 @@ public class Prueba {
 		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Estandar", false, true, 2, cliente1, 20));
 		    System.out.println("Viaje realizado con exito");
 		    
-		    //sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", false, false, 1, cliente1, 40));
-		    //System.out.println("Viaje realizado con exito");
-		    
 		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Calle sin asfaltar", false, true, 8, cliente2, 10));
 		    System.out.println("Viaje realizado con exito");
 		    sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", true, true, 4, cliente3, 50));

@@ -121,10 +121,4 @@ public abstract class Viaje implements IViaje {
 					"\t\t\t" + String.valueOf(this.pasajeros) + 
 					"\t\t" + fecha + "\n";
 		}
-		
-	
-
-		
-
-
 }

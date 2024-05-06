@@ -9,7 +9,7 @@ package clases;
 
 public abstract class Usuario {
 
-    protected String nombre;  // no se puede repetir un nombre de usuario
+    protected String nombre;
     protected String contrasena;
     protected String nombreReal;
 
