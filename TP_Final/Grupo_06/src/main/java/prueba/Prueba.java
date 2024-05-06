@@ -26,10 +26,16 @@ public class Prueba {
 		Vehiculo v2 = vehiculoFactory.crear("Automovil", "BC-122-AA");
 		Vehiculo v3 = vehiculoFactory.crear("Combi", "OPP-123");
 		Vehiculo v4 = vehiculoFactory.crear("Moto", "AA-111-BA");
-		
+		try
+		{
 		sistema.agregaCliente(admin,cliente1);
 		sistema.agregaCliente(admin,cliente2);
 		sistema.agregaCliente(admin,cliente3);
+		}
+		catch(NombreDeUsuarioYaExistenteException e)
+		{
+			System.out.println(e);
+		}
 		
 		sistema.agregaVehiculo(admin,v1);
 		sistema.agregaVehiculo(admin,v2);

@@ -131,8 +131,9 @@ public class Sistema {
 	 *
 	 * @param a parametro de tipo Administrador en el cual se insertar� el Cliente c en su correspondiente lista. <br>
 	 * @param c parametro de tipo Cliente que ser� insertado en la lista correspondiente del Administrador a. <br>
+	 * @throws NombreDeUsuarioYaExistenteException 
 	 */
-	public void agregaCliente(Administrador a, Cliente c) {
+	public void agregaCliente(Administrador a, Cliente c) throws NombreDeUsuarioYaExistenteException {
 		a.agregarCliente(c);
 	}
 

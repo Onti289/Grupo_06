@@ -165,7 +165,7 @@ public class Administrador extends Usuario{
 	 * 
 	 * @param c parametro de tipo Cliente que contiene al nuevo cliente e agregar a la lista cosrrespondiente. <br>
 	 */
-	public void agregarCliente(Cliente c) throws NombreDeUsuarioYaExistenteExceptions{
+	public void agregarCliente(Cliente c) throws NombreDeUsuarioYaExistenteException{
 		int i = 0;
 		boolean resp = false;
 		while (i < this.listaClientes.size() && !resp)
