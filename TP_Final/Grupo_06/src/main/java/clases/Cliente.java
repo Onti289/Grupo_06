@@ -64,18 +64,24 @@ public class Cliente extends Usuario {
     }
 
 	/**
-	 * Genera un numero aleatorio entre 1 y 10 y el cliente paga siempre que dicho numero sea distinto de 1
+	 * Genera un numero aleatorio entre 1 y 100 y el cliente paga siempre que dicho numero sea distinto de 1
 	 */
 	public void pagaViaje(IViaje viaje) {
-		int numero = (int) (Math.random() * 10) + 1;
+		int numero = (int) (Math.random() * 100) + 1;
 		if (numero != 1)
 		  viaje.setEstado("Pagado");
 		
 	}
 	
+	
 	public void modificacliente(String nombre,String contrasena) 
 	{
 		this.nombre = nombre;
 		this.contrasena = contrasena;
+	}
+
+	public String listarHistoricoViajes(Administrador a) {
+		return a.listarHistoricoViajesCliente(this);
+		
 	}
 }

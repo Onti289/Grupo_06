@@ -13,6 +13,9 @@ import excepciones.*;
  *
  *
  */
+/**
+ * 
+ */
 public class Sistema {
 
 	private static Sistema _instancia = null;
@@ -376,6 +379,12 @@ public class Sistema {
 		return a.listarViajes();
 	}
 	
-
+	/**
+	 * Devuelve el historico de viajes de un cliente pasado por parametro
+	 */
+	public String listarHistoricoViajesCliente(Administrador a, Cliente cliente)
+	{
+		return cliente.listarHistoricoViajes(a);
+	}
 
 }

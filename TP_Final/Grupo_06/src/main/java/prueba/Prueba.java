@@ -80,6 +80,9 @@ public class Prueba {
 		catch(NoHayVehiculoException e) {
 			System.out.println(e);
 		}
+		
+		System.out.println(sistema.listarHistoricoViajesCliente(admin, cliente1));
+		System.out.println(sistema.listarHistoricoViajesCliente(admin, cliente3));
 	}
    
 }

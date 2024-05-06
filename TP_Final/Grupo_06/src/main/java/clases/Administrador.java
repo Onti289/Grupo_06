@@ -516,4 +516,25 @@ public class Administrador extends Usuario{
 		return salida;
 	}
 	
+	public String listarHistoricoViajesCliente(Cliente cliente) {
+		
+		IViaje viaje = null;
+		String salida = "Listado de viajes cliente: " + cliente.getNombre() + "\n";
+		salida += "Cliente" + 
+				"\tChofer" +  
+				"\t\tVehiculo" +  
+				"\t\tCosto" +  
+				"\t\tDistancia Real Recorrida" +  
+				"\tPasajeros" + 
+				"\tFecha\n";
+		for(int i = 0; i<listaViajes.size(); i++) {
+			viaje = listaViajes.get(i);
+			if (viaje.getCliente().equals(cliente))
+		    {
+		        salida += viaje.toString();
+		    }
+		}
+		return salida;
+	}
+	
 }
