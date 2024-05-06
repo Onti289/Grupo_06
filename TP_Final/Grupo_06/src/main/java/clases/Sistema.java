@@ -299,6 +299,10 @@ public class Sistema {
 		chofer.finalizaViaje(viaje);
 		
 		a.agregarViaje(viaje);
+		
+		a.AgregarChofer(chofer);
+		
+		a.agregaVehiculo(vehiculo);
 	}
 
 	/**

@@ -66,10 +66,14 @@ public abstract class Vehiculo implements IVehiculo {
 	 * @return true en caso de que el vehiculo satisfaga las condiciones y false en caso contrario. <br>
 	 */
 	public boolean cumpleCondicion(Pedido p) {
-		return
-			this.isBaul() == p.isEquipaje() &&
-			this.isPetFriendly() == p.isMascotas() &&
-			this.getMaxPasajeros() >= p.getCantidadPasajeros();
+			if(this.getMaxPasajeros() < p.getCantidadPasajeros())
+				return false;
+			if (p.isEquipaje() == true && this.isBaul() == false)
+				return false;
+			if (p.isMascotas() == true && this.isPetFriendly() == false)
+				return false;
+			return true;
+			
 	}
 
 	/**
