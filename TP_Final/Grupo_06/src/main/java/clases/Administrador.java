@@ -2,6 +2,7 @@ package clases;
 
 import excepciones.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
@@ -49,7 +50,7 @@ public class Administrador extends Usuario{
      * @param chofer parametro de tipo Chofer que sera agregado al final de la cola correspondiente. <br>
      */
     public void AgregarChofer(Chofer chofer){
-        this.colaChoferes.add(chofer);
+        colaChoferes.add(chofer);
     }
 
     /**
@@ -60,7 +61,7 @@ public class Administrador extends Usuario{
      * @return Devuelve primer chofer de la cola correspondiente. <br>
      */
     public Chofer SacarChofer() {
-    	return this.colaChoferes.poll();
+    	return colaChoferes.poll();
     }
 
     /**
@@ -88,7 +89,7 @@ public class Administrador extends Usuario{
         if (!encontrado) {
             throw new ChoferNoEncontradoException("El Chofer no fue encontrado en la cola.");
         }
-        this.colaChoferes.get(i).modificaChofer(nombre);
+        colaChoferes.get(i).modificaChofer(nombre);
     }
 
 
@@ -102,7 +103,7 @@ public class Administrador extends Usuario{
      */
     public void agregaVehiculo(Vehiculo vehiculo)
     {
-        this.colaVehiculos.add(vehiculo);
+        colaVehiculos.add(vehiculo);
     }
 
     /**
@@ -118,15 +119,15 @@ public class Administrador extends Usuario{
     	Vehiculo v = null;
     	Vehiculo aux;
 
-    	for(int i = 0; i<this.colaVehiculos.size(); i++) {
-    		aux = this.colaVehiculos.get(i);
+    	for(int i = 0; i<colaVehiculos.size(); i++) {
+    		aux = colaVehiculos.get(i);
     		if(aux.cumpleCondicion(p)) {
     			if(v == null || !aux.beats(v))
     				v = aux;
     		}
     	}
 
-	    this.colaVehiculos.remove(this.colaVehiculos.indexOf(v));
+	    colaVehiculos.remove(colaVehiculos.indexOf(v));
 	    return v;
     }
 
@@ -144,7 +145,7 @@ public class Administrador extends Usuario{
         int i = 0;
         boolean encontrado = false;
         while (!encontrado && i < colaVehiculos.size()) {
-            Vehiculo aux = this.colaVehiculos.get(i);
+            Vehiculo aux = colaVehiculos.get(i);
             if (aux.equals(v)) {
                 colaVehiculos.set(i, v);
                 encontrado = true;
@@ -154,7 +155,7 @@ public class Administrador extends Usuario{
         if (!encontrado) {
             throw new VehiculoNoEncontradoException("El Vehiculo no fue encontrado en la cola.");
         }
-        this.colaVehiculos.get(i).setPatente(patente);
+        colaVehiculos.get(i).setPatente(patente);
     }
 
 
@@ -168,10 +169,10 @@ public class Administrador extends Usuario{
 	public void agregarCliente(Cliente c) throws NombreDeUsuarioYaExistenteException{
 		int i = 0;
 		boolean resp = false;
-		while (i < this.listaClientes.size() && !resp)
-		  resp = this.listaClientes.get(i++).getNombre().equalsIgnoreCase(c.getNombre());
+		while (i < listaClientes.size() && !resp)
+		  resp = listaClientes.get(i++).getNombre().equalsIgnoreCase(c.getNombre());
 		if (!resp)
-		  this.listaClientes.add(c);
+		  listaClientes.add(c);
 		else
           throw new NombreDeUsuarioYaExistenteException("El nombre de usuario elegido ya existe");
 	}
@@ -222,7 +223,7 @@ public class Administrador extends Usuario{
 	    if (!encontrado) {
 	        throw new ClienteNoEncontradoException("El Cliente no fue encontrado en la lista.");
 	    }
-	    this.listaClientes.get(i).modificacliente(nombre,contrasena);
+	    listaClientes.get(i).modificacliente(nombre,contrasena);
 	}
 
 
@@ -286,9 +287,9 @@ public class Administrador extends Usuario{
 		}
 		else */if(c.getTipo().equalsIgnoreCase("Contratado")){
 			double ganancia = 0;
-			for(int i=0; i<this.listaViajes.size(); i++) {
-				if(this.listaViajes.get(i).getChofer().equals(c)) {
-					ganancia += this.listaViajes.get(i).getCosto();
+			for(int i=0; i<listaViajes.size(); i++) {
+				if(listaViajes.get(i).getChofer().equals(c)) {
+					ganancia += listaViajes.get(i).getCosto();
 				}
 			}
 			return c.calculaSueldo()*ganancia/100;
@@ -321,7 +322,7 @@ public class Administrador extends Usuario{
 	 * @return this.listaCliente.contains(c): devuelve true en caso de que el Cliente c pertenezca a la listaCliente, false en caso contrario. <br>
 	 */
 	public boolean existeCliente(Cliente c) {
-		return this.listaClientes.contains(c);
+		return listaClientes.contains(c);
 	}
 
 	/**
@@ -330,7 +331,7 @@ public class Administrador extends Usuario{
 	 * @return !this.colaChofer.isEmpty(): en caso de que la cola este vacia, el metodo devolvera false, true en caso contrario. <br>
 	 */
 	public boolean isChoferDisponible() {
-		return !this.colaChoferes.isEmpty();
+		return !colaChoferes.isEmpty();
 	}
 
 	/**
@@ -347,8 +348,8 @@ public class Administrador extends Usuario{
 		int i = 0;
 
 		if(this.isVehiculoDisponible()) {
-			while(!cond && i<this.colaVehiculos.size()) {
-				if(this.colaVehiculos.get(i).cumpleCondicion(p))
+			while(!cond && i<colaVehiculos.size()) {
+				if(colaVehiculos.get(i).cumpleCondicion(p))
 					cond = true;
 				i ++;
 			}
@@ -362,7 +363,7 @@ public class Administrador extends Usuario{
 	 * @return !this.colaVehiculos.isEmpty(): en caso de que la cola este vacia, el metodo devolvera false, true en caso contrario. <br>
 	 */
 	public boolean isVehiculoDisponible() {
-		return !this.colaVehiculos.isEmpty();
+		return !colaVehiculos.isEmpty();
 	}
 
 	/**
@@ -376,9 +377,9 @@ public class Administrador extends Usuario{
 		double max=-1;
 		int j=-1;
 
-		  for (int i=0; i < this.colaChoferes.size() ; i++)
+		  for (int i=0; i < colaChoferes.size() ; i++)
 		  {
-			  c = this.colaChoferes.get(i);
+			  c = colaChoferes.get(i);
 			  c.setPuntos(c.getViajesMes()*5);
 			  c.setViajesMes();
 			  if (max < c.getKMrecorridosMes()) {
@@ -388,7 +389,7 @@ public class Administrador extends Usuario{
 			  c.setKMrecorridosMes();
 		  }
 		  if (j != -1)
-			  this.colaChoferes.get(j).setPuntos(15);
+			  colaChoferes.get(j).setPuntos(15);
 	}
 	
 	/**
@@ -400,7 +401,7 @@ public class Administrador extends Usuario{
 	 * @param viaje Parametro de tipo IViaje que sera agregado a la lista de los viajes realizados a traves del sistema. <br>
 	 */
 	public void agregarViaje(IViaje viaje) {
-		this.listaViajes.add(viaje);
+		listaViajes.add(viaje);
 	}
 
 	/**
@@ -419,7 +420,7 @@ public class Administrador extends Usuario{
 				"\t\tDistancia Real Recorrida" +  
 				"\tPasajeros" + 
 				"\tFecha\n";
-		LinkedList<IViaje> listaViajesClon = (LinkedList<IViaje>) this.listaViajes.clone();
+		LinkedList<IViaje> listaViajesClon = (LinkedList<IViaje>) listaViajes.clone();
 		Collections.sort(listaViajesClon, new ComparadorPorCosto());
 		
 		for(int i = 0; i<listaViajesClon.size(); i++) {
@@ -445,25 +446,30 @@ public class Administrador extends Usuario{
 	public String listarViajesChofer(Chofer chofer, LocalDateTime fechaMinima, LocalDateTime fechaMaxima)
 	{
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate fechaMinimaLocalDate = fechaMinima.toLocalDate();
+	    LocalDate fechaMaximaLocalDate = fechaMaxima.toLocalDate();
 		String fechaMinimaTexto = fechaMinima.format(formatter);
 		String fechaMaximaTexto = fechaMaxima.format(formatter);
 		IViaje viaje = null;
 		String salida = "Listado de viajes chofer: " + chofer.getNombre() + " en el periodo " + fechaMinimaTexto + "/" + fechaMaximaTexto + "\n";
 		salida += "Cliente" + 
-				"\t Chofer" +  
-				"\t Vehiculo" +  
-				"\t Costo" +  
-				"\t Distancia Real Recorrida" +  
-				"\t Pasajeros" + 
-				"\t Fecha\n";
+				"\tChofer" +  
+				"\t\tVehiculo" +  
+				"\t\tCosto" +  
+				"\t\tDistancia Real Recorrida" +  
+				"\tPasajeros" + 
+				"\tFecha\n";
 		
-		for(int i = 0; i<this.listaViajes.size(); i++) {
-			viaje = this.listaViajes.get(i);
-			if(viaje.getChofer().equals(chofer) && 
-				viaje.getFecha().isAfter(fechaMinima) &&
-				viaje.getFecha().isBefore(fechaMaxima)) {
-				salida += viaje.toString();
-			}
+		for(int i = 0; i<listaViajes.size(); i++) {
+			viaje = listaViajes.get(i);
+			LocalDate fechaViaje = viaje.getFecha().toLocalDate();
+			if (viaje.getChofer().equals(chofer) &&
+		            ((viaje.getFecha().isAfter(fechaMinima) &&
+		                    viaje.getFecha().isBefore(fechaMaxima)) ||
+		            		fechaViaje.isEqual(fechaMinimaLocalDate) ||
+		            		fechaViaje.isEqual(fechaMaximaLocalDate))) {
+		        salida += viaje.toString();
+		    }
 		}
 		return salida;
 	}
@@ -483,25 +489,29 @@ public class Administrador extends Usuario{
 	 */
 	public String listarViajesCliente(Cliente cliente, LocalDateTime fechaMinima, LocalDateTime fechaMaxima) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		LocalDate fechaMinimaLocalDate = fechaMinima.toLocalDate();
+	    LocalDate fechaMaximaLocalDate = fechaMaxima.toLocalDate();
 		String fechaMinimaTexto = fechaMinima.format(formatter);
 		String fechaMaximaTexto = fechaMaxima.format(formatter);
 		IViaje viaje = null;
 		String salida = "Listado de viajes cliente: " + cliente.getNombre() + " en el periodo " + fechaMinimaTexto + "/" + fechaMaximaTexto + "\n";
 		salida += "Cliente" + 
-				"\t Chofer" +  
-				"\t Vehiculo" +  
-				"\t Costo" +  
-				"\t Distancia Real Recorrida" +  
-				"\t Pasajeros" + 
-				"\t Fecha\n";
-		
-		for(int i = 0; i<this.listaViajes.size(); i++) {
-			viaje = this.listaViajes.get(i);
-			if(viaje.getCliente().equals(cliente) && 
-				viaje.getFecha().isAfter(fechaMinima) &&
-				viaje.getFecha().isBefore(fechaMaxima)) {
-				salida += viaje.toString();
-			}
+				"\tChofer" +  
+				"\t\tVehiculo" +  
+				"\t\tCosto" +  
+				"\t\tDistancia Real Recorrida" +  
+				"\tPasajeros" + 
+				"\tFecha\n";
+		for(int i = 0; i<listaViajes.size(); i++) {
+			viaje = listaViajes.get(i);
+			LocalDate fechaViaje = viaje.getFecha().toLocalDate();
+			if (viaje.getCliente().equals(cliente) &&
+		            ((viaje.getFecha().isAfter(fechaMinima) &&
+		                    viaje.getFecha().isBefore(fechaMaxima)) ||
+		            		fechaViaje.isEqual(fechaMinimaLocalDate) ||
+		            		fechaViaje.isEqual(fechaMaximaLocalDate))){
+		        salida += viaje.toString();
+		    }
 		}
 		return salida;
 	}

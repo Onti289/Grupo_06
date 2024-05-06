@@ -65,6 +65,9 @@ public class Prueba {
 		    System.out.println(sistema.listaChoferes(admin));
 		    System.out.println(sistema.listarViajes(admin));
 		    System.out.println(sistema.listaClientes(admin));
+		    
+		    System.out.println(sistema.listarViajesChofer(admin, chofer1, LocalDateTime.now(), LocalDateTime.now()));
+		    System.out.println(sistema.listarViajesCliente(admin, cliente1, LocalDateTime.now(), LocalDateTime.now()));
 		   
 		    
 		}
