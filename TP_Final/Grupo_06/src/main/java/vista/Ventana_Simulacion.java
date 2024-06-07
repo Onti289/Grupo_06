@@ -100,6 +100,8 @@ public class Ventana_Simulacion extends JFrame {
 		this.txtCantidadChoferes.setColumns(10);
 		
 		this.Var_CantChof = new JTextField();
+		this.Var_CantChof.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantChof.setText("0");
 		this.panel_izq.add(this.Var_CantChof);
 		this.Var_CantChof.setColumns(10);
 		
@@ -111,6 +113,8 @@ public class Ventana_Simulacion extends JFrame {
 		this.txtCantviajes.setColumns(10);
 		
 		this.Var_CantViajesChof = new JTextField();
+		this.Var_CantViajesChof.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantViajesChof.setText("0");
 		this.panel_izq.add(this.Var_CantViajesChof);
 		this.Var_CantViajesChof.setColumns(10);
 		
@@ -133,6 +137,8 @@ public class Ventana_Simulacion extends JFrame {
 		this.txtMotos.setColumns(10);
 		
 		this.Var_CantMotos = new JTextField();
+		this.Var_CantMotos.setText("0");
+		this.Var_CantMotos.setHorizontalAlignment(SwingConstants.CENTER);
 		this.panel_central.add(this.Var_CantMotos);
 		this.Var_CantMotos.setColumns(10);
 		
@@ -144,6 +150,8 @@ public class Ventana_Simulacion extends JFrame {
 		this.txtAutos.setColumns(10);
 		
 		this.Var_CantAutos = new JTextField();
+		this.Var_CantAutos.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantAutos.setText("0");
 		this.panel_central.add(this.Var_CantAutos);
 		this.Var_CantAutos.setColumns(10);
 		
@@ -155,6 +163,8 @@ public class Ventana_Simulacion extends JFrame {
 		this.txtCombis.setColumns(10);
 		
 		this.Var_CantCombis = new JTextField();
+		this.Var_CantCombis.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantCombis.setText("0");
 		this.panel_central.add(this.Var_CantCombis);
 		this.Var_CantCombis.setColumns(10);
 		
@@ -177,6 +187,8 @@ public class Ventana_Simulacion extends JFrame {
 		this.txtCantidadClientes.setColumns(10);
 		
 		this.Var_CantClientes = new JTextField();
+		this.Var_CantClientes.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantClientes.setText("0");
 		this.panel_der.add(this.Var_CantClientes);
 		this.Var_CantClientes.setColumns(10);
 		
@@ -188,6 +200,8 @@ public class Ventana_Simulacion extends JFrame {
 		this.txtCantidadViajes.setColumns(10);
 		
 		this.Var_CantViajesClientes = new JTextField();
+		this.Var_CantViajesClientes.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantViajesClientes.setText("0");
 		this.panel_der.add(this.Var_CantViajesClientes);
 		this.Var_CantViajesClientes.setColumns(10);
 		

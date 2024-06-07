@@ -20,15 +20,32 @@ import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
 
 public class Ventana_Inicial extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JPanel panel_izq;
+	private JPanel panel_centro;
+	private JPanel panel_der;
 	private JPanel panel;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JLabel label;
+	private JPanel panel_1;
+	private JButton btnNewSimulacion;
+	private JPanel panel_2;
+	private JButton btnCargaSim;
+	private JPanel panel_3;
+	private JPanel panel_4;
+	private JTextField titulo;
+	private JPanel panel_5;
+	private JPanel panel_6;
+	private JPanel panel_7;
+	private JPanel panel_8;
+	private JRadioButton rdbtnHayHumano;
+	private JRadioButton rdbtnNoHayHumano;
+	private JTextField txthayClienteHumano;
 
 	/**
 	 * Launch the application.
@@ -56,21 +73,76 @@ public class Ventana_Inicial extends JFrame implements ActionListener {
 		this.contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 
 		setContentPane(this.contentPane);
-		this.contentPane.setLayout(new BorderLayout(0, 0));
+		this.contentPane.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		this.panel_izq = new JPanel();
+		this.contentPane.add(this.panel_izq);
+		
+		this.panel_centro = new JPanel();
+		this.contentPane.add(this.panel_centro);
+		this.panel_centro.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		this.panel = new JPanel();
-		this.contentPane.add(this.panel, BorderLayout.CENTER);
+		this.panel_centro.add(this.panel);
+		this.panel.setLayout(new BorderLayout(0, 0));
 		
-		this.btnNewButton = new JButton("Nueva Simulacion");
-		this.btnNewButton.addActionListener(this);
-		this.panel.setLayout(new GridLayout(0, 1, 0, 0));
-		this.panel.add(this.btnNewButton);
+		this.titulo = new JTextField();
+		this.titulo.setText("SUBÍ QUE TE LLEVO");
+		this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		this.titulo.setEditable(false);
+		this.panel.add(this.titulo, BorderLayout.CENTER);
+		this.titulo.setColumns(10);
 		
-		this.label = new JLabel("");
-		this.panel.add(this.label);
+		this.panel_5 = new JPanel();
+		this.panel.add(this.panel_5, BorderLayout.WEST);
 		
-		this.btnNewButton_1 = new JButton("Cargar Simulacion");
-		this.panel.add(this.btnNewButton_1);
+		this.panel_6 = new JPanel();
+		this.panel.add(this.panel_6, BorderLayout.NORTH);
+		
+		this.panel_7 = new JPanel();
+		this.panel.add(this.panel_7, BorderLayout.EAST);
+		
+		this.panel_8 = new JPanel();
+		this.panel.add(this.panel_8, BorderLayout.SOUTH);
+		
+		this.panel_1 = new JPanel();
+		this.panel_centro.add(this.panel_1);
+		this.panel_1.setLayout(new GridLayout(3, 0, 0, 0));
+		
+		this.panel_2 = new JPanel();
+		this.panel_1.add(this.panel_2);
+		this.panel_2.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		this.txthayClienteHumano = new JTextField();
+		this.txthayClienteHumano.setHorizontalAlignment(SwingConstants.CENTER);
+		this.txthayClienteHumano.setText("¿Hay cliente humano?");
+		this.txthayClienteHumano.setEditable(false);
+		this.panel_2.add(this.txthayClienteHumano);
+		this.txthayClienteHumano.setColumns(10);
+		
+		this.rdbtnHayHumano = new JRadioButton("SI");
+		this.rdbtnHayHumano.setHorizontalAlignment(SwingConstants.CENTER);
+		this.panel_2.add(this.rdbtnHayHumano);
+		
+		this.rdbtnNoHayHumano = new JRadioButton("NO");
+		this.rdbtnNoHayHumano.setSelected(true);
+		this.rdbtnNoHayHumano.setHorizontalAlignment(SwingConstants.CENTER);
+		this.panel_2.add(this.rdbtnNoHayHumano);
+		
+		this.panel_3 = new JPanel();
+		this.panel_1.add(this.panel_3);
+		
+		this.btnNewSimulacion = new JButton("Nueva Simulación");
+		this.panel_3.add(this.btnNewSimulacion);
+		
+		this.panel_4 = new JPanel();
+		this.panel_1.add(this.panel_4);
+		
+		this.btnCargaSim = new JButton("Cargar Simulación");
+		this.panel_4.add(this.btnCargaSim);
+		
+		this.panel_der = new JPanel();
+		this.contentPane.add(this.panel_der);
 	}
 	public void actionPerformed(ActionEvent e) {
 	}
