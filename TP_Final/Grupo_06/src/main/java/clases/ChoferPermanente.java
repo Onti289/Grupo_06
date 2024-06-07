@@ -41,8 +41,47 @@ public class ChoferPermanente extends Chofer {
         this.anioIngreso = anioIngreso;
     }
 
+    public double getSueldobasico() {
+		return sueldobasico;
+	}
 
-    /**
+	public int getAntiguedad() {
+		return antiguedad;
+	}
+
+	public int getCantHijos() {
+		return cantHijos;
+	}
+
+	public int getAportes() {
+		return aportes;
+	}
+
+	public int getAnioIngreso() {
+		return anioIngreso;
+	}
+
+	public void setSueldobasico(double sueldobasico) {
+		this.sueldobasico = sueldobasico;
+	}
+
+	public void setAntiguedad(int antiguedad) {
+		this.antiguedad = antiguedad;
+	}
+
+	public void setCantHijos(int cantHijos) {
+		this.cantHijos = cantHijos;
+	}
+
+	public void setAportes(int aportes) {
+		this.aportes = aportes;
+	}
+
+	public void setAnioIngreso(int anioIngreso) {
+		this.anioIngreso = anioIngreso;
+	}
+
+	/**
      * Metodo de tipo double que devuelve el sueldo bruto del chofer en base al sueldo basico, aplicandole al mismo los correspondientes plus por antiguedad y cantidad de hijos. <br>
      * 
      * @return this.sueldobasico*(1.0 + this.antiguedad/100.0 + this.cantHijos/100.0): parametro de tipo double que contiene el valor del sueldo bruto. <br>

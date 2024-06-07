@@ -17,12 +17,27 @@ public class ChoferContratado extends Chofer {
      * @param nombre Parametro de tipo String que contiene el nombre del chofer. <br>
      * @param gananciaViaje Parametro de tipo int que contiene el porcentaje de ganancia del chofer por cada viaje realizado. <br>
      */
+        
     public ChoferContratado(String dni, String nombre, int gananciaViaje) {
         super(dni, nombre);
         this.gananciaViaje = gananciaViaje;
     }
+    
+    
 
-    /**
+    public int getGananciaViaje() {
+		return gananciaViaje;
+	}
+
+
+
+	public void setGananciaViaje(int gananciaViaje) {
+		this.gananciaViaje = gananciaViaje;
+	}
+
+
+
+	/**
      * Metodo sobreescrito que permite obtener el porcentaje de ganancia del chofer. <br>
      */
     @Override

@@ -51,6 +51,26 @@ public class ChoferTemporario extends Chofer {
 		return this.cantViajes;
 	}
 
+	public double getSueldoBasico() {
+		return sueldoBasico;
+	}
+
+	public int getAportes() {
+		return aportes;
+	}
+
+	public void setSueldoBasico(double sueldoBasico) {
+		this.sueldoBasico = sueldoBasico;
+	}
+
+	public void setAportes(int aportes) {
+		this.aportes = aportes;
+	}
+
+	public void setCantViajes(int cantViajes) {
+		this.cantViajes = cantViajes;
+	}
+
 	public void sumaViaje() {
 		this.cantViajes += 1;
 	}
