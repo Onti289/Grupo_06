@@ -61,6 +61,14 @@ public abstract class Chofer {
 	public void setViajesMes() {
 		this.viajesMes = 0;
 	}
+	
+	public void setViajesMes(int viajesMes) {
+		this.viajesMes = viajesMes;
+	}
+
+	public void setKMrecorridosMes(double kMrecorridosMes) {
+		KMrecorridosMes = kMrecorridosMes;
+	}
 
 	public void sumaViajesMes() {
 		this.viajesMes++;
@@ -122,6 +130,8 @@ public abstract class Chofer {
 		else
 		  throw new NoHayPlataException("El cliente es un rata, no me pago");
 	}
+	
+	
 
 
 }

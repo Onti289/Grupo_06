@@ -13,12 +13,13 @@ public class ChoferDTO implements Serializable {
     private int aportes;
     private int cantViajes;
     
-    private double sueldobasico;
     private int antiguedad;
     private int cantHijos;
     private int anioIngreso;
     
     private int gananciaViaje;
+    
+    private String tipo;
     
 	public double getSueldoBasico() {
 		return sueldoBasico;
@@ -30,10 +31,6 @@ public class ChoferDTO implements Serializable {
 
 	public int getCantViajes() {
 		return cantViajes;
-	}
-
-	public double getSueldobasico() {
-		return sueldobasico;
 	}
 
 	public int getAntiguedad() {
@@ -62,10 +59,6 @@ public class ChoferDTO implements Serializable {
 
 	public void setCantViajes(int cantViajes) {
 		this.cantViajes = cantViajes;
-	}
-
-	public void setSueldobasico(double sueldobasico) {
-		this.sueldobasico = sueldobasico;
 	}
 
 	public void setAntiguedad(int antiguedad) {
@@ -123,4 +116,14 @@ public class ChoferDTO implements Serializable {
 	public void setKMrecorridosMes(double kMrecorridosMes) {
 		KMrecorridosMes = kMrecorridosMes;
 	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
 }

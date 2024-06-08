@@ -13,24 +13,43 @@ public class UtilChofer {
 		respuesta.setKMrecorridosMes(chofer.getKMrecorridosMes());
 		respuesta.setViajesMes(chofer.getViajesMes());
 		respuesta.setPuntos(chofer.getPuntos());
+		respuesta.setTipo(chofer.getTipo());
 		
-		if(chofer.getTipo().equalsIgnoreCase("Contratado")) {
+		if(respuesta.getTipo().equalsIgnoreCase("Contratado")) {
 			ChoferContratado contratado = (ChoferContratado) chofer;
 			respuesta.setGananciaViaje(contratado.getGananciaViaje());
 		}
-		else if(chofer.getTipo().equalsIgnoreCase("Temporario")) {
+		else if(respuesta.getTipo().equalsIgnoreCase("Temporario")) {
 			ChoferTemporario temporario = (ChoferTemporario) chofer;
-			respuesta.setSueldobasico(temporario.getSueldoBasico());
+			respuesta.setSueldoBasico(temporario.getSueldoBasico());
 			respuesta.setAportes(temporario.getAportes());
 			respuesta.setCantViajes(temporario.getCantViajes());
 		}
-		else if(chofer.getTipo().equalsIgnoreCase("Permanente")) {
+		else if(respuesta.getTipo().equalsIgnoreCase("Permanente")) {
 			ChoferPermanente permanente = (ChoferPermanente) chofer;
 			respuesta.setAnioIngreso(permanente.getAnioIngreso());
 			respuesta.setAntiguedad(permanente.getAntiguedad());
-			respuesta.setSueldobasico(permanente.getSueldobasico());
+			respuesta.setSueldoBasico(permanente.getSueldobasico());
 			respuesta.setCantHijos(permanente.getCantHijos());
 			respuesta.setAportes(permanente.getAportes());
+		}
+		return respuesta;
+	}
+	
+	public static Chofer choferfromChoferDTO(ChoferDTO chDTO) {
+		Chofer respuesta = null;
+		if(chDTO.getTipo().equalsIgnoreCase("Contratado")) {
+			respuesta = new ChoferContratado(chDTO.getDNI(), chDTO.getNombre(),chDTO.getGananciaViaje());
+			respuesta.setKMrecorridosMes(chDTO.getKMrecorridosMes());
+			respuesta.setPuntos(chDTO.getPuntos());
+			respuesta.setViajesMes(chDTO.getViajesMes());
+		}
+		else if(chDTO.getTipo().equalsIgnoreCase("Temporario")){
+			respuesta = new ChoferTemporario(chDTO.getDNI(), chDTO.getNombre(), chDTO.getSueldoBasico(), chDTO.getAportes());
+			respuesta.setViajesMes(chDTO.getViajesMes());
+		}
+		else if(chDTO.getTipo().equalsIgnoreCase("Permanente")) {
+			respuesta = new ChoferPermanente(chDTO.getDNI(), chDTO.getNombre(), chDTO.getSueldoBasico(), chDTO.getCantHijos(), chDTO.getAportes(), chDTO.getAnioIngreso());
 		}
 		return respuesta;
 	}
