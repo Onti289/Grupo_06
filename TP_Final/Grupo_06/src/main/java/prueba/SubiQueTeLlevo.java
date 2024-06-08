@@ -19,28 +19,41 @@ public class SubiQueTeLlevo implements ActionListener{
 
         vista.setControlador(control);
         vista.arranca();
-        System.out.println(vista.isActive());
         while (vista.isActive()) {
 
 
-            Thread.sleep(1000);
+            Thread.sleep(500);
 
 
         }
-        System.out.println("Sale while");
         if (modelo.isNuevaSim())
         {
-            System.out.println("Entra if 1");vista = new Ventana_Simulacion();
+          vista = new Ventana_Simulacion();
           control = new ControladorNuevaSim(modelo, vista);
           vista.setControlador(control);
           vista.arranca();
+          while (vista.isActive()) {
 
+
+              Thread.sleep(500);
+
+
+          }
         }
 
         if (modelo.isHayHumano()) //completar
         {
-            System.out.println("Entra if 2"); Ventana_Humano v_humano = new Ventana_Humano();
-          //Controlador controlHum = new ControladorHumano(modelo, v_humano);
+          IVista v_humano = new Ventana_Humano();
+          Controlador controlHum = new ControladorHumano(modelo, v_humano);
+          v_humano.setControlador(controlHum);
+          v_humano.arranca();
+          while (vista.isActive()) {
+
+
+              Thread.sleep(500);
+
+
+          }
         }
 
 

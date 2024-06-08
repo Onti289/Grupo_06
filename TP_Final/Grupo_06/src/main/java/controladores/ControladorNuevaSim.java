@@ -14,25 +14,9 @@ public class ControladorNuevaSim extends Controlador{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals(IVista.SI))
+        if (e.getActionCommand().equals(IVista.INICIASIM))
         {
-            this.vista.hayHumano();
-            this.modelo.setHayHumano(true);
-        }
-        else if (e.getActionCommand().equals(IVista.NO))
-        {
-            this.vista.noHumano();
-            this.modelo.setHayHumano(false);
-        }
-        else if (e.getActionCommand().equals(IVista.NUEVASIM))
-        {
-            this.modelo.setNuevaSim(true);
-            this.vista.dispose();
-        }
-        else if (e.getActionCommand().equals(IVista.SIMALEAT))
-        {
-            this.modelo.setNuevaSim(false);
-            this.vista.dispose();
+        	this.vista.dispose();
         }
     }
 

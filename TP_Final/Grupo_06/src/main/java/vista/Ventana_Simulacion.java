@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -19,7 +23,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import controladores.*;
 
-public class Ventana_Simulacion extends JFrame implements IVista{
+public class Ventana_Simulacion extends JFrame implements KeyListener, IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -55,11 +59,11 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 	private JPanel panel_4;
 	private JPanel panel_5;
 	private JTextField textField_12;
-	private JTextField Var_CantViajesXClientes;
+	private JTextField Var_CantViajesXCliente;
 	private JTextField textField_14;
 	private JTextField Var_CantClientes;
 	private JPanel panel_botoninicia;
-	private JButton btnIniciaSimulacin;
+	private JButton btnIniciaSimulacion;
 	private JPanel panel_6;
 	private JPanel panel_bajoo;
 	private JPanel panel_bajoobajo;
@@ -308,11 +312,11 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 		this.textField_12.setColumns(12);
 		this.panel_5.add(this.textField_12);
 		
-		this.Var_CantViajesXClientes = new JTextField();
-		this.Var_CantViajesXClientes.setText("0");
-		this.Var_CantViajesXClientes.setHorizontalAlignment(SwingConstants.CENTER);
-		this.Var_CantViajesXClientes.setColumns(10);
-		this.panel_5.add(this.Var_CantViajesXClientes);
+		this.Var_CantViajesXCliente = new JTextField();
+		this.Var_CantViajesXCliente.setText("0");
+		this.Var_CantViajesXCliente.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantViajesXCliente.setColumns(10);
+		this.panel_5.add(this.Var_CantViajesXCliente);
 		
 		this.panel_botoninicia = new JPanel();
 		this.panel_der.add(this.panel_botoninicia);
@@ -320,23 +324,24 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 		this.panel_6 = new JPanel();
 		this.panel_botoninicia.add(this.panel_6);
 		
-		this.btnIniciaSimulacin = new JButton("Iniciar Simulación");
-		this.btnIniciaSimulacin.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		this.panel_6.add(this.btnIniciaSimulacin);
+		this.btnIniciaSimulacion = new JButton(INICIASIM);
+		this.btnIniciaSimulacion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		this.panel_6.add(this.btnIniciaSimulacion);
+		
+		this.Var_CantAutos.addKeyListener(this);
+		this.Var_CantClientes.addKeyListener(this);
+		this.Var_CantCombis.addKeyListener(this);
+		this.Var_CantContratados.addKeyListener(this);
+		this.Var_CantMotos.addKeyListener(this);
+		this.Var_CantPermanentes.addKeyListener(this);
+		this.Var_CantTemporarios.addKeyListener(this);
+		this.Var_CantViajesXChofer.addKeyListener(this);
+		this.Var_CantViajesXCliente.addKeyListener(this);
 	}
 
 	@Override
 	public void setControlador(Controlador c) {
-		this.Var_CantAutos.addActionListener(c);
-		this.Var_CantClientes.addActionListener(c);
-		this.Var_CantCombis.addActionListener(c);
-		this.Var_CantContratados.addActionListener(c);
-		this.Var_CantMotos.addActionListener(c);
-		this.Var_CantPermanentes.addActionListener(c);
-		this.Var_CantTemporarios.addActionListener(c);
-		this.Var_CantViajesXChofer.addActionListener(c);
-		this.Var_CantViajesXClientes.addActionListener(c);
-		this.btnIniciaSimulacin.addActionListener(c);
+		this.btnIniciaSimulacion.addActionListener(c);
 	}
 
 	@Override
@@ -352,5 +357,46 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 
 	@Override
 	public void hayHumano() {}
+
+	
+	@Override
+	public void keyTyped(KeyEvent e) {}
+
+	@Override
+	public void keyPressed(KeyEvent e) {}
+
+	@Override
+	public void keyReleased(KeyEvent arg0)
+    {
+	  int permanentes = -1;
+      int temporarios = -1;
+      int contratados = -1;
+      int viajesXChofer = -1;
+      int motos = -1;
+      int autos = -1;
+      int combis = -1;
+      int clientes = -1;
+      int viajesXCliente = -1;
+      try
+      {
+    	  permanentes = Integer.parseInt(this.Var_CantPermanentes.getText());
+    	  temporarios = Integer.parseInt(this.Var_CantTemporarios.getText());
+    	  contratados = Integer.parseInt(this.Var_CantContratados.getText());
+          viajesXChofer = Integer.parseInt(this.Var_CantViajesXChofer.getText());
+          motos = Integer.parseInt(this.Var_CantMotos.getText());
+          autos = Integer.parseInt(this.Var_CantAutos.getText());
+          combis = Integer.parseInt(this.Var_CantCombis.getText());
+          clientes = Integer.parseInt(this.Var_CantClientes.getText());
+          viajesXCliente = Integer.parseInt(this.Var_CantViajesXCliente.getText());
+      } catch (NumberFormatException e)
+      {
+      }
+
+      boolean condicion = permanentes >= 0 && temporarios >= 0 && contratados >= 0 && viajesXChofer >= 0;
+      boolean condicion2 = motos >= 0 && autos >= 0 && combis >= 0;
+      boolean condicion3 = clientes >= 0 && viajesXCliente >= 0;
+      this.btnIniciaSimulacion.setEnabled(condicion && condicion2 && condicion3);
+  
+    }
 
 }
