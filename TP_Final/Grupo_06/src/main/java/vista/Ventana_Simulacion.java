@@ -327,8 +327,16 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 
 	@Override
 	public void setControlador(Controlador c) {
-		this.btnNewSimulacion.addActionListener(c);
-		
+		this.Var_CantAutos.addActionListener(c);
+		this.Var_CantClientes.addActionListener(c);
+		this.Var_CantCombis.addActionListener(c);
+		this.Var_CantContratados.addActionListener(c);
+		this.Var_CantMotos.addActionListener(c);
+		this.Var_CantPermanentes.addActionListener(c);
+		this.Var_CantTemporarios.addActionListener(c);
+		this.Var_CantViajesXChofer.addActionListener(c);
+		this.Var_CantViajesXClientes.addActionListener(c);
+		this.btnIniciaSimulacin.addActionListener(c);
 	}
 
 	@Override
