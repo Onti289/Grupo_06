@@ -62,6 +62,7 @@ public class Ventana_Simulacion extends JFrame {
 	private JPanel panel_botoninicia;
 	private JButton btnIniciaSimulacin;
 	private JPanel panel_6;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -152,6 +153,9 @@ public class Ventana_Simulacion extends JFrame {
 		
 		this.panel_sin_uso = new JPanel();
 		this.panel_izq.add(this.panel_sin_uso);
+		
+		this.lblNewLabel = new JLabel("Dejar en 0 = están de paro");
+		this.panel_sin_uso.add(this.lblNewLabel);
 		
 		this.panel_central = new JPanel();
 		this.panel_simulacion.add(this.panel_central);
