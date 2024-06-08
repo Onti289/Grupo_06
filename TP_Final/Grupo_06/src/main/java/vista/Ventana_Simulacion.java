@@ -31,14 +31,12 @@ public class Ventana_Simulacion extends JFrame {//implements IVista{
 	private JPanel panel_titulo_chofer;
 	private JTextField textField;
 	private JPanel panel_cantchofereeees;
-	private JPanel panel_sin_uso;
+	private JPanel panel_choferbajo;
 	private JPanel panel;
 	private JPanel panel_choferinterno1;
 	private JPanel panel_choferinterno2;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField txtPermanentes;
+	private JTextField Var_CantPermanentes;
 	private JPanel panel_tituloVehiculoss;
 	private JPanel panel_centralinterno;
 	private JPanel panel_1;
@@ -63,7 +61,14 @@ public class Ventana_Simulacion extends JFrame {//implements IVista{
 	private JPanel panel_botoninicia;
 	private JButton btnIniciaSimulacin;
 	private JPanel panel_6;
-	private JLabel lblNewLabel;
+	private JPanel panel_bajoo;
+	private JPanel panel_bajoobajo;
+	private JTextField textField_1;
+	private JTextField Var_CantViajesXChofer;
+	private JTextField txtCantTemporarios;
+	private JTextField Var_CantTemporarios;
+	private JTextField txtCantContratados;
+	private JTextField Var_CantContratados;
 
 	/**
 	 * Launch the application.
@@ -123,40 +128,70 @@ public class Ventana_Simulacion extends JFrame {//implements IVista{
 		this.panel_choferinterno1 = new JPanel();
 		this.panel_cantchofereeees.add(this.panel_choferinterno1);
 		
-		this.textField_1 = new JTextField();
-		this.textField_1.setText("Cantidad Choferes:");
-		this.textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_1.setEditable(false);
-		this.textField_1.setColumns(12);
-		this.panel_choferinterno1.add(this.textField_1);
+		this.txtPermanentes = new JTextField();
+		this.txtPermanentes.setText("Cant. Permanentes:");
+		this.txtPermanentes.setHorizontalAlignment(SwingConstants.CENTER);
+		this.txtPermanentes.setEditable(false);
+		this.txtPermanentes.setColumns(12);
+		this.panel_choferinterno1.add(this.txtPermanentes);
 		
-		this.textField_2 = new JTextField();
-		this.textField_2.setText("0");
-		this.textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_2.setColumns(10);
-		this.panel_choferinterno1.add(this.textField_2);
+		this.Var_CantPermanentes = new JTextField();
+		this.Var_CantPermanentes.setText("0");
+		this.Var_CantPermanentes.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantPermanentes.setColumns(10);
+		this.panel_choferinterno1.add(this.Var_CantPermanentes);
 		
 		this.panel_choferinterno2 = new JPanel();
 		this.panel_cantchofereeees.add(this.panel_choferinterno2);
 		
-		this.textField_3 = new JTextField();
-		this.textField_3.setText("Cantidad Viajes:");
-		this.textField_3.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_3.setEditable(false);
-		this.textField_3.setColumns(12);
-		this.panel_choferinterno2.add(this.textField_3);
+		this.txtCantTemporarios = new JTextField();
+		this.txtCantTemporarios.setText("Cant. Temporarios:");
+		this.txtCantTemporarios.setHorizontalAlignment(SwingConstants.CENTER);
+		this.txtCantTemporarios.setEditable(false);
+		this.txtCantTemporarios.setColumns(12);
+		this.panel_choferinterno2.add(this.txtCantTemporarios);
 		
-		this.textField_4 = new JTextField();
-		this.textField_4.setText("0");
-		this.textField_4.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_4.setColumns(10);
-		this.panel_choferinterno2.add(this.textField_4);
+		this.Var_CantTemporarios = new JTextField();
+		this.Var_CantTemporarios.setText("0");
+		this.Var_CantTemporarios.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantTemporarios.setColumns(10);
+		this.panel_choferinterno2.add(this.Var_CantTemporarios);
 		
-		this.panel_sin_uso = new JPanel();
-		this.panel_izq.add(this.panel_sin_uso);
+		this.panel_choferbajo = new JPanel();
+		this.panel_izq.add(this.panel_choferbajo);
+		this.panel_choferbajo.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		this.lblNewLabel = new JLabel("Dejar en 0 = están de paro");
-		this.panel_sin_uso.add(this.lblNewLabel);
+		this.panel_bajoo = new JPanel();
+		this.panel_choferbajo.add(this.panel_bajoo);
+		
+		this.txtCantContratados = new JTextField();
+		this.txtCantContratados.setText("Cant. Contratados:");
+		this.txtCantContratados.setHorizontalAlignment(SwingConstants.CENTER);
+		this.txtCantContratados.setEditable(false);
+		this.txtCantContratados.setColumns(12);
+		this.panel_bajoo.add(this.txtCantContratados);
+		
+		this.Var_CantContratados = new JTextField();
+		this.Var_CantContratados.setText("0");
+		this.Var_CantContratados.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantContratados.setColumns(10);
+		this.panel_bajoo.add(this.Var_CantContratados);
+		
+		this.panel_bajoobajo = new JPanel();
+		this.panel_choferbajo.add(this.panel_bajoobajo);
+		
+		this.textField_1 = new JTextField();
+		this.textField_1.setText("Cantidad Viajes:");
+		this.textField_1.setHorizontalAlignment(SwingConstants.CENTER);
+		this.textField_1.setEditable(false);
+		this.textField_1.setColumns(12);
+		this.panel_bajoobajo.add(this.textField_1);
+		
+		this.Var_CantViajesXChofer = new JTextField();
+		this.Var_CantViajesXChofer.setText("0");
+		this.Var_CantViajesXChofer.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantViajesXChofer.setColumns(10);
+		this.panel_bajoobajo.add(this.Var_CantViajesXChofer);
 		
 		this.panel_central = new JPanel();
 		this.panel_simulacion.add(this.panel_central);
