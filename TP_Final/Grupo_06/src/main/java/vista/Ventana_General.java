@@ -15,9 +15,9 @@ public class Ventana_General extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTabbedPane tabbedPane;
-	private JScrollPane scrollPane;
-	private JScrollPane scrollPane_1;
-	private JScrollPane scrollPane_2;
+	private JScrollPane Vista_General;
+	private JScrollPane Vista_Cliente_Robot;
+	private JScrollPane Vista_Chofer_Robot;
 
 	/**
 	 * Launch the application.
@@ -51,14 +51,14 @@ public class Ventana_General extends JFrame {
 		this.tabbedPane.setSelectedIndex(2);
 		this.contentPane.add(this.tabbedPane, BorderLayout.CENTER);
 		
-		this.scrollPane = new JScrollPane();
-		this.tabbedPane.addTab("New tab", null, this.scrollPane, null);
+		this.Vista_General = new JScrollPane();
+		this.tabbedPane.addTab("Vista General", null, this.Vista_General, null);
 		
-		this.scrollPane_1 = new JScrollPane();
-		this.tabbedPane.addTab("New tab", null, this.scrollPane_1, null);
+		this.Vista_Cliente_Robot = new JScrollPane();
+		this.tabbedPane.addTab("Vista Cliente Robot", null, this.Vista_Cliente_Robot, null);
 		
-		this.scrollPane_2 = new JScrollPane();
-		this.tabbedPane.addTab("New tab", null, this.scrollPane_2, null);
+		this.Vista_Chofer_Robot = new JScrollPane();
+		this.tabbedPane.addTab("Vista Chofer Robot", null, this.Vista_Chofer_Robot, null);
 	}
 
 }
