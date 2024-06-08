@@ -6,14 +6,10 @@ import java.awt.event.ActionListener;
 import modelo.*;
 import vista.*;
 
-public class ControladorInicial extends Controlador{
+public class ControladorNuevaSim extends Controlador{
 
-
-
-    public ControladorInicial(Modelo modelo, IVista vista)
-    {
+    public ControladorNuevaSim(Modelo modelo, IVista vista) {
         super(modelo, vista);
-
     }
 
     @Override
@@ -38,7 +34,6 @@ public class ControladorInicial extends Controlador{
             this.modelo.setNuevaSim(false);
             this.vista.dispose();
         }
-
     }
 
 }

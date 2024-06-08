@@ -4,37 +4,27 @@ import controladores.*;
 
 public class Modelo {
 
-	private static boolean hayHumano = false;
-	private static boolean nuevaSim = false;
-	private static boolean cargaSimAleat = false;
+    private static boolean hayHumano = false;
+    private static boolean nuevaSim = false;
 
-	public Modelo() {
-		// TODO Auto-generated constructor stub
-	}
+    public Modelo() {
+        // TODO Auto-generated constructor stub
+    }
 
-	public boolean isHayHumano() {
-		return hayHumano;
-	}
+    public boolean isHayHumano() {
+        return hayHumano;
+    }
 
-	public void setHayHumano(boolean hayHumano) {
-		this.hayHumano = hayHumano;
-	}
+    public void setHayHumano(boolean hayHumano) {
+        this.hayHumano = hayHumano;
+    }
 
-	public boolean isNuevaSim() {
-		return nuevaSim;
-	}
+    public boolean isNuevaSim() {
+        return nuevaSim;
+    }
 
-	public void setNuevaSim(boolean nuevaSim) {
-		this.nuevaSim = nuevaSim;
-	}
+    public void setNuevaSim(boolean nuevaSim) {
+        this.nuevaSim = nuevaSim;
+    }
 
-	public boolean isCargaSimAleat() {
-		return cargaSimAleat;
-	}
-
-	public void setCargaSimAleat(boolean cargaSimAleat) {
-		this.cargaSimAleat = cargaSimAleat;
-	}
-
-	
 }

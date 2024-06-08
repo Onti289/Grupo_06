@@ -47,6 +47,9 @@ public class Ventana_Inicial extends JFrame implements IVista{
 	private JRadioButton rdbtnHayHumano;
 	private JRadioButton rdbtnNoHayHumano;
 	private JTextField txthayClienteHumano;
+	
+	
+	
 
 	/**
 	 * Launch the application.
@@ -121,11 +124,11 @@ public class Ventana_Inicial extends JFrame implements IVista{
 		this.panel_2.add(this.txthayClienteHumano);
 		this.txthayClienteHumano.setColumns(10);
 		
-		this.rdbtnHayHumano = new JRadioButton("Si");
+		this.rdbtnHayHumano = new JRadioButton(SI);
 		this.rdbtnHayHumano.setHorizontalAlignment(SwingConstants.CENTER);
 		this.panel_2.add(this.rdbtnHayHumano);
 		
-		this.rdbtnNoHayHumano = new JRadioButton("No");
+		this.rdbtnNoHayHumano = new JRadioButton(NO);
 		this.rdbtnNoHayHumano.setSelected(true);
 		this.rdbtnNoHayHumano.setHorizontalAlignment(SwingConstants.CENTER);
 		this.panel_2.add(this.rdbtnNoHayHumano);
@@ -133,13 +136,13 @@ public class Ventana_Inicial extends JFrame implements IVista{
 		this.panel_3 = new JPanel();
 		this.panel_1.add(this.panel_3);
 		
-		this.btnNewSimulacion = new JButton("Nueva simulación");
+		this.btnNewSimulacion = new JButton(NUEVASIM);
 		this.panel_3.add(this.btnNewSimulacion);
 		
 		this.panel_4 = new JPanel();
 		this.panel_1.add(this.panel_4);
 		
-		this.btnSimulacionAleatoria = new JButton("Cargar simulación con datos aleatorios");
+		this.btnSimulacionAleatoria = new JButton(SIMALEAT);
 		this.panel_4.add(this.btnSimulacionAleatoria);
 		
 		this.panel_der = new JPanel();
@@ -163,5 +166,17 @@ public class Ventana_Inicial extends JFrame implements IVista{
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
+	}
+	
+	public void noHumano()
+	{
+		this.rdbtnNoHayHumano.setSelected(true);
+		this.rdbtnHayHumano.setSelected(false);
+	}
+	
+	public void hayHumano()
+	{
+		this.rdbtnNoHayHumano.setSelected(false);
+		this.rdbtnHayHumano.setSelected(true);
 	}
 }
