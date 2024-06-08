@@ -43,11 +43,11 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 	private JPanel panel_2;
 	private JPanel panel_3;
 	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField Var_CantMotos;
 	private JTextField textField_7;
-	private JTextField textField_8;
+	private JTextField Var_CantAutos;
 	private JTextField textField_9;
-	private JTextField textField_10;
+	private JTextField Var_CantCombis;
 	private JPanel panel_sinuso2;
 	private JPanel panel_tituloclientes;
 	private JPanel panel_intermedioDER;
@@ -55,9 +55,9 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 	private JPanel panel_4;
 	private JPanel panel_5;
 	private JTextField textField_12;
-	private JTextField textField_13;
+	private JTextField Var_CantViajesXClientes;
 	private JTextField textField_14;
-	private JTextField textField_15;
+	private JTextField Var_CantClientes;
 	private JPanel panel_botoninicia;
 	private JButton btnIniciaSimulacin;
 	private JPanel panel_6;
@@ -222,11 +222,11 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 		this.textField_5.setColumns(10);
 		this.panel_1.add(this.textField_5);
 		
-		this.textField_6 = new JTextField();
-		this.textField_6.setText("0");
-		this.textField_6.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_6.setColumns(10);
-		this.panel_1.add(this.textField_6);
+		this.Var_CantMotos = new JTextField();
+		this.Var_CantMotos.setText("0");
+		this.Var_CantMotos.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantMotos.setColumns(10);
+		this.panel_1.add(this.Var_CantMotos);
 		
 		this.panel_2 = new JPanel();
 		this.panel_centralinterno.add(this.panel_2);
@@ -238,11 +238,11 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 		this.textField_7.setColumns(10);
 		this.panel_2.add(this.textField_7);
 		
-		this.textField_8 = new JTextField();
-		this.textField_8.setText("0");
-		this.textField_8.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_8.setColumns(10);
-		this.panel_2.add(this.textField_8);
+		this.Var_CantAutos = new JTextField();
+		this.Var_CantAutos.setText("0");
+		this.Var_CantAutos.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantAutos.setColumns(10);
+		this.panel_2.add(this.Var_CantAutos);
 		
 		this.panel_3 = new JPanel();
 		this.panel_centralinterno.add(this.panel_3);
@@ -254,11 +254,11 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 		this.textField_9.setColumns(10);
 		this.panel_3.add(this.textField_9);
 		
-		this.textField_10 = new JTextField();
-		this.textField_10.setText("0");
-		this.textField_10.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_10.setColumns(10);
-		this.panel_3.add(this.textField_10);
+		this.Var_CantCombis = new JTextField();
+		this.Var_CantCombis.setText("0");
+		this.Var_CantCombis.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantCombis.setColumns(10);
+		this.panel_3.add(this.Var_CantCombis);
 		
 		this.panel_sinuso2 = new JPanel();
 		this.panel_central.add(this.panel_sinuso2);
@@ -292,11 +292,11 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 		this.textField_14.setColumns(12);
 		this.panel_4.add(this.textField_14);
 		
-		this.textField_15 = new JTextField();
-		this.textField_15.setText("0");
-		this.textField_15.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_15.setColumns(10);
-		this.panel_4.add(this.textField_15);
+		this.Var_CantClientes = new JTextField();
+		this.Var_CantClientes.setText("0");
+		this.Var_CantClientes.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantClientes.setColumns(10);
+		this.panel_4.add(this.Var_CantClientes);
 		
 		this.panel_5 = new JPanel();
 		this.panel_intermedioDER.add(this.panel_5);
@@ -308,11 +308,11 @@ public class Ventana_Simulacion extends JFrame implements IVista{
 		this.textField_12.setColumns(12);
 		this.panel_5.add(this.textField_12);
 		
-		this.textField_13 = new JTextField();
-		this.textField_13.setText("0");
-		this.textField_13.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_13.setColumns(10);
-		this.panel_5.add(this.textField_13);
+		this.Var_CantViajesXClientes = new JTextField();
+		this.Var_CantViajesXClientes.setText("0");
+		this.Var_CantViajesXClientes.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_CantViajesXClientes.setColumns(10);
+		this.panel_5.add(this.Var_CantViajesXClientes);
 		
 		this.panel_botoninicia = new JPanel();
 		this.panel_der.add(this.panel_botoninicia);
