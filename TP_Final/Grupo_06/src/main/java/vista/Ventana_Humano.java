@@ -14,8 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
+import controladores.*;
 
-public class Ventana_Humano extends JFrame {
+public class Ventana_Humano extends JFrame implements IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

@@ -17,8 +17,9 @@ import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import controladores.*;
 
-public class Ventana_Simulacion extends JFrame {
+public class Ventana_Simulacion extends JFrame {//implements IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

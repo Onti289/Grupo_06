@@ -23,8 +23,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import controladores.*;
 
-public class Ventana_Inicial extends JFrame implements ActionListener {
+public class Ventana_Inicial extends JFrame implements IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -35,7 +36,7 @@ public class Ventana_Inicial extends JFrame implements ActionListener {
 	private JPanel panel_1;
 	private JButton btnNewSimulacion;
 	private JPanel panel_2;
-	private JButton btnCargaSim;
+	private JButton btnSimulacionAleatoria;
 	private JPanel panel_3;
 	private JPanel panel_4;
 	private JTextField titulo;
@@ -120,11 +121,11 @@ public class Ventana_Inicial extends JFrame implements ActionListener {
 		this.panel_2.add(this.txthayClienteHumano);
 		this.txthayClienteHumano.setColumns(10);
 		
-		this.rdbtnHayHumano = new JRadioButton("SI");
+		this.rdbtnHayHumano = new JRadioButton("Si");
 		this.rdbtnHayHumano.setHorizontalAlignment(SwingConstants.CENTER);
 		this.panel_2.add(this.rdbtnHayHumano);
 		
-		this.rdbtnNoHayHumano = new JRadioButton("NO");
+		this.rdbtnNoHayHumano = new JRadioButton("No");
 		this.rdbtnNoHayHumano.setSelected(true);
 		this.rdbtnNoHayHumano.setHorizontalAlignment(SwingConstants.CENTER);
 		this.panel_2.add(this.rdbtnNoHayHumano);
@@ -132,18 +133,35 @@ public class Ventana_Inicial extends JFrame implements ActionListener {
 		this.panel_3 = new JPanel();
 		this.panel_1.add(this.panel_3);
 		
-		this.btnNewSimulacion = new JButton("Nueva Simulación");
+		this.btnNewSimulacion = new JButton("Nueva simulación");
 		this.panel_3.add(this.btnNewSimulacion);
 		
 		this.panel_4 = new JPanel();
 		this.panel_1.add(this.panel_4);
 		
-		this.btnCargaSim = new JButton("Cargar Simulación");
-		this.panel_4.add(this.btnCargaSim);
+		this.btnSimulacionAleatoria = new JButton("Cargar simulación con datos aleatorios");
+		this.panel_4.add(this.btnSimulacionAleatoria);
 		
 		this.panel_der = new JPanel();
 		this.contentPane.add(this.panel_der);
 	}
 	public void actionPerformed(ActionEvent e) {
+	}
+
+	@Override
+	public void setControlador(Controlador c) {
+		this.btnNewSimulacion.addActionListener(c);
+		this.btnSimulacionAleatoria.addActionListener(c);
+		this.rdbtnHayHumano.addActionListener(c);
+		this.rdbtnNoHayHumano.addActionListener(c);
+		
+	}
+
+	@Override
+	public void arranca() {
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
+		
 	}
 }

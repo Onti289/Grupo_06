@@ -12,8 +12,9 @@ import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.JButton;
+import controladores.*;
 
-public class Ventana_CrearPedido extends JFrame {
+public class Ventana_CrearPedido extends JFrame implements IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

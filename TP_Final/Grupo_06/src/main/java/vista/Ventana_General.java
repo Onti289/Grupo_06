@@ -9,8 +9,9 @@ import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import controladores.*;
 
-public class Ventana_General extends JFrame {
+public class Ventana_General extends JFrame implements IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
