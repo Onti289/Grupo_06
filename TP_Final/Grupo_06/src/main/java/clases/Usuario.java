@@ -44,6 +44,21 @@ public abstract class Usuario {
         return this.nombreReal;
     }
 
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+	public void setNombreReal(String nombreReal) {
+		this.nombreReal = nombreReal;
+	}
 
 	/**
 	 * Metodo que devuelve String con nombre de usuario y nombre real para poder listar los diferentes usuarios del sistema (Administradores o Clientes)

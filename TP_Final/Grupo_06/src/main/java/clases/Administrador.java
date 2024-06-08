@@ -40,7 +40,33 @@ public class Administrador extends Usuario{
 
     }
 
-    /**
+    
+    
+    public static LinkedList<Chofer> getColaChoferes() {
+		return colaChoferes;
+	}
+
+
+
+	public static LinkedList<Vehiculo> getColaVehiculos() {
+		return colaVehiculos;
+	}
+
+
+
+	public static LinkedList<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+
+
+
+	public static LinkedList<IViaje> getListaViajes() {
+		return listaViajes;
+	}
+
+
+
+	/**
      * Metodo de tipo void que agrega un chofer a la colaChofer. El chofer es agregado al final de la cola. <br>
      *
      * <b>Pre: </b>parametro Chofer chofer distinto de null. El chofer a agregar no se encuentra en la lista. <br>
