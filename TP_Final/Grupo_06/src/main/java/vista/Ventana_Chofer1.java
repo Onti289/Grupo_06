@@ -10,11 +10,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 
-public class Ventana_VistaCliente1 extends Ventana implements Observer{
+public class Ventana_Chofer1 extends Ventana implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JScrollPane scrollPaneCliente1;
+	private JScrollPane scrollPaneChofer1;
 
 	/**
 	 * Launch the application.
@@ -23,7 +23,7 @@ public class Ventana_VistaCliente1 extends Ventana implements Observer{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana_VistaCliente1 frame = new Ventana_VistaCliente1();
+					Ventana_Chofer1 frame = new Ventana_Chofer1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,8 +35,8 @@ public class Ventana_VistaCliente1 extends Ventana implements Observer{
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_VistaCliente1() {
-		setTitle("Vista Cliente 1");
+	public Ventana_Chofer1() {
+		setTitle("Vista Chofer 1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();
@@ -45,8 +45,8 @@ public class Ventana_VistaCliente1 extends Ventana implements Observer{
 		setContentPane(this.contentPane);
 		this.contentPane.setLayout(new BorderLayout(0, 0));
 		
-		this.scrollPaneCliente1 = new JScrollPane();
-		this.contentPane.add(this.scrollPaneCliente1);
+		this.scrollPaneChofer1 = new JScrollPane();
+		this.contentPane.add(this.scrollPaneChofer1);
 	}
 
 	@Override

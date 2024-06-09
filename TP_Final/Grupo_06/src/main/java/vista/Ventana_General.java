@@ -41,7 +41,7 @@ public class Ventana_General extends Ventana implements Observer{
 	public Ventana_General() {
 		setTitle("Vista General");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 750, 500);
+		setBounds(0, 0, 750, 500);
 		this.contentPane = new JPanel();
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
