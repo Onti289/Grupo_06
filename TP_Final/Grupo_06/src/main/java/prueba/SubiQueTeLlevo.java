@@ -13,8 +13,14 @@ import excepciones.*;
 public class SubiQueTeLlevo implements ActionListener{
 
     public static void main(String[] args) throws InterruptedException{
-        Modelo modelo = new Modelo();
-        IVista vGeneral = new Ventana_Inicial();
+        IVista vGeneral = new Ventana_DeCarga();
+        vGeneral.arranca();
+        Thread.sleep(3000);
+        vGeneral.setVisible(false);
+    	
+    	
+    	Modelo modelo = new Modelo();
+        vGeneral = new Ventana_Inicial();
         Controlador cGeneral = new ControladorInicial(modelo, vGeneral);
 
         vGeneral.setControlador(cGeneral);

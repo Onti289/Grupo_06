@@ -10,7 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
-public class Ventana_Carga extends JFrame {
+public class Ventana_DeCarga extends Ventana{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -23,7 +23,7 @@ public class Ventana_Carga extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana_Carga frame = new Ventana_Carga();
+					Ventana_DeCarga frame = new Ventana_DeCarga();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class Ventana_Carga extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_Carga() {
+	public Ventana_DeCarga() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 720);
 		this.contentPane = new JPanel();
@@ -50,5 +50,5 @@ public class Ventana_Carga extends JFrame {
 		this.lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		this.contentPane.add(this.lblNewLabel);
 	}
-
+    
 }
