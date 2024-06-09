@@ -24,6 +24,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import controladores.*;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class Ventana_Inicial extends Ventana implements IVista{
 
@@ -39,14 +42,10 @@ public class Ventana_Inicial extends Ventana implements IVista{
 	private JButton btnSimulacionAleatoria;
 	private JPanel panel_3;
 	private JPanel panel_4;
-	private JTextField titulo;
-	private JPanel panel_5;
-	private JPanel panel_6;
-	private JPanel panel_7;
-	private JPanel panel_8;
 	private JRadioButton rdbtnHayHumano;
 	private JRadioButton rdbtnNoHayHumano;
 	private JTextField txthayClienteHumano;
+	private JLabel lblNewLabel;
 	
 	
 	
@@ -90,24 +89,12 @@ public class Ventana_Inicial extends Ventana implements IVista{
 		this.panel_centro.add(this.panel);
 		this.panel.setLayout(new BorderLayout(0, 0));
 		
-		this.titulo = new JTextField();
-		this.titulo.setText("SUBÍ QUE TE LLEVO");
-		this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		this.titulo.setEditable(false);
-		this.panel.add(this.titulo, BorderLayout.CENTER);
-		this.titulo.setColumns(10);
-		
-		this.panel_5 = new JPanel();
-		this.panel.add(this.panel_5, BorderLayout.WEST);
-		
-		this.panel_6 = new JPanel();
-		this.panel.add(this.panel_6, BorderLayout.NORTH);
-		
-		this.panel_7 = new JPanel();
-		this.panel.add(this.panel_7, BorderLayout.EAST);
-		
-		this.panel_8 = new JPanel();
-		this.panel.add(this.panel_8, BorderLayout.SOUTH);
+		this.lblNewLabel = new JLabel("");
+		this.lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		this.lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
+		this.lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		this.lblNewLabel.setIcon(new ImageIcon("SANDRITO.jpg"));
+		this.panel.add(this.lblNewLabel, BorderLayout.NORTH);
 		
 		this.panel_1 = new JPanel();
 		this.panel_centro.add(this.panel_1);
