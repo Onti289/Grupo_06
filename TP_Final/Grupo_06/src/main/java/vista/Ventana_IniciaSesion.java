@@ -25,18 +25,7 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 	private JPanel contentPane;
 	private JPanel panelLoguea;
 	private JPanel panel;
-	private JPanel panel_1;
-	private JPanel panel_2;
 	private JTextField txtRegistrarse;
-	private JPanel panel_3;
-	private JTextField txtNombreDeUsuario;
-	private JTextField Var_NuevoNombreUsuario;
-	private JTextField txtContrasea;
-	private JPasswordField Var_NuevapasswordField;
-	private JButton btnCrearUsuario;
-	private JPanel panel_4;
-	private JPanel panel_5;
-	private JTextField Info_CrearUsuario;
 	private JPanel panelIniciaUsuario;
 	private JPanel panel_tituloIniciaUsuar;
 	private JPanel panel_7;
@@ -51,6 +40,20 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 	private JPanel panel_11;
 	private JTextField textField_3;
 	private JTextField txtIniciarSecin;
+	private JPanel panel_6;
+	private JPanel panel_1;
+	private JTextField textField_1;
+	private JTextField textField_4;
+	private JPanel panel_2;
+	private JTextField textField_5;
+	private JPasswordField passwordField;
+	private JPanel panel_3;
+	private JPanel panel_4;
+	private JButton btnCrearUsuario;
+	private JPanel panel_5;
+	private JTextField textField_6;
+	private JTextField txtNombreReal;
+	private JTextField Var_NombreReal;
 
 	/**
 	 * Launch the application.
@@ -83,7 +86,7 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		
 		this.panelLoguea = new JPanel();
 		this.contentPane.add(this.panelLoguea);
-		this.panelLoguea.setLayout(new GridLayout(4, 0, 0, 0));
+		this.panelLoguea.setLayout(new GridLayout(5, 0, 0, 0));
 		
 		this.panel = new JPanel();
 		this.panelLoguea.add(this.panel);
@@ -96,36 +99,52 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.panel.add(this.txtRegistrarse, BorderLayout.CENTER);
 		this.txtRegistrarse.setColumns(10);
 		
+		this.panel_6 = new JPanel();
+		this.panelLoguea.add(this.panel_6);
+		this.panel_6.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		this.txtNombreReal = new JTextField();
+		this.txtNombreReal.setHorizontalAlignment(SwingConstants.CENTER);
+		this.txtNombreReal.setEditable(false);
+		this.txtNombreReal.setText("Nombre real:");
+		this.panel_6.add(this.txtNombreReal);
+		this.txtNombreReal.setColumns(10);
+		
+		this.Var_NombreReal = new JTextField();
+		this.Var_NombreReal.setHorizontalAlignment(SwingConstants.CENTER);
+		this.panel_6.add(this.Var_NombreReal);
+		this.Var_NombreReal.setColumns(10);
+		
 		this.panel_1 = new JPanel();
 		this.panelLoguea.add(this.panel_1);
 		this.panel_1.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		this.txtNombreDeUsuario = new JTextField();
-		this.txtNombreDeUsuario.setText("Nombre de usuario:");
-		this.txtNombreDeUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		this.txtNombreDeUsuario.setEditable(false);
-		this.panel_1.add(this.txtNombreDeUsuario);
-		this.txtNombreDeUsuario.setColumns(10);
+		this.textField_1 = new JTextField();
+		this.textField_1.setText("Nombre de usuario:");
+		this.textField_1.setHorizontalAlignment(SwingConstants.CENTER);
+		this.textField_1.setEditable(false);
+		this.textField_1.setColumns(10);
+		this.panel_1.add(this.textField_1);
 		
-		this.Var_NuevoNombreUsuario = new JTextField();
-		this.Var_NuevoNombreUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		this.panel_1.add(this.Var_NuevoNombreUsuario);
-		this.Var_NuevoNombreUsuario.setColumns(10);
+		this.textField_4 = new JTextField();
+		this.textField_4.setHorizontalAlignment(SwingConstants.CENTER);
+		this.textField_4.setColumns(10);
+		this.panel_1.add(this.textField_4);
 		
 		this.panel_2 = new JPanel();
 		this.panelLoguea.add(this.panel_2);
 		this.panel_2.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		this.txtContrasea = new JTextField();
-		this.txtContrasea.setText("Contraseña:");
-		this.txtContrasea.setEditable(false);
-		this.txtContrasea.setHorizontalAlignment(SwingConstants.CENTER);
-		this.panel_2.add(this.txtContrasea);
-		this.txtContrasea.setColumns(10);
+		this.textField_5 = new JTextField();
+		this.textField_5.setText("Contraseña:");
+		this.textField_5.setHorizontalAlignment(SwingConstants.CENTER);
+		this.textField_5.setEditable(false);
+		this.textField_5.setColumns(10);
+		this.panel_2.add(this.textField_5);
 		
-		this.Var_NuevapasswordField = new JPasswordField();
-		this.Var_NuevapasswordField.setHorizontalAlignment(SwingConstants.CENTER);
-		this.panel_2.add(this.Var_NuevapasswordField);
+		this.passwordField = new JPasswordField();
+		this.passwordField.setHorizontalAlignment(SwingConstants.CENTER);
+		this.panel_2.add(this.passwordField);
 		
 		this.panel_3 = new JPanel();
 		this.panelLoguea.add(this.panel_3);
@@ -134,19 +153,19 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.panel_4 = new JPanel();
 		this.panel_3.add(this.panel_4);
 		
-		this.btnCrearUsuario = new JButton(CREARUSUARIO);
-		this.panel_4.add(this.btnCrearUsuario);
+		this.btnCrearUsuario = new JButton("Crear");
 		this.btnCrearUsuario.setEnabled(false);
+		this.panel_4.add(this.btnCrearUsuario);
 		
 		this.panel_5 = new JPanel();
 		this.panel_3.add(this.panel_5);
 		this.panel_5.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		this.Info_CrearUsuario = new JTextField();
-		this.Info_CrearUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		this.Info_CrearUsuario.setEditable(false);
-		this.panel_5.add(this.Info_CrearUsuario);
-		this.Info_CrearUsuario.setColumns(10);
+		this.textField_6 = new JTextField();
+		this.textField_6.setHorizontalAlignment(SwingConstants.CENTER);
+		this.textField_6.setEditable(false);
+		this.textField_6.setColumns(10);
+		this.panel_5.add(this.textField_6);
 		
 		this.panelIniciaUsuario = new JPanel();
 		this.contentPane.add(this.panelIniciaUsuario);
@@ -214,9 +233,6 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.textField_3.setEditable(false);
 		this.textField_3.setColumns(10);
 		this.panel_11.add(this.textField_3);
-		
-		this.Var_NuevoNombreUsuario.addKeyListener(this);
-		this.Var_NuevapasswordField.addKeyListener(this);
 		this.Var_NombreUsuarioInicia.addKeyListener(this);
 		this.Var_passwordField.addKeyListener(this);
 	}
