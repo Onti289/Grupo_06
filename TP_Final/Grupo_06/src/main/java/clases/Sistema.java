@@ -1,7 +1,6 @@
 package clases;
 
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 
 import excepciones.*;
 
@@ -273,7 +272,7 @@ public class Sistema {
 	 * @throws NoHayChoferesDisponiblesException Excepcion lanzada en caso de que no se cuente con ningun chofer disponible al momento de iniciar el viaje. <br>
 	 * @throws NoHayVehiculoException Excepcion lanzada en caso de que ninguno de los vehiculos disponibles cumpla con lo solicitado en el pedido. <br>
 	 */
-	public void generaViaje(Administrador a, Pedido p) throws NoHayChoferesDisponiblesException,NoHayVehiculoException, NoHayPlataException {
+	public void generaViaje(Administrador a, Pedido p) throws NoHayChoferesDisponiblesException,NoHayVehiculoException {
 		Chofer chofer = null;
 		Vehiculo vehiculo = null;
 		IViaje viaje = null;

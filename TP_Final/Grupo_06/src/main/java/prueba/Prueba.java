@@ -68,9 +68,6 @@ public class Prueba {
 		   
 		    
 		}
-		catch(NoHayPlataException e) {
-			System.out.println(e);
-		}
 		catch(NoHayChoferesDisponiblesException e) {
 			System.out.println(e);
 		}

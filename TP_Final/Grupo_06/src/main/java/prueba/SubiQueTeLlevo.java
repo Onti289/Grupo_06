@@ -16,6 +16,7 @@ public class SubiQueTeLlevo implements ActionListener{
         Modelo modelo = new Modelo();
         IVista vista = new Ventana_Inicial();
         Controlador control = new ControladorInicial(modelo, vista);
+        IVista v_humano = null;
 
         vista.setControlador(control);
         vista.arranca();
@@ -42,20 +43,34 @@ public class SubiQueTeLlevo implements ActionListener{
 
         if (modelo.isHayHumano()) //completar
         {
-          IVista v_humano = new Ventana_Humano();
+          v_humano = new Ventana_Humano();
           Controlador controlHum = new ControladorHumano(modelo, v_humano);
           v_humano.setControlador(controlHum);
           v_humano.arranca();
           while (vista.isVisible()) {
 
-        	  System.out.println("isHayHumano");
               Thread.sleep(500);
 
 
           }
+          
         }
-
-
+        vista = new Ventana_General();
+        control = new ControladorGeneral();
+        vista.setControlador(control);
+        vista.arranca();
+        
+        while()//hay choferes y cliente humano
+        {
+        	
+        }
+        
+        
+        
+// arreglar
+      vista.dispose();
+      if (v_humano != null)
+        v_humano.dispose();
     }
 
     @Override

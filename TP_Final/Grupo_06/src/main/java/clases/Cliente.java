@@ -64,11 +64,9 @@ public class Cliente extends Usuario {
     }
 
 	/**
-	 * Genera un numero aleatorio entre 1 y 100 y el cliente paga siempre que dicho numero sea distinto de 1
+	 * el cliente paga el viaje
 	 */
 	public void pagaViaje(IViaje viaje) {
-		int numero = (int) (Math.random() * 100) + 1;
-		if (numero != 1)
 		  viaje.setEstado("Pagado");
 		
 	}
