@@ -14,7 +14,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import controladores.*;
 
-public class Ventana_CrearPedido extends JFrame implements IVista{
+public class Ventana_CrearPedido extends Ventana implements IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

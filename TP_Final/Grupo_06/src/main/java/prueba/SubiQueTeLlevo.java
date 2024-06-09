@@ -19,7 +19,7 @@ public class SubiQueTeLlevo implements ActionListener{
 
         vista.setControlador(control);
         vista.arranca();
-        while (vista.isActive()) {
+        while (vista.isVisible()) {
 
 
             Thread.sleep(500);
@@ -32,9 +32,8 @@ public class SubiQueTeLlevo implements ActionListener{
           control = new ControladorNuevaSim(modelo, vista);
           vista.setControlador(control);
           vista.arranca();
-          while (vista.isActive()) {
-
-
+          while (vista.isVisible()) {
+          
               Thread.sleep(500);
 
 
@@ -47,9 +46,9 @@ public class SubiQueTeLlevo implements ActionListener{
           Controlador controlHum = new ControladorHumano(modelo, v_humano);
           v_humano.setControlador(controlHum);
           v_humano.arranca();
-          while (vista.isActive()) {
+          while (vista.isVisible()) {
 
-
+        	  System.out.println("isHayHumano");
               Thread.sleep(500);
 
 

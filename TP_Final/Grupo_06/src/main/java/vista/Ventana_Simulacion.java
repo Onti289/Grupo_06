@@ -23,7 +23,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import controladores.*;
 
-public class Ventana_Simulacion extends JFrame implements KeyListener, IVista{
+public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -343,20 +343,6 @@ public class Ventana_Simulacion extends JFrame implements KeyListener, IVista{
 	public void setControlador(Controlador c) {
 		this.btnIniciaSimulacion.addActionListener(c);
 	}
-
-	@Override
-	public void arranca() {
-		pack();
-		setLocationRelativeTo(null);
-		setVisible(true);
-		
-	}
-
-	@Override
-	public void noHumano() {}
-
-	@Override
-	public void hayHumano() {}
 
 	
 	@Override

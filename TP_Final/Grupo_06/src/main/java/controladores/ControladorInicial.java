@@ -31,12 +31,12 @@ public class ControladorInicial extends Controlador{
         else if (e.getActionCommand().equals(IVista.NUEVASIM))
         {
             this.modelo.setNuevaSim(true);
-            this.vista.dispose();
+            this.vista.setVisible(false);
         }
         else if (e.getActionCommand().equals(IVista.SIMALEAT))
         {
             this.modelo.setNuevaSim(false);
-            this.vista.dispose();
+            this.vista.setVisible(false);
         }
 
     }

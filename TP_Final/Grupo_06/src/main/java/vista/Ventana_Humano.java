@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
@@ -16,7 +19,7 @@ import javax.swing.JButton;
 import javax.swing.BoxLayout;
 import controladores.*;
 
-public class Ventana_Humano extends JFrame implements IVista{
+public class Ventana_Humano extends Ventana implements KeyListener, IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -130,8 +133,9 @@ public class Ventana_Humano extends JFrame implements IVista{
 		this.panel_4 = new JPanel();
 		this.panel_3.add(this.panel_4);
 		
-		this.btnCrearUsuario = new JButton("Crear");
+		this.btnCrearUsuario = new JButton(CREARUSUARIO);
 		this.panel_4.add(this.btnCrearUsuario);
+		this.btnCrearUsuario.setEnabled(false);
 		
 		this.panel_5 = new JPanel();
 		this.panel_3.add(this.panel_5);
@@ -196,8 +200,9 @@ public class Ventana_Humano extends JFrame implements IVista{
 		this.panel_10 = new JPanel();
 		this.panel_9.add(this.panel_10);
 		
-		this.btnIngresarUsuario = new JButton("Ingresar");
+		this.btnIngresarUsuario = new JButton(INICIARSESION);
 		this.panel_10.add(this.btnIngresarUsuario);
+		this.btnIngresarUsuario.setEnabled(false);
 		
 		this.panel_11 = new JPanel();
 		this.panel_9.add(this.panel_11);
@@ -208,6 +213,45 @@ public class Ventana_Humano extends JFrame implements IVista{
 		this.textField_3.setEditable(false);
 		this.textField_3.setColumns(10);
 		this.panel_11.add(this.textField_3);
+		
+		this.Var_NuevoNombreUsuario.addKeyListener(this);
+		this.Var_NuevapasswordField.addKeyListener(this);
+		this.Var_NombreUsuarioInicia.addKeyListener(this);
+		this.Var_passwordField.addKeyListener(this);
 	}
+
+	@Override
+	public void setControlador(Controlador c) {
+		this.btnCrearUsuario.addActionListener(c);
+		this.btnIngresarUsuario.addActionListener(c);
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {}
+
+	@Override
+	public void keyPressed(KeyEvent e) {}
+
+	@Override
+	public void keyReleased(KeyEvent arg0)
+    {
+	  String nuevoNomUsua = null;
+      String nuevaContr = null;
+      String NomUsua = null;
+      String Contr = null;
+      
+    	  nuevoNomUsua = this.Var_NuevoNombreUsuario.getText();
+    	  nuevaContr = this.Var_NuevapasswordField.getText();
+    	  NomUsua = this.Var_NombreUsuarioInicia.getText();
+          Contr = this.Var_passwordField.getText();
+
+      boolean condicionCreaUsuario = !nuevoNomUsua.isEmpty() && !nuevoNomUsua.isBlank() && !nuevaContr.isEmpty() && !nuevaContr.isBlank();
+      boolean condicionIngresaUsuario = !NomUsua.isEmpty() && !NomUsua.isBlank() && !Contr.isEmpty() && !Contr.isBlank();
+      this.btnCrearUsuario.setEnabled(condicionCreaUsuario);
+      this.btnIngresarUsuario.setEnabled(condicionIngresaUsuario);
+  
+    }
+
 
 }

@@ -14,7 +14,21 @@ public class ControladorHumano extends Controlador {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getActionCommand().equals(IVista.CREARUSUARIO))
+	    {
+	        //if (!existe nombre usuario) usar hashmap
+			//mensaje si se creo o no
+			//guardar con persistencia
+			//borrar campos
+			
+	    }
+		else  if (e.getActionCommand().equals(IVista.INICIARSESION))
+	    {
+	        //verificar nombre de usuario y mensaje
+			//verificar contraseña y mensaje
+			this.vista.setVisible(false);
+			//incia ventana general y crea pedido (desde main)
+	    }
 
 	}
 

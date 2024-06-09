@@ -12,7 +12,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 
-public class Ventana_Cliente_HumanoEnViaje extends JFrame {
+public class Ventana_Cliente_HumanoEnViaje extends Ventana {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

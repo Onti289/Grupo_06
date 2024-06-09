@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import controladores.*;
 
-public class Ventana_Inicial extends JFrame implements IVista{
+public class Ventana_Inicial extends Ventana implements IVista{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -160,13 +160,6 @@ public class Ventana_Inicial extends JFrame implements IVista{
 		
 	}
 
-	@Override
-	public void arranca() {
-		pack();
-		setLocationRelativeTo(null);
-		setVisible(true);
-		
-	}
 	
 	public void noHumano()
 	{

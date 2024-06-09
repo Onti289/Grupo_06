@@ -16,7 +16,7 @@ public class ControladorNuevaSim extends Controlador{
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(IVista.INICIASIM))
         {
-        	this.vista.dispose();
+        	this.vista.setVisible(false);
         }
     }
 
