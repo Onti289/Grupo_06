@@ -5,19 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import java.util.Observable;
-import java.util.Observer;
-import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import controladores.*;
+import java.awt.BorderLayout;
 
-public class Ventana_General extends Ventana implements Observer{
+public class Ventana_VistaCliente1 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JScrollPane scrollPaneGeneral;
+	private JScrollPane scrollPaneCliente1;
 
 	/**
 	 * Launch the application.
@@ -26,7 +21,7 @@ public class Ventana_General extends Ventana implements Observer{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana_General frame = new Ventana_General();
+					Ventana_VistaCliente1 frame = new Ventana_VistaCliente1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +33,7 @@ public class Ventana_General extends Ventana implements Observer{
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_General() {
+	public Ventana_VistaCliente1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();
@@ -47,15 +42,8 @@ public class Ventana_General extends Ventana implements Observer{
 		setContentPane(this.contentPane);
 		this.contentPane.setLayout(new BorderLayout(0, 0));
 		
-		this.scrollPaneGeneral = new JScrollPane();
-		this.contentPane.add(this.scrollPaneGeneral, BorderLayout.CENTER);
+		this.scrollPaneCliente1 = new JScrollPane();
+		this.contentPane.add(this.scrollPaneCliente1);
 	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }
