@@ -185,7 +185,7 @@ public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
 		this.panel_choferbajo.add(this.panel_bajoobajo);
 		
 		this.txtMaxViajes = new JTextField();
-		this.txtMaxViajes.setText("Max. Viajes:");
+		this.txtMaxViajes.setText("Max. Viajes(>=1):");
 		this.txtMaxViajes.setHorizontalAlignment(SwingConstants.CENTER);
 		this.txtMaxViajes.setEditable(false);
 		this.txtMaxViajes.setColumns(12);
@@ -306,7 +306,7 @@ public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
 		this.panel_intermedioDER.add(this.panel_5);
 		
 		this.txtMaxViajes_1 = new JTextField();
-		this.txtMaxViajes_1.setText("Max. Viajes:");
+		this.txtMaxViajes_1.setText("Max. Viajes(>=1):");
 		this.txtMaxViajes_1.setHorizontalAlignment(SwingConstants.CENTER);
 		this.txtMaxViajes_1.setEditable(false);
 		this.txtMaxViajes_1.setColumns(12);
@@ -327,6 +327,7 @@ public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
 		this.btnIniciaSimulacion = new JButton(INICIASIM);
 		this.btnIniciaSimulacion.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		this.panel_6.add(this.btnIniciaSimulacion);
+		this.btnIniciaSimulacion.setEnabled(false);
 		
 		this.Var_CantAutos.addKeyListener(this);
 		this.Var_CantClientes.addKeyListener(this);

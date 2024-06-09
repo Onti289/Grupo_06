@@ -93,7 +93,7 @@ public class Ventana_Inicial extends Ventana implements IVista{
 		this.lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		this.lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
 		this.lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 5));
-		this.lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Debora\\Desktop\\Grupo_06\\TP_Final\\Grupo_06\\SANDRITO.jpg"));
+		this.lblNewLabel.setIcon(new ImageIcon("SANDRITO.jpg"));
 		this.panel.add(this.lblNewLabel, BorderLayout.NORTH);
 		
 		this.panel_1 = new JPanel();
