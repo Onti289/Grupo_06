@@ -46,6 +46,7 @@ public class Ventana_ClienteHumanoEnViaje extends Ventana implements Observer {
 	 * Create the frame.
 	 */
 	public Ventana_ClienteHumanoEnViaje() {
+		setTitle("Vista Cliente Humano");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();

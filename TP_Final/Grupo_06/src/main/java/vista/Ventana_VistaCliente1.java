@@ -36,6 +36,7 @@ public class Ventana_VistaCliente1 extends Ventana implements Observer{
 	 * Create the frame.
 	 */
 	public Ventana_VistaCliente1() {
+		setTitle("Vista Cliente 1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();

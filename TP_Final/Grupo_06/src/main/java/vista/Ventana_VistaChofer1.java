@@ -36,6 +36,7 @@ public class Ventana_VistaChofer1 extends Ventana implements Observer{
 	 * Create the frame.
 	 */
 	public Ventana_VistaChofer1() {
+		setTitle("Vista Chofer 1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();

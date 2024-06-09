@@ -72,6 +72,7 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 	 * Create the frame.
 	 */
 	public Ventana_IniciaSesion() {
+		setTitle("Vista Cliente Humano");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();

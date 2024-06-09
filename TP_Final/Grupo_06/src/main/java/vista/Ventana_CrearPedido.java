@@ -74,6 +74,7 @@ public class Ventana_CrearPedido extends Ventana{
 	 * Create the frame.
 	 */
 	public Ventana_CrearPedido() {
+		setTitle("Vista Cliente Humano");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();
