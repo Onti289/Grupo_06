@@ -94,7 +94,7 @@ public class Ventana_Inicial extends Ventana{
 		this.lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
 		this.lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 5));
 		this.lblNewLabel.setIcon(new ImageIcon("SANDRITO.jpg"));
-		this.panel.add(this.lblNewLabel, BorderLayout.NORTH);
+		this.panel.add(this.lblNewLabel, BorderLayout.CENTER);
 		
 		this.panel_1 = new JPanel();
 		this.panel_centro.add(this.panel_1);
