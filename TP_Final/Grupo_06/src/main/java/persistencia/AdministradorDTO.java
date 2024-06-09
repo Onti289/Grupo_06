@@ -12,10 +12,10 @@ public class AdministradorDTO implements Serializable {
 	private String nombre;
 	private String contrasena;
 	private String nombreReal;
-	private LinkedList<Chofer> colaChoferes = new LinkedList<Chofer>();
-    private LinkedList<Vehiculo> colaVehiculos = new LinkedList<Vehiculo>();
-    private LinkedList<Cliente> listaClientes = new LinkedList<Cliente>();
-    private LinkedList<IViaje> listaViajes = new LinkedList<IViaje>();
+	private LinkedList<ChoferDTO> colaChoferes = new LinkedList<ChoferDTO>();
+    private LinkedList<VehiculoDTO> colaVehiculos = new LinkedList<VehiculoDTO>();
+    private LinkedList<ClienteDTO> listaClientes = new LinkedList<ClienteDTO>();
+    private LinkedList<IViajeDTO> listaViajes = new LinkedList<IViajeDTO>();
 	
     public String getNombre() {
 		return nombre;
@@ -29,19 +29,19 @@ public class AdministradorDTO implements Serializable {
 		return nombreReal;
 	}
 	
-    public LinkedList<Chofer> getColaChoferes() {
+    public LinkedList<ChoferDTO> getColaChoferes() {
 		return colaChoferes;
 	}
 	
-    public LinkedList<Vehiculo> getColaVehiculos() {
+    public LinkedList<VehiculoDTO> getColaVehiculos() {
 		return colaVehiculos;
 	}
 	
-    public LinkedList<Cliente> getListaClientes() {
+    public LinkedList<ClienteDTO> getListaClientes() {
 		return listaClientes;
 	}
 	
-    public LinkedList<IViaje> getListaViajes() {
+    public LinkedList<IViajeDTO> getListaViajes() {
 		return listaViajes;
 	}
 	
@@ -57,19 +57,19 @@ public class AdministradorDTO implements Serializable {
 		this.nombreReal = nombreReal;
 	}
 	
-    public void setColaChoferes(LinkedList<Chofer> colaChoferes) {
-		this.colaChoferes = colaChoferes;
+    public void setColaChoferes(LinkedList<ChoferDTO> choferesDTO) {
+		this.colaChoferes = choferesDTO;
 	}
 	
-    public void setColaVehiculos(LinkedList<Vehiculo> colaVehiculos) {
+    public void setColaVehiculos(LinkedList<VehiculoDTO> colaVehiculos) {
 		this.colaVehiculos = colaVehiculos;
 	}
 	
-    public void setListaClientes(LinkedList<Cliente> listaClientes) {
+    public void setListaClientes(LinkedList<ClienteDTO> listaClientes) {
 		this.listaClientes = listaClientes;
 	}
 	
-    public void setListaViajes(LinkedList<IViaje> listaViajes) {
+    public void setListaViajes(LinkedList<IViajeDTO> listaViajes) {
 		this.listaViajes = listaViajes;
 	}
     

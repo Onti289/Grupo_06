@@ -49,7 +49,6 @@ public abstract class Viaje implements IViaje {
 			return chofer;
 		}
 		
-		
 		public Cliente getCliente() {
 			return cliente;
 		}
@@ -82,6 +81,42 @@ public abstract class Viaje implements IViaje {
 			
 		public LocalDateTime getFecha() {
 			return fecha;
+		}
+		
+		public Vehiculo getVehiculo() {
+			return vehiculo;
+		}
+
+		public int getPasajeros() {
+			return pasajeros;
+		}
+
+		public void setCliente(Cliente cliente) {
+			this.cliente = cliente;
+		}
+
+		public void setChofer(Chofer chofer) {
+			this.chofer = chofer;
+		}
+
+		public void setVehiculo(Vehiculo vehiculo) {
+			this.vehiculo = vehiculo;
+		}
+
+		public void setCosto(double costo) {
+			this.costo = costo;
+		}
+
+		public void setDistanciaRealRecorrida(int distanciaRealRecorrida) {
+			this.distanciaRealRecorrida = distanciaRealRecorrida;
+		}
+
+		public void setPasajeros(int pasajeros) {
+			this.pasajeros = pasajeros;
+		}
+
+		public void setFecha(LocalDateTime fecha) {
+			this.fecha = fecha;
 		}
 
 		/**

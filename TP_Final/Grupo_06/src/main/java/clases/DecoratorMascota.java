@@ -38,6 +38,11 @@ public abstract class DecoratorMascota implements IViaje{
 	}
 	
 	@Override
+	public Vehiculo getVehiculo() {
+		return this.encapsulado.getVehiculo();
+	}
+	
+	@Override
 	public void setEstado(String e) {
 		encapsulado.setEstado(e);
 	}

@@ -43,6 +43,11 @@ public class Automovil extends Vehiculo {
 	public boolean beatsCombi() {
 		return true;
 	}
+	
+	@Override
+	public String getTipo() {
+		return "Automovil";
+	}
 
 
 	@Override

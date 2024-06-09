@@ -44,6 +44,11 @@ public class Combi extends Vehiculo {
 	}
 
 	@Override
+	public String getTipo() {
+		return "Combi";
+	}
+	
+	@Override
 	public String toString() {
 		return super.toString() + " \t Combi ";
 	}

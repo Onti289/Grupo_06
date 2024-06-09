@@ -40,6 +40,10 @@ public abstract class DecoratorBaul implements IViaje{
 		this.encapsulado.setEstado(e);
 	}
 
+	@Override
+	public Vehiculo getVehiculo() {
+		return this.encapsulado.getVehiculo();
+	}
 
 	@Override
 	public String getEstado() {

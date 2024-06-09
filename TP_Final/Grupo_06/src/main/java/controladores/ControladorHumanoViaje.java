@@ -16,7 +16,12 @@ public class ControladorHumanoViaje extends Controlador {
 		if (e.getActionCommand().equals(IVista.PAGAR))
         {
         	//PAGA PEDIDO
-			Thread.sleep(3000);
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			this.vista.setVisible(false);
         }
 

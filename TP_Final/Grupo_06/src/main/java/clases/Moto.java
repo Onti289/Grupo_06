@@ -43,6 +43,11 @@ public class Moto extends Vehiculo {
 	}
 
 	@Override
+	public String getTipo() {
+		return "Moto";
+	}
+	
+	@Override
 	public String toString() {
 		return super.toString() + " \t Moto ";
 	}

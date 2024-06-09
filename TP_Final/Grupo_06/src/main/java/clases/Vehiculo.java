@@ -32,6 +32,26 @@ public abstract class Vehiculo implements IVehiculo {
         this.petFriendly = petFriendly;
         this.maxPasajeros = maxPasajeros;
     }
+    
+    
+
+	public void setBaul(boolean baul) {
+		this.baul = baul;
+	}
+
+
+
+	public void setPetFriendly(boolean petFriendly) {
+		this.petFriendly = petFriendly;
+	}
+
+
+
+	public void setMaxPasajeros(int maxPasajeros) {
+		this.maxPasajeros = maxPasajeros;
+	}
+
+
 
 	public String getPatente() {
 		return patente;
@@ -52,6 +72,10 @@ public abstract class Vehiculo implements IVehiculo {
 
 	public void setPatente(String patente) {
 		this.patente = patente;
+	}
+	
+	public String getTipo() {
+		return null;
 	}
 
 	/**
