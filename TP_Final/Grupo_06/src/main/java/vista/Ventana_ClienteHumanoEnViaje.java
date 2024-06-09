@@ -15,7 +15,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 
-public class Ventana_Cliente_HumanoEnViaje extends Ventana implements Observer {
+public class Ventana_ClienteHumanoEnViaje extends Ventana implements Observer {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -33,7 +33,7 @@ public class Ventana_Cliente_HumanoEnViaje extends Ventana implements Observer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana_Cliente_HumanoEnViaje frame = new Ventana_Cliente_HumanoEnViaje();
+					Ventana_ClienteHumanoEnViaje frame = new Ventana_ClienteHumanoEnViaje();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class Ventana_Cliente_HumanoEnViaje extends Ventana implements Observer {
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_Cliente_HumanoEnViaje() {
+	public Ventana_ClienteHumanoEnViaje() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();

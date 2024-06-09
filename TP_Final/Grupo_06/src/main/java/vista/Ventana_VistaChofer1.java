@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.EventQueue;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 
-public class Ventana_VistaChofer1 extends JFrame {
+public class Ventana_VistaChofer1 extends Ventana implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -44,6 +46,12 @@ public class Ventana_VistaChofer1 extends JFrame {
 		
 		this.scrollPaneChofer1 = new JScrollPane();
 		this.contentPane.add(this.scrollPaneChofer1);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

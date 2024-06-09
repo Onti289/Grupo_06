@@ -19,7 +19,7 @@ import javax.swing.JButton;
 import javax.swing.BoxLayout;
 import controladores.*;
 
-public class Ventana_Humano extends Ventana implements KeyListener{
+public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -59,7 +59,7 @@ public class Ventana_Humano extends Ventana implements KeyListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ventana_Humano frame = new Ventana_Humano();
+					Ventana_IniciaSesion frame = new Ventana_IniciaSesion();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -71,7 +71,7 @@ public class Ventana_Humano extends Ventana implements KeyListener{
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_Humano() {
+	public Ventana_IniciaSesion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 500);
 		this.contentPane = new JPanel();
