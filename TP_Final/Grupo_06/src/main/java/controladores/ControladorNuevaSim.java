@@ -16,6 +16,7 @@ public class ControladorNuevaSim extends Controlador{
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(IVista.INICIASIM))
         {
+        	Sistema.persistir();
         	this.vista.setVisible(false);
         	if (modelo.isHayHumano())
             {

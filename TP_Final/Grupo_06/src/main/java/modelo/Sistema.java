@@ -1,9 +1,11 @@
 package modelo;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import excepciones.*;
 import controladores.*;
+import persistencia.*;
 
 /**
  * @author gc
@@ -20,7 +22,7 @@ public class Sistema {
 
 	private static Sistema _instancia = null;
 	private String nombre;
-	private Administrador admin = new Administrador("ElAdmin", "123", "Leonel");
+	private static Administrador admin = new Administrador("ElAdmin", "123", "Leonel");
 	
 
 	/**
@@ -63,6 +65,7 @@ public class Sistema {
 	 */
 	public void agregaChofer(Administrador a, Chofer c) {
 		a.AgregarChofer(c);
+		persistir();
 	}
 
 
@@ -104,6 +107,7 @@ public class Sistema {
 	 */
 	public void agregaVehiculo(Administrador a, Vehiculo v) {
 		a.agregaVehiculo(v);
+		persistir();
 	}
 
 
@@ -134,6 +138,7 @@ public class Sistema {
 	 */
 	public void agregaCliente(Administrador a, Cliente c) throws NombreDeUsuarioYaExistenteException {
 		a.agregarCliente(c);
+		persistir();
 	}
 
 	/**
@@ -165,6 +170,7 @@ public class Sistema {
 	public void modificaCliente(Administrador a, Cliente c, String nombre, String contrasena) throws ClienteNoExistenteException
 	{
 		a.ModificaCliente(c,nombre,contrasena);
+	    persistir();
 	}
 
 	/**
@@ -419,5 +425,33 @@ public class Sistema {
 	public boolean contraseniaCorrecta(Administrador a, String nombre, String contrasenia)
 	{
 		return a.contraseniaCorrecta(nombre, contrasenia);
+	}
+	
+	public Cliente getCliente(Administrador a, String nombreUsuario)
+    {
+      return a.getCliente(nombreUsuario);
+    }
+
+	public void setClienteHumano(Administrador a, Usuario cliente) {
+		a.setClienteHumano(cliente);
+		
+	}
+	
+	public static void persistir() {
+		IPersistencia persistencia = new PersistenciaXML();
+		try
+		{
+		     persistencia.abrirOutput("Admins.xml");
+		     System.out.println("Crea archivo escritura");
+		     AdministradorDTO adto=UtilAdministrador.administradorDTOfromAdministrador(admin);
+		     persistencia.escribir(adto);
+
+		     System.out.println("Admins grabadados exitosamente");
+		     persistencia.cerrarOutput();
+		     System.out.println("Archivo cerrado");
+		     } catch (IOException e)
+		     {
+		        System.out.println(e.getLocalizedMessage());
+		     }
 	}
 }

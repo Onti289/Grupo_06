@@ -235,6 +235,9 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.panel_11.add(this.MensajeDeIniciaSesion);
 		this.Var_NombreUsuarioInicia.addKeyListener(this);
 		this.Var_passwordField.addKeyListener(this);
+		this.Var_NombreReal.addKeyListener(this);
+		this.Var_NuevapasswordField.addKeyListener(this);
+		this.Var_NuevoNombreUsuario.addKeyListener(this);
 	}
 
 	@Override
@@ -266,6 +269,7 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
           Contr = getContr();
 
       boolean condicionCreaUsuario = !nombreReal.isEmpty() && !nombreReal.isBlank() && !nuevoNomUsua.isEmpty() && !nuevoNomUsua.isBlank() && !nuevaContr.isEmpty() && !nuevaContr.isBlank();
+      //System.out.println(condicionCreaUsuario +"\n" +nombreReal +"\n" +nuevoNomUsua +"\n" +nuevaContr);
       boolean condicionIngresaUsuario = !NomUsua.isEmpty() && !NomUsua.isBlank() && !Contr.isEmpty() && !Contr.isBlank();
       this.btnCrearUsuario.setEnabled(condicionCreaUsuario);
       this.btnIngresarUsuario.setEnabled(condicionIngresaUsuario);
@@ -314,6 +318,7 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.Var_NombreReal.setText(null);
 		this.Var_NuevoNombreUsuario.setText(null);
 		this.Var_NuevapasswordField.setText(null);
+		this.btnCrearUsuario.setEnabled(false);
 	}
 
 }

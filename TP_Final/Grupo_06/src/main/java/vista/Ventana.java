@@ -1,6 +1,8 @@
 package vista;
 
 import java.awt.EventQueue;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -90,4 +92,13 @@ public abstract class Ventana extends JFrame implements IVista{
 	public void setTextMsjCrea(String string) {}
 	@Override
 	public void borraRegistrarse() {}
+	
+
+
+	@Override
+	public void addWindowListener(WindowAdapter windowAdapter) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

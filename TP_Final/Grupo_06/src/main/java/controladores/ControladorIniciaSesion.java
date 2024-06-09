@@ -37,7 +37,6 @@ public class ControladorIniciaSesion extends Controlador {
 		      this.vista.borraRegistrarse();
 		    }
 			
-			//borrar campos
 			
 	    }
 		else  if (e.getActionCommand().equals(IVista.INICIARSESION))
@@ -49,7 +48,8 @@ public class ControladorIniciaSesion extends Controlador {
 	        	 this.vista.setTextMsjInicSes("Contraseña incorrecta");
 	         else
 	         {
-	        	//Usuario cliente = this.vista.g
+	        	Usuario cliente = this.modelo.getCliente(this.modelo.getAdmin(), this.vista.getNomUsua());
+	        	this.modelo.setClienteHumano(this.modelo.getAdmin(), cliente);
 	        	this.vista.setVisible(false);
 	        	IVista vGeneral = new Ventana_General();
 	        	Controlador cGeneral = new ControladorGeneral(modelo, vGeneral);

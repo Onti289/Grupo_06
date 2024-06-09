@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.event.WindowAdapter;
+
 import controladores.*;
 
 public interface IVista
@@ -38,5 +40,7 @@ public interface IVista
 public void setTextMsjInicSes(String string);
 public void setTextMsjCrea(String string);
 public void borraRegistrarse();
+public void addWindowListener(WindowAdapter windowAdapter);
+
 
 }

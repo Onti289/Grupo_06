@@ -19,6 +19,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -159,4 +160,5 @@ public class Ventana_Inicial extends Ventana{
 		this.rdbtnNoHayHumano.setSelected(false);
 		this.rdbtnHayHumano.setSelected(true);
 	}
+
 }

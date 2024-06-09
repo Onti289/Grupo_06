@@ -25,6 +25,7 @@ public class Administrador extends Usuario{
     private static LinkedList<Vehiculo> colaVehiculos = new LinkedList<Vehiculo>();
     private static LinkedList<Cliente> listaClientes = new LinkedList<Cliente>();
     private static LinkedList<IViaje> listaViajes = new LinkedList<IViaje>();
+	private Usuario clienteHumano;
 
     /**
      * Constructor con tres parametros para setear el nombre, nombreReal y contrase�a de un nuevo Administrador. <br>
@@ -251,7 +252,16 @@ public class Administrador extends Usuario{
 	    listaClientes.get(i).modificacliente(nombre,contrasena);
 	}
 
-
+    public Cliente getCliente(String nombreUsuario)
+    {
+      Cliente c = null;
+      int i = 0, tope = Administrador.listaClientes.size();
+	  while (i < tope && !Administrador.listaClientes.get(i).nombre.equals(nombreUsuario))
+			i++;
+	  c = Administrador.listaClientes.get(i);
+      return c;
+    }
+	
 	/**
 	 * Metodo de tipo String que genera el listado de los diferentes choferes. Permite mostrar nombre, categoria a la que pertenece y su salario neto en fotmato de tabla por consola.
 	 *
@@ -562,7 +572,7 @@ public class Administrador extends Usuario{
 	public boolean existeNombreUsuario(String nombre)
 	{
 		int i = 0, tope = Administrador.listaClientes.size();
-		while (i < tope && Administrador.listaClientes.get(i).nombre.equals(nombre))
+		while (i < tope && !Administrador.listaClientes.get(i).nombre.equals(nombre))
 			i++;
 		return i < tope;
 	}
@@ -570,8 +580,15 @@ public class Administrador extends Usuario{
 	public boolean contraseniaCorrecta(String nombre, String contrasenia)
 	{
 		int i = 0, tope = Administrador.listaClientes.size();
-		while (i < tope && Administrador.listaClientes.get(i).nombre.equals(nombre))
+		while (i < tope && !Administrador.listaClientes.get(i).nombre.equals(nombre))
 			i++;
 		return Administrador.listaClientes.get(i).contrasena.equals(contrasenia);
+	}
+
+
+
+	public void setClienteHumano(Usuario cliente) {
+		this.clienteHumano = cliente;
+		
 	}
 }

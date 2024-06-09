@@ -1,12 +1,17 @@
 package vista;
 
 import java.awt.EventQueue;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Sistema;
+
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 
@@ -47,6 +52,7 @@ public class Ventana_Chofer1 extends Ventana implements Observer{
 		
 		this.scrollPaneChofer1 = new JScrollPane();
 		this.contentPane.add(this.scrollPaneChofer1);
+		
 	}
 
 	@Override
