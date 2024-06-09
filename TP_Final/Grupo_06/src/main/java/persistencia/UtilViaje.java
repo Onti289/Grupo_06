@@ -13,32 +13,34 @@ import modelo.ZonaPeligrosa;
 public class UtilViaje {
 
 	public static IViajeDTO viajeDTOfromViaje(IViaje iViaje) {
-		String fecha = iViaje.getFecha().toString();
 		
 		IViajeDTO respuesta = new IViajeDTO();
-		respuesta.setChofer(iViaje.getChofer());
-		respuesta.setCliente(iViaje.getCliente());
+		respuesta.setChofer(UtilChofer.choferDTOfromChofer(iViaje.getChofer()));
+		respuesta.setCliente(UtilCliente.clienteDTOfromCliente(iViaje.getCliente()));
 		respuesta.setCosto(iViaje.getCosto());
 		respuesta.setDistanciaRealRecorrida(iViaje.getKM());
 		respuesta.setEstado(iViaje.getEstado());
-		respuesta.setFecha(fecha);
+		respuesta.setFecha(LocalDateTime.now());
 		respuesta.setPasajeros(iViaje.getPax());
-		respuesta.setVehiculo(iViaje.getVehiculo());
+		respuesta.setVehiculo(UtilVehiculo.vehiculoDTOfromVehiculo(iViaje.getVehiculo()));
 		respuesta.setValorBase(Viaje.getValorBase());
-		respuesta.setPedido(iViaje.getPedido());
+		respuesta.setZona(iViaje.getPedido().getZona());
+		respuesta.setPedido(UtilPedido.pedidoDTOfromPedido(iViaje.getPedido()));
+		
 		return respuesta;
 	}
 	
 	public static IViaje viajefromViajeDTO(IViajeDTO viajeDTO) {
 		IViaje respuesta = null;
-		if(viajeDTO.getPedido().getZona().equalsIgnoreCase("Zona Peligrosa")) {
-			respuesta = new ZonaPeligrosa(viajeDTO.getPedido(), viajeDTO.getChofer(),viajeDTO.getVehiculo());
+		
+		if(viajeDTO.getZona().equalsIgnoreCase("Zona Peligrosa")) {
+			respuesta = new ZonaPeligrosa(UtilPedido.pedidofromPedidoDTO(viajeDTO.getPedido()), UtilChofer.choferfromChoferDTO(viajeDTO.getChofer()),UtilVehiculo.vehiculofromVehiculoDTO(viajeDTO.getVehiculo()));
 		}
-		else if(viajeDTO.getPedido().getZona().equalsIgnoreCase("Estandar")) {
-			respuesta = new Estandar(viajeDTO.getPedido(), viajeDTO.getChofer(),viajeDTO.getVehiculo());
+		else if(viajeDTO.getZona().equalsIgnoreCase("Estandar")) {
+			respuesta = new Estandar(UtilPedido.pedidofromPedidoDTO(viajeDTO.getPedido()), UtilChofer.choferfromChoferDTO(viajeDTO.getChofer()),UtilVehiculo.vehiculofromVehiculoDTO(viajeDTO.getVehiculo()));
 		}
-		else if(viajeDTO.getPedido().getZona().equalsIgnoreCase("Calle sin asfaltar")) {
-			respuesta = new CalleSinAsfaltar(viajeDTO.getPedido(), viajeDTO.getChofer(),viajeDTO.getVehiculo());
+		else if(viajeDTO.getZona().equalsIgnoreCase("Calle sin asfaltar")) {
+			respuesta = new CalleSinAsfaltar(UtilPedido.pedidofromPedidoDTO(viajeDTO.getPedido()), UtilChofer.choferfromChoferDTO(viajeDTO.getChofer()),UtilVehiculo.vehiculofromVehiculoDTO(viajeDTO.getVehiculo()));
 		}
 		return respuesta;
 	}

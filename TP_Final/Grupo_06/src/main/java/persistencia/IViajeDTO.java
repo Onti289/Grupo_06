@@ -7,27 +7,28 @@ import modelo.*;
 
 public class IViajeDTO implements Serializable {
 	private String estado;
-	private Cliente cliente;
-	private Chofer chofer;
-	private Vehiculo vehiculo;
+	private ClienteDTO cliente;
+	private ChoferDTO chofer;
+	private VehiculoDTO vehiculo;
 	private double costo;
 	private static double valorBase = 1000.0;
 	private int distanciaRealRecorrida;
 	private int pasajeros;
-	private String fecha;
-	private Pedido pedido;
+	private LocalDateTime fecha;
+	private String zona;
+	private PedidoDTO pedido;
 
 	
 	public String getEstado() {
 		return estado;
 	}
-	public Cliente getCliente() {
+	public ClienteDTO getCliente() {
 		return cliente;
 	}
-	public Chofer getChofer() {
+	public ChoferDTO getChofer() {
 		return chofer;
 	}
-	public Vehiculo getVehiculo() {
+	public VehiculoDTO getVehiculo() {
 		return vehiculo;
 	}
 	public double getCosto() {
@@ -42,19 +43,19 @@ public class IViajeDTO implements Serializable {
 	public int getPasajeros() {
 		return pasajeros;
 	}
-	public String getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(ClienteDTO cliente) {
 		this.cliente = cliente;
 	}
-	public void setChofer(Chofer chofer) {
+	public void setChofer(ChoferDTO chofer) {
 		this.chofer = chofer;
 	}
-	public void setVehiculo(Vehiculo vehiculo) {
+	public void setVehiculo(VehiculoDTO vehiculo) {
 		this.vehiculo = vehiculo;
 	}
 	public void setCosto(double costo) {
@@ -69,15 +70,22 @@ public class IViajeDTO implements Serializable {
 	public void setPasajeros(int pasajeros) {
 		this.pasajeros = pasajeros;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
-	public Pedido getPedido() {
+	public String getZona() {
+		return zona;
+	}
+	public PedidoDTO getPedido() {
 		return pedido;
 	}
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
+	public void setZona(String zona) {
+		this.zona = zona;
 	}
+	public void setPedido(PedidoDTO pedido2) {
+		this.pedido = pedido2;
+	}
+	
 
 	
 	

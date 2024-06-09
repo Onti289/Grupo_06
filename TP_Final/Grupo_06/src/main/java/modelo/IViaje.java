@@ -20,5 +20,6 @@ public interface IViaje {
 	String toString();
 	Vehiculo getVehiculo();
 	Pedido getPedido();
+	
 
 }

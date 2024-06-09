@@ -195,12 +195,21 @@
    <void method="add">
     <object class="persistencia.IViajeDTO">
      <void property="chofer">
-      <object class="modelo.ChoferContratado">
+      <object class="persistencia.ChoferDTO">
+       <void property="DNI">
+        <string>40569874</string>
+       </void>
        <void property="KMrecorridosMes">
         <double>50.0</double>
        </void>
        <void property="gananciaViaje">
         <int>30</int>
+       </void>
+       <void property="nombre">
+        <string>Juancito</string>
+       </void>
+       <void property="tipo">
+        <string>Contratado</string>
        </void>
        <void property="viajesMes">
         <int>1</int>
@@ -208,7 +217,7 @@
       </object>
      </void>
      <void property="cliente">
-      <object class="modelo.Cliente" id="Cliente0">
+      <object class="persistencia.ClienteDTO">
        <void property="contrasena">
         <string>abc123</string>
        </void>
@@ -229,17 +238,40 @@
      <void property="estado">
       <string>Finalizado</string>
      </void>
-     <void property="fecha">
-      <string>2024-06-09T18:09:23.812626700</string>
-     </void>
      <void property="pasajeros">
       <int>2</int>
      </void>
      <void property="pedido">
-      <object class="modelo.Pedido"/>
+      <object class="persistencia.PedidoDTO">
+       <void property="cantidadPasajeros">
+        <int>2</int>
+       </void>
+       <void property="cliente">
+        <object class="modelo.Cliente" id="Cliente0">
+         <void property="contrasena">
+          <string>abc123</string>
+         </void>
+         <void property="nombre">
+          <string>user1</string>
+         </void>
+         <void property="nombreReal">
+          <string>Carlos</string>
+         </void>
+        </object>
+       </void>
+       <void property="distancia">
+        <int>50</int>
+       </void>
+       <void property="equipaje">
+        <boolean>true</boolean>
+       </void>
+       <void property="zona">
+        <string>Zona Peligrosa</string>
+       </void>
+      </object>
      </void>
      <void property="vehiculo">
-      <object class="modelo.Automovil" id="Automovil0">
+      <object class="persistencia.VehiculoDTO">
        <void property="baul">
         <boolean>true</boolean>
        </void>
@@ -252,14 +284,23 @@
        <void property="petFriendly">
         <boolean>true</boolean>
        </void>
+       <void property="tipo">
+        <string>Automovil</string>
+       </void>
       </object>
+     </void>
+     <void property="zona">
+      <string>Zona Peligrosa</string>
      </void>
     </object>
    </void>
    <void method="add">
     <object class="persistencia.IViajeDTO">
      <void property="chofer">
-      <object class="modelo.ChoferPermanente">
+      <object class="persistencia.ChoferDTO">
+       <void property="DNI">
+        <string>23666987</string>
+       </void>
        <void property="KMrecorridosMes">
         <double>20.0</double>
        </void>
@@ -275,8 +316,14 @@
        <void property="cantHijos">
         <int>10</int>
        </void>
-       <void property="sueldobasico">
+       <void property="nombre">
+        <string>Juan Carlos</string>
+       </void>
+       <void property="sueldoBasico">
         <double>80000.0</double>
+       </void>
+       <void property="tipo">
+        <string>Permanente</string>
        </void>
        <void property="viajesMes">
         <int>1</int>
@@ -284,7 +331,17 @@
       </object>
      </void>
      <void property="cliente">
-      <object idref="Cliente0"/>
+      <object class="persistencia.ClienteDTO">
+       <void property="contrasena">
+        <string>abc123</string>
+       </void>
+       <void property="nombre">
+        <string>user1</string>
+       </void>
+       <void property="nombreReal">
+        <string>Carlos</string>
+       </void>
+      </object>
      </void>
      <void property="costo">
       <double>7040.0</double>
@@ -295,17 +352,49 @@
      <void property="estado">
       <string>Finalizado</string>
      </void>
-     <void property="fecha">
-      <string>2024-06-09T18:09:23.815628</string>
-     </void>
      <void property="pasajeros">
       <int>2</int>
      </void>
      <void property="pedido">
-      <object class="modelo.Pedido"/>
+      <object class="persistencia.PedidoDTO">
+       <void property="cantidadPasajeros">
+        <int>2</int>
+       </void>
+       <void property="cliente">
+        <object idref="Cliente0"/>
+       </void>
+       <void property="distancia">
+        <int>20</int>
+       </void>
+       <void property="equipaje">
+        <boolean>true</boolean>
+       </void>
+       <void property="zona">
+        <string>Estandar</string>
+       </void>
+      </object>
      </void>
      <void property="vehiculo">
-      <object idref="Automovil0"/>
+      <object class="persistencia.VehiculoDTO">
+       <void property="baul">
+        <boolean>true</boolean>
+       </void>
+       <void property="maxPasajeros">
+        <int>4</int>
+       </void>
+       <void property="patente">
+        <string>BC-122-AA</string>
+       </void>
+       <void property="petFriendly">
+        <boolean>true</boolean>
+       </void>
+       <void property="tipo">
+        <string>Automovil</string>
+       </void>
+      </object>
+     </void>
+     <void property="zona">
+      <string>Estandar</string>
      </void>
     </object>
    </void>

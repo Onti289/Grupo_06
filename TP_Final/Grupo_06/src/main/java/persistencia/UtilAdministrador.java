@@ -49,6 +49,7 @@ public class UtilAdministrador {
 			respuesta.agregarCliente(UtilCliente.clientefromClienteDTO(adminDTO.getListaClientes().get(i)));
 		}
 		for(int i=0; i<adminDTO.getListaViajes().size(); i++) {
+			System.out.println(adminDTO.getListaViajes().get(i).getPasajeros());
 			respuesta.agregarViaje(UtilViaje.viajefromViajeDTO(adminDTO.getListaViajes().get(i)));
 		}
 		return respuesta;
