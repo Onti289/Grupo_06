@@ -60,17 +60,18 @@ public class SubiQueTeLlevo implements ActionListener{
         vista.setControlador(control);
         vista.arranca();
         
-        while()//hay choferes y cliente humano
+      /*  while()//hay choferes y cliente humano
         {
         	
-        }
+        }*/
         
         
         
 // arreglar
-      vista.dispose();
+  /*    vista.dispose();
       if (v_humano != null)
         v_humano.dispose();
+        */
     }
 
     @Override
