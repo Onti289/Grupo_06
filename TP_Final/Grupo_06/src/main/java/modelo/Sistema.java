@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Observable;
 
 import excepciones.*;
 import controladores.*;
@@ -18,7 +19,7 @@ import persistencia.*;
 /**
  * 
  */
-public class Sistema {
+public class Sistema extends Observable{
 
 	private static Sistema _instancia = null;
 	private String nombre;
@@ -270,6 +271,15 @@ public class Sistema {
 
 	}
 
+	public void agregarPedido(Administrador a, Pedido pedido){
+        a.agregarPedido(pedido);
+    }
+
+	public Pedido sacarPedido(Administrador a) {
+    	return a.sacarPedido();
+    }
+	
+	
 	/**
 	 * Metodo de tipo void que genera un viaje en base a un Pedido p y a los choferes y vehiculos disponibles y que cumplen las condicioens en Administrador a en su correspondiente lista. <br>
 	 *
@@ -292,7 +302,8 @@ public class Sistema {
 		if(!a.vehiculoCumplePedido(p)) {
 			throw new NoHayVehiculoException("No hay vehiculos que cumplan con el pedido");
 		}
-
+        persistir();
+        
 		chofer = a.SacarChofer();
 		vehiculo = a.sacarVehiculo(p);
 

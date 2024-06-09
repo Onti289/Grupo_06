@@ -25,6 +25,7 @@ public class Administrador extends Usuario{
     private static LinkedList<Vehiculo> colaVehiculos = new LinkedList<Vehiculo>();
     private static LinkedList<Cliente> listaClientes = new LinkedList<Cliente>();
     private static LinkedList<IViaje> listaViajes = new LinkedList<IViaje>();
+    private static LinkedList<Pedido> listaPedidos = new LinkedList<Pedido>();
 	private Cliente clienteHumano;
 
     /**
@@ -42,6 +43,9 @@ public class Administrador extends Usuario{
     }
 
     
+    public static LinkedList<Pedido> getListaPedidos() {
+		return listaPedidos;
+	}
     
     public static LinkedList<Chofer> getColaChoferes() {
 		return colaChoferes;
@@ -65,8 +69,14 @@ public class Administrador extends Usuario{
 		return listaViajes;
 	}
 
+	public void agregarPedido(Pedido pedido){
+        listaPedidos.add(pedido);
+    }
 
-
+	public Pedido sacarPedido() {
+    	return listaPedidos.poll();
+    }
+	
 	/**
      * Metodo de tipo void que agrega un chofer a la colaChofer. El chofer es agregado al final de la cola. <br>
      *
@@ -79,6 +89,8 @@ public class Administrador extends Usuario{
         colaChoferes.add(chofer);
     }
 
+    
+    
     /**
      * Metodo de tipo Chofer que saca de colaChofer al primer chofer de la misma. <br>
      * 
