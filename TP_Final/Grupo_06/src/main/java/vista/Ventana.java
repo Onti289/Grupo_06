@@ -59,6 +59,35 @@ public abstract class Ventana extends JFrame implements IVista{
 	public boolean isMascota() {
 		return false;
 	}
-	
-	
+	@Override
+	public String getNombreReal()
+	{
+    	return null;
+    }
+	@Override
+    public String getNuevoNomUsua()
+    {
+    	return null;
+    }
+	@Override
+    public String getNuevaContr()
+    {
+    	return null;
+    }
+	@Override
+    public String getNomUsua()
+    {
+    	return null;
+    }
+	@Override
+    public String getContr()
+    {
+    	return null;
+    }
+	@Override
+	public void setTextMsjInicSes(String string) {}
+	@Override
+	public void setTextMsjCrea(String string) {}
+	@Override
+	public void borraRegistrarse() {}
 }

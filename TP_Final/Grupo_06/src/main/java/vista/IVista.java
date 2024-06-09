@@ -30,5 +30,13 @@ public interface IVista
   public String getZona();
   public boolean isBaul();
   public boolean isMascota();
+  public String getNombreReal();  
+  public String getNuevoNomUsua();
+  public String getNuevaContr();  
+  public String getNomUsua();
+  public String getContr();
+public void setTextMsjInicSes(String string);
+public void setTextMsjCrea(String string);
+public void borraRegistrarse();
 
 }

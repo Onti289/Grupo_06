@@ -7,8 +7,6 @@ import vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import excepciones.*;
-
 public class SubiQueTeLlevo implements ActionListener{
 
     public static void main(String[] args) throws InterruptedException{
@@ -18,7 +16,7 @@ public class SubiQueTeLlevo implements ActionListener{
         vGeneral.setVisible(false);
     	
     	
-    	Modelo modelo = new Modelo();
+    	Sistema modelo = Sistema._getInstancia();
         vGeneral = new Ventana_Inicial();
         Controlador cGeneral = new ControladorInicial(modelo, vGeneral);
 

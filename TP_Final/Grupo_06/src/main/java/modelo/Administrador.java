@@ -559,4 +559,19 @@ public class Administrador extends Usuario{
 		return salida;
 	}
 	
+	public boolean existeNombreUsuario(String nombre)
+	{
+		int i = 0, tope = Administrador.listaClientes.size();
+		while (i < tope && Administrador.listaClientes.get(i).nombre.equals(nombre))
+			i++;
+		return i < tope;
+	}
+	
+	public boolean contraseniaCorrecta(String nombre, String contrasenia)
+	{
+		int i = 0, tope = Administrador.listaClientes.size();
+		while (i < tope && Administrador.listaClientes.get(i).nombre.equals(nombre))
+			i++;
+		return Administrador.listaClientes.get(i).contrasena.equals(contrasenia);
+	}
 }

@@ -38,20 +38,20 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 	private JPanel panel_10;
 	private JButton btnIngresarUsuario;
 	private JPanel panel_11;
-	private JTextField textField_3;
+	private JTextField MensajeDeIniciaSesion;
 	private JTextField txtIniciarSecin;
 	private JPanel panel_6;
 	private JPanel panel_1;
 	private JTextField textField_1;
-	private JTextField textField_4;
+	private JTextField Var_NuevoNombreUsuario;
 	private JPanel panel_2;
 	private JTextField textField_5;
-	private JPasswordField passwordField;
+	private JPasswordField Var_NuevapasswordField;
 	private JPanel panel_3;
 	private JPanel panel_4;
 	private JButton btnCrearUsuario;
 	private JPanel panel_5;
-	private JTextField textField_6;
+	private JTextField MensajeDeRegistrarse;
 	private JTextField txtNombreReal;
 	private JTextField Var_NombreReal;
 
@@ -126,10 +126,10 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.textField_1.setColumns(10);
 		this.panel_1.add(this.textField_1);
 		
-		this.textField_4 = new JTextField();
-		this.textField_4.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_4.setColumns(10);
-		this.panel_1.add(this.textField_4);
+		this.Var_NuevoNombreUsuario = new JTextField();
+		this.Var_NuevoNombreUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		this.Var_NuevoNombreUsuario.setColumns(10);
+		this.panel_1.add(this.Var_NuevoNombreUsuario);
 		
 		this.panel_2 = new JPanel();
 		this.panelLoguea.add(this.panel_2);
@@ -142,9 +142,9 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.textField_5.setColumns(10);
 		this.panel_2.add(this.textField_5);
 		
-		this.passwordField = new JPasswordField();
-		this.passwordField.setHorizontalAlignment(SwingConstants.CENTER);
-		this.panel_2.add(this.passwordField);
+		this.Var_NuevapasswordField = new JPasswordField();
+		this.Var_NuevapasswordField.setHorizontalAlignment(SwingConstants.CENTER);
+		this.panel_2.add(this.Var_NuevapasswordField);
 		
 		this.panel_3 = new JPanel();
 		this.panelLoguea.add(this.panel_3);
@@ -161,11 +161,11 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.panel_3.add(this.panel_5);
 		this.panel_5.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		this.textField_6 = new JTextField();
-		this.textField_6.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_6.setEditable(false);
-		this.textField_6.setColumns(10);
-		this.panel_5.add(this.textField_6);
+		this.MensajeDeRegistrarse = new JTextField();
+		this.MensajeDeRegistrarse.setHorizontalAlignment(SwingConstants.CENTER);
+		this.MensajeDeRegistrarse.setEditable(false);
+		this.MensajeDeRegistrarse.setColumns(10);
+		this.panel_5.add(this.MensajeDeRegistrarse);
 		
 		this.panelIniciaUsuario = new JPanel();
 		this.contentPane.add(this.panelIniciaUsuario);
@@ -228,11 +228,11 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 		this.panel_9.add(this.panel_11);
 		this.panel_11.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		this.textField_3 = new JTextField();
-		this.textField_3.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_3.setEditable(false);
-		this.textField_3.setColumns(10);
-		this.panel_11.add(this.textField_3);
+		this.MensajeDeIniciaSesion = new JTextField();
+		this.MensajeDeIniciaSesion.setHorizontalAlignment(SwingConstants.CENTER);
+		this.MensajeDeIniciaSesion.setEditable(false);
+		this.MensajeDeIniciaSesion.setColumns(10);
+		this.panel_11.add(this.MensajeDeIniciaSesion);
 		this.Var_NombreUsuarioInicia.addKeyListener(this);
 		this.Var_passwordField.addKeyListener(this);
 	}
@@ -253,22 +253,67 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent arg0)
     {
+      String nombreReal = null;
 	  String nuevoNomUsua = null;
       String nuevaContr = null;
       String NomUsua = null;
       String Contr = null;
       
-    	  nuevoNomUsua = this.Var_NuevoNombreUsuario.getText();
-    	  nuevaContr = this.Var_NuevapasswordField.getText();
-    	  NomUsua = this.Var_NombreUsuarioInicia.getText();
-          Contr = this.Var_passwordField.getText();
+    	  nombreReal = getNombreReal();
+          nuevoNomUsua = getNuevoNomUsua();
+    	  nuevaContr = getNuevaContr();
+    	  NomUsua = getNomUsua();
+          Contr = getContr();
 
-      boolean condicionCreaUsuario = !nuevoNomUsua.isEmpty() && !nuevoNomUsua.isBlank() && !nuevaContr.isEmpty() && !nuevaContr.isBlank();
+      boolean condicionCreaUsuario = !nombreReal.isEmpty() && !nombreReal.isBlank() && !nuevoNomUsua.isEmpty() && !nuevoNomUsua.isBlank() && !nuevaContr.isEmpty() && !nuevaContr.isBlank();
       boolean condicionIngresaUsuario = !NomUsua.isEmpty() && !NomUsua.isBlank() && !Contr.isEmpty() && !Contr.isBlank();
       this.btnCrearUsuario.setEnabled(condicionCreaUsuario);
       this.btnIngresarUsuario.setEnabled(condicionIngresaUsuario);
   
     }
-
+	@Override
+    public String getNombreReal()
+    {
+    	return this.Var_NombreReal.getText();
+    }
+    @Override
+    public String getNuevoNomUsua()
+    {
+    	return this.Var_NuevoNombreUsuario.getText();
+    }
+    @Override
+    public String getNuevaContr()
+    {
+    	return this.Var_NuevapasswordField.getText();
+    }
+    @Override
+    public String getNomUsua()
+    {
+    	return this.Var_NombreUsuarioInicia.getText();
+    }
+    @Override
+    public String getContr()
+    {
+    	return this.Var_passwordField.getText();
+    }
+    
+    @Override
+	public void setTextMsjInicSes(String string)
+    {
+    	this.MensajeDeIniciaSesion.setText(string);
+    }
+    @Override
+	public void setTextMsjCrea(String string)
+    {
+    	this.MensajeDeRegistrarse.setText(string);
+    }
+    
+	@Override
+	public void borraRegistrarse()
+	{
+		this.Var_NombreReal.setText(null);
+		this.Var_NuevoNombreUsuario.setText(null);
+		this.Var_NuevapasswordField.setText(null);
+	}
 
 }

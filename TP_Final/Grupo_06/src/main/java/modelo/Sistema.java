@@ -410,4 +410,14 @@ public class Sistema {
     {
     	return this.admin;
     }
+    
+    public boolean existeNombreUsuario(Administrador a, String nombre)
+	{
+		return a.existeNombreUsuario(nombre);
+	}
+	
+	public boolean contraseniaCorrecta(Administrador a, String nombre, String contrasenia)
+	{
+		return a.contraseniaCorrecta(nombre, contrasenia);
+	}
 }
