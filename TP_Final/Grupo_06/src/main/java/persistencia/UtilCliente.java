@@ -1,6 +1,6 @@
 package persistencia;
 
-import clases.Cliente;
+import modelo.Cliente;
 
 public class UtilCliente {
 

@@ -1,8 +1,8 @@
 package prueba;
 import java.time.LocalDateTime;
 
-import clases.*;
 import excepciones.*;
+import modelo.*;
 
 public class Prueba {
 

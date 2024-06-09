@@ -39,4 +39,26 @@ public abstract class Ventana extends JFrame implements IVista{
 
 	@Override
 	public void hayHumano() {}
+	
+	@Override
+	public int getCantPax() {
+		return 0;
+	}
+	
+	@Override
+	public String getZona() {
+		return null;
+	}
+	
+	@Override
+	public boolean isBaul() {
+		return false;
+	}
+	
+	@Override
+	public boolean isMascota() {
+		return false;
+	}
+	
+	
 }

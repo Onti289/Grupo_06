@@ -2,8 +2,8 @@ package persistencia;
 
 import java.io.IOException;
 
-import clases.Administrador;
 import excepciones.NombreDeUsuarioYaExistenteException;
+import modelo.Administrador;
 
 public class PruebaPersistenciaLectura {
 

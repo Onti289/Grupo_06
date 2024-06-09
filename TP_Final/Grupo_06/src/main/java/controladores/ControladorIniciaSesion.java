@@ -2,7 +2,7 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 
-import modelo.Modelo;
+import modelo.*;
 import vista.IVista;
 import vista.Ventana_Chofer1;
 import vista.Ventana_Cliente1;
@@ -11,7 +11,7 @@ import vista.Ventana_General;
 
 public class ControladorIniciaSesion extends Controlador {
 
-	public ControladorIniciaSesion(Modelo modelo, IVista vista)
+	public ControladorIniciaSesion(Sistema modelo, IVista vista)
 	{
 		super(modelo, vista);
 	}
@@ -28,8 +28,9 @@ public class ControladorIniciaSesion extends Controlador {
 	    }
 		else  if (e.getActionCommand().equals(IVista.INICIARSESION))
 	    {
-	        //verificar nombre de usuario y mensaje
+	        this.modelo.getAdmin().existeCliente(null)//verificar nombre de usuario y mensaje
 			//verificar contraseña y mensaje
+			Usuario cliente = this.vista.g
 			this.vista.setVisible(false);
 			IVista vGeneral = new Ventana_General();
     		Controlador cGeneral = new ControladorGeneral(modelo, vGeneral);

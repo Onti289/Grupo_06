@@ -10,7 +10,7 @@ public class ControladorInicial extends Controlador{
 
 
 
-    public ControladorInicial(Modelo modelo, IVista vista)
+    public ControladorInicial(Sistema modelo, IVista vista)
     {
         super(modelo, vista);
 

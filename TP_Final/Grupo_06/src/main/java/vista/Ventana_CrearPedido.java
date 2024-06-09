@@ -232,4 +232,46 @@ public class Ventana_CrearPedido extends Ventana{
 		
 		
 	}
+	
+	@Override
+	public int getCantPax()
+	{
+		if (this.rdbtn1.isSelected())
+			return 1;
+		if (this.rdbtn2.isSelected())
+			return 2;
+		if (this.rdbtn3.isSelected())
+			return 3;
+		if (this.rdbtn4.isSelected())
+			return 4;
+		if (this.rdbtn5.isSelected())
+			return 5;
+		if (this.rdbtn6.isSelected())
+			return 6;
+		if (this.rdbtn7.isSelected())
+			return 7;
+		else
+		    return 8;
+	}
+	
+	@Override
+	public String getZona()
+	{
+		if (this.rdbtnEstandar.isSelected())
+		  return IVista.ESTANDAR;
+		if (this.rdbtnSinAsfaltar.isSelected())
+		  return IVista.SINASFALTAR;
+		else
+		  return IVista.PICANTE;
+	}
+	
+	@Override
+	public boolean isBaul(){
+		return this.rdbtnSiBaul.isSelected();
+	}
+	
+	@Override
+	public boolean isMascota() {
+		return this.rdbtnSiMascota.isSelected();
+	}
 }

@@ -1,9 +1,9 @@
 package persistencia;
 
-import clases.Chofer;
-import clases.ChoferContratado;
-import clases.ChoferPermanente;
-import clases.ChoferTemporario;
+import modelo.Chofer;
+import modelo.ChoferContratado;
+import modelo.ChoferPermanente;
+import modelo.ChoferTemporario;
 
 public class UtilChofer {
 	public static ChoferDTO choferDTOfromChofer(Chofer chofer) {

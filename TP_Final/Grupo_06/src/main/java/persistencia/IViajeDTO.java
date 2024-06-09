@@ -3,9 +3,7 @@ package persistencia;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import clases.Chofer;
-import clases.Cliente;
-import clases.Vehiculo;
+import modelo.*;
 
 public class IViajeDTO implements Serializable {
 	private String estado;
@@ -17,6 +15,7 @@ public class IViajeDTO implements Serializable {
 	private int distanciaRealRecorrida;
 	private int pasajeros;
 	private LocalDateTime fecha;
+	private Pedido pedido;
 
 	
 	public String getEstado() {

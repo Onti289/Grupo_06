@@ -3,9 +3,9 @@ package persistencia;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import clases.Administrador;
-import clases.Chofer;
 import excepciones.NombreDeUsuarioYaExistenteException;
+import modelo.Administrador;
+import modelo.Chofer;
 
 public class UtilAdministrador {
 	public static AdministradorDTO administradorDTOfromAdministrador(Administrador admin) {

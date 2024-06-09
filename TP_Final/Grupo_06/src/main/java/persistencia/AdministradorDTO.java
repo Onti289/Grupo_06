@@ -3,10 +3,10 @@ package persistencia;
 import java.io.Serializable;
 import java.util.LinkedList;
 
-import clases.Chofer;
-import clases.Cliente;
-import clases.IViaje;
-import clases.Vehiculo;
+import modelo.Chofer;
+import modelo.Cliente;
+import modelo.IViaje;
+import modelo.Vehiculo;
 
 public class AdministradorDTO implements Serializable {
 	private String nombre;

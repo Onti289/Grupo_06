@@ -1,8 +1,8 @@
 package persistencia;
 
-import clases.IViaje;
-import clases.Vehiculo;
-import clases.Viaje;
+import modelo.IViaje;
+import modelo.Vehiculo;
+import modelo.Viaje;
 
 public class UtilViaje {
 

@@ -7,7 +7,6 @@ import vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import clases.*;
 import excepciones.*;
 
 public class SubiQueTeLlevo implements ActionListener{
@@ -15,7 +14,7 @@ public class SubiQueTeLlevo implements ActionListener{
     public static void main(String[] args) throws InterruptedException{
         IVista vGeneral = new Ventana_DeCarga();
         vGeneral.arranca();
-        Thread.sleep(3000);
+        Thread.sleep(0);
         vGeneral.setVisible(false);
     	
     	

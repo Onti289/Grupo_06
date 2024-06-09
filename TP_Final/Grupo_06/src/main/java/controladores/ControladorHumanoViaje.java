@@ -2,13 +2,13 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 
-import modelo.Modelo;
+import modelo.*;
 import vista.IVista;
 import vista.Ventana_CrearPedido;
 
 public class ControladorHumanoViaje extends Controlador {
 
-	public ControladorHumanoViaje(Modelo modelo, IVista vista) {
+	public ControladorHumanoViaje(Sistema modelo, IVista vista) {
 		super(modelo, vista);
 	}
 

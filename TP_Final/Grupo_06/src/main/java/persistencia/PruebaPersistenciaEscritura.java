@@ -2,16 +2,16 @@ package persistencia;
 
 import java.io.IOException;
 
-import clases.Administrador;
-import clases.Chofer;
-import clases.ChoferContratado;
-import clases.ChoferPermanente;
-import clases.ChoferTemporario;
-import clases.Cliente;
-import clases.Sistema;
-import clases.Vehiculo;
-import clases.VehiculoFactory;
 import excepciones.NombreDeUsuarioYaExistenteException;
+import modelo.Administrador;
+import modelo.Chofer;
+import modelo.ChoferContratado;
+import modelo.ChoferPermanente;
+import modelo.ChoferTemporario;
+import modelo.Cliente;
+import modelo.Sistema;
+import modelo.Vehiculo;
+import modelo.VehiculoFactory;
 
 public class PruebaPersistenciaEscritura {
 

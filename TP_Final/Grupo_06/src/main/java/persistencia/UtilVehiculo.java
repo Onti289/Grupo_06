@@ -1,9 +1,9 @@
 package persistencia;
 
-import clases.Automovil;
-import clases.Combi;
-import clases.Moto;
-import clases.Vehiculo;
+import modelo.Automovil;
+import modelo.Combi;
+import modelo.Moto;
+import modelo.Vehiculo;
 
 public class UtilVehiculo {
 

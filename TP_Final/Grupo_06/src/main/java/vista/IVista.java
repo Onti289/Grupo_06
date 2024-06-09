@@ -26,5 +26,9 @@ public interface IVista
   public boolean isActive();
   public void setVisible(boolean b);
   public boolean isVisible();
+  public int getCantPax();
+  public String getZona();
+  public boolean isBaul();
+  public boolean isMascota();
 
 }

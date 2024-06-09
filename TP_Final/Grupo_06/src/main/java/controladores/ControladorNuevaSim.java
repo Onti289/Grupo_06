@@ -8,7 +8,7 @@ import vista.*;
 
 public class ControladorNuevaSim extends Controlador{
 
-    public ControladorNuevaSim(Modelo modelo, IVista vista) {
+    public ControladorNuevaSim(Sistema modelo, IVista vista) {
         super(modelo, vista);
     }
 
