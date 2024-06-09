@@ -39,7 +39,7 @@ public class Ventana_Inicial extends Ventana implements IVista{
 	private JPanel panel_1;
 	private JButton btnNewSimulacion;
 	private JPanel panel_2;
-	private JButton btnSimulacionAleatoria;
+	private JButton btnUltimaSimulacion;
 	private JPanel panel_3;
 	private JPanel panel_4;
 	private JRadioButton rdbtnHayHumano;
@@ -93,7 +93,7 @@ public class Ventana_Inicial extends Ventana implements IVista{
 		this.lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		this.lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
 		this.lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 5));
-		this.lblNewLabel.setIcon(new ImageIcon("SANDRITO.jpg"));
+		this.lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Debora\\Desktop\\Grupo_06\\TP_Final\\Grupo_06\\SANDRITO.jpg"));
 		this.panel.add(this.lblNewLabel, BorderLayout.NORTH);
 		
 		this.panel_1 = new JPanel();
@@ -129,8 +129,8 @@ public class Ventana_Inicial extends Ventana implements IVista{
 		this.panel_4 = new JPanel();
 		this.panel_1.add(this.panel_4);
 		
-		this.btnSimulacionAleatoria = new JButton(SIMALEAT);
-		this.panel_4.add(this.btnSimulacionAleatoria);
+		this.btnUltimaSimulacion = new JButton(CARGAULT);
+		this.panel_4.add(this.btnUltimaSimulacion);
 		
 		this.panel_der = new JPanel();
 		this.contentPane.add(this.panel_der);
@@ -141,7 +141,7 @@ public class Ventana_Inicial extends Ventana implements IVista{
 	@Override
 	public void setControlador(Controlador c) {
 		this.btnNewSimulacion.addActionListener(c);
-		this.btnSimulacionAleatoria.addActionListener(c);
+		this.btnUltimaSimulacion.addActionListener(c);
 		this.rdbtnHayHumano.addActionListener(c);
 		this.rdbtnNoHayHumano.addActionListener(c);
 		

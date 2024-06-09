@@ -58,7 +58,7 @@ public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
 	private JTextField textField_11;
 	private JPanel panel_4;
 	private JPanel panel_5;
-	private JTextField textField_12;
+	private JTextField txtMaxViajes_1;
 	private JTextField Var_CantViajesXCliente;
 	private JTextField textField_14;
 	private JTextField Var_CantClientes;
@@ -67,7 +67,7 @@ public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
 	private JPanel panel_6;
 	private JPanel panel_bajoo;
 	private JPanel panel_bajoobajo;
-	private JTextField textField_1;
+	private JTextField txtMaxViajes;
 	private JTextField Var_CantViajesXChofer;
 	private JTextField txtCantTemporarios;
 	private JTextField Var_CantTemporarios;
@@ -184,12 +184,12 @@ public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
 		this.panel_bajoobajo = new JPanel();
 		this.panel_choferbajo.add(this.panel_bajoobajo);
 		
-		this.textField_1 = new JTextField();
-		this.textField_1.setText("Cantidad Viajes:");
-		this.textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_1.setEditable(false);
-		this.textField_1.setColumns(12);
-		this.panel_bajoobajo.add(this.textField_1);
+		this.txtMaxViajes = new JTextField();
+		this.txtMaxViajes.setText("Max. Viajes:");
+		this.txtMaxViajes.setHorizontalAlignment(SwingConstants.CENTER);
+		this.txtMaxViajes.setEditable(false);
+		this.txtMaxViajes.setColumns(12);
+		this.panel_bajoobajo.add(this.txtMaxViajes);
 		
 		this.Var_CantViajesXChofer = new JTextField();
 		this.Var_CantViajesXChofer.setText("0");
@@ -305,12 +305,12 @@ public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
 		this.panel_5 = new JPanel();
 		this.panel_intermedioDER.add(this.panel_5);
 		
-		this.textField_12 = new JTextField();
-		this.textField_12.setText("Cantidad viajes:");
-		this.textField_12.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textField_12.setEditable(false);
-		this.textField_12.setColumns(12);
-		this.panel_5.add(this.textField_12);
+		this.txtMaxViajes_1 = new JTextField();
+		this.txtMaxViajes_1.setText("Max. Viajes:");
+		this.txtMaxViajes_1.setHorizontalAlignment(SwingConstants.CENTER);
+		this.txtMaxViajes_1.setEditable(false);
+		this.txtMaxViajes_1.setColumns(12);
+		this.panel_5.add(this.txtMaxViajes_1);
 		
 		this.Var_CantViajesXCliente = new JTextField();
 		this.Var_CantViajesXCliente.setText("0");

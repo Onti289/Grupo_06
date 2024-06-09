@@ -33,7 +33,7 @@ public class ControladorInicial extends Controlador{
             this.modelo.setNuevaSim(true);
             this.vista.setVisible(false);
         }
-        else if (e.getActionCommand().equals(IVista.SIMALEAT))
+        else if (e.getActionCommand().equals(IVista.CARGAULT))
         {
             this.modelo.setNuevaSim(false);
             this.vista.setVisible(false);
