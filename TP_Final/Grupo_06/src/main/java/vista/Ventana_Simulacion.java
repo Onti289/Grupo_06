@@ -23,7 +23,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import controladores.*;
 
-public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
+public class Ventana_Simulacion extends Ventana implements KeyListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

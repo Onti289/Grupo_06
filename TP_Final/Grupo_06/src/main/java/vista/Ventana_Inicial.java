@@ -28,7 +28,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 
-public class Ventana_Inicial extends Ventana implements IVista{
+public class Ventana_Inicial extends Ventana{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

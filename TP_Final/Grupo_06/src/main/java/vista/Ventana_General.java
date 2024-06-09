@@ -6,12 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import controladores.*;
 
-public class Ventana_General extends Ventana implements IVista{
+public class Ventana_General extends Ventana implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -60,6 +62,12 @@ public class Ventana_General extends Ventana implements IVista{
 		
 		this.Vista_Chofer_Robot = new JScrollPane();
 		this.tabbedPane.addTab("Vista Chofer Robot", null, this.Vista_Chofer_Robot, null);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

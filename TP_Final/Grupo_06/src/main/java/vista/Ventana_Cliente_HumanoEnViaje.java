@@ -6,13 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 
-public class Ventana_Cliente_HumanoEnViaje extends Ventana {
+public class Ventana_Cliente_HumanoEnViaje extends Ventana implements Observer {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -69,9 +72,16 @@ public class Ventana_Cliente_HumanoEnViaje extends Ventana {
 		this.panel_1 = new JPanel();
 		this.panel_boton.add(this.panel_1);
 		
-		this.btnNewButton = new JButton("Pagar");
+		this.btnNewButton = new JButton(PAGAR);
 		this.panel_1.add(this.btnNewButton);
 		this.btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		this.btnNewButton.setEnabled(false);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

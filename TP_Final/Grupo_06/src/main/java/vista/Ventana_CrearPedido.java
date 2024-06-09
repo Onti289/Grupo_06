@@ -11,10 +11,12 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Font;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import controladores.*;
 
-public class Ventana_CrearPedido extends Ventana implements IVista{
+public class Ventana_CrearPedido extends Ventana{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -46,6 +48,11 @@ public class Ventana_CrearPedido extends Ventana implements IVista{
 	private JTextField txtCompleteElFormulario;
 	private JPanel panel;
 	private JButton btnCrearPedidoHumano;
+	private final ButtonGroup buttonGroupCantPax = new ButtonGroup();
+	private final ButtonGroup buttonGroupZona = new ButtonGroup();
+	private final ButtonGroup buttonGroupMascota = new ButtonGroup();
+	private final ButtonGroup buttonGroupBaul = new ButtonGroup();
+	private Object buttonGroup;
 
 	/**
 	 * Launch the application.
@@ -100,27 +107,35 @@ public class Ventana_CrearPedido extends Ventana implements IVista{
 		this.rdbtn1 = new JRadioButton("1");
 		this.rdbtn1.setSelected(true);
 		this.panelCantPasajeros.add(this.rdbtn1);
+		this.buttonGroupCantPax.add(this.rdbtn1);
 		
 		this.rdbtn2 = new JRadioButton("2");
 		this.panelCantPasajeros.add(this.rdbtn2);
+		this.buttonGroupCantPax.add(this.rdbtn2);
 		
 		this.rdbtn3 = new JRadioButton("3");
 		this.panelCantPasajeros.add(this.rdbtn3);
+		this.buttonGroupCantPax.add(this.rdbtn3);
 		
 		this.rdbtn4 = new JRadioButton("4");
 		this.panelCantPasajeros.add(this.rdbtn4);
+		this.buttonGroupCantPax.add(this.rdbtn4);
 		
 		this.rdbtn5 = new JRadioButton("5");
 		this.panelCantPasajeros.add(this.rdbtn5);
+		this.buttonGroupCantPax.add(this.rdbtn5);
 		
 		this.rdbtn6 = new JRadioButton("6");
 		this.panelCantPasajeros.add(this.rdbtn6);
+		this.buttonGroupCantPax.add(this.rdbtn6);
 		
 		this.rdbtn7 = new JRadioButton("7");
 		this.panelCantPasajeros.add(this.rdbtn7);
+		this.buttonGroupCantPax.add(this.rdbtn7);
 		
 		this.rdbtn8 = new JRadioButton("8");
 		this.panelCantPasajeros.add(this.rdbtn8);
+		this.buttonGroupCantPax.add(this.rdbtn8);
 		
 		this.panelElijaZona = new JPanel();
 		this.contentPane.add(this.panelElijaZona);
@@ -132,15 +147,18 @@ public class Ventana_CrearPedido extends Ventana implements IVista{
 		this.panelElijaZona.add(this.txtElijaLaZona);
 		this.txtElijaLaZona.setColumns(8);
 		
-		this.rdbtnEstandar = new JRadioButton("Estándar");
+		this.rdbtnEstandar = new JRadioButton(ESTANDAR);
 		this.rdbtnEstandar.setSelected(true);
 		this.panelElijaZona.add(this.rdbtnEstandar);
+		this.buttonGroupZona.add(this.rdbtnEstandar);
 		
-		this.rdbtnSinAsfaltar = new JRadioButton("Sin asfaltar");
+		this.rdbtnSinAsfaltar = new JRadioButton(SINASFALTAR);
 		this.panelElijaZona.add(this.rdbtnSinAsfaltar);
+		this.buttonGroupZona.add(this.rdbtnSinAsfaltar);
 		
-		this.rdbtnZonaPeligrosa = new JRadioButton("Picante");
+		this.rdbtnZonaPeligrosa = new JRadioButton(PICANTE);
 		this.panelElijaZona.add(this.rdbtnZonaPeligrosa);
+		this.buttonGroupZona.add(this.rdbtnZonaPeligrosa);
 		
 		this.panelDoble = new JPanel();
 		this.contentPane.add(this.panelDoble);
@@ -156,12 +174,14 @@ public class Ventana_CrearPedido extends Ventana implements IVista{
 		this.panelMascota.add(this.txtLlevaMascota);
 		this.txtLlevaMascota.setColumns(9);
 		
-		this.rdbtnSiMascota = new JRadioButton("Si");
+		this.rdbtnSiMascota = new JRadioButton(SI);
 		this.panelMascota.add(this.rdbtnSiMascota);
+		this.buttonGroupMascota.add(this.rdbtnSiMascota);
 		
-		this.rdbtnNoMascota = new JRadioButton("No");
+		this.rdbtnNoMascota = new JRadioButton(NO);
 		this.rdbtnNoMascota.setSelected(true);
 		this.panelMascota.add(this.rdbtnNoMascota);
+		this.buttonGroupMascota.add(this.rdbtnNoMascota);
 		
 		this.panelBaul = new JPanel();
 		this.panelDoble.add(this.panelBaul);
@@ -174,19 +194,41 @@ public class Ventana_CrearPedido extends Ventana implements IVista{
 		this.panelBaul.add(this.txtLlevaEquipaje);
 		this.txtLlevaEquipaje.setColumns(14);
 		
-		this.rdbtnSiBaul = new JRadioButton("Si");
+		this.rdbtnSiBaul = new JRadioButton(SI);
 		this.panelBaul.add(this.rdbtnSiBaul);
+		this.buttonGroupBaul.add(this.rdbtnSiBaul);
 		
-		this.rdbtnNoBaul = new JRadioButton("No");
+		this.rdbtnNoBaul = new JRadioButton(NO);
 		this.rdbtnNoBaul.setSelected(true);
 		this.panelBaul.add(this.rdbtnNoBaul);
+		this.buttonGroupBaul.add(this.rdbtnNoBaul);
 		
 		this.panel = new JPanel();
 		this.contentPane.add(this.panel);
 		
-		this.btnCrearPedidoHumano = new JButton("Aceptar");
+		this.btnCrearPedidoHumano = new JButton(ACEPTAR);
 		this.btnCrearPedidoHumano.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		this.panel.add(this.btnCrearPedidoHumano);
 	}
 
+	public void setControlador(Controlador c) {
+		this.btnCrearPedidoHumano.addActionListener(c);
+		this.rdbtn1.addActionListener(c);
+		this.rdbtn2.addActionListener(c);
+		this.rdbtn3.addActionListener(c);
+		this.rdbtn4.addActionListener(c);
+		this.rdbtn5.addActionListener(c);
+		this.rdbtn6.addActionListener(c);
+		this.rdbtn7.addActionListener(c);
+		this.rdbtn8.addActionListener(c);
+		this.rdbtnEstandar.addActionListener(c);
+		this.rdbtnSinAsfaltar.addActionListener(c);
+		this.rdbtnNoBaul.addActionListener(c);
+		this.rdbtnNoMascota.addActionListener(c);
+		this.rdbtnSiBaul.addActionListener(c);
+		this.rdbtnSiMascota.addActionListener(c);
+		this.rdbtnZonaPeligrosa.addActionListener(c);
+		
+		
+	}
 }

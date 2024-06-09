@@ -19,7 +19,7 @@ import javax.swing.JButton;
 import javax.swing.BoxLayout;
 import controladores.*;
 
-public class Ventana_Humano extends Ventana implements KeyListener, IVista{
+public class Ventana_Humano extends Ventana implements KeyListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

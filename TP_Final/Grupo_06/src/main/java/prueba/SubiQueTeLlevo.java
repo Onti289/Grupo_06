@@ -17,6 +17,7 @@ public class SubiQueTeLlevo implements ActionListener{
         IVista vista = new Ventana_Inicial();
         Controlador control = new ControladorInicial(modelo, vista);
         IVista v_humano = null;
+        Controlador controlHum = null;
 
         vista.setControlador(control);
         vista.arranca();
@@ -37,33 +38,48 @@ public class SubiQueTeLlevo implements ActionListener{
           
               Thread.sleep(500);
 
-
           }
         }
 
-        if (modelo.isHayHumano()) //completar
+        if (modelo.isHayHumano())
         {
           v_humano = new Ventana_Humano();
-          Controlador controlHum = new ControladorHumano(modelo, v_humano);
+          controlHum = new ControladorHumano(modelo, v_humano);
           v_humano.setControlador(controlHum);
           v_humano.arranca();
-          while (vista.isVisible()) {
+          while (v_humano.isVisible()) {
 
               Thread.sleep(500);
-
 
           }
           
         }
-        vista = new Ventana_General();
+       /* vista = new Ventana_General();
         control = new ControladorGeneral(modelo, vista);
         vista.setControlador(control);
-        vista.arranca();
+        vista.arranca();*/
         
-      /*  while()//hay choferes y cliente humano
+        while(modelo.isHayHumano() )//&& hay choferes && tengo viajes disponibles (random v_simu)
         {
-        	
-        }*/
+        	v_humano = new Ventana_CrearPedido();
+            controlHum = new ControladorPedido(modelo, v_humano);
+            v_humano.setControlador(controlHum);
+            v_humano.arranca();
+            while (v_humano.isVisible()) {
+
+                Thread.sleep(500);
+
+            }
+            v_humano = new Ventana_Cliente_HumanoEnViaje();
+            controlHum = new ControladorHumanoViaje(modelo, v_humano);
+            v_humano.setControlador(controlHum);
+            v_humano.arranca();
+            while (v_humano.isVisible()) {
+            
+                Thread.sleep(500);
+                
+            }
+        }
         
         
         
