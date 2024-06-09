@@ -378,9 +378,9 @@ public class Ventana_Simulacion extends Ventana implements KeyListener, IVista{
       {
       }
 
-      boolean condicion = permanentes >= 0 && temporarios >= 0 && contratados >= 0 && viajesXChofer >= 0;
+      boolean condicion = permanentes >= 0 && temporarios >= 0 && contratados >= 0 && viajesXChofer >= 1;
       boolean condicion2 = motos >= 0 && autos >= 0 && combis >= 0;
-      boolean condicion3 = clientes >= 0 && viajesXCliente >= 0;
+      boolean condicion3 = clientes >= 0 && viajesXCliente >= 1;
       this.btnIniciaSimulacion.setEnabled(condicion && condicion2 && condicion3);
   
     }

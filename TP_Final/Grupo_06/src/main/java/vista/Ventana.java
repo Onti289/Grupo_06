@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controladores.Controlador;
+
 public abstract class Ventana extends JFrame implements IVista{
 
 	private static final long serialVersionUID = 1L;
@@ -22,6 +24,9 @@ public abstract class Ventana extends JFrame implements IVista{
 
 		setContentPane(contentPane);
 	}
+	@Override
+	public void setControlador(Controlador c) {}
+	
 	@Override
 	public void arranca() {
 		pack();

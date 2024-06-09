@@ -56,7 +56,7 @@ public class SubiQueTeLlevo implements ActionListener{
           
         }
         vista = new Ventana_General();
-        control = new ControladorGeneral();
+        control = new ControladorGeneral(modelo, vista);
         vista.setControlador(control);
         vista.arranca();
         

@@ -62,4 +62,5 @@ public class Ventana_General extends Ventana implements IVista{
 		this.tabbedPane.addTab("Vista Chofer Robot", null, this.Vista_Chofer_Robot, null);
 	}
 
+
 }
