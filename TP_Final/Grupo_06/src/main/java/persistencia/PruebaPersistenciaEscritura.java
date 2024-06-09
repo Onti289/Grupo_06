@@ -1,7 +1,10 @@
 package persistencia;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
+import excepciones.NoHayChoferesDisponiblesException;
+import excepciones.NoHayVehiculoException;
 import excepciones.NombreDeUsuarioYaExistenteException;
 import modelo.Administrador;
 import modelo.Chofer;
@@ -9,6 +12,7 @@ import modelo.ChoferContratado;
 import modelo.ChoferPermanente;
 import modelo.ChoferTemporario;
 import modelo.Cliente;
+import modelo.Pedido;
 import modelo.Sistema;
 import modelo.Vehiculo;
 import modelo.VehiculoFactory;
@@ -55,6 +59,15 @@ public class PruebaPersistenciaEscritura {
 		sistema.agregaChofer(admin,chofer1);
 		sistema.agregaChofer(admin,chofer2);
 		sistema.agregaChofer(admin,chofer3);
+		
+		try {
+			sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Zona Peligrosa", false, true, 2, cliente1, 50));
+			sistema.generaViaje(admin, new Pedido(LocalDateTime.now(), "Estandar", false, true, 2, cliente1, 20));
+		} catch (NoHayChoferesDisponiblesException | NoHayVehiculoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    
 		
 		 try
 	        {

@@ -23,7 +23,15 @@ public class Cliente extends Usuario {
         // TODO Auto-generated constructor stub
     }
 
-    /**
+    
+    
+    public Cliente() {
+		super();
+	}
+
+
+
+	/**
      * Metodo que genera y devuelve un nuevo pedido en base a diferentes parametros que determinaran el tipo de vwhiculo y el precio final del Viaje a realizar. <br>
      *
      * <b>Pre: </b> parametro fecha con valor de fecha valida, parametro cantidadPasajeros con valor positivo y menor a 8, parametro distancia con valor positivo, parametro zona con valor valido de zona en base a tipos existentes. <br>

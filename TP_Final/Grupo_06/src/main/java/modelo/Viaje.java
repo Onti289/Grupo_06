@@ -46,6 +46,10 @@ public abstract class Viaje implements IViaje {
 			this.fecha = pedido.getFecha();
 			this.pedido = pedido;
 		}
+		
+		public Pedido getPedido() {
+			return pedido;
+		}
 
 		public Chofer getChofer() {
 			return chofer;

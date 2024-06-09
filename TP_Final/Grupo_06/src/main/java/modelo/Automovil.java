@@ -13,6 +13,13 @@ public class Automovil extends Vehiculo {
     
     }
 
+    
+
+	public Automovil() {
+		super();
+	}
+
+
 
 	/**
 	 * Metodo de tipo boolean que permite saber la prioridad de un Automovil contra cualquiera de los otros tipos de vehiculos. <br>

@@ -36,8 +36,16 @@ public abstract class Usuario {
         this.contrasena = contrasena;
         this.nombreReal= nombreReal;
     }
+    
+    
 
-    public String getNombre() {
+    public Usuario() {
+		super();
+	}
+
+
+
+	public String getNombre() {
         return this.nombre;
     }
     public String getNombreReal() {

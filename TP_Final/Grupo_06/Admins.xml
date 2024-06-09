@@ -5,7 +5,29 @@
    <void method="add">
     <object class="persistencia.ChoferDTO">
      <void property="DNI">
+      <string>36998741</string>
+     </void>
+     <void property="aportes">
+      <int>10</int>
+     </void>
+     <void property="nombre">
+      <string>Juan Cruz</string>
+     </void>
+     <void property="sueldoBasico">
+      <double>50000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Temporario</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
       <string>40569874</string>
+     </void>
+     <void property="KMrecorridosMes">
+      <double>50.0</double>
      </void>
      <void property="gananciaViaje">
       <int>30</int>
@@ -16,12 +38,18 @@
      <void property="tipo">
       <string>Contratado</string>
      </void>
+     <void property="viajesMes">
+      <int>1</int>
+     </void>
     </object>
    </void>
    <void method="add">
     <object class="persistencia.ChoferDTO">
      <void property="DNI">
       <string>23666987</string>
+     </void>
+     <void property="KMrecorridosMes">
+      <double>20.0</double>
      </void>
      <void property="anioIngreso">
       <int>1998</int>
@@ -44,24 +72,8 @@
      <void property="tipo">
       <string>Permanente</string>
      </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="persistencia.ChoferDTO">
-     <void property="DNI">
-      <string>36998741</string>
-     </void>
-     <void property="aportes">
-      <int>10</int>
-     </void>
-     <void property="nombre">
-      <string>Juan Cruz</string>
-     </void>
-     <void property="sueldoBasico">
-      <double>50000.0</double>
-     </void>
-     <void property="tipo">
-      <string>Temporario</string>
+     <void property="viajesMes">
+      <int>1</int>
      </void>
     </object>
    </void>
@@ -77,25 +89,6 @@
      </void>
      <void property="patente">
       <string>AD-123-CD</string>
-     </void>
-     <void property="petFriendly">
-      <boolean>true</boolean>
-     </void>
-     <void property="tipo">
-      <string>Automovil</string>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="persistencia.VehiculoDTO">
-     <void property="baul">
-      <boolean>true</boolean>
-     </void>
-     <void property="maxPasajeros">
-      <int>4</int>
-     </void>
-     <void property="patente">
-      <string>BC-122-AA</string>
      </void>
      <void property="petFriendly">
       <boolean>true</boolean>
@@ -131,6 +124,25 @@
      </void>
      <void property="tipo">
       <string>Moto</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.VehiculoDTO">
+     <void property="baul">
+      <boolean>true</boolean>
+     </void>
+     <void property="maxPasajeros">
+      <int>4</int>
+     </void>
+     <void property="patente">
+      <string>BC-122-AA</string>
+     </void>
+     <void property="petFriendly">
+      <boolean>true</boolean>
+     </void>
+     <void property="tipo">
+      <string>Automovil</string>
      </void>
     </object>
    </void>
@@ -175,6 +187,125 @@
      </void>
      <void property="nombreReal">
       <string>Javier</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="listaViajes">
+   <void method="add">
+    <object class="persistencia.IViajeDTO">
+     <void property="chofer">
+      <object class="modelo.ChoferContratado">
+       <void property="KMrecorridosMes">
+        <double>50.0</double>
+       </void>
+       <void property="gananciaViaje">
+        <int>30</int>
+       </void>
+       <void property="viajesMes">
+        <int>1</int>
+       </void>
+      </object>
+     </void>
+     <void property="cliente">
+      <object class="modelo.Cliente" id="Cliente0">
+       <void property="contrasena">
+        <string>abc123</string>
+       </void>
+       <void property="nombre">
+        <string>user1</string>
+       </void>
+       <void property="nombreReal">
+        <string>Carlos</string>
+       </void>
+      </object>
+     </void>
+     <void property="costo">
+      <double>41440.0</double>
+     </void>
+     <void property="distanciaRealRecorrida">
+      <int>50</int>
+     </void>
+     <void property="estado">
+      <string>Finalizado</string>
+     </void>
+     <void property="fecha">
+      <string>2024-06-09T18:09:23.812626700</string>
+     </void>
+     <void property="pasajeros">
+      <int>2</int>
+     </void>
+     <void property="pedido">
+      <object class="modelo.Pedido"/>
+     </void>
+     <void property="vehiculo">
+      <object class="modelo.Automovil" id="Automovil0">
+       <void property="baul">
+        <boolean>true</boolean>
+       </void>
+       <void property="maxPasajeros">
+        <int>4</int>
+       </void>
+       <void property="patente">
+        <string>BC-122-AA</string>
+       </void>
+       <void property="petFriendly">
+        <boolean>true</boolean>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.IViajeDTO">
+     <void property="chofer">
+      <object class="modelo.ChoferPermanente">
+       <void property="KMrecorridosMes">
+        <double>20.0</double>
+       </void>
+       <void property="anioIngreso">
+        <int>1998</int>
+       </void>
+       <void property="antiguedad">
+        <int>26</int>
+       </void>
+       <void property="aportes">
+        <int>2</int>
+       </void>
+       <void property="cantHijos">
+        <int>10</int>
+       </void>
+       <void property="sueldobasico">
+        <double>80000.0</double>
+       </void>
+       <void property="viajesMes">
+        <int>1</int>
+       </void>
+      </object>
+     </void>
+     <void property="cliente">
+      <object idref="Cliente0"/>
+     </void>
+     <void property="costo">
+      <double>7040.0</double>
+     </void>
+     <void property="distanciaRealRecorrida">
+      <int>20</int>
+     </void>
+     <void property="estado">
+      <string>Finalizado</string>
+     </void>
+     <void property="fecha">
+      <string>2024-06-09T18:09:23.815628</string>
+     </void>
+     <void property="pasajeros">
+      <int>2</int>
+     </void>
+     <void property="pedido">
+      <object class="modelo.Pedido"/>
+     </void>
+     <void property="vehiculo">
+      <object idref="Automovil0"/>
      </void>
     </object>
    </void>

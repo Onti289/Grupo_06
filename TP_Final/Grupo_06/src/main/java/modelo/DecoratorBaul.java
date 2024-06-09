@@ -55,4 +55,9 @@ public abstract class DecoratorBaul implements IViaje{
 	public String toString() {
 		return encapsulado.toString();
 	}
+	
+	@Override
+	public Pedido getPedido() {
+		return encapsulado.getPedido();
+	}
 }

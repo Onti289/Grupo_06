@@ -30,7 +30,15 @@ public abstract class Chofer {
         this.KMrecorridosMes = 0.0;
     }
 
-    public String getDNI() {
+    
+    
+    public Chofer() {
+		super();
+	}
+
+
+
+	public String getDNI() {
         return DNI;
     }
     public String getNombre() {

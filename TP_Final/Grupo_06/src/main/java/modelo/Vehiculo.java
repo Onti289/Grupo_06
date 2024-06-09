@@ -34,6 +34,14 @@ public abstract class Vehiculo implements IVehiculo {
     }
     
     
+    
+
+	public Vehiculo() {
+		super();
+	}
+
+
+
 
 	public void setBaul(boolean baul) {
 		this.baul = baul;

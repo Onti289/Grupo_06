@@ -19,4 +19,6 @@ public interface IViaje {
 	void setEstado(String e);
 	String toString();
 	Vehiculo getVehiculo();
+	Pedido getPedido();
+
 }

@@ -26,8 +26,16 @@ public class ChoferTemporario extends Chofer {
         this.aportes = aportes;
         this.cantViajes = 0;
     }
+    
+    
 
-    /**
+    public ChoferTemporario() {
+		super();
+	}
+
+
+
+	/**
      * Metodo de tipo double que devuelve el sueldo bruto del chofer en base al sueldo basico, aplicandole al mismo el plus correspondiente por cantidad de viajes en caso de que supere los 40 viajes. <br>
      * 
      * @return parametro de tipo double que contiene el valor del sueldo bruto. <br>

@@ -48,7 +48,15 @@ public class Pedido {
         this.distancia = distancia;
     }
 
-    public String getZona() {
+  
+    
+    public Pedido() {
+		super();
+	}
+
+
+
+	public String getZona() {
         return this.zona;
     }
 

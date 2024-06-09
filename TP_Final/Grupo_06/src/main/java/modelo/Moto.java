@@ -11,6 +11,15 @@ public class Moto extends Vehiculo {
     public Moto(String patente, boolean baul, boolean petFriendly, int maxPasajeros) {
         super(patente, baul, petFriendly, maxPasajeros);
     }
+    
+    
+
+	public Moto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	/**
 	 * Metodo de tipo boolean que permite saber la prioridad de un Automovil contra cualquiera de los otros tipos de vehiculos. <br>

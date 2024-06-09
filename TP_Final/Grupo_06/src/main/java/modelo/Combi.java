@@ -13,6 +13,14 @@ public class Combi extends Vehiculo {
         // TODO Auto-generated constructor stub
     }
 
+    
+    
+	public Combi() {
+		super();
+	}
+
+
+
 	/**
 	 * Metodo de tipo boolean que permite saber la prioridad de una Combi contra cualquiera de los otros tipos de vehiculos. <br>
 	 *

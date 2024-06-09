@@ -41,7 +41,15 @@ public class ChoferPermanente extends Chofer {
         this.anioIngreso = anioIngreso;
     }
 
-    public double getSueldobasico() {
+    
+    
+    public ChoferPermanente() {
+		super();
+	}
+
+
+
+	public double getSueldobasico() {
 		return sueldobasico;
 	}
 

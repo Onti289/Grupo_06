@@ -24,8 +24,16 @@ public class ChoferContratado extends Chofer {
     }
     
     
+    
 
-    public int getGananciaViaje() {
+    public ChoferContratado() {
+		super();
+	}
+
+
+
+
+	public int getGananciaViaje() {
 		return gananciaViaje;
 	}
 
