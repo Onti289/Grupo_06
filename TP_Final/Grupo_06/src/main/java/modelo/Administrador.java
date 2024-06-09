@@ -25,7 +25,7 @@ public class Administrador extends Usuario{
     private static LinkedList<Vehiculo> colaVehiculos = new LinkedList<Vehiculo>();
     private static LinkedList<Cliente> listaClientes = new LinkedList<Cliente>();
     private static LinkedList<IViaje> listaViajes = new LinkedList<IViaje>();
-	private Usuario clienteHumano;
+	private Cliente clienteHumano;
 
     /**
      * Constructor con tres parametros para setear el nombre, nombreReal y contrase�a de un nuevo Administrador. <br>
@@ -587,8 +587,14 @@ public class Administrador extends Usuario{
 
 
 
-	public void setClienteHumano(Usuario cliente) {
+	public void setClienteHumano(Cliente cliente) {
 		this.clienteHumano = cliente;
 		
+	}
+
+
+
+	public Cliente getClienteHumano() {
+		return this.clienteHumano;
 	}
 }

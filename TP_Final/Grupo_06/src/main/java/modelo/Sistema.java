@@ -22,7 +22,7 @@ public class Sistema {
 
 	private static Sistema _instancia = null;
 	private String nombre;
-	private static Administrador admin = new Administrador("ElAdmin", "123", "Leonel");
+	private Administrador admin = new Administrador("ElAdmin", "123", "Leonel");
 	
 
 	/**
@@ -432,12 +432,12 @@ public class Sistema {
       return a.getCliente(nombreUsuario);
     }
 
-	public void setClienteHumano(Administrador a, Usuario cliente) {
+	public void setClienteHumano(Administrador a, Cliente cliente) {
 		a.setClienteHumano(cliente);
 		
 	}
 	
-	public static void persistir() {
+	public void persistir() {
 		IPersistencia persistencia = new PersistenciaXML();
 		try
 		{
@@ -453,5 +453,14 @@ public class Sistema {
 		     {
 		        System.out.println(e.getLocalizedMessage());
 		     }
+	}
+	public void setAdmin(Administrador a)
+	{
+	  this.admin = a;
+	}
+
+	public Cliente getClienteHumano() {
+		// TODO Auto-generated method stub
+		return admin.getClienteHumano();
 	}
 }
