@@ -31,8 +31,8 @@ public class ChoferPermanente extends Chofer {
      * @param aportes Parametro de tipo int que contiene un valor entre 0 y 100 que representa el porcentaje de aportes del chofer. <br>
      * @param anioIngreso Parametro de tipo int que representa el anio de ingreso del chofer a la empresa. <br>
      */
-    public ChoferPermanente(String dni, String nombre, double sueldobasico, int hijos, int aportes, int anioIngreso) {
-        super(dni, nombre);
+    public ChoferPermanente(String dni, String nombre, double sueldobasico, int hijos, int aportes, int anioIngreso, Sistema sistema) {
+        super(dni, nombre, sistema);
         LocalDateTime fechaActual = LocalDateTime.now();
         this.sueldobasico = sueldobasico;
         this.antiguedad = fechaActual.getYear() - anioIngreso;

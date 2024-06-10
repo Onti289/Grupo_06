@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Observable;
 import modelo.*;
+import util.Util;
 import vista.IVista;
 
 /**
@@ -33,7 +34,7 @@ public abstract class Chofer extends Observable implements Runnable{
      *
      * Los parametros de puntos, viajesMes y KMrecorridos se setean en cero al agregar al nuevo chofer. <br>
      */
-    public Chofer(String DNI, String nombre) {
+    public Chofer(String DNI, String nombre, Sistema sistema) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.puntos = 0;
@@ -44,11 +45,17 @@ public abstract class Chofer extends Observable implements Runnable{
 
     
     
-    public Chofer() {
+    public Sistema getSistema() {
+		return sistema;
+	}
+
+
+
+	public Chofer() {
 		super();
 	}
 
-    public void setCantMaxViajesChofer(int num)
+    public static void setCantMaxViajesChofer(int num)
     {
     	cantMaxViajes = num;
     }
@@ -136,6 +143,10 @@ public abstract class Chofer extends Observable implements Runnable{
     }
 
     
+    public IViaje getViaje()
+    {
+    	return this.viaje;
+    }
     
 	public void setViaje(IViaje v)
 	{
@@ -146,12 +157,16 @@ public abstract class Chofer extends Observable implements Runnable{
 	public void run()
 	{
         int viajesRealizados = 0;
-		
+		System.out.println("Entra run chofer");
 		while (viajesRealizados < cantMaxViajes && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
 		{
-			iniciaViaje();
-			finalizaViaje();
+			System.out.println("Entra while del run chofer");
+			this.sistema.iniciaViaje(this);
+			//Util.espera();
+			this.sistema.finalizaViaje(this);
+			viajesRealizados ++;
 		}
+		Chofer.CANTCHOFERESDISPONIBLES--;
 		
 	}
 

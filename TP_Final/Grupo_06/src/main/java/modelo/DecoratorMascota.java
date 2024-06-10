@@ -16,7 +16,10 @@ public abstract class DecoratorMascota implements IViaje{
 		super();
 		this.encapsulado = encapsulado;
 	}
-	
+	public void setChofer(Chofer chofer)
+	{
+		this.encapsulado.setChofer(chofer);
+	}
 	public int getPax() {
 		return this.encapsulado.getPax();
 	}
@@ -56,7 +59,11 @@ public abstract class DecoratorMascota implements IViaje{
 	public String toString() {
 		return encapsulado.toString();
 	}
-	
+	@Override
+	public void setVehiculo(Vehiculo v) {
+		this.encapsulado.setVehiculo(v);
+		
+	}
 	@Override
 	public Pedido getPedido() {
 		return encapsulado.getPedido();

@@ -22,8 +22,8 @@ public class UtilAdministrador {
 			vehiculosDTO.add(UtilVehiculo.vehiculoDTOfromVehiculo(admin.getColaVehiculosDisponibles().get(i)));
 		}
 		LinkedList<ClienteDTO> clientesDTO = new LinkedList<ClienteDTO>();
-		for(int i = 0; i<admin.getListaClientes().size(); i++) {
-			clientesDTO.add(UtilCliente.clienteDTOfromCliente(admin.getListaClientes().get(i)));
+		for(int i = 0; i<admin.getListaClientesRobot().size(); i++) {
+			clientesDTO.add(UtilCliente.clienteDTOfromCliente(admin.getListaClientesRobot().get(i)));
 		}
 		LinkedList<IViajeDTO> viajesDTO = new LinkedList<IViajeDTO>();
 		for(int i = 0; i<admin.getListaViajes().size(); i++) {

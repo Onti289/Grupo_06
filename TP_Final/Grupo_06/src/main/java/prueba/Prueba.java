@@ -1,4 +1,4 @@
-package prueba;
+/*package prueba;
 import java.time.LocalDateTime;
 
 import excepciones.*;
@@ -80,3 +80,4 @@ public class Prueba {
 	}
    
 }
+*/

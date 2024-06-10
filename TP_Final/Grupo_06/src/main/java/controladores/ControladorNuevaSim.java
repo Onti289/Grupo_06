@@ -22,6 +22,8 @@ public class ControladorNuevaSim extends Controlador{
         	Chofer.CANTPERMANENTES = this.vista.getVar_CantPermanentes();
         	Chofer.CANTTEMPORARIOS = this.vista.getVar_CantTemporarios();
         	Chofer.CANTCHOFERESDISPONIBLES = Chofer.CANTCONTRATADOS + Chofer.CANTPERMANENTES + Chofer.CANTTEMPORARIOS;
+        	Cliente.setCantMaxViajesCliente((int) (Math.random()*this.vista.getVar_CantViajesXCliente()+1));
+        	Chofer.setCantMaxViajesChofer((int) (Math.random()*this.vista.getVar_CantViajesXChofer()+1));
         	super.creaInstancias();
         	this.vista.setVisible(false);
         	if (modelo.isHayHumano())

@@ -9,6 +9,7 @@ import excepciones.NoHayVehiculoException;
 public class SistemaThread extends Thread implements Observer {
 	Sistema observado;
 	private boolean viajeNuevo = false;
+	private IViaje viaje = null;
 
 	public SistemaThread(Sistema sistema) {
 		observado = sistema;
@@ -19,7 +20,11 @@ public class SistemaThread extends Thread implements Observer {
 	public void run() {
 		while (Chofer.CANTCHOFERESDISPONIBLES > 0 && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
 		{
-			
+			if (viaje != null)
+			{
+			  this.viaje.setVehiculo(observado.sacarVehiculoDeDisponibles(this.viaje));
+			  this.viaje = null;
+			}
 			
 			
 		}
@@ -30,13 +35,11 @@ public class SistemaThread extends Thread implements Observer {
 	public void update(Observable o, Object arg) {
 		if (observado != o)
 			throw new IllegalArgumentException();
-		Administrador a = observado.getAdmin();
+		Administrador a = Sistema.getAdmin();
 		
 		
-		Pedido p = (Pedido) arg;
-		ViajeFactory viajeFactory = new ViajeFactory();
-		IViaje viaje = viajeFactory.getViaje(p, null, a.sacarVehiculoDeDisponibles(p));
-		observado.agregaViaje(viaje);
+		this.viaje = (IViaje) arg;
+		
 		viajeNuevo = true;
 		
 	}

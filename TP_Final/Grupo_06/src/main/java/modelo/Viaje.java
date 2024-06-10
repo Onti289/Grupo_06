@@ -106,10 +106,7 @@ public abstract class Viaje implements IViaje {
 
 		public void setVehiculo(Vehiculo vehiculo) {
 			this.vehiculo = vehiculo;
-		}
-
-		public void setCosto(double costo) {
-			this.costo = costo;
+			this.estado = "con Vehiculo";
 		}
 
 		public void setDistanciaRealRecorrida(int distanciaRealRecorrida) {
@@ -128,15 +125,7 @@ public abstract class Viaje implements IViaje {
 		 * Metodo de tipo void que permite modificar el estado de un viaje. <br>
 		 */
 		public void setEstado(String e) {
-			if(e.equalsIgnoreCase("Iniciado")){
-				this.estado = "Iniciado";
-			}
-			else if(e.equalsIgnoreCase("Pagado")){
-				this.estado = "Pagado";
-			}
-			else if(e.equalsIgnoreCase("Finalizado")){
-				this.estado = "Finalizado";
-			}
+			this.estado = e;
 		}
 
 		/**
@@ -154,65 +143,14 @@ public abstract class Viaje implements IViaje {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			String fecha = this.fecha.format(formatter);
 			return  this.cliente.getNombre() +
-					"\t" + this.chofer.getNombre() + 
-					"\t" + vehiculo.getPatente() + 
+					//"\t" + this.chofer.getNombre() + 
+					//"\t" + vehiculo.getPatente() + 
+					this.estado +
 					"\t\t$" + String.format("%.2f", this.getCosto()) + 
 					"\t\t" + String.valueOf(this.distanciaRealRecorrida) + 
 					"\t\t\t" + String.valueOf(this.pasajeros) + 
 					"\t\t" + fecha + "\n";
 		}
 		
-		public synchronized void iniciaViaje()
-	    {
-	      this.chofer.setViaje(Sistema.sacarViaje(Sistema.getAdmin()));
-	      try {
-			Thread.sleep((long)(Math.random()*3000));
-		  } catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		  }
-	      this.viaje.getCliente().setViaje(this.viaje);
-	      this.viaje.setEstado("Iniciado");
-	      setChanged();
-	      notifyObservers(this.viaje);
-	      
-	    }
 		
-		/**
-		 * el cliente paga el viaje
-		 */
-		public synchronized void pagaViaje()
-		{
-			try {
-				Thread.sleep((long)(Math.random()*3000));
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			} 
-			this.viaje.setEstado("Pagado");
-			setChanged();
-			notifyObservers(this.viaje);
-			
-		}
-		/**
-		 * Metodo de tipo void que permite setear el estado del viaje en "Finalizado", ademas de sumar los kilometros recorridos y suma un viaje al chofer que lo realizo. <br>
-		 * 
-		 * <b>Pre: </b> parametro viaje distinto de null. <br>
-		 * 
-		 * @param viaje Parametro de tipo IViaje al cual se le modificara su estado a "Finalizado". <br>
-		 */
-		public synchronized void finalizaViaje(){
-			
-			try {
-				Thread.sleep((long)(Math.random()*3000));
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			this.viaje.setEstado("Finalizado");
-			  this.sumaKMrecorridosMes(viaje.getKM());
-			  this.sumaViajesMes();
-			  setChanged();
-			  notifyObservers(this.viaje);
-			
-		}
 }

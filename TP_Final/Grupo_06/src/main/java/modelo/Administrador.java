@@ -24,8 +24,8 @@ public class Administrador extends Usuario{
     private static LinkedList<Chofer> colaChoferes = new LinkedList<Chofer>();
     private static LinkedList<Vehiculo> colaVehiculosDisponibles = new LinkedList<Vehiculo>();
     private static LinkedList<Vehiculo> colaTotalVehiculos = new LinkedList<Vehiculo>();
-    private static LinkedList<ClienteAbstracto> listaClientesRobot = new LinkedList<ClienteAbstracto>();
-    private static LinkedList<ClienteAbstracto> listaClientesHumanos = new LinkedList<ClienteAbstracto>();
+    private static LinkedList<Cliente> listaClientesRobot = new LinkedList<Cliente>();
+    private static LinkedList<ClienteHumano> listaClientesHumanos = new LinkedList<ClienteHumano>();
     private static LinkedList<IViaje> listaViajes = new LinkedList<IViaje>();
     private static LinkedList<Pedido> listaPedidos = new LinkedList<Pedido>();
 	private ClienteHumano clienteHumano;
@@ -72,7 +72,7 @@ public class Administrador extends Usuario{
 
 
 
-	public LinkedList<ClienteAbstracto> getListaClientes() {
+	public LinkedList<Cliente> getListaClientesRobot() {
 		return listaClientesRobot;
 	}
 
@@ -210,7 +210,7 @@ public class Administrador extends Usuario{
 	 * 
 	 * @param c parametro de tipo Cliente que contiene al nuevo cliente e agregar a la lista cosrrespondiente. <br>
 	 */
-	public void agregarCliente(ClienteAbstracto c) throws NombreDeUsuarioYaExistenteException{
+	public void agregarCliente(Cliente c) throws NombreDeUsuarioYaExistenteException{
 		int i = 0;
 		boolean resp = false;
 		while (i < listaClientesRobot.size() && !resp)
@@ -629,5 +629,10 @@ public class Administrador extends Usuario{
 	public Chofer getChofer1()
 	{
 		return this.colaChoferes.get(0);
+	}
+
+	public void agregarClienteHumano(ClienteHumano c) {
+		this.listaClientesHumanos.add(c);
+		
 	}
 }

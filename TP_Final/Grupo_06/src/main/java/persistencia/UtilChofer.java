@@ -14,6 +14,7 @@ public class UtilChofer {
 		respuesta.setViajesMes(chofer.getViajesMes());
 		respuesta.setPuntos(chofer.getPuntos());
 		respuesta.setTipo(chofer.getTipo());
+		respuesta.setSistema(chofer.getSistema());
 		
 		if(respuesta.getTipo().equalsIgnoreCase("Contratado")) {
 			ChoferContratado contratado = (ChoferContratado) chofer;
@@ -39,17 +40,17 @@ public class UtilChofer {
 	public static Chofer choferfromChoferDTO(ChoferDTO chDTO) {
 		Chofer respuesta = null;
 		if(chDTO.getTipo().equalsIgnoreCase("Contratado")) {
-			respuesta = new ChoferContratado(chDTO.getDNI(), chDTO.getNombre(),chDTO.getGananciaViaje());
+			respuesta = new ChoferContratado(chDTO.getDNI(), chDTO.getNombre(),chDTO.getGananciaViaje(), chDTO.getSistema());
 			respuesta.setKMrecorridosMes(chDTO.getKMrecorridosMes());
 			respuesta.setPuntos(chDTO.getPuntos());
 			respuesta.setViajesMes(chDTO.getViajesMes());
 		}
 		else if(chDTO.getTipo().equalsIgnoreCase("Temporario")){
-			respuesta = new ChoferTemporario(chDTO.getDNI(), chDTO.getNombre(), chDTO.getSueldoBasico(), chDTO.getAportes());
+			respuesta = new ChoferTemporario(chDTO.getDNI(), chDTO.getNombre(), chDTO.getSueldoBasico(), chDTO.getAportes(), chDTO.getSistema());
 			respuesta.setViajesMes(chDTO.getViajesMes());
 		}
 		else if(chDTO.getTipo().equalsIgnoreCase("Permanente")) {
-			respuesta = new ChoferPermanente(chDTO.getDNI(), chDTO.getNombre(), chDTO.getSueldoBasico(), chDTO.getCantHijos(), chDTO.getAportes(), chDTO.getAnioIngreso());
+			respuesta = new ChoferPermanente(chDTO.getDNI(), chDTO.getNombre(), chDTO.getSueldoBasico(), chDTO.getCantHijos(), chDTO.getAportes(), chDTO.getAnioIngreso(), chDTO.getSistema());
 		}
 		return respuesta;
 	}

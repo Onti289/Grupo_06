@@ -20,8 +20,8 @@ public class ChoferTemporario extends Chofer {
      * @param sueldoBasico Parametro de tipo double que contiene el valor del sueldo basico del chofer. <br>
      * @param aportes Parametro de tipo int que contiene un valor entre 0 y 100 que representa el porcentaje de aportes del chofer. <br> 
      */
-    public ChoferTemporario(String dni, String nombre, double sueldoBasico, int aportes) {
-        super(dni, nombre);
+    public ChoferTemporario(String dni, String nombre, double sueldoBasico, int aportes, Sistema sistema) {
+        super(dni, nombre, sistema);
         this.sueldoBasico = sueldoBasico;
         this.aportes = aportes;
         this.cantViajes = 0;

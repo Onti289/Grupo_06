@@ -1,4 +1,4 @@
-package persistencia;
+/*package persistencia;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -32,9 +32,9 @@ public class PruebaPersistenciaEscritura {
 		Cliente cliente2 = new Cliente("user2","41561","Juana", sistema);
 		Cliente cliente3 = new Cliente("user3","abssda","Javier", sistema);
 		
-		Chofer chofer1 = new ChoferContratado("40569874", "Juancito", 30);
-		Chofer chofer2 = new ChoferPermanente("23666987", "Juan Carlos", 80000, 10, 2, 1998);
-		Chofer chofer3 = new ChoferTemporario("36998741", "Juan Cruz", 50000, 10);
+	//	Chofer chofer1 = new ChoferContratado("40569874", "Juancito", 30);
+	//	Chofer chofer2 = new ChoferPermanente("23666987", "Juan Carlos", 80000, 10, 2, 1998);
+	//	Chofer chofer3 = new ChoferTemporario("36998741", "Juan Cruz", 50000, 10);
 		
 		Vehiculo v1 = vehiculoFactory.crear("Automovil", "AD-123-CD");
 		Vehiculo v2 = vehiculoFactory.crear("Automovil", "BC-122-AA");
@@ -89,3 +89,4 @@ public class PruebaPersistenciaEscritura {
 	}
 
 }
+*/

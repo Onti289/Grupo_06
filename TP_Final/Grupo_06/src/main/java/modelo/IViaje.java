@@ -20,6 +20,7 @@ public interface IViaje {
 	String toString();
 	Vehiculo getVehiculo();
 	Pedido getPedido();
-	
+	void setChofer(Chofer chofer);
+	void setVehiculo(Vehiculo v);
 
 }

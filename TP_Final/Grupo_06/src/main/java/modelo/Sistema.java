@@ -49,40 +49,131 @@ public class Sistema extends Observable{
     	a.agregaVehiculoATotal(v);
     }
 	
-    public synchronized void agregaViaje(IViaje viaje)
+    public void agregaViaje(IViaje viaje)
     {
     	admin.agregarViaje(viaje);
-    	notifyAll();
     }
     
-    public synchronized IViaje sacaViaje()
+    public IViaje sacaViaje()
     {
+    	
     	while (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0 && (admin.getListaViajes().isEmpty() || !hayConVehiculo()))
 			try {
+				System.out.println("saca viaje en sistema wait");
 				wait();
+				System.out.println("saca viaje en sistema sale del wait");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
     	if (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
     	{
+    		System.out.println("Entra if del sacaviaje en sistema");
     		int i = 0;
-    		while (admin.getListaViajes().get(i).getEstado().equalsIgnoreCase("solicitado"))
+    		while (i < admin.getListaViajes().size() && admin.getListaViajes().get(i).getEstado().equalsIgnoreCase("solicitado"))
     			i++;
+    		
     		IViaje viaje = admin.sacarViaje(i);
-    		notifyAll();
+    		System.out.println(""+i + viaje);
     	   return viaje;
     	}
     	else
-    	  return null;
+    	{
+    	  
+    		return null;
+    	 
+    	 
+    	  }
     }
     
     public boolean hayConVehiculo()
     {
     	int i = 0;
-		while (i < admin.getListaViajes().size() && admin.getListaViajes().get(i).getEstado().equalsIgnoreCase("solicitado"))
+		while (i < admin.getListaViajes().size() && !admin.getListaViajes().get(i).getEstado().equalsIgnoreCase("con Vehiculo"))
 			i++;
 		return i < admin.getListaViajes().size();
     }
+    
+    public synchronized void generaPedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia, Cliente cliente) {
+    	Pedido p = new Pedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, cliente, distancia);
+    	ViajeFactory viajeFactory = new ViajeFactory();
+    	IViaje viaje = viajeFactory.getViaje(p, null, null);
+    	//System.out.println(viaje);
+    	cliente.setViaje(viaje);
+    	this.agregaViaje(viaje);
+    	System.out.println(Sistema.getAdmin().listarViajes()+"\n---------------------------");
+    	System.out.println("entra genera pedido en cliente");
+    	notifyAll();
+    	setChanged();
+    	notifyObservers(viaje);
+    	
+    }
+    
+    public synchronized void iniciaViaje(Chofer chofer)
+    {
+
+    	while (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0 && (admin.getListaViajes().isEmpty() || !hayConVehiculo()))
+			try {
+				System.out.println("saca viaje en sistema wait");
+				wait();
+				System.out.println("saca viaje en sistema sale del wait");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+    	if (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
+    	{chofer.setViaje(sacaViaje());
+      chofer.getViaje().setChofer(chofer);
+      chofer.getViaje().setEstado("Iniciado");
+      System.out.println("entra inicia viaje en sistema");
+      notifyAll();
+      setChanged();
+      notifyObservers(chofer.getViaje());
+      }
+      
+    }
+	
+	/**
+	 * el cliente paga el viaje
+	 */
+	public synchronized void pagaViaje(Cliente cliente)
+	{
+		while (!cliente.getViaje().getEstado().equalsIgnoreCase("iniciado"))
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		cliente.getViaje().setEstado("Pagado");
+		notifyAll();
+		setChanged();
+		notifyObservers(cliente.getViaje());
+		
+	}
+	/**
+	 * Metodo de tipo void que permite setear el estado del viaje en "Finalizado", ademas de sumar los kilometros recorridos y suma un viaje al chofer que lo realizo. <br>
+	 * 
+	 * <b>Pre: </b> parametro viaje distinto de null. <br>
+	 * 
+	 * @param viaje Parametro de tipo IViaje al cual se le modificara su estado a "Finalizado". <br>
+	 */
+	public synchronized void finalizaViaje(Chofer chofer){
+		
+
+		while (!chofer.getViaje().getEstado().equalsIgnoreCase("pagado"))
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		chofer.getViaje().setEstado("Finalizado");
+		  chofer.sumaKMrecorridosMes(chofer.getViaje().getKM());
+		  chofer.sumaViajesMes();
+		  notifyAll();
+		  setChanged();
+		  notifyObservers(chofer.getViaje());
+		
+	}
     
 	/**
 	 * Metodo static de tipo Sistema que devuleve el parametro Sistema _instancia. En caso de que el parametro tenga como valor null, lo instancia con el constructor correspondiente. <br>
@@ -98,7 +189,6 @@ public class Sistema extends Observable{
 	public String getNombre() {
 		return this.nombre;
 	}
-
 
 	/**
 	 * Metodo de tipo void que agrega un Chofer c a la colaChofer de un determinado Administrador a. <br>
@@ -181,10 +271,14 @@ public class Sistema extends Observable{
 	 * @param c parametro de tipo Cliente que ser� insertado en la lista correspondiente del Administrador a. <br>
 	 * @throws NombreDeUsuarioYaExistenteException 
 	 */
-	public void agregaCliente(Administrador a, ClienteAbstracto c) throws NombreDeUsuarioYaExistenteException {
+	public void agregaCliente(Administrador a, Cliente c) throws NombreDeUsuarioYaExistenteException {
 		a.agregarCliente(c);
 	}
-
+public void agregaClienteHumano(Administrador a, ClienteHumano c)
+{
+	a.agregarClienteHumano(c);
+}
+	
 	/**
 	 * Metodo de tipo void que permite sacar un Cliente c de su correspondiente lista dentro de un Administrador a. <br>
 	 *
@@ -480,5 +574,20 @@ public class Sistema extends Observable{
 	public ClienteHumano getClienteHumano() {
 		// TODO Auto-generated method stub
 		return admin.getClienteHumano();
+	}
+
+	public synchronized Vehiculo sacarVehiculoDeDisponibles(IViaje v) {
+		int i = 0;
+		Pedido p = v.getPedido();
+		while(i < admin.getColaVehiculosDisponibles().size() && !admin.getColaVehiculosDisponibles().get(i).cumpleCondicion(p))
+			i++;
+		if (i < admin.getColaVehiculosDisponibles().size())
+		{
+			v.setEstado("con Vehiculo");
+			notifyAll();
+			return admin.getColaVehiculosDisponibles().get(i);
+			}
+		else
+		  return null;
 	}
 }

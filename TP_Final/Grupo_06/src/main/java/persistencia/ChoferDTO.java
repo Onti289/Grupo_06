@@ -2,12 +2,15 @@ package persistencia;
 
 import java.io.Serializable;
 
+import modelo.Sistema;
+
 public class ChoferDTO implements Serializable {
 	private String DNI;
     private String nombre;
     private int puntos;
     private int viajesMes;
     private double KMrecorridosMes;
+    private Sistema sistema;
     
     private double sueldoBasico;
     private int aportes;
@@ -21,6 +24,14 @@ public class ChoferDTO implements Serializable {
     
     private String tipo;
     
+	public Sistema getSistema() {
+		return sistema;
+	}
+
+	public void setSistema(Sistema sistema) {
+		this.sistema = sistema;
+	}
+
 	public double getSueldoBasico() {
 		return sueldoBasico;
 	}

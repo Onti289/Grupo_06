@@ -25,22 +25,8 @@ public class Ventana_Cliente1 extends Ventana implements Observer{
 	private JScrollPane scrollPaneCliente1;
 	private JTextArea textAreaCliente1;
 	private ClienteAbstracto observado;
+	private Sistema sistemaObservado;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_Cliente1 frame = new Ventana_Cliente1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -63,16 +49,18 @@ public class Ventana_Cliente1 extends Ventana implements Observer{
 		
 		this.observado = Sistema.getCliente1(Sistema.getAdmin());
 		this.observado.addObserver(this);
+		this.sistemaObservado = Sistema._getInstancia();
+		this.sistemaObservado.addObserver(this);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if (o != observado)
-			throw new IllegalArgumentException();
+		if (o == observado)
+		{	
 		IViaje viaje = (IViaje) arg;
 		String estado = viaje.getEstado();
 		String muestra = null;
-		
+		System.out.println("entra update ventana cliente 1");
 		if (estado.equalsIgnoreCase("solicitado"))
 			muestra = "Solicitaste un viaje";
 		else if (estado.equalsIgnoreCase("iniciado"))
@@ -84,7 +72,14 @@ public class Ventana_Cliente1 extends Ventana implements Observer{
 		else if (estado.equalsIgnoreCase("finalizado"))
 			muestra = "El " + viaje.getChofer().getNombre() + " finalizo el viaje";
 		this.appendLog(muestra);
-		
+		}
+		else
+			if (o == sistemaObservado)
+			{
+				
+			}
+			else
+				throw new IllegalArgumentException();
 		
 	}
 

@@ -26,6 +26,8 @@ public class DecoratorConBaul extends DecoratorBaul {
 		return super.getEstado();
 	}
 
+
+
 	
 
 }

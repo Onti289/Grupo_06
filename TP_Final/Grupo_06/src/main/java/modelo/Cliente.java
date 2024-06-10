@@ -3,6 +3,7 @@ package modelo;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import util.Util;
 import vista.IVista;
 
 /**
@@ -30,7 +31,7 @@ public class Cliente extends ClienteAbstracto implements Runnable{
         this.sistema = sistema;
     }
 
-    public void setCantMaxViajesCliente(int num)
+    public static void setCantMaxViajesCliente(int num)
     {
     	cantMaxViajes = num;
     }
@@ -57,20 +58,7 @@ public class Cliente extends ClienteAbstracto implements Runnable{
      * @return El metodo devuelve un parametro de tipo Pedido con el nuevo pedido realizado por el cliente en base a lo completado en el formulario del viaje. <br>
      */
 
-    public void generaPedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia) {
-    	Pedido p = new Pedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, this, distancia);
-    	ViajeFactory viajeFactory = new ViajeFactory();
-    	IViaje viaje = viajeFactory.getViaje(p, null, null);
-    	sistema.agregaViaje(viaje);
-    	try {
-			Thread.sleep((long)(Math.random()*3000));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-    	setChanged();
-    	notifyObservers(viaje);
-    	
-    }
+
 
 	@Override
 	public String toString() {
@@ -111,7 +99,7 @@ public class Cliente extends ClienteAbstracto implements Runnable{
 	@Override
 	public void run(){
 		int viajesRealizados = 0;
-		
+		System.out.println("Entra run de cliente");
 		while (viajesRealizados < cantMaxViajes && Chofer.CANTCHOFERESDISPONIBLES > 0)
 		{
 			int zonaAux =(int) (Math.random()*3 + 1);
@@ -140,14 +128,21 @@ public class Cliente extends ClienteAbstracto implements Runnable{
 			int cantPax = (int) (Math.random()*8 +1);
 			int cantKm = (int) (Math.random()*20 + 1);
 
-			this.generaPedido(LocalDateTime.now(), zona, mascota, baul, cantPax, cantKm);
-			this.pagaViaje();
+			this.sistema.generaPedido(LocalDateTime.now(), zona, mascota, baul, cantPax, cantKm, this);
+            //Util.espera();
+			this.sistema.pagaViaje(this);
+			viajesRealizados++;
 		}
+		Cliente.CANTCLIENTESDISPONIBLES--;
 		
 	}
 
 	public void setViaje(IViaje viaje) {
 		this.viaje = viaje;
 		
+	}
+
+	public IViaje getViaje() {
+		return this.viaje;
 	}
 }

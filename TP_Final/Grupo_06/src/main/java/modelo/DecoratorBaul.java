@@ -15,6 +15,16 @@ public abstract class DecoratorBaul implements IViaje{
 		this.encapsulado = encapsulado;
 	}
 	
+	public void setChofer(Chofer chofer)
+	{
+		this.encapsulado.setChofer(chofer);
+	}
+	
+	@Override
+	public void setVehiculo(Vehiculo v) {
+		this.encapsulado.setVehiculo(v);
+		
+	}
 	public int getPax() {
 		return this.encapsulado.getPax();
 	}

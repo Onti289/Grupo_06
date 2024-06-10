@@ -18,8 +18,8 @@ public class ChoferContratado extends Chofer {
      * @param gananciaViaje Parametro de tipo int que contiene el porcentaje de ganancia del chofer por cada viaje realizado. <br>
      */
         
-    public ChoferContratado(String dni, String nombre, int gananciaViaje) {
-        super(dni, nombre);
+    public ChoferContratado(String dni, String nombre, int gananciaViaje, Sistema sistema) {
+        super(dni, nombre, sistema);
         this.gananciaViaje = gananciaViaje;
     }
     
