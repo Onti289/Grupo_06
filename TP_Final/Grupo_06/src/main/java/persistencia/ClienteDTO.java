@@ -2,11 +2,20 @@ package persistencia;
 
 import java.io.Serializable;
 
+import modelo.Sistema;
+
 public class ClienteDTO implements Serializable {
 	private String nombre;
 	private String contrasena;
 	private String nombreReal;
+	private Sistema sistema;
 	
+	public Sistema getSistema() {
+		return sistema;
+	}
+	public void setSistema(Sistema sistema) {
+		this.sistema = sistema;
+	}
 	public String getNombre() {
 		return nombre;
 	}

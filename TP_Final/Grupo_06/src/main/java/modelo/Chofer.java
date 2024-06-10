@@ -16,6 +16,11 @@ public abstract class Chofer extends Observable implements Runnable{
     private double KMrecorridosMes;
     private static int cantMaxViajes;
 	private Sistema sistema;
+	private IViaje viaje;
+	public static int CANTCHOFERESDISPONIBLES;
+	public static int CANTPERMANENTES;
+	public static int CANTTEMPORARIOS;
+	public static int CANTCONTRATADOS;
 
     /**
      * Constructor con dos parametros para setear el documento y el nombre del nuevo chofer perteneciente al sistema. <br>
@@ -129,9 +134,15 @@ public abstract class Chofer extends Observable implements Runnable{
 
     public void iniciaViaje()
     {
-      IViaje viaje = sistema.sacarViaje(sistema.getAdmin());
-      
-      viaje.setEstado("Iniciado");
+      this.viaje = sistema.sacarViaje(sistema.getAdmin());
+      try {
+		Thread.sleep((long)(Math.random()*3000));
+	  } catch (InterruptedException e) {
+		
+		e.printStackTrace();
+	  }
+      this.viaje.getCliente().setViaje(this.viaje);
+      this.viaje.setEstado("Iniciado");
       setChanged();
       notifyObservers();
       
@@ -145,16 +156,24 @@ public abstract class Chofer extends Observable implements Runnable{
 	 * @param viaje Parametro de tipo IViaje al cual se le modificara su estado a "Finalizado". <br>
 	 */
 	public void finalizaViaje(IViaje viaje){
-		if (viaje.getEstado().equalsIgnoreCase("Pagado"))
-		{
-		  viaje.setEstado("Finalizado");
+		
+		try {
+			Thread.sleep((long)(Math.random()*3000));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.viaje.setEstado("Finalizado");
 		  this.sumaKMrecorridosMes(viaje.getKM());
 		  this.sumaViajesMes();
-		}
 		
 	}
-	
-	
+    
+	@Override
+	public void run()
+	{
+		
+	}
 
 
 }

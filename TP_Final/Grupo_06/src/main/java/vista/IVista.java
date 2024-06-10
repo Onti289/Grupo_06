@@ -41,6 +41,15 @@ public void setTextMsjInicSes(String string);
 public void setTextMsjCrea(String string);
 public void borraRegistrarse();
 public void addWindowListener(WindowAdapter windowAdapter);
+public int getVar_CantPermanentes();
+public int getVar_CantMotos();
+public int getVar_CantAutos();
+public int getVar_CantCombis();
+public int getVar_CantViajesXCliente();
+public int getVar_CantClientes();
+public int getVar_CantViajesXChofer();
+public int getVar_CantTemporarios();
+public int getVar_CantContratados();
 
 
 }

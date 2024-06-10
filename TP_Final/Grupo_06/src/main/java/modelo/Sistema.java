@@ -24,8 +24,6 @@ public class Sistema extends Observable{
 	private static Sistema _instancia = null;
 	private String nombre;
 	private Administrador admin = new Administrador("ElAdmin", "123", "Leonel");
-	private static int cantClientes;
-	private static int cantChoferes;
 	
 
 	/**
@@ -40,34 +38,33 @@ public class Sistema extends Observable{
 	private Sistema() {
 		this.nombre = "Subi que te llevo";
 	}
-    public void setCantClientes(int cant)
+    
+    
+    public synchronized void agregaViaje(Viaje v)
     {
-    	cantClientes = cant;
-    }
-    public void setCantChoferes(int cant)
-    {
-    	cantChoferes = cant;
+    	
+    	admin.agregarViaje(v);
+    	notifyAll();
     }
     
-    public static synchronized void decrementaChoferes()
+    public synchronized IViaje sacaViaje()
     {
-    	cantChoferes--;
+    	while (admin.getListaViajes().isEmpty() && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
+			try {
+				wait();
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+    	if (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
+    	{
+    		notifyAll();
+    	   return admin.sacarViaje();
+    	}
+    	else
+    	  return null;
     }
     
-    public static synchronized void decrementaClientes()
-    {
-    	cantClientes--;
-    }
-    
-    public static synchronized int getCantClientes()
-    {
-    	return cantClientes;
-    }
-    
-    public static synchronized int getCantChoferes()
-    {
-    	return cantChoferes;
-    }
 	/**
 	 * Metodo static de tipo Sistema que devuleve el parametro Sistema _instancia. En caso de que el parametro tenga como valor null, lo instancia con el constructor correspondiente. <br>
 	 *
@@ -348,6 +345,8 @@ public class Sistema extends Observable{
 		}
 	}
 
+	
+	
 	public IViaje sacarViaje(Administrador a)
 	{
 	  return a.sacarViaje();

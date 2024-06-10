@@ -28,9 +28,9 @@ public class PruebaPersistenciaEscritura {
 		Administrador admin = new Administrador("Admin", "Admin123", "Elad Ministrador");
 
 		
-		Cliente cliente1 = new Cliente("user1","abc123","Carlos");
-		Cliente cliente2 = new Cliente("user2","41561","Juana");
-		Cliente cliente3 = new Cliente("user3","abssda","Javier");
+		Cliente cliente1 = new Cliente("user1","abc123","Carlos", sistema);
+		Cliente cliente2 = new Cliente("user2","41561","Juana", sistema);
+		Cliente cliente3 = new Cliente("user3","abssda","Javier", sistema);
 		
 		Chofer chofer1 = new ChoferContratado("40569874", "Juancito", 30);
 		Chofer chofer2 = new ChoferPermanente("23666987", "Juan Carlos", 80000, 10, 2, 1998);

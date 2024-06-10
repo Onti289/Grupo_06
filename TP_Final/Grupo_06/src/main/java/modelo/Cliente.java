@@ -10,10 +10,13 @@ import vista.IVista;
  * <br>
  * Clase que extiende de Usuario que representa a un cliente de la plataforma dentro del sistema. Contiene nombre, nombreReal y contrase�a. Tiene la capacidad de generar Pedido
  */
-public class Cliente extends Usuario implements Runnable{
+public class Cliente extends ClienteAbstracto implements Runnable{
 
 	private static int cantMaxViajes;
 	private Sistema sistema;
+	private IViaje viaje;
+
+	
 	/**
      * Constructor con tres parametros para setear el nombre, nombreReal y contrase�a de un nuevo Cliente. <br>
      *
@@ -32,11 +35,12 @@ public class Cliente extends Usuario implements Runnable{
     	cantMaxViajes = num;
     }
     
-    public Cliente() {
-		super();
+
+
+
+	public Sistema getSistema() {
+		return sistema;
 	}
-
-
 
 	/**
      * Metodo que genera y devuelve un nuevo pedido en base a diferentes parametros que determinaran el tipo de vwhiculo y el precio final del Viaje a realizar. <br>
@@ -84,8 +88,14 @@ public class Cliente extends Usuario implements Runnable{
 	/**
 	 * el cliente paga el viaje
 	 */
-	public void pagaViaje(IViaje viaje) {
-		  viaje.setEstado("Pagado");
+	public void pagaViaje()
+	{
+		try {
+			Thread.sleep((long)(Math.random()*3000));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} 
+		this.viaje.setEstado("Pagado");
 		
 	}
 	
@@ -107,7 +117,7 @@ public class Cliente extends Usuario implements Runnable{
 	public void run(){
 		int viajesRealizados = 0;
 		
-		while (viajesRealizados < cantMaxViajes && Sistema.getCantChoferes() > 0)
+		while (viajesRealizados < cantMaxViajes && Chofer.CANTCHOFERESDISPONIBLES > 0)
 		{
 			int zonaAux =(int) (Math.random()*3 + 1);
 			String zona;
@@ -137,6 +147,11 @@ public class Cliente extends Usuario implements Runnable{
 
 			this.generaPedido(LocalDateTime.now(), zona, mascota, baul, cantPax, cantKm);
 		}
+		
+	}
+
+	public void setViaje(IViaje viaje) {
+		this.viaje = viaje;
 		
 	}
 }

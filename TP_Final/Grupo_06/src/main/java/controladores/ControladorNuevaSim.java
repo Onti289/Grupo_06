@@ -17,10 +17,17 @@ public class ControladorNuevaSim extends Controlador{
         if (e.getActionCommand().equals(IVista.INICIASIM))
         {
         	this.modelo.persistir();
+        	Cliente.CANTCLIENTESDISPONIBLES = this.vista.getVar_CantClientes();
+        	Chofer.CANTCONTRATADOS = this.vista.getVar_CantContratados();
+        	Chofer.CANTPERMANENTES = this.vista.getVar_CantPermanentes();
+        	Chofer.CANTTEMPORARIOS = this.vista.getVar_CantTemporarios();
+        	Chofer.CANTCHOFERESDISPONIBLES = Chofer.CANTCONTRATADOS + Chofer.CANTPERMANENTES + Chofer.CANTTEMPORARIOS;
+        	super.creaInstancias();
         	this.vista.setVisible(false);
         	if (modelo.isHayHumano())
             {
-              IVista vHumano = new Ventana_IniciaSesion();
+        	  Cliente.CANTCLIENTESDISPONIBLES ++;
+        	  IVista vHumano = new Ventana_IniciaSesion();
               Controlador cHumano = new ControladorIniciaSesion(modelo, vHumano);
               vHumano.setControlador(cHumano);
               vHumano.arranca(); 

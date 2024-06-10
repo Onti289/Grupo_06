@@ -374,7 +374,7 @@ public class Administrador extends Usuario{
 	 * @return !this.colaChofer.isEmpty(): en caso de que la cola este vacia, el metodo devolvera false, true en caso contrario. <br>
 	 */
 	public boolean isChoferDisponible() {
-		return ;
+		return !this.colaChoferes.isEmpty();
 	}
 
 	/**

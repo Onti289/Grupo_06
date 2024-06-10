@@ -385,5 +385,41 @@ public class Ventana_Simulacion extends Ventana implements KeyListener{
       this.btnIniciaSimulacion.setEnabled(condicion && condicion2 && condicion3);
   
     }
+	@Override
+	public int getVar_CantPermanentes() {
+		return Integer.parseInt(this.Var_CantPermanentes.getText());
+	}
+	@Override
+	public int getVar_CantMotos() {
+		return Integer.parseInt(this.Var_CantMotos.getText());
+	}
+	@Override
+	public int getVar_CantAutos() {
+		return Integer.parseInt(this.Var_CantAutos.getText());
+	}
+	@Override
+	public int getVar_CantCombis() {
+		return Integer.parseInt(this.Var_CantCombis.getText());
+	}
+	@Override
+	public int getVar_CantViajesXCliente() {
+		return Integer.parseInt(this.Var_CantViajesXCliente.getText());
+	}
+	@Override
+	public int getVar_CantClientes() {
+		return Integer.parseInt(this.Var_CantClientes.getText());
+	}
+	@Override
+	public int getVar_CantViajesXChofer() {
+		return Integer.parseInt(this.Var_CantViajesXChofer.getText());
+	}
+	@Override
+	public int getVar_CantTemporarios() {
+		return Integer.parseInt(this.Var_CantTemporarios.getText());
+	}
+	@Override
+	public int getVar_CantContratados() {
+		return Integer.parseInt(this.Var_CantContratados.getText());
+	}
 
 }

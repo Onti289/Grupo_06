@@ -93,7 +93,23 @@ public abstract class Ventana extends JFrame implements IVista{
 	@Override
 	public void borraRegistrarse() {}
 	
+	public int getVar_CantPermanentes() {}
 
+	public int getVar_CantMotos() {}
+
+	public int getVar_CantAutos() {}
+
+	public int getVar_CantCombis() {}
+
+	public int getVar_CantViajesXCliente() {}
+
+	public int getVar_CantClientes() {}
+
+	public int getVar_CantViajesXChofer() {}
+
+	public int getVar_CantTemporarios() {}
+
+	public int getVar_CantContratados() {}
 
 	@Override
 	public void addWindowListener(WindowAdapter windowAdapter) {

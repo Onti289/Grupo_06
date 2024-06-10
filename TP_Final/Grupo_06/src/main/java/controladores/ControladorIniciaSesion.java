@@ -25,7 +25,7 @@ public class ControladorIniciaSesion extends Controlador {
 		    	  this.vista.setTextMsjCrea("Nombre de usuario ya existente");
 		    else
 		    {
-		      Cliente c = new Cliente(this.vista.getNuevoNomUsua(), this.vista.getNuevaContr(), this.vista.getNombreReal());
+		      ClienteAbstracto c = new ClienteHumano(this.vista.getNuevoNomUsua(), this.vista.getNuevaContr(), this.vista.getNombreReal());
 		      try
 		      {
 				this.modelo.agregaCliente(this.modelo.getAdmin(), c);
