@@ -64,5 +64,8 @@ public class Ventana_General extends Ventana implements Observer{
 		
 	}
 
-
+	public void appendLog(String linea)
+    {
+        this.textAreaGeneral.append(linea+"\n");
+    }
 }

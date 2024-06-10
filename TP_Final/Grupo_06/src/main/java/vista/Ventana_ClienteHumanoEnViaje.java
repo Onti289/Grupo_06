@@ -90,5 +90,10 @@ public class Ventana_ClienteHumanoEnViaje extends Ventana implements Observer {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void appendLog(String linea)
+    {
+        this.textAreaClienteHumano.append(linea + "\n");
+    }
 
 }

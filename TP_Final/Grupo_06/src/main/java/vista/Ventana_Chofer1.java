@@ -67,4 +67,8 @@ public class Ventana_Chofer1 extends Ventana implements Observer{
 		
 	}
 
+	public void appendLog(String linea)
+    {
+        this.textAreaChofer1.append(linea + "\n");
+    }
 }
