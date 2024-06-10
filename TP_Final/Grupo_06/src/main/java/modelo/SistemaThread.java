@@ -17,9 +17,15 @@ public class SistemaThread extends Thread implements Observer {
 	@Override
 	public void run() {
 		while (Sistema.getCantChoferes() > 0 && Sistema.getCantClientes() > 0)
-		{
+		{			
+			
+			Administrador a = observado.getAdmin();
 			
 			
+			Pedido p = (Pedido) arg;
+			ViajeFactory viajeFactory = new ViajeFactory();
+			IViaje viaje = viajeFactory.getViaje(p, null, a.sacarVehiculo(p));
+			a.agregarViaje(viaje);
 			
 		}
 
@@ -29,15 +35,7 @@ public class SistemaThread extends Thread implements Observer {
 	public void update(Observable o, Object arg) {
 		if (observado != o)
 			throw new IllegalArgumentException();
-		Administrador a = observado.getAdmin();
-		try
-		{
-			observado.generaViaje(a, observado.sacarPedido(a));
-		}
-		catch (NoHayChoferesDisponiblesException | NoHayVehiculoException e)
-		{
-			e.printStackTrace();
-		}
+		
 		
 	}
 

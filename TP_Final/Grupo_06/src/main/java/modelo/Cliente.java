@@ -56,6 +56,8 @@ public class Cliente extends Usuario implements Runnable{
     public void generaPedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia) {
     	Pedido p = new Pedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, this, distancia);
     	sistema.agregarPedido(sistema.getAdmin(), p);
+    	setChanged();
+    	notifyObservers(p);
     	
     }
 

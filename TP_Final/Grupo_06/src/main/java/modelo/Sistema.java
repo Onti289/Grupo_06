@@ -323,7 +323,7 @@ public class Sistema extends Observable{
 		Chofer chofer = null;
 		Vehiculo vehiculo = null;
 		IViaje viaje = null;
-		ViajeFactory viajeFactory = new ViajeFactory();
+		
 
 		if (a.vehiculoCumplePedido(p))
 		{	
@@ -331,14 +331,7 @@ public class Sistema extends Observable{
         persistir();
         
 		
-        vehiculo = a.sacarVehiculo(p);
         
-        
-       
-		
-
-		viaje = viajeFactory.getViaje(p, null, vehiculo);
-		a.agregarViaje(viaje);
         
         
 		iniciaViaje(viaje);

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Observable;
+
 /**
  * @author Ezequiel
  * <br>
@@ -7,7 +9,7 @@ package modelo;
  *
  */
 
-public abstract class Usuario {
+public abstract class Usuario extends Observable{
 
     protected String nombre;
     protected String contrasena;

@@ -1,5 +1,6 @@
 package modelo;
 import java.util.Objects;
+import java.util.Observable;
 
 /**
  * @author gc
@@ -7,7 +8,7 @@ import java.util.Objects;
  * Clase abstracta que representa a los choferes pertenecientes al sistema. Existen tres tipos de choferes: Chofer Contratado, Chofer Permanente y CHofer Temporario. <br>
  *
  */
-public abstract class Chofer extends Thread{
+public abstract class Chofer extends Observable implements Runnable{
     private String DNI;
     private String nombre;
     private int puntos;
@@ -131,6 +132,8 @@ public abstract class Chofer extends Thread{
       IViaje viaje = sistema.sacarViaje(sistema.getAdmin());
       
       viaje.setEstado("Iniciado");
+      setChanged();
+      notifyObservers();
       
     }
     
