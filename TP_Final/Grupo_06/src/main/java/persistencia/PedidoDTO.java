@@ -14,10 +14,14 @@ public class PedidoDTO implements Serializable{
     private int cantidadPasajeros;
     private ClienteAbstracto cliente;
     private int distancia;
-	public LocalDateTime getFecha() {
+	
+    
+    public LocalDateTime getFecha() {
 		return fecha;
 	}
-	public String getZona() {
+	
+    
+    public String getZona() {
 		return zona;
 	}
 	public boolean isMascotas() {
