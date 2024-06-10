@@ -10,12 +10,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JList;
+import javax.swing.JTextArea;
 
 public class Ventana_Cliente1 extends Ventana implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JScrollPane scrollPaneCliente1;
+	private JTextArea textAreaCliente1;
 
 	/**
 	 * Launch the application.
@@ -49,8 +51,8 @@ public class Ventana_Cliente1 extends Ventana implements Observer{
 		this.scrollPaneCliente1 = new JScrollPane();
 		this.contentPane.add(this.scrollPaneCliente1);
 		
-		JList Var_listaCliente1 = new JList();
-		scrollPaneCliente1.setViewportView(Var_listaCliente1);
+		this.textAreaCliente1 = new JTextArea();
+		this.scrollPaneCliente1.setViewportView(this.textAreaCliente1);
 	}
 
 	@Override

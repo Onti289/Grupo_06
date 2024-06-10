@@ -15,12 +15,14 @@ import modelo.Sistema;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JList;
+import javax.swing.JTextArea;
 
 public class Ventana_Chofer1 extends Ventana implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JScrollPane scrollPaneChofer1;
+	private JTextArea textAreaChofer1;
 
 	/**
 	 * Launch the application.
@@ -54,8 +56,8 @@ public class Ventana_Chofer1 extends Ventana implements Observer{
 		this.scrollPaneChofer1 = new JScrollPane();
 		this.contentPane.add(this.scrollPaneChofer1);
 		
-		JList Var_listaChofer1 = new JList();
-		scrollPaneChofer1.setViewportView(Var_listaChofer1);
+		this.textAreaChofer1 = new JTextArea();
+		this.scrollPaneChofer1.setViewportView(this.textAreaChofer1);
 		
 	}
 

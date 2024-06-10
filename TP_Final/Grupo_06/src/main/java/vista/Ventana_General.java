@@ -13,12 +13,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import controladores.*;
 import javax.swing.JList;
+import javax.swing.JTextArea;
 
 public class Ventana_General extends Ventana implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JScrollPane scrollPaneGeneral;
+	private JTextArea textAreaGeneral;
 
 	/**
 	 * Launch the application.
@@ -52,8 +54,8 @@ public class Ventana_General extends Ventana implements Observer{
 		this.scrollPaneGeneral = new JScrollPane();
 		this.contentPane.add(this.scrollPaneGeneral, BorderLayout.CENTER);
 		
-		JList Var_listaGeneral = new JList();
-		scrollPaneGeneral.setViewportView(Var_listaGeneral);
+		this.textAreaGeneral = new JTextArea();
+		this.scrollPaneGeneral.setViewportView(this.textAreaGeneral);
 	}
 
 	@Override
