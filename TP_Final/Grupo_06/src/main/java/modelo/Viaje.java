@@ -19,7 +19,6 @@ public abstract class Viaje implements IViaje {
 		private ClienteAbstracto cliente;
 		private Chofer chofer;
 		private Vehiculo vehiculo;
-		private double costo;
 		private static double valorBase = 1000.0;
 		private int distanciaRealRecorrida;
 		private int pasajeros;
@@ -161,5 +160,59 @@ public abstract class Viaje implements IViaje {
 					"\t\t" + String.valueOf(this.distanciaRealRecorrida) + 
 					"\t\t\t" + String.valueOf(this.pasajeros) + 
 					"\t\t" + fecha + "\n";
+		}
+		
+		public synchronized void iniciaViaje()
+	    {
+	      this.chofer.setViaje(Sistema.sacarViaje(Sistema.getAdmin()));
+	      try {
+			Thread.sleep((long)(Math.random()*3000));
+		  } catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		  }
+	      this.viaje.getCliente().setViaje(this.viaje);
+	      this.viaje.setEstado("Iniciado");
+	      setChanged();
+	      notifyObservers(this.viaje);
+	      
+	    }
+		
+		/**
+		 * el cliente paga el viaje
+		 */
+		public synchronized void pagaViaje()
+		{
+			try {
+				Thread.sleep((long)(Math.random()*3000));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} 
+			this.viaje.setEstado("Pagado");
+			setChanged();
+			notifyObservers(this.viaje);
+			
+		}
+		/**
+		 * Metodo de tipo void que permite setear el estado del viaje en "Finalizado", ademas de sumar los kilometros recorridos y suma un viaje al chofer que lo realizo. <br>
+		 * 
+		 * <b>Pre: </b> parametro viaje distinto de null. <br>
+		 * 
+		 * @param viaje Parametro de tipo IViaje al cual se le modificara su estado a "Finalizado". <br>
+		 */
+		public synchronized void finalizaViaje(){
+			
+			try {
+				Thread.sleep((long)(Math.random()*3000));
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.viaje.setEstado("Finalizado");
+			  this.sumaKMrecorridosMes(viaje.getKM());
+			  this.sumaViajesMes();
+			  setChanged();
+			  notifyObservers(this.viaje);
+			
 		}
 }

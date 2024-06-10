@@ -1,6 +1,9 @@
 package modelo;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Observable;
+import modelo.*;
+import vista.IVista;
 
 /**
  * @author gc
@@ -132,48 +135,23 @@ public abstract class Chofer extends Observable implements Runnable{
         return Objects.hash(DNI);
     }
 
-    public void iniciaViaje()
-    {
-      this.viaje = sistema.sacarViaje(sistema.getAdmin());
-      try {
-		Thread.sleep((long)(Math.random()*3000));
-	  } catch (InterruptedException e) {
-		
-		e.printStackTrace();
-	  }
-      this.viaje.getCliente().setViaje(this.viaje);
-      this.viaje.setEstado("Iniciado");
-      setChanged();
-      notifyObservers(this.viaje);
-      
-    }
     
-	/**
-	 * Metodo de tipo void que permite setear el estado del viaje en "Finalizado", ademas de sumar los kilometros recorridos y suma un viaje al chofer que lo realizo. <br>
-	 * 
-	 * <b>Pre: </b> parametro viaje distinto de null. <br>
-	 * 
-	 * @param viaje Parametro de tipo IViaje al cual se le modificara su estado a "Finalizado". <br>
-	 */
-	public void finalizaViaje(IViaje viaje){
-		
-		try {
-			Thread.sleep((long)(Math.random()*3000));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.viaje.setEstado("Finalizado");
-		  this.sumaKMrecorridosMes(viaje.getKM());
-		  this.sumaViajesMes();
-		  setChanged();
-		  notifyObservers(this.viaje);
-		
+    
+	public void setViaje(IViaje v)
+	{
+		this.viaje = viaje;
 	}
     
 	@Override
 	public void run()
 	{
+        int viajesRealizados = 0;
+		
+		while (viajesRealizados < cantMaxViajes && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
+		{
+			iniciaViaje();
+			finalizaViaje();
+		}
 		
 	}
 

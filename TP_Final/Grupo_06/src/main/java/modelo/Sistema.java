@@ -39,6 +39,11 @@ public class Sistema extends Observable{
 		this.nombre = "Subi que te llevo";
 	}
     
+	public Sistema(String nombre)
+	{
+		_getInstancia();
+	}
+	
     public void agregaVehiculoATotal(Administrador a, Vehiculo v)
     {
     	a.agregaVehiculoATotal(v);
@@ -290,7 +295,7 @@ public class Sistema extends Observable{
 	 * @throws NoHayChoferesDisponiblesException Excepcion lanzada en caso de que no se cuente con ningun chofer disponible al momento de iniciar el viaje. <br>
 	 * @throws NoHayVehiculoException Excepcion lanzada en caso de que ninguno de los vehiculos disponibles cumpla con lo solicitado en el pedido. <br>
 	 */
-	public void generaViaje(Administrador a, Pedido p) throws NoHayChoferesDisponiblesException,NoHayVehiculoException {
+	/*public void generaViaje(Administrador a, Pedido p) throws NoHayChoferesDisponiblesException,NoHayVehiculoException {
 		Chofer chofer = null;
 		Vehiculo vehiculo = null;
 		IViaje viaje = null;
@@ -318,24 +323,14 @@ public class Sistema extends Observable{
 		a.agregaVehiculoADisponibles(vehiculo);
 		}
 	}
-
+*/
 	
 	
-	public IViaje sacarViaje(Administrador a)
+	public static IViaje sacarViaje(Administrador a)
 	{
-	  return a.sacarViaje();
+	  return a.sacarViaje(0);
 	}
 	
-	/**
-	 * Metodo de tipo void que setea el estado de un determinado viaje como Iniciado. <br> 
-	 * 
-	 * <b>Pre: </b>Parametro IViaje viaje distinto de null. <br>
-	 * 
-	 * @param viaje Parametro de tipo IViaje al cual se le actualizara su estado a Iniciado.
-	 */
-	private void iniciaViaje(IViaje viaje) {
-		viaje.setEstado("Iniciado");
-	}
 
 	/**
 	 * Metodo de tipo void que calcula los puntos en el mes de los choferes pertenecientes a la lista correspondiente del Administrador a. <br>
@@ -460,7 +455,7 @@ public class Sistema extends Observable{
 		a.setClienteHumano(cliente);
 	}
 	
-	public void persistir() {
+	public void persistir() {/*
 		IPersistencia persistencia = new PersistenciaXML();
 		try
 		{
@@ -475,7 +470,7 @@ public class Sistema extends Observable{
 		     } catch (IOException e)
 		     {
 		        System.out.println(e.getLocalizedMessage());
-		     }
+		     }*/
 	}
 	public void setAdmin(Administrador a)
 	{

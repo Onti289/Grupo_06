@@ -1,8 +1,810 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="17.0.10" class="java.beans.XMLDecoder">
- <object class="persistencia.AdministradorDTO">
+ <object class="persistencia.AdministradorDTO" id="AdministradorDTO0">
+  <void property="colaChoferes">
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>1000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer1</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>2000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>1000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer2</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>3000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>1500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer3</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>4000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>2000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer4</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>5000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>2500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer5</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>6000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>3000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer6</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>7000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>3500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer7</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>8000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>4000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer8</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>9000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>4500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer9</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>10000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>5000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer10</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>11000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>5500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer11</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>12000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>6000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer12</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>13000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>6500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer13</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>14000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>7000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer14</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>15000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>7500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer15</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>16000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>8000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer16</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>17000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>8500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer17</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>18000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>9000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer18</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>19000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>9500</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer19</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>20000</string>
+     </void>
+     <void property="gananciaViaje">
+      <int>10000</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer20</string>
+     </void>
+     <void property="tipo">
+      <string>Contratado</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>22000</string>
+     </void>
+     <void property="anioIngreso">
+      <int>1</int>
+     </void>
+     <void property="antiguedad">
+      <int>2023</int>
+     </void>
+     <void property="aportes">
+      <int>1</int>
+     </void>
+     <void property="cantHijos">
+      <int>1</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer22</string>
+     </void>
+     <void property="sueldoBasico">
+      <double>5000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Permanente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>23000</string>
+     </void>
+     <void property="anioIngreso">
+      <int>1</int>
+     </void>
+     <void property="antiguedad">
+      <int>2023</int>
+     </void>
+     <void property="aportes">
+      <int>1</int>
+     </void>
+     <void property="cantHijos">
+      <int>1</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer23</string>
+     </void>
+     <void property="sueldoBasico">
+      <double>5000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Permanente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>25000</string>
+     </void>
+     <void property="aportes">
+      <int>1</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer25</string>
+     </void>
+     <void property="sueldoBasico">
+      <double>5000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Temporario</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ChoferDTO">
+     <void property="DNI">
+      <string>26000</string>
+     </void>
+     <void property="aportes">
+      <int>1</int>
+     </void>
+     <void property="nombre">
+      <string>Chofer26</string>
+     </void>
+     <void property="sueldoBasico">
+      <double>5000.0</double>
+     </void>
+     <void property="tipo">
+      <string>Temporario</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="colaVehiculos">
+   <void method="add">
+    <object class="persistencia.VehiculoDTO">
+     <void property="baul">
+      <boolean>true</boolean>
+     </void>
+     <void property="maxPasajeros">
+      <int>4</int>
+     </void>
+     <void property="patente">
+      <string>ABC100</string>
+     </void>
+     <void property="petFriendly">
+      <boolean>true</boolean>
+     </void>
+     <void property="tipo">
+      <string>Automovil</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.VehiculoDTO">
+     <void property="baul">
+      <boolean>true</boolean>
+     </void>
+     <void property="maxPasajeros">
+      <int>4</int>
+     </void>
+     <void property="patente">
+      <string>ABC200</string>
+     </void>
+     <void property="petFriendly">
+      <boolean>true</boolean>
+     </void>
+     <void property="tipo">
+      <string>Automovil</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.VehiculoDTO">
+     <void property="maxPasajeros">
+      <int>1</int>
+     </void>
+     <void property="patente">
+      <string>DEF100</string>
+     </void>
+     <void property="tipo">
+      <string>Moto</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.VehiculoDTO">
+     <void property="maxPasajeros">
+      <int>1</int>
+     </void>
+     <void property="patente">
+      <string>DEF200</string>
+     </void>
+     <void property="tipo">
+      <string>Moto</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.VehiculoDTO">
+     <void property="baul">
+      <boolean>true</boolean>
+     </void>
+     <void property="maxPasajeros">
+      <int>10</int>
+     </void>
+     <void property="patente">
+      <string>GHI100</string>
+     </void>
+     <void property="tipo">
+      <string>Combi</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.VehiculoDTO">
+     <void property="baul">
+      <boolean>true</boolean>
+     </void>
+     <void property="maxPasajeros">
+      <int>10</int>
+     </void>
+     <void property="patente">
+      <string>GHI200</string>
+     </void>
+     <void property="tipo">
+      <string>Combi</string>
+     </void>
+    </object>
+   </void>
+  </void>
   <void property="contrasena">
    <string>123</string>
+  </void>
+  <void property="listaClientes">
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente1</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente2</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente3</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente4</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente5</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente6</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente7</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente8</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente9</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente10</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente11</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente12</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente13</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente14</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente15</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente16</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente17</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente18</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente19</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente20</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente21</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="persistencia.ClienteDTO">
+     <void property="contrasena">
+      <string>111</string>
+     </void>
+     <void property="nombre">
+      <string>Cliente22</string>
+     </void>
+     <void property="nombreReal">
+      <string>Cliente</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="nombre">
    <string>ElAdmin</string>

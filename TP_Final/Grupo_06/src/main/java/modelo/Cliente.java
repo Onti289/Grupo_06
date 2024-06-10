@@ -62,6 +62,11 @@ public class Cliente extends ClienteAbstracto implements Runnable{
     	ViajeFactory viajeFactory = new ViajeFactory();
     	IViaje viaje = viajeFactory.getViaje(p, null, null);
     	sistema.agregaViaje(viaje);
+    	try {
+			Thread.sleep((long)(Math.random()*3000));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     	setChanged();
     	notifyObservers(viaje);
     	
@@ -87,19 +92,7 @@ public class Cliente extends ClienteAbstracto implements Runnable{
         return Objects.hash(nombre);
     }
 
-	/**
-	 * el cliente paga el viaje
-	 */
-	public void pagaViaje()
-	{
-		try {
-			Thread.sleep((long)(Math.random()*3000));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} 
-		this.viaje.setEstado("Pagado");
-		
-	}
+	
 	
 	
 	public void modificacliente(String nombre,String contrasena) 
@@ -148,6 +141,7 @@ public class Cliente extends ClienteAbstracto implements Runnable{
 			int cantKm = (int) (Math.random()*20 + 1);
 
 			this.generaPedido(LocalDateTime.now(), zona, mascota, baul, cantPax, cantKm);
+			this.pagaViaje();
 		}
 		
 	}
