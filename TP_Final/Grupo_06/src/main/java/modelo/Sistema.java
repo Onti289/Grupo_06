@@ -581,6 +581,8 @@ public void agregaClienteHumano(Administrador a, ClienteHumano c)
 		Pedido p = v.getPedido();
 		while(i < admin.getColaVehiculosDisponibles().size() && !admin.getColaVehiculosDisponibles().get(i).cumpleCondicion(p))
 			i++;
+		
+		System.out.println("i = "+i+"\n"+"size = "+admin.getColaVehiculosDisponibles().size()+"\n cumple condicion= "+admin.getColaVehiculosDisponibles().get(i).cumpleCondicion(p));
 		if (i < admin.getColaVehiculosDisponibles().size())
 		{
 			v.setEstado("con Vehiculo");

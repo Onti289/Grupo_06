@@ -20,6 +20,7 @@ public class SistemaThread extends Thread implements Observer {
 	public void run() {
 		while (Chofer.CANTCHOFERESDISPONIBLES > 0 && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
 		{
+			System.out.println("while run sistemaThread");
 			if (viaje != null)
 			{
 			  this.viaje.setVehiculo(observado.sacarVehiculoDeDisponibles(this.viaje));
@@ -35,7 +36,6 @@ public class SistemaThread extends Thread implements Observer {
 	public void update(Observable o, Object arg) {
 		if (observado != o)
 			throw new IllegalArgumentException();
-		Administrador a = Sistema.getAdmin();
 		
 		
 		this.viaje = (IViaje) arg;

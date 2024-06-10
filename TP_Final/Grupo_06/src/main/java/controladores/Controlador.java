@@ -22,6 +22,8 @@ public abstract class Controlador  implements ActionListener//es un controlador 
     	int i;
     	int j;
     	
+    	new SistemaThread(modelo).start();
+    	
     	for (i = 1; i <= Chofer.CANTCONTRATADOS; i++)
       	  modelo.agregaChofer(Sistema.getAdmin(), new ChoferContratado(""+i*1000, "Chofer"+i, i*500, modelo));
       	for (j = i+1; j <= Chofer.CANTPERMANENTES + i; j++)
