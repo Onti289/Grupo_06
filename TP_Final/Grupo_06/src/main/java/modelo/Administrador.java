@@ -42,10 +42,16 @@ public class Administrador extends Usuario{
 
     }
 
+    public void agregaPedido(Pedido p)
+    {
+      listaPedidos.add(p);
+    }
     
-    public static LinkedList<Pedido> getListaPedidos() {
-		return listaPedidos;
-	}
+    public Pedido sacaPedido()
+    {
+    	return listaPedidos.poll();
+    }
+
     
     public static LinkedList<Chofer> getColaChoferes() {
 		return colaChoferes;
@@ -69,13 +75,6 @@ public class Administrador extends Usuario{
 		return listaViajes;
 	}
 
-	public void agregarPedido(Pedido pedido){
-        listaPedidos.add(pedido);
-    }
-
-	public Pedido sacarPedido() {
-    	return listaPedidos.poll();
-    }
 	
 	/**
      * Metodo de tipo void que agrega un chofer a la colaChofer. El chofer es agregado al final de la cola. <br>
@@ -375,7 +374,7 @@ public class Administrador extends Usuario{
 	 * @return !this.colaChofer.isEmpty(): en caso de que la cola este vacia, el metodo devolvera false, true en caso contrario. <br>
 	 */
 	public boolean isChoferDisponible() {
-		return !colaChoferes.isEmpty();
+		return ;
 	}
 
 	/**
@@ -446,6 +445,10 @@ public class Administrador extends Usuario{
 	 */
 	public void agregarViaje(IViaje viaje) {
 		listaViajes.add(viaje);
+	}
+	
+	public IViaje sacarViaje() {
+		return listaViajes.get(0);
 	}
 
 	/**

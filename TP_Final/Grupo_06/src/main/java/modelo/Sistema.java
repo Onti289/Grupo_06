@@ -24,6 +24,8 @@ public class Sistema extends Observable{
 	private static Sistema _instancia = null;
 	private String nombre;
 	private Administrador admin = new Administrador("ElAdmin", "123", "Leonel");
+	private static int cantClientes;
+	private static int cantChoferes;
 	
 
 	/**
@@ -38,7 +40,34 @@ public class Sistema extends Observable{
 	private Sistema() {
 		this.nombre = "Subi que te llevo";
 	}
-
+    public void setCantClientes(int cant)
+    {
+    	cantClientes = cant;
+    }
+    public void setCantChoferes(int cant)
+    {
+    	cantChoferes = cant;
+    }
+    
+    public static synchronized void decrementaChoferes()
+    {
+    	cantChoferes--;
+    }
+    
+    public static synchronized void decrementaClientes()
+    {
+    	cantClientes--;
+    }
+    
+    public static synchronized int getCantClientes()
+    {
+    	return cantClientes;
+    }
+    
+    public static synchronized int getCantChoferes()
+    {
+    	return cantChoferes;
+    }
 	/**
 	 * Metodo static de tipo Sistema que devuleve el parametro Sistema _instancia. En caso de que el parametro tenga como valor null, lo instancia con el constructor correspondiente. <br>
 	 *
@@ -296,32 +325,41 @@ public class Sistema extends Observable{
 		IViaje viaje = null;
 		ViajeFactory viajeFactory = new ViajeFactory();
 
-		if(!a.isChoferDisponible()) {
-			throw new NoHayChoferesDisponiblesException("No hay choferes disonibles");
-		}
-		if(!a.vehiculoCumplePedido(p)) {
-			throw new NoHayVehiculoException("No hay vehiculos que cumplan con el pedido");
-		}
+		if (a.vehiculoCumplePedido(p))
+		{	
+		  
         persistir();
         
-		chofer = a.SacarChofer();
-		vehiculo = a.sacarVehiculo(p);
+		
+        vehiculo = a.sacarVehiculo(p);
+        
+        
+       
+		
 
-		viaje = viajeFactory.getViaje(p, chofer, vehiculo);
-
+		viaje = viajeFactory.getViaje(p, null, vehiculo);
+		a.agregarViaje(viaje);
+        
+        
 		iniciaViaje(viaje);
 		
 		p.getCliente().pagaViaje(viaje);
 		
 		chofer.finalizaViaje(viaje);
 		
-		a.agregarViaje(viaje);
+		
 		
 		a.AgregarChofer(chofer);
 		
 		a.agregaVehiculo(vehiculo);
+		}
 	}
 
+	public IViaje sacarViaje(Administrador a)
+	{
+	  return a.sacarViaje();
+	}
+	
 	/**
 	 * Metodo de tipo void que setea el estado de un determinado viaje como Iniciado. <br> 
 	 * 

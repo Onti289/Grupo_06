@@ -157,7 +157,7 @@ public class Ventana_CrearPedido extends Ventana{
 		this.panelElijaZona.add(this.rdbtnSinAsfaltar);
 		this.buttonGroupZona.add(this.rdbtnSinAsfaltar);
 		
-		this.rdbtnZonaPeligrosa = new JRadioButton(PICANTE);
+		this.rdbtnZonaPeligrosa = new JRadioButton(PELIGROSA);
 		this.panelElijaZona.add(this.rdbtnZonaPeligrosa);
 		this.buttonGroupZona.add(this.rdbtnZonaPeligrosa);
 		
@@ -262,7 +262,7 @@ public class Ventana_CrearPedido extends Ventana{
 		if (this.rdbtnSinAsfaltar.isSelected())
 		  return IVista.SINASFALTAR;
 		else
-		  return IVista.PICANTE;
+		  return IVista.PELIGROSA;
 	}
 	
 	@Override

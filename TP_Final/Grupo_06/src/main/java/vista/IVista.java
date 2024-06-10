@@ -13,9 +13,9 @@ public interface IVista
   public static final String INICIASIM = "Iniciar simulación";
   public static final String CREARUSUARIO = "Crear";
   public static final String INICIARSESION = "Ingresar";
-  public static final String ESTANDAR = "Estándar";
-  public static final String SINASFALTAR = "Sin asfaltar";
-  public static final String PICANTE = "Picante";
+  public static final String ESTANDAR = "Estandar";
+  public static final String SINASFALTAR = "Calle sin asfaltar";
+  public static final String PELIGROSA = "Zona peligrosa";
   public static final String ACEPTAR = "Aceptar";
   public static final String PAGAR = "Pagar";
 

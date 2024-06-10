@@ -16,7 +16,12 @@ public class SistemaThread extends Thread implements Observer {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		while (Sistema.getCantChoferes() > 0 && Sistema.getCantClientes() > 0)
+		{
+			
+			
+			
+		}
 
 	}
 

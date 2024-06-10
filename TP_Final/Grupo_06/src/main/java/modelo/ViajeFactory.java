@@ -1,5 +1,7 @@
 package modelo;
 
+import vista.IVista;
+
 /**
  * @author Grupo6
  * 
@@ -21,13 +23,13 @@ public class ViajeFactory {
 		IViaje encapsulado = null;
 		IViaje encapsulado2 = null;
 		
-		if (pedido.getZona().equalsIgnoreCase("Zona Peligrosa"))
+		if (pedido.getZona().equalsIgnoreCase(IVista.PELIGROSA))
 			encapsulado = new ZonaPeligrosa(pedido, chofer, vehiculo);
 		else
-		  if (pedido.getZona().equalsIgnoreCase("Estandar"))
+		  if (pedido.getZona().equalsIgnoreCase(IVista.ESTANDAR))
 			encapsulado = new Estandar(pedido, chofer, vehiculo);
 		  else
-			if (pedido.getZona().equalsIgnoreCase("Calle sin asfaltar"))
+			if (pedido.getZona().equalsIgnoreCase(IVista.SINASFALTAR))
 			  encapsulado = new CalleSinAsfaltar(pedido, chofer, vehiculo);
 		if (encapsulado != null)
 		{

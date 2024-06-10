@@ -3,14 +3,18 @@ package modelo;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import vista.IVista;
+
 /**
  * @author gc
  * <br>
  * Clase que extiende de Usuario que representa a un cliente de la plataforma dentro del sistema. Contiene nombre, nombreReal y contrase�a. Tiene la capacidad de generar Pedido
  */
-public class Cliente extends Usuario {
+public class Cliente extends Usuario implements Runnable{
 
-    /**
+	private static int cantMaxViajes;
+	private Sistema sistema;
+	/**
      * Constructor con tres parametros para setear el nombre, nombreReal y contrase�a de un nuevo Cliente. <br>
      *
      *  <b>Pre: </b> Valores de los parametros String distintos de null, String nombre no se repite en ninguno de los usuarios ya existentes. <br>
@@ -18,12 +22,15 @@ public class Cliente extends Usuario {
      *
      * Llama a constructor super(nombre, contrasena, nombreReal) de Usuario. <br>
      */
-    public Cliente(String nombre, String contrasena, String nombreReal) {
+    public Cliente(String nombre, String contrasena, String nombreReal, Sistema sistema) {
         super(nombre,contrasena,nombreReal);
-        // TODO Auto-generated constructor stub
+        this.sistema = sistema;
     }
 
-    
+    public void setCantMaxViajesCliente(int num)
+    {
+    	cantMaxViajes = num;
+    }
     
     public Cliente() {
 		super();
@@ -46,9 +53,10 @@ public class Cliente extends Usuario {
      * @return El metodo devuelve un parametro de tipo Pedido con el nuevo pedido realizado por el cliente en base a lo completado en el formulario del viaje. <br>
      */
 
-    public Pedido generaPedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia) {
+    public void generaPedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia) {
     	Pedido p = new Pedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, this, distancia);
-    	return p;
+    	sistema.agregarPedido(sistema.getAdmin(), p);
+    	
     }
 
 	@Override
@@ -88,6 +96,45 @@ public class Cliente extends Usuario {
 
 	public String listarHistoricoViajes(Administrador a) {
 		return a.listarHistoricoViajesCliente(this);
+		
+	}
+
+
+
+	@Override
+	public void run(){
+		int viajesRealizados = 0;
+		
+		while (viajesRealizados < cantMaxViajes && Sistema.getCantChoferes() > 0)
+		{
+			int zonaAux =(int) (Math.random()*3 + 1);
+			String zona;
+			if (zonaAux == 1)
+				zona = IVista.PELIGROSA;
+			else
+				if (zonaAux == 2)
+				  zona = IVista.ESTANDAR;
+				else
+				  zona = IVista.SINASFALTAR;
+			
+			int baulAux = (int) (Math.random());
+			boolean baul;
+			if(baulAux==0)
+			     baul = false;
+			else
+			     baul = true;
+			
+			int mascotaAux = (int) (Math.random());
+			boolean mascota;
+			if(mascotaAux==0)
+			     mascota = false;
+			else
+			     mascota = true;
+			int cantPax = (int) (Math.random()*8 +1);
+			int cantKm = (int) (Math.random()*20 + 1);
+
+			this.generaPedido(LocalDateTime.now(), zona, mascota, baul, cantPax, cantKm);
+		}
 		
 	}
 }

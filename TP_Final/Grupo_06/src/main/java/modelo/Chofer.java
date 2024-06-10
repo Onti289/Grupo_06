@@ -7,12 +7,14 @@ import java.util.Objects;
  * Clase abstracta que representa a los choferes pertenecientes al sistema. Existen tres tipos de choferes: Chofer Contratado, Chofer Permanente y CHofer Temporario. <br>
  *
  */
-public abstract class Chofer {
+public abstract class Chofer extends Thread{
     private String DNI;
     private String nombre;
     private int puntos;
     private int viajesMes;
     private double KMrecorridosMes;
+    private static int cantMaxViajes;
+	private Sistema sistema;
 
     /**
      * Constructor con dos parametros para setear el documento y el nombre del nuevo chofer perteneciente al sistema. <br>
@@ -28,6 +30,7 @@ public abstract class Chofer {
         this.puntos = 0;
         this.viajesMes = 0;
         this.KMrecorridosMes = 0.0;
+        this.sistema = sistema;
     }
 
     
@@ -36,7 +39,10 @@ public abstract class Chofer {
 		super();
 	}
 
-
+    public void setCantMaxViajesChofer(int num)
+    {
+    	cantMaxViajes = num;
+    }
 
 	public String getDNI() {
         return DNI;
@@ -120,6 +126,14 @@ public abstract class Chofer {
         return Objects.hash(DNI);
     }
 
+    public void iniciaViaje()
+    {
+      IViaje viaje = sistema.sacarViaje(sistema.getAdmin());
+      
+      viaje.setEstado("Iniciado");
+      
+    }
+    
 	/**
 	 * Metodo de tipo void que permite setear el estado del viaje en "Finalizado", ademas de sumar los kilometros recorridos y suma un viaje al chofer que lo realizo. <br>
 	 * 
