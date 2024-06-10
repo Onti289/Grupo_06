@@ -23,7 +23,7 @@ public class Sistema extends Observable{
 
 	private static Sistema _instancia = null;
 	private String nombre;
-	private Administrador admin = new Administrador("ElAdmin", "123", "Leonel");
+	private static Administrador admin = new Administrador("ElAdmin", "123", "Leonel");
 	
 
 	/**
@@ -52,7 +52,7 @@ public class Sistema extends Observable{
     
     public synchronized IViaje sacaViaje()
     {
-    	while (admin.getListaViajes().isEmpty() && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
+    	while (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0 && (admin.getListaViajes().isEmpty() || !hayConVehiculo()))
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -60,11 +60,23 @@ public class Sistema extends Observable{
 			}
     	if (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
     	{
+    		int i = 0;
+    		while (admin.getListaViajes().get(i).getEstado().equalsIgnoreCase("solicitado"))
+    			i++;
+    		IViaje viaje = admin.sacarViaje(i);
     		notifyAll();
-    	   return admin.sacarViaje();
+    	   return viaje;
     	}
     	else
     	  return null;
+    }
+    
+    public boolean hayConVehiculo()
+    {
+    	int i = 0;
+		while (i < admin.getListaViajes().size() && admin.getListaViajes().get(i).getEstado().equalsIgnoreCase("solicitado"))
+			i++;
+		return i < admin.getListaViajes().size();
     }
     
 	/**
@@ -415,9 +427,9 @@ public class Sistema extends Observable{
     }
 
     
-    public Administrador getAdmin()
+    public static Administrador getAdmin()
     {
-    	return this.admin;
+    	return admin;
     }
     
     public boolean existeNombreUsuario(Administrador a, String nombre)
@@ -434,10 +446,18 @@ public class Sistema extends Observable{
     {
       return a.getCliente(nombreUsuario);
     }
-
+	public static ClienteAbstracto getCliente1(Administrador a)
+	{
+		return a.getCliente1();
+	}
+	
+	public static Chofer getChofer1(Administrador a)
+	{
+		return a.getChofer1();
+	}
+	
 	public void setClienteHumano(Administrador a, ClienteAbstracto cliente) {
 		a.setClienteHumano(cliente);
-		
 	}
 	
 	public void persistir() {

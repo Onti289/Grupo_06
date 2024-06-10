@@ -7,6 +7,12 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Cliente;
+import modelo.ClienteAbstracto;
+import modelo.IViaje;
+import modelo.Sistema;
+
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JList;
@@ -18,6 +24,7 @@ public class Ventana_Cliente1 extends Ventana implements Observer{
 	private JPanel contentPane;
 	private JScrollPane scrollPaneCliente1;
 	private JTextArea textAreaCliente1;
+	private ClienteAbstracto observado;
 
 	/**
 	 * Launch the application.
@@ -53,11 +60,31 @@ public class Ventana_Cliente1 extends Ventana implements Observer{
 		
 		this.textAreaCliente1 = new JTextArea();
 		this.scrollPaneCliente1.setViewportView(this.textAreaCliente1);
+		
+		this.observado = Sistema.getCliente1(Sistema.getAdmin());
+		this.observado.addObserver(this);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		if (o != observado)
+			throw new IllegalArgumentException();
+		IViaje viaje = (IViaje) arg;
+		String estado = viaje.getEstado();
+		String muestra = null;
+		
+		if (estado.equalsIgnoreCase("solicitado"))
+			muestra = "Solicitaste un viaje";
+		else if (estado.equalsIgnoreCase("iniciado"))
+		    muestra = "El " + viaje.getChofer().getNombre() + " inicio el viaje";
+		else if (estado.equalsIgnoreCase("con Vehiculo"))
+			muestra = "Se asigno el vehiculo" + viaje.getVehiculo().getPatente() + " a su viaje";
+		else if (estado.equalsIgnoreCase("pagado"))
+			muestra = "Pagaste el viaje";
+		else if (estado.equalsIgnoreCase("finalizado"))
+			muestra = "El " + viaje.getChofer().getNombre() + " finalizo el viaje";
+		this.appendLog(muestra);
+		
 		
 	}
 

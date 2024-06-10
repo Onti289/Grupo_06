@@ -59,9 +59,11 @@ public class Cliente extends ClienteAbstracto implements Runnable{
 
     public void generaPedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia) {
     	Pedido p = new Pedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, this, distancia);
-    	sistema.agregarPedido(sistema.getAdmin(), p);
+    	ViajeFactory viajeFactory = new ViajeFactory();
+    	IViaje viaje = viajeFactory.getViaje(p, null, null);
+    	sistema.agregaViaje(viaje);
     	setChanged();
-    	notifyObservers(p);
+    	notifyObservers(viaje);
     	
     }
 

@@ -24,7 +24,8 @@ public class Administrador extends Usuario{
     private static LinkedList<Chofer> colaChoferes = new LinkedList<Chofer>();
     private static LinkedList<Vehiculo> colaVehiculosDisponibles = new LinkedList<Vehiculo>();
     private static LinkedList<Vehiculo> colaTotalVehiculos = new LinkedList<Vehiculo>();
-    private static LinkedList<ClienteAbstracto> listaClientes = new LinkedList<ClienteAbstracto>();
+    private static LinkedList<ClienteAbstracto> listaClientesRobot = new LinkedList<ClienteAbstracto>();
+    private static LinkedList<ClienteAbstracto> listaClientesHumanos = new LinkedList<ClienteAbstracto>();
     private static LinkedList<IViaje> listaViajes = new LinkedList<IViaje>();
     private static LinkedList<Pedido> listaPedidos = new LinkedList<Pedido>();
 	private ClienteHumano clienteHumano;
@@ -72,7 +73,7 @@ public class Administrador extends Usuario{
 
 
 	public LinkedList<ClienteAbstracto> getListaClientes() {
-		return listaClientes;
+		return listaClientesRobot;
 	}
 
 
@@ -212,10 +213,10 @@ public class Administrador extends Usuario{
 	public void agregarCliente(ClienteAbstracto c) throws NombreDeUsuarioYaExistenteException{
 		int i = 0;
 		boolean resp = false;
-		while (i < listaClientes.size() && !resp)
-		  resp = listaClientes.get(i++).getNombre().equalsIgnoreCase(c.getNombre());
+		while (i < listaClientesRobot.size() && !resp)
+		  resp = listaClientesRobot.get(i++).getNombre().equalsIgnoreCase(c.getNombre());
 		if (!resp)
-		  listaClientes.add(c);
+		  listaClientesRobot.add(c);
 		else
           throw new NombreDeUsuarioYaExistenteException("El nombre de usuario elegido ya existe");
 	}
@@ -231,13 +232,13 @@ public class Administrador extends Usuario{
 	 */
 
 	public void sacaCliente(Cliente c) throws NoHayClientesException, ClienteNoExistenteException {
-		if(listaClientes == null)
+		if(listaClientesRobot == null)
 			throw new NoHayClientesException("No hay clientes en la lista");
 		else {
 			if(!this.existeCliente(c))
 				throw new ClienteNoExistenteException("El cliente no existe en el listado");
 			else
-				listaClientes.remove(c);
+				listaClientesRobot.remove(c);
 		}
 	}
 
@@ -272,10 +273,10 @@ public class Administrador extends Usuario{
     public ClienteAbstracto getCliente(String nombreUsuario)
     {
       ClienteAbstracto c = null;
-      int i = 0, tope = Administrador.listaClientes.size();
-	  while (i < tope && !Administrador.listaClientes.get(i).nombre.equals(nombreUsuario))
+      int i = 0, tope = Administrador.listaClientesRobot.size();
+	  while (i < tope && !Administrador.listaClientesRobot.get(i).nombre.equals(nombreUsuario))
 			i++;
-	  c = Administrador.listaClientes.get(i);
+	  c = Administrador.listaClientesRobot.get(i);
       return c;
     }
 	
@@ -301,7 +302,7 @@ public class Administrador extends Usuario{
 	public String listarCLientes() {
 		String salida = "Listado de clientes: \n";
 		salida += "Nombre usuario \t Nombre Real \n";
-		for (ClienteAbstracto cliente : listaClientes) {
+		for (ClienteAbstracto cliente : listaClientesRobot) {
             salida += cliente.toString();
         }
 		return salida;
@@ -371,7 +372,7 @@ public class Administrador extends Usuario{
 	 * @return this.listaCliente.contains(c): devuelve true en caso de que el Cliente c pertenezca a la listaCliente, false en caso contrario. <br>
 	 */
 	public boolean existeCliente(Cliente c) {
-		return listaClientes.contains(c);
+		return listaClientesRobot.contains(c);
 	}
 
 	/**
@@ -453,8 +454,10 @@ public class Administrador extends Usuario{
 		listaViajes.add(viaje);
 	}
 	
-	public IViaje sacarViaje() {
-		return listaViajes.get(0);
+	public IViaje sacarViaje(int i) {
+		IViaje viaje = listaViajes.get(i);
+		listaViajes.remove(i);
+		return viaje;
 	}
 
 	/**
@@ -592,18 +595,18 @@ public class Administrador extends Usuario{
 	
 	public boolean existeNombreUsuario(String nombre)
 	{
-		int i = 0, tope = Administrador.listaClientes.size();
-		while (i < tope && !Administrador.listaClientes.get(i).nombre.equals(nombre))
+		int i = 0, tope = Administrador.listaClientesRobot.size();
+		while (i < tope && !Administrador.listaClientesRobot.get(i).nombre.equals(nombre))
 			i++;
 		return i < tope;
 	}
 	
 	public boolean contraseniaCorrecta(String nombre, String contrasenia)
 	{
-		int i = 0, tope = Administrador.listaClientes.size();
-		while (i < tope && !Administrador.listaClientes.get(i).nombre.equals(nombre))
+		int i = 0, tope = Administrador.listaClientesRobot.size();
+		while (i < tope && !Administrador.listaClientesRobot.get(i).nombre.equals(nombre))
 			i++;
-		return Administrador.listaClientes.get(i).contrasena.equals(contrasenia);
+		return Administrador.listaClientesRobot.get(i).contrasena.equals(contrasenia);
 	}
 
 
@@ -617,5 +620,14 @@ public class Administrador extends Usuario{
 
 	public ClienteHumano getClienteHumano() {
 		return this.clienteHumano;
+	}
+
+	public ClienteAbstracto getCliente1() {
+		return this.listaClientesRobot.get(0);
+	}
+	
+	public Chofer getChofer1()
+	{
+		return this.colaChoferes.get(0);
 	}
 }

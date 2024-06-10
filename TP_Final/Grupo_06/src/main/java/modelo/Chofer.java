@@ -144,7 +144,7 @@ public abstract class Chofer extends Observable implements Runnable{
       this.viaje.getCliente().setViaje(this.viaje);
       this.viaje.setEstado("Iniciado");
       setChanged();
-      notifyObservers();
+      notifyObservers(this.viaje);
       
     }
     
@@ -166,6 +166,8 @@ public abstract class Chofer extends Observable implements Runnable{
 		this.viaje.setEstado("Finalizado");
 		  this.sumaKMrecorridosMes(viaje.getKM());
 		  this.sumaViajesMes();
+		  setChanged();
+		  notifyObservers(this.viaje);
 		
 	}
     
