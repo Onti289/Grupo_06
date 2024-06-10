@@ -73,6 +73,7 @@ public class Sistema extends Observable{
     			i++;
     		
     		IViaje viaje = admin.sacarViaje(i);
+    		notifyAll();
     		System.out.println(""+i + viaje);
     	   return viaje;
     	}
@@ -99,6 +100,7 @@ public class Sistema extends Observable{
     	IViaje viaje = viajeFactory.getViaje(p, null, null);
     	//System.out.println(viaje);
     	cliente.setViaje(viaje);
+    	viaje.setEstado("solicitado");
     	this.agregaViaje(viaje);
     	System.out.println(Sistema.getAdmin().listarViajes()+"\n---------------------------");
     	System.out.println("entra genera pedido en cliente");
@@ -120,7 +122,9 @@ public class Sistema extends Observable{
 				e.printStackTrace();
 			}
     	if (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
-    	{chofer.setViaje(sacaViaje());
+    	{IViaje viaje = sacaViaje();
+    	System.out.println(viaje);
+    		chofer.setViaje(viaje);
       chofer.getViaje().setChofer(chofer);
       chofer.getViaje().setEstado("Iniciado");
       System.out.println("entra inicia viaje en sistema");

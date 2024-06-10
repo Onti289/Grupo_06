@@ -20,12 +20,14 @@ public class SistemaThread extends Thread implements Observer {
 	public void run() {
 		while (Chofer.CANTCHOFERESDISPONIBLES > 0 && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
 		{
-			System.out.println("while run sistemaThread");
 			if (viaje != null)
 			{
 			  this.viaje.setVehiculo(observado.sacarVehiculoDeDisponibles(this.viaje));
+			  //iniciarviaje(this.viaje);
 			  this.viaje = null;
+			  
 			}
+			
 			
 			
 		}
