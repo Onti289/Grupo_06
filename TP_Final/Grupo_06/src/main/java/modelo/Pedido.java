@@ -15,7 +15,7 @@ public class Pedido {
     private boolean mascotas;
     private boolean equipaje;
     private int cantidadPasajeros;
-    private Cliente cliente;
+    private ClienteAbstracto cliente;
     private int distancia;
 
     /**
@@ -34,7 +34,7 @@ public class Pedido {
      * @param cliente Parametro de tipo Cliente que contiene al cliente que realiza el pedido. <br>
      * @param distancia Parametro de tipo int que contiene la distancia en kilometros a recorrer. <br>
      */
-    public Pedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, Cliente cliente, int distancia) {
+    public Pedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, ClienteAbstracto cliente, int distancia) {
         assert zona != null;
         assert cantidadPasajeros > 0;
         assert distancia > 0;
@@ -76,7 +76,7 @@ public class Pedido {
         return this.cantidadPasajeros;
     }
 
-    public Cliente getCliente() {
+    public ClienteAbstracto getCliente() {
 		return cliente;
 	}
 

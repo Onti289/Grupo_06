@@ -17,9 +17,8 @@ public class SistemaThread extends Thread implements Observer {
 
 	@Override
 	public void run() {
-		while (Sistema.getCantChoferes() > 0 && Sistema.getCantClientes() > 0)
-		{			
-			if (viajeNuevo)
+		while (Chofer.CANTCHOFERESDISPONIBLES > 0 && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
+		{
 			
 			
 			
@@ -36,7 +35,7 @@ public class SistemaThread extends Thread implements Observer {
 		
 		Pedido p = (Pedido) arg;
 		ViajeFactory viajeFactory = new ViajeFactory();
-		IViaje viaje = viajeFactory.getViaje(p, null, a.sacarVehiculo(p));
+		IViaje viaje = viajeFactory.getViaje(p, null, a.sacarVehiculoDeDisponibles(p));
 		observado.agregaViaje(viaje);
 		viajeNuevo = true;
 		

@@ -24,7 +24,7 @@ public class ControladorPedido extends Controlador {
         	boolean mascota = this.vista.isMascota();
         	boolean baul = this.vista.isBaul();
         	int cantPax = this.vista.getCantPax();
-        	Cliente clienteHumano = this.modelo.getClienteHumano();
+        	ClienteHumano clienteHumano = this.modelo.getClienteHumano();
         	int km = (int) (100*Math.random());
 			try {
 				this.modelo.generaViaje(this.modelo.getAdmin(), new Pedido(fecha, zona, mascota, baul, cantPax, clienteHumano, km));

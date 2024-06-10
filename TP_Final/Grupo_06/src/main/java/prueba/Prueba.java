@@ -37,10 +37,10 @@ public class Prueba {
 			System.out.println(e);
 		}
 		
-		sistema.agregaVehiculo(admin,v1);
-		sistema.agregaVehiculo(admin,v2);
-		sistema.agregaVehiculo(admin,v3);
-		sistema.agregaVehiculo(admin,v4);
+		sistema.agregaVehiculoADisponibles(admin,v1);
+		sistema.agregaVehiculoADisponibles(admin,v2);
+		sistema.agregaVehiculoADisponibles(admin,v3);
+		sistema.agregaVehiculoADisponibles(admin,v4);
 		
 		sistema.agregaChofer(admin,chofer1);
 		sistema.agregaChofer(admin,chofer2);

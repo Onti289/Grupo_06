@@ -18,8 +18,8 @@ public class UtilAdministrador {
 			choferesDTO.add(UtilChofer.choferDTOfromChofer(admin.getColaChoferes().get(i)));
 		}
 		LinkedList<VehiculoDTO> vehiculosDTO = new LinkedList<VehiculoDTO>();
-		for(int i = 0; i<admin.getColaVehiculos().size(); i++) {
-			vehiculosDTO.add(UtilVehiculo.vehiculoDTOfromVehiculo(admin.getColaVehiculos().get(i)));
+		for(int i = 0; i<admin.getColaVehiculosDisponibles().size(); i++) {
+			vehiculosDTO.add(UtilVehiculo.vehiculoDTOfromVehiculo(admin.getColaVehiculosDisponibles().get(i)));
 		}
 		LinkedList<ClienteDTO> clientesDTO = new LinkedList<ClienteDTO>();
 		for(int i = 0; i<admin.getListaClientes().size(); i++) {
@@ -43,7 +43,7 @@ public class UtilAdministrador {
 			respuesta.AgregarChofer(UtilChofer.choferfromChoferDTO(adminDTO.getColaChoferes().get(i)));
 		}
 		for(int i=0; i<adminDTO.getColaVehiculos().size(); i++) {
-			respuesta.agregaVehiculo(UtilVehiculo.vehiculofromVehiculoDTO(adminDTO.getColaVehiculos().get(i)));
+			respuesta.agregaVehiculoADisponibles(UtilVehiculo.vehiculofromVehiculoDTO(adminDTO.getColaVehiculos().get(i)));
 		}
 		for(int i=0; i<adminDTO.getListaClientes().size(); i++) {
 			respuesta.agregarCliente(UtilCliente.clientefromClienteDTO(adminDTO.getListaClientes().get(i)));

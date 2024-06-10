@@ -1,15 +1,16 @@
 package persistencia;
 
 import modelo.Cliente;
+import modelo.ClienteAbstracto;
 
 public class UtilCliente {
 
-	public static ClienteDTO clienteDTOfromCliente(Cliente cliente) {
+	public static ClienteDTO clienteDTOfromCliente(ClienteAbstracto clienteAbstracto) {
 		ClienteDTO respuesta = new ClienteDTO();
-		respuesta.setContrasena(cliente.getContrasena());
-		respuesta.setNombre(cliente.getNombre());
-		respuesta.setNombreReal(cliente.getNombreReal());
-		respuesta.setSistema(cliente.getSistema());
+		respuesta.setContrasena(clienteAbstracto.getContrasena());
+		respuesta.setNombre(clienteAbstracto.getNombre());
+		respuesta.setNombreReal(clienteAbstracto.getNombreReal());
+		respuesta.setSistema(clienteAbstracto.getSistema());
 		return respuesta;
 	}
 	

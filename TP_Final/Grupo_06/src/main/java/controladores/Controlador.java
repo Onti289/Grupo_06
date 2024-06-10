@@ -40,11 +40,11 @@ public abstract class Controlador  implements ActionListener//es un controlador 
     	VehiculoFactory vehiculoFactory = new VehiculoFactory();
     	
     	for (i = 1; i <= this.vista.getVar_CantAutos(); i++)
-    		modelo.agregaVehiculo(modelo.getAdmin(), vehiculoFactory.crear("Automovil", "ABC"+i*100));
+    		modelo.agregaVehiculoADisponibles(modelo.getAdmin(), vehiculoFactory.crear("Automovil", "ABC"+i*100));
     	for (i = 1; i <= this.vista.getVar_CantMotos(); i++)
-    		modelo.agregaVehiculo(modelo.getAdmin(), vehiculoFactory.crear("Moto", "DEF"+i*100));
+    		modelo.agregaVehiculoADisponibles(modelo.getAdmin(), vehiculoFactory.crear("Moto", "DEF"+i*100));
     	for (i = 1; i <= this.vista.getVar_CantCombis(); i++)
-    		modelo.agregaVehiculo(modelo.getAdmin(), vehiculoFactory.crear("Combi", "GHI"+i*100));
+    		modelo.agregaVehiculoADisponibles(modelo.getAdmin(), vehiculoFactory.crear("Combi", "GHI"+i*100));
 
     	modelo.persistir();
     }

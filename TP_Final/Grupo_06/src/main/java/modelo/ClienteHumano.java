@@ -6,4 +6,10 @@ public class ClienteHumano extends ClienteAbstracto {
 		super(nombre, contr, nombreReal);
 	}
 
+	@Override
+	public Sistema getSistema() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

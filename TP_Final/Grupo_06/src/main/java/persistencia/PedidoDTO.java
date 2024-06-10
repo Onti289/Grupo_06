@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import modelo.Cliente;
+import modelo.ClienteAbstracto;
 
 public class PedidoDTO implements Serializable{
 	private LocalDateTime fecha;
@@ -11,7 +12,7 @@ public class PedidoDTO implements Serializable{
     private boolean mascotas;
     private boolean equipaje;
     private int cantidadPasajeros;
-    private Cliente cliente;
+    private ClienteAbstracto cliente;
     private int distancia;
 	public LocalDateTime getFecha() {
 		return fecha;
@@ -28,7 +29,7 @@ public class PedidoDTO implements Serializable{
 	public int getCantidadPasajeros() {
 		return cantidadPasajeros;
 	}
-	public Cliente getCliente() {
+	public ClienteAbstracto getCliente() {
 		return cliente;
 	}
 	public int getDistancia() {
@@ -49,7 +50,7 @@ public class PedidoDTO implements Serializable{
 	public void setCantidadPasajeros(int cantidadPasajeros) {
 		this.cantidadPasajeros = cantidadPasajeros;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(ClienteAbstracto cliente) {
 		this.cliente = cliente;
 	}
 	public void setDistancia(int distancia) {

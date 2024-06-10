@@ -22,11 +22,12 @@ import java.util.LinkedList;
  */
 public class Administrador extends Usuario{
     private static LinkedList<Chofer> colaChoferes = new LinkedList<Chofer>();
-    private static LinkedList<Vehiculo> colaVehiculos = new LinkedList<Vehiculo>();
-    private static LinkedList<Cliente> listaClientes = new LinkedList<Cliente>();
+    private static LinkedList<Vehiculo> colaVehiculosDisponibles = new LinkedList<Vehiculo>();
+    private static LinkedList<Vehiculo> colaTotalVehiculos = new LinkedList<Vehiculo>();
+    private static LinkedList<ClienteAbstracto> listaClientes = new LinkedList<ClienteAbstracto>();
     private static LinkedList<IViaje> listaViajes = new LinkedList<IViaje>();
     private static LinkedList<Pedido> listaPedidos = new LinkedList<Pedido>();
-	private Cliente clienteHumano;
+	private ClienteHumano clienteHumano;
 
     /**
      * Constructor con tres parametros para setear el nombre, nombreReal y contrase�a de un nuevo Administrador. <br>
@@ -42,6 +43,11 @@ public class Administrador extends Usuario{
 
     }
 
+    public void agregaVehiculoATotal(Vehiculo v)
+    {
+      colaTotalVehiculos.add(v);
+    }
+    
     public void agregaPedido(Pedido p)
     {
       listaPedidos.add(p);
@@ -53,25 +59,25 @@ public class Administrador extends Usuario{
     }
 
     
-    public static LinkedList<Chofer> getColaChoferes() {
+    public LinkedList<Chofer> getColaChoferes() {
 		return colaChoferes;
 	}
 
 
 
-	public static LinkedList<Vehiculo> getColaVehiculos() {
-		return colaVehiculos;
+	public LinkedList<Vehiculo> getColaVehiculosDisponibles() {
+		return colaVehiculosDisponibles;
 	}
 
 
 
-	public static LinkedList<Cliente> getListaClientes() {
+	public LinkedList<ClienteAbstracto> getListaClientes() {
 		return listaClientes;
 	}
 
 
 
-	public static LinkedList<IViaje> getListaViajes() {
+	public LinkedList<IViaje> getListaViajes() {
 		return listaViajes;
 	}
 
@@ -138,9 +144,9 @@ public class Administrador extends Usuario{
      *
      * @param vehiculo parametro de tipo Vehiculo que sera agregado al final de la cola correspondiente. <br>
      */
-    public void agregaVehiculo(Vehiculo vehiculo)
+    public void agregaVehiculoADisponibles(Vehiculo vehiculo)
     {
-        colaVehiculos.add(vehiculo);
+        colaVehiculosDisponibles.add(vehiculo);
     }
 
     /**
@@ -152,19 +158,19 @@ public class Administrador extends Usuario{
      * @param p parametro de tipo Pedido que contiene las caracteristicas del pedido realizado por el cliente. <br>
      * @return v parametro de tipo Vehiculo que contiene el vehiculo que mejor cumple con las condiciones del pedido. <br>
      */
-    public Vehiculo sacarVehiculo(Pedido p){
+    public Vehiculo sacarVehiculoDeDisponibles(Pedido p){
     	Vehiculo v = null;
     	Vehiculo aux;
 
-    	for(int i = 0; i<colaVehiculos.size(); i++) {
-    		aux = colaVehiculos.get(i);
+    	for(int i = 0; i<colaVehiculosDisponibles.size(); i++) {
+    		aux = colaVehiculosDisponibles.get(i);
     		if(aux.cumpleCondicion(p)) {
     			if(v == null || !aux.beats(v))
     				v = aux;
     		}
     	}
 
-	    colaVehiculos.remove(colaVehiculos.indexOf(v));
+	    colaVehiculosDisponibles.remove(colaVehiculosDisponibles.indexOf(v));
 	    return v;
     }
 
@@ -181,10 +187,10 @@ public class Administrador extends Usuario{
     public void modificaVehiculo(Vehiculo v, String patente) throws VehiculoNoEncontradoException {
         int i = 0;
         boolean encontrado = false;
-        while (!encontrado && i < colaVehiculos.size()) {
-            Vehiculo aux = colaVehiculos.get(i);
+        while (!encontrado && i < colaVehiculosDisponibles.size()) {
+            Vehiculo aux = colaVehiculosDisponibles.get(i);
             if (aux.equals(v)) {
-                colaVehiculos.set(i, v);
+                colaVehiculosDisponibles.set(i, v);
                 encontrado = true;
             }
             i++;
@@ -192,7 +198,7 @@ public class Administrador extends Usuario{
         if (!encontrado) {
             throw new VehiculoNoEncontradoException("El Vehiculo no fue encontrado en la cola.");
         }
-        colaVehiculos.get(i).setPatente(patente);
+        colaVehiculosDisponibles.get(i).setPatente(patente);
     }
 
 
@@ -203,7 +209,7 @@ public class Administrador extends Usuario{
 	 * 
 	 * @param c parametro de tipo Cliente que contiene al nuevo cliente e agregar a la lista cosrrespondiente. <br>
 	 */
-	public void agregarCliente(Cliente c) throws NombreDeUsuarioYaExistenteException{
+	public void agregarCliente(ClienteAbstracto c) throws NombreDeUsuarioYaExistenteException{
 		int i = 0;
 		boolean resp = false;
 		while (i < listaClientes.size() && !resp)
@@ -246,11 +252,11 @@ public class Administrador extends Usuario{
 	 * @param nombreReal parametro de tipo String que contiene el nombre real actualizado del cliente. <br>
 	 */
 	
-	public void ModificaCliente(Cliente c, String nombre, String contrasena) throws ClienteNoExistenteException {
+	/*public void ModificaCliente(Cliente c, String nombre, String contrasena) throws ClienteNoExistenteException {
 	    int i = 0;
 	    boolean encontrado = false;
 	    while (!encontrado && i < listaClientes.size()) {
-	        Cliente aux = listaClientes.get(i);
+	        ClienteAbstracto aux = listaClientes.get(i);
 	        if (aux.equals(c)) {
 	            listaClientes.set(i, c);
 	            encontrado = true;
@@ -260,12 +266,12 @@ public class Administrador extends Usuario{
 	    if (!encontrado) {
 	        throw new ClienteNoExistenteException("El Cliente no fue encontrado en la lista.");
 	    }
-	    listaClientes.get(i).modificacliente(nombre,contrasena);
-	}
+	    listaClientes.get(i).modificaCliente(nombre,contrasena);
+	}*/
 
-    public Cliente getCliente(String nombreUsuario)
+    public ClienteAbstracto getCliente(String nombreUsuario)
     {
-      Cliente c = null;
+      ClienteAbstracto c = null;
       int i = 0, tope = Administrador.listaClientes.size();
 	  while (i < tope && !Administrador.listaClientes.get(i).nombre.equals(nombreUsuario))
 			i++;
@@ -295,7 +301,7 @@ public class Administrador extends Usuario{
 	public String listarCLientes() {
 		String salida = "Listado de clientes: \n";
 		salida += "Nombre usuario \t Nombre Real \n";
-		for (Cliente cliente : listaClientes) {
+		for (ClienteAbstracto cliente : listaClientes) {
             salida += cliente.toString();
         }
 		return salida;
@@ -311,7 +317,7 @@ public class Administrador extends Usuario{
 	public String listarVehiculos() {
 		String salida = "Listado de vehiculos: \n";
 		salida += "Patente \t Tipo vehiculo \n";
-		for (Vehiculo vehiculo : colaVehiculos) {
+		for (Vehiculo vehiculo : colaVehiculosDisponibles) {
             salida += vehiculo.toString() + "\n";
         }
 		return salida;
@@ -391,8 +397,8 @@ public class Administrador extends Usuario{
 		int i = 0;
 
 		if(this.isVehiculoDisponible()) {
-			while(!cond && i<colaVehiculos.size()) {
-				if(colaVehiculos.get(i).cumpleCondicion(p))
+			while(!cond && i<colaTotalVehiculos.size()) {
+				if(colaTotalVehiculos.get(i).cumpleCondicion(p))
 					cond = true;
 				i ++;
 			}
@@ -406,7 +412,7 @@ public class Administrador extends Usuario{
 	 * @return !this.colaVehiculos.isEmpty(): en caso de que la cola este vacia, el metodo devolvera false, true en caso contrario. <br>
 	 */
 	public boolean isVehiculoDisponible() {
-		return !colaVehiculos.isEmpty();
+		return !colaVehiculosDisponibles.isEmpty();
 	}
 
 	/**
@@ -602,14 +608,14 @@ public class Administrador extends Usuario{
 
 
 
-	public void setClienteHumano(Cliente cliente) {
-		this.clienteHumano = cliente;
+	public void setClienteHumano(ClienteAbstracto cliente) {
+		this.clienteHumano = (ClienteHumano)cliente;
 		
 	}
 
 
 
-	public Cliente getClienteHumano() {
+	public ClienteHumano getClienteHumano() {
 		return this.clienteHumano;
 	}
 }

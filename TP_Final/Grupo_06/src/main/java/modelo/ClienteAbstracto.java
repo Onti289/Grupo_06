@@ -8,5 +8,12 @@ public abstract class ClienteAbstracto extends Usuario {
 		super(nombre, contr, nombreReal);
 	}
 
+	public abstract Sistema getSistema();
+
+	public void setViaje(IViaje viaje) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

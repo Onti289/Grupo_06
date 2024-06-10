@@ -48,7 +48,7 @@ public class ControladorIniciaSesion extends Controlador {
 	        	 this.vista.setTextMsjInicSes("Contraseña incorrecta");
 	         else
 	         {
-	        	Cliente cliente = this.modelo.getCliente(this.modelo.getAdmin(), this.vista.getNomUsua());
+	        	ClienteAbstracto cliente = this.modelo.getCliente(this.modelo.getAdmin(), this.vista.getNomUsua());
 	        	this.modelo.setClienteHumano(this.modelo.getAdmin(), cliente);
 	        	this.vista.setVisible(false);
 	        	IVista vGeneral = new Ventana_General();

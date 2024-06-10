@@ -16,7 +16,7 @@ import excepciones.ChoferNoExistenteException;
 public abstract class Viaje implements IViaje {
 
 		private String estado;
-		private Cliente cliente;
+		private ClienteAbstracto cliente;
 		private Chofer chofer;
 		private Vehiculo vehiculo;
 		private double costo;
@@ -55,7 +55,7 @@ public abstract class Viaje implements IViaje {
 			return chofer;
 		}
 		
-		public Cliente getCliente() {
+		public ClienteAbstracto getCliente() {
 			return cliente;
 		}
 

@@ -33,7 +33,7 @@ public abstract class DecoratorMascota implements IViaje{
 		return this.encapsulado.getFecha();
 	}
 	
-	public Cliente getCliente() {
+	public ClienteAbstracto getCliente() {
 		return this.encapsulado.getCliente();
 	}
 	

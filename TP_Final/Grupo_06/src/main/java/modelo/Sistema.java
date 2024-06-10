@@ -39,11 +39,14 @@ public class Sistema extends Observable{
 		this.nombre = "Subi que te llevo";
 	}
     
-    
-    public synchronized void agregaViaje(Viaje v)
+    public void agregaVehiculoATotal(Administrador a, Vehiculo v)
     {
-    	
-    	admin.agregarViaje(v);
+    	a.agregaVehiculoATotal(v);
+    }
+	
+    public synchronized void agregaViaje(IViaje viaje)
+    {
+    	admin.agregarViaje(viaje);
     	notifyAll();
     }
     
@@ -53,7 +56,6 @@ public class Sistema extends Observable{
 			try {
 				wait();
 			} catch (InterruptedException e) {
-
 				e.printStackTrace();
 			}
     	if (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
@@ -132,9 +134,8 @@ public class Sistema extends Observable{
 	 * @param a parametro de tipo Administrador en el cual se insertar� el Vehiculo v en su correspondiente lista. <br>
 	 * @param v parametro de tipo Vehiculo que ser� insertado en la lista correspondiente del Administrador a. <br>
 	 */
-	public void agregaVehiculo(Administrador a, Vehiculo v) {
-		a.agregaVehiculo(v);
-		persistir();
+	public void agregaVehiculoADisponibles(Administrador a, Vehiculo v) {
+		a.agregaVehiculoADisponibles(v);
 	}
 
 
@@ -163,9 +164,8 @@ public class Sistema extends Observable{
 	 * @param c parametro de tipo Cliente que ser� insertado en la lista correspondiente del Administrador a. <br>
 	 * @throws NombreDeUsuarioYaExistenteException 
 	 */
-	public void agregaCliente(Administrador a, Cliente c) throws NombreDeUsuarioYaExistenteException {
+	public void agregaCliente(Administrador a, ClienteAbstracto c) throws NombreDeUsuarioYaExistenteException {
 		a.agregarCliente(c);
-		persistir();
 	}
 
 	/**
@@ -194,11 +194,10 @@ public class Sistema extends Observable{
 	 * @throws ClienteNoEncontradoException Excepcion lanzada en caso de que el Cliente c no exista en la lista correspondiente dentro de Administrador a. <br>
 	 */
 
-	public void modificaCliente(Administrador a, Cliente c, String nombre, String contrasena) throws ClienteNoExistenteException
+	/*public void modificaCliente(Administrador a, Cliente c, String nombre, String contrasena) throws ClienteNoExistenteException
 	{
 		a.ModificaCliente(c,nombre,contrasena);
-	    persistir();
-	}
+	}*/
 
 	/**
 	 * Metodo de tipo void que permite listar los vehiculos pertenecientes a la cola de vehiculos del Administrador a. <br>
@@ -260,49 +259,12 @@ public class Sistema extends Observable{
 		return a.calculoSalarioTotal();
 	}
 
-	/**
-	 * Metodo de tipo Pedido que se encarga de generar un nuevo pedido en base a distintas peticiones solicitadas por el cliente. <br>
-	 *
-	 * <b>Pre: </b> Parametros Administrador a y Cliente c distintos de null.
-	 * 				El parametro fecha contiene un valor de fecha valido.
-	 * 				El parametro zona contiene un valor de zona valido en base a las zonas posibles.
-	 * 				El parametro cantidadPasajeros contiene un valor valido (entre 1 y 8 inclusive). <br>
-	 *
-	 * @param a parametro de tipo Administrador que se encarga de verificar si el cliente existe en la lista correspondiente. <br>
-	 * @param c parametro de tipo Cliente que se encarga de generar el pedido. <br>
-	 * @param fecha parametro de tipo LocalTimeDate que indica la fecha en la que se raliza el pedido. <br>
-	 * @param zona parametro de tipo String que indica el tipo de zona por donde se realizar� el viaje (Estandar, Peligrosa, Sin asfaltar). <br>
-	 * @param mascotas parametro de tipo boolean que indica si el cliente viajara con una mascota (true) o sin (false). <br>
-	 * @param equipaje parametro de tipo boolean que indica si el cliente llevara equipaje manual (false) o en ba�l (true). <br>
-	 * @param cantidadPasajeros parametro de tipo int que indica la cantidad de pasajeros que tendra el viaje. Debe ser entre 1 y 8 pasajeros. <br>
-	 * @param distancia parametro de tipo int que indica la cantidad de kilometros que ser�n recorridos durante el viaje. <br>
-	 * @return p parametro de tipo Pedido que contiene toda la inforamcion sobre lo solicitado por el cliente para su viaje. <br>
-	 * @throws ClienteNoExistenteException Excepcion lanzada en caso de que el cliente no exista dentro de la lista correspondiente del Administrador a. <br>
-	 * @throws DistanciaInvalidaException Excepcion lanzada en caso de que la distancia a recorrer sea menor o igual a cero. <br>
-	 */
-	public Pedido generarPedido(Administrador a, Cliente c, LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia) throws ClienteNoExistenteException,DistanciaInvalidaException {
-		Pedido p = null;
-
-		if(distancia <= 0) {
-			throw new DistanciaInvalidaException("La distancia debe ser mayor a cero");
-		}
-
-		if(!a.existeCliente(c)) {
-			throw new ClienteNoExistenteException("El cliente no existe");
-		}
-
-		p = c.generaPedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, distancia);
-
-		return p;
-
-	}
-
 	public void agregarPedido(Administrador a, Pedido pedido){
-        a.agregarPedido(pedido);
+        a.agregaPedido(pedido);
     }
 
 	public Pedido sacarPedido(Administrador a) {
-    	return a.sacarPedido();
+    	return a.sacaPedido();
     }
 	
 	
@@ -341,7 +303,7 @@ public class Sistema extends Observable{
 		
 		a.AgregarChofer(chofer);
 		
-		a.agregaVehiculo(vehiculo);
+		a.agregaVehiculoADisponibles(vehiculo);
 		}
 	}
 
@@ -468,12 +430,12 @@ public class Sistema extends Observable{
 		return a.contraseniaCorrecta(nombre, contrasenia);
 	}
 	
-	public Cliente getCliente(Administrador a, String nombreUsuario)
+	public ClienteAbstracto getCliente(Administrador a, String nombreUsuario)
     {
       return a.getCliente(nombreUsuario);
     }
 
-	public void setClienteHumano(Administrador a, Cliente cliente) {
+	public void setClienteHumano(Administrador a, ClienteAbstracto cliente) {
 		a.setClienteHumano(cliente);
 		
 	}
@@ -500,7 +462,7 @@ public class Sistema extends Observable{
 	  this.admin = a;
 	}
 
-	public Cliente getClienteHumano() {
+	public ClienteHumano getClienteHumano() {
 		// TODO Auto-generated method stub
 		return admin.getClienteHumano();
 	}

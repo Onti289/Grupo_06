@@ -15,7 +15,7 @@ public interface IViaje {
 	Chofer getChofer();
 	LocalDateTime getFecha();
 	String getEstado();
-	Cliente getCliente();
+	ClienteAbstracto getCliente();
 	void setEstado(String e);
 	String toString();
 	Vehiculo getVehiculo();
