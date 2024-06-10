@@ -14,6 +14,7 @@ import modelo.Sistema;
 
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
+import javax.swing.JList;
 
 public class Ventana_Chofer1 extends Ventana implements Observer{
 
@@ -52,6 +53,9 @@ public class Ventana_Chofer1 extends Ventana implements Observer{
 		
 		this.scrollPaneChofer1 = new JScrollPane();
 		this.contentPane.add(this.scrollPaneChofer1);
+		
+		JList Var_listaChofer1 = new JList();
+		scrollPaneChofer1.setViewportView(Var_listaChofer1);
 		
 	}
 

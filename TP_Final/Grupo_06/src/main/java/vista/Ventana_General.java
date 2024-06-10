@@ -12,6 +12,7 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import controladores.*;
+import javax.swing.JList;
 
 public class Ventana_General extends Ventana implements Observer{
 
@@ -50,6 +51,9 @@ public class Ventana_General extends Ventana implements Observer{
 		
 		this.scrollPaneGeneral = new JScrollPane();
 		this.contentPane.add(this.scrollPaneGeneral, BorderLayout.CENTER);
+		
+		JList Var_listaGeneral = new JList();
+		scrollPaneGeneral.setViewportView(Var_listaGeneral);
 	}
 
 	@Override

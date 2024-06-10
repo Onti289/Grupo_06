@@ -26,13 +26,7 @@ public class ControladorPedido extends Controlador {
         	int cantPax = this.vista.getCantPax();
         	ClienteHumano clienteHumano = this.modelo.getClienteHumano();
         	int km = (int) (100*Math.random());
-			try {
-				this.modelo.generaViaje(this.modelo.getAdmin(), new Pedido(fecha, zona, mascota, baul, cantPax, clienteHumano, km));
-			}
-			catch (NoHayChoferesDisponiblesException | NoHayVehiculoException e1)
-			{
-				e1.printStackTrace();
-			}
+			this.modelo.agregarPedido(this.modelo.getAdmin(), new Pedido(fecha, zona, mascota, baul, cantPax, clienteHumano, km));
 			this.vista.setVisible(false);
 			IVista vHumano = new Ventana_ClienteHumanoEnViaje();
             Controlador cHumano = new ControladorHumanoViaje(modelo, vHumano);

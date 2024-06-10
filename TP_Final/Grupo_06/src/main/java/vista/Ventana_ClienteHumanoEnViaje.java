@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
+import javax.swing.JList;
 
 public class Ventana_ClienteHumanoEnViaje extends Ventana implements Observer {
 
@@ -25,6 +26,7 @@ public class Ventana_ClienteHumanoEnViaje extends Ventana implements Observer {
 	private JPanel panel_boton;
 	private JButton btnNewButton;
 	private JPanel panel_1;
+	private JList Var_listaClienteHumano;
 
 	/**
 	 * Launch the application.
@@ -57,6 +59,9 @@ public class Ventana_ClienteHumanoEnViaje extends Ventana implements Observer {
 		
 		this.scrollPane = new JScrollPane();
 		this.contentPane.add(this.scrollPane);
+		
+		Var_listaClienteHumano = new JList();
+		scrollPane.setViewportView(Var_listaClienteHumano);
 		
 		this.paneldepagar = new JPanel();
 		this.contentPane.add(this.paneldepagar);

@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
+import javax.swing.JList;
 
 public class Ventana_Cliente1 extends Ventana implements Observer{
 
@@ -47,6 +48,9 @@ public class Ventana_Cliente1 extends Ventana implements Observer{
 		
 		this.scrollPaneCliente1 = new JScrollPane();
 		this.contentPane.add(this.scrollPaneCliente1);
+		
+		JList Var_listaCliente1 = new JList();
+		scrollPaneCliente1.setViewportView(Var_listaCliente1);
 	}
 
 	@Override
