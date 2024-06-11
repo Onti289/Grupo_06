@@ -55,22 +55,6 @@ public class Ventana_CrearPedido extends Ventana{
 	private Object buttonGroup;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_CrearPedido frame = new Ventana_CrearPedido();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public Ventana_CrearPedido() {

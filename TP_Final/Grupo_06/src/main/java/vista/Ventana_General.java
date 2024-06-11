@@ -23,22 +23,6 @@ public class Ventana_General extends Ventana implements Observer{
 	private JTextArea textAreaGeneral;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_General frame = new Ventana_General();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public Ventana_General() {

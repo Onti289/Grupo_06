@@ -21,10 +21,20 @@ public class UtilAdministrador {
 		for(int i = 0; i<admin.getColaVehiculosDisponibles().size(); i++) {
 			vehiculosDTO.add(UtilVehiculo.vehiculoDTOfromVehiculo(admin.getColaVehiculosDisponibles().get(i)));
 		}
+		LinkedList<VehiculoDTO> vehiculosTotalesDTO = new LinkedList<VehiculoDTO>();
+		for(int i = 0; i<admin.getColaTotalVehiculos().size(); i++) {
+			vehiculosTotalesDTO.add(UtilVehiculo.vehiculoDTOfromVehiculo(admin.getColaTotalVehiculos().get(i)));
+		}
 		LinkedList<ClienteDTO> clientesDTO = new LinkedList<ClienteDTO>();
 		for(int i = 0; i<admin.getListaClientesRobot().size(); i++) {
 			clientesDTO.add(UtilCliente.clienteDTOfromCliente(admin.getListaClientesRobot().get(i)));
 		}
+		
+		LinkedList<ClienteHumanoDTO> clientesHumanosDTO = new LinkedList<ClienteHumanoDTO>();
+		for(int i = 0; i<admin.getListaClientesHumanos().size(); i++) {
+			clientesHumanosDTO.add(UtilClienteHumano.clienteHumanoDTOfromClienteHumano(admin.getListaClientesHumanos().get(i)));
+		}
+		
 		LinkedList<IViajeDTO> viajesDTO = new LinkedList<IViajeDTO>();
 		for(int i = 0; i<admin.getListaViajes().size(); i++) {
 			viajesDTO.add(UtilViaje.viajeDTOfromViaje(admin.getListaViajes().get(i)));
@@ -33,6 +43,8 @@ public class UtilAdministrador {
 		respuesta.setColaVehiculos(vehiculosDTO);
 		respuesta.setListaClientes(clientesDTO);
 		respuesta.setListaViajes(viajesDTO);
+		respuesta.setListaClientesHumanos(clientesHumanosDTO);
+		respuesta.setColaTotalVehiculos(vehiculosTotalesDTO);
 		
 		return respuesta;
 	}
@@ -45,8 +57,14 @@ public class UtilAdministrador {
 		for(int i=0; i<adminDTO.getColaVehiculos().size(); i++) {
 			respuesta.agregaVehiculoADisponibles(UtilVehiculo.vehiculofromVehiculoDTO(adminDTO.getColaVehiculos().get(i)));
 		}
+		for(int i=0; i<adminDTO.getColaTotalVehiculos().size(); i++) {
+			respuesta.agregaVehiculoATotal(UtilVehiculo.vehiculofromVehiculoDTO(adminDTO.getColaTotalVehiculos().get(i)));
+		}
 		for(int i=0; i<adminDTO.getListaClientes().size(); i++) {
 			respuesta.agregarCliente(UtilCliente.clientefromClienteDTO(adminDTO.getListaClientes().get(i)));
+		}
+		for(int i=0; i<adminDTO.getListaClientesHumanos().size(); i++) {
+			respuesta.agregarClienteHumano(UtilClienteHumano.clienteHumanofromClienteHumanoDTO(adminDTO.getListaClientesHumanos().get(i)));
 		}
 		for(int i=0; i<adminDTO.getListaViajes().size(); i++) {
 			System.out.println(adminDTO.getListaViajes().get(i).getPasajeros());

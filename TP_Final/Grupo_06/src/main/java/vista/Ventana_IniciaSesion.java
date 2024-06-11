@@ -56,22 +56,6 @@ public class Ventana_IniciaSesion extends Ventana implements KeyListener{
 	private JTextField Var_NombreReal;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_IniciaSesion frame = new Ventana_IniciaSesion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public Ventana_IniciaSesion() {

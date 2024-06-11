@@ -14,8 +14,10 @@ public class AdministradorDTO implements Serializable {
 	private String nombreReal;
 	private LinkedList<ChoferDTO> colaChoferes = new LinkedList<ChoferDTO>();
     private LinkedList<VehiculoDTO> colaVehiculos = new LinkedList<VehiculoDTO>();
+    private LinkedList<VehiculoDTO> colaTotalVehiculos = new LinkedList<VehiculoDTO>();
     private LinkedList<ClienteDTO> listaClientes = new LinkedList<ClienteDTO>();
     private LinkedList<IViajeDTO> listaViajes = new LinkedList<IViajeDTO>();
+    private LinkedList<ClienteHumanoDTO> listaClientesHumanos = new LinkedList<ClienteHumanoDTO>();
 	
     public String getNombre() {
 		return nombre;
@@ -25,7 +27,23 @@ public class AdministradorDTO implements Serializable {
 		return contrasena;
 	}
 	
-    public String getNombreReal() {
+    public LinkedList<VehiculoDTO> getColaTotalVehiculos() {
+		return colaTotalVehiculos;
+	}
+
+	public void setColaTotalVehiculos(LinkedList<VehiculoDTO> colaTotalVehiculos) {
+		this.colaTotalVehiculos = colaTotalVehiculos;
+	}
+
+	public LinkedList<ClienteHumanoDTO> getListaClientesHumanos() {
+		return listaClientesHumanos;
+	}
+
+	public void setListaClientesHumanos(LinkedList<ClienteHumanoDTO> listaClientesHumanos) {
+		this.listaClientesHumanos = listaClientesHumanos;
+	}
+
+	public String getNombreReal() {
 		return nombreReal;
 	}
 	

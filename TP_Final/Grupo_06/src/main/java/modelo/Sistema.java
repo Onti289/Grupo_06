@@ -87,7 +87,7 @@ public class Sistema extends Observable{
     }
     
     public boolean hayVehiculoCumple(Administrador a, Pedido p) {
-       return a.hayVehiculoCumple(p);
+       return a.vehiculoCumplePedido(p);
     }
     
     
@@ -100,13 +100,15 @@ public class Sistema extends Observable{
     }
     
     public synchronized void generaPedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia, Cliente cliente) {
-    	Pedido p = new Pedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, cliente, distancia);
-    	
-    	boolean aux = hayVehiculoCumple(admin, p);
-    	
-    	cliente.setPedidoValido(aux);
-    	if (aux);;
+    	if (Chofer.CANTCHOFERESDISPONIBLES > 0)
     	{
+    	  Pedido p = new Pedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, cliente, distancia);
+    	
+    	  boolean aux = hayVehiculoCumple(admin, p);
+    	
+    	  cliente.setPedidoValido(aux);
+    	  if (aux)
+    	  {
     	    ViajeFactory viajeFactory = new ViajeFactory();
     	    IViaje viaje = viajeFactory.getViaje(p, null, null);
     	    //System.out.println(viaje);
@@ -119,10 +121,11 @@ public class Sistema extends Observable{
     	    setChanged();
     	    notifyObservers(viaje);
     	    notifyAll();
-    	}
-    	else
-    	{
-    		//completar
+    	  }
+    	  else
+    	  {
+    		System.out.println("El pedido generado por "+cliente.getNombre()+" fue rechazado");
+    	  }
     	}
     	
     }
@@ -161,7 +164,7 @@ public class Sistema extends Observable{
 	public synchronized void pagaViaje(Cliente cliente)
 	{
 		System.out.println(cliente.getNombre()+" va a pagar el viaje "+cliente.getViaje());
-		while (!cliente.getViaje().getEstado().equalsIgnoreCase("iniciado"))
+		while (Chofer.CANTCHOFERESDISPONIBLES > 0 && !cliente.getViaje().getEstado().equalsIgnoreCase("iniciado"))
 			try {
 				System.out.println(cliente.getNombre()+" en wait de paga viaje");
 				wait();
@@ -169,13 +172,14 @@ public class Sistema extends Observable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		System.out.println(cliente.getNombre()+" pago el viaje "+cliente.getViaje());
-
-		cliente.getViaje().setEstado("Pagado");
-		
-		setChanged();
-		notifyObservers(cliente.getViaje());
-		notifyAll();
+		if (Chofer.CANTCHOFERESDISPONIBLES > 0)
+		{
+		  System.out.println(cliente.getNombre()+" pago el viaje "+cliente.getViaje());
+		  cliente.getViaje().setEstado("Pagado");
+		  setChanged();
+		  notifyObservers(cliente.getViaje());
+		  notifyAll();
+		}
 		
 	}
 	/**
@@ -188,7 +192,7 @@ public class Sistema extends Observable{
 	public synchronized void finalizaViaje(Chofer chofer){
 		
    System.out.println(chofer.getNombre()+" va a finalizar el viaje "+chofer.getViaje());
-		while (!chofer.getViaje().getEstado().equalsIgnoreCase("pagado"))
+		while (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0 && !chofer.getViaje().getEstado().equalsIgnoreCase("pagado"))
 			try {
 				System.out.println(chofer.getNombre()+" en wait de finaliza viaje");
 				wait();
@@ -196,15 +200,17 @@ public class Sistema extends Observable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		System.out.println(chofer.getNombre()+" finalizo viaje "+chofer.getViaje());
-		chofer.getViaje().setEstado("Finalizado");
-		  chofer.sumaKMrecorridosMes(chofer.getViaje().getKM());
-		  chofer.sumaViajesMes();
-		  this.agregaVehiculoADisponibles(Sistema.admin, chofer.getViaje().getVehiculo());
-		  
-		  setChanged();
-		  notifyObservers(chofer.getViaje());
-		  notifyAll();
+		if (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
+		{
+			System.out.println(chofer.getNombre()+" finalizo viaje "+chofer.getViaje());
+		    chofer.getViaje().setEstado("Finalizado");
+		    chofer.sumaKMrecorridosMes(chofer.getViaje().getKM());
+		    chofer.sumaViajesMes();
+		    this.agregaVehiculoADisponibles(Sistema.admin, chofer.getViaje().getVehiculo());
+		    setChanged();
+		    notifyObservers(chofer.getViaje());
+		    notifyAll();
+		}
 		
 	}
     
@@ -582,22 +588,49 @@ public void agregaClienteHumano(Administrador a, ClienteHumano c)
 		a.setClienteHumano(cliente);
 	}
 	
-	public void persistir() {/*
+	public void persistir() {
 		IPersistencia persistencia = new PersistenciaXML();
 		try
 		{
 		     persistencia.abrirOutput("Admins.xml");
-		     System.out.println("Crea archivo escritura");
+		     
 		     AdministradorDTO adto=UtilAdministrador.administradorDTOfromAdministrador(admin);
 		     persistencia.escribir(adto);
 
-		     System.out.println("Admins grabadados exitosamente");
+		     
 		     persistencia.cerrarOutput();
-		     System.out.println("Archivo cerrado");
+		     
 		     } catch (IOException e)
 		     {
 		        System.out.println(e.getLocalizedMessage());
-		     }*/
+		     }
+	}
+	public void despersistir()
+	{
+       IPersistencia persistencia = new PersistenciaXML();
+		
+		  try
+	        {
+	            persistencia.abrirInput("Admins.xml");
+	            
+	            AdministradorDTO adto=(AdministradorDTO) persistencia.leer();
+	            admin = UtilAdministrador.administradorfromAdministradorDTO(adto);
+	 
+	            
+	            persistencia.cerrarInput();
+	            
+	        } catch (IOException e)
+	        {
+	            
+	            System.out.println(e.getMessage());
+	        } catch (ClassNotFoundException e)
+	        {
+	            
+	            System.out.println(e.getMessage());
+	        } catch (NombreDeUsuarioYaExistenteException e) {
+				
+				e.printStackTrace();
+			}
 	}
 	public void setAdmin(Administrador a)
 	{
@@ -681,5 +714,21 @@ public void agregaClienteHumano(Administrador a, ClienteHumano c)
 		notifyAll();
 		
 		
+	}
+
+	public boolean existeNombreUsuarioHumano(Administrador a, String nombreUsuario)
+	{
+		return a.existeNombreUsuarioHumano(nombreUsuario);
+	}
+	
+	public void terminoSimulacion()
+	{
+		notifyAll();
+		
+	}
+
+	public boolean contraseniaCorrectaHumano(Administrador admin2, String nomUsua, String contr)
+	{
+		return admin2.contraseniaCorrectaHumano(nomUsua, contr);
 	}
 }

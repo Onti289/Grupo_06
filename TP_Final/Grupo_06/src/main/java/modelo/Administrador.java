@@ -44,7 +44,15 @@ public class Administrador extends Usuario{
 
     }
 
-    public void agregaVehiculoATotal(Vehiculo v)
+    public static LinkedList<Vehiculo> getColaTotalVehiculos() {
+		return colaTotalVehiculos;
+	}
+
+	public static LinkedList<ClienteHumano> getListaClientesHumanos() {
+		return listaClientesHumanos;
+	}
+
+	public void agregaVehiculoATotal(Vehiculo v)
     {
       colaTotalVehiculos.add(v);
     }
@@ -413,7 +421,7 @@ public class Administrador extends Usuario{
 	 * @return !this.colaVehiculos.isEmpty(): en caso de que la cola este vacia, el metodo devolvera false, true en caso contrario. <br>
 	 */
 	public boolean isVehiculoDisponible() {
-		return !colaVehiculosDisponibles.isEmpty();
+		return !colaTotalVehiculos.isEmpty();
 	}
 
 	/**
@@ -636,10 +644,19 @@ public class Administrador extends Usuario{
 		
 	}
 
-	public boolean hayVehiculoCumple(Pedido p) {
+	public boolean existeNombreUsuarioHumano(String nombreUsuario)
+	{
 		int i = 0;
-		while (i < colaTotalVehiculos.size() && !colaTotalVehiculos.get(i).cumpleCondicion(p))
+		while (i < listaClientesHumanos.size() && !listaClientesHumanos.get(i).nombre.equals(nombreUsuario))
 			i++;
-		return i < colaTotalVehiculos.size();
+		return i < listaClientesHumanos.size();
+	}
+
+	public boolean contraseniaCorrectaHumano(String nomUsua, String contr)
+	{
+		int i = 0, tope = listaClientesHumanos.size();
+		while (i < tope && !listaClientesHumanos.get(i).nombre.equals(nomUsua))
+			i++;
+		return listaClientesHumanos.get(i).contrasena.equals(contr);
 	}
 }

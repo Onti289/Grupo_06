@@ -75,22 +75,6 @@ public class Ventana_Simulacion extends Ventana implements KeyListener{
 	private JTextField Var_CantContratados;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_Simulacion frame = new Ventana_Simulacion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public Ventana_Simulacion() {
@@ -380,9 +364,11 @@ public class Ventana_Simulacion extends Ventana implements KeyListener{
       }
 
       boolean condicion = permanentes >= 0 && temporarios >= 0 && contratados >= 0 && viajesXChofer >= 1;
+      boolean condicion1 = (permanentes + temporarios + contratados) >= 1;
       boolean condicion2 = motos >= 0 && autos >= 0 && combis >= 0;
-      boolean condicion3 = clientes >= 0 && viajesXCliente >= 1;
-      this.btnIniciaSimulacion.setEnabled(condicion && condicion2 && condicion3);
+      boolean condicion3 = (motos + autos + combis) >= 1;
+      boolean condicion4 = clientes >= 1 && viajesXCliente >= 1;
+      this.btnIniciaSimulacion.setEnabled(condicion && condicion1 && condicion2 && condicion3 && condicion4);
   
     }
 	@Override

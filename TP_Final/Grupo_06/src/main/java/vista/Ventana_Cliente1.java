@@ -55,31 +55,10 @@ public class Ventana_Cliente1 extends Ventana implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if (o == observado)
-		{	
-		IViaje viaje = (IViaje) arg;
-		String estado = viaje.getEstado();
-		String muestra = null;
-		System.out.println("entra update ventana cliente 1");
-		if (estado.equalsIgnoreCase("solicitado"))
-			muestra = "Solicitaste un viaje";
-		else if (estado.equalsIgnoreCase("iniciado"))
-		    muestra = "El " + viaje.getChofer().getNombre() + " inicio el viaje";
-		else if (estado.equalsIgnoreCase("con Vehiculo"))
-			muestra = "Se asigno el vehiculo" + viaje.getVehiculo().getPatente() + " a su viaje";
-		else if (estado.equalsIgnoreCase("pagado"))
-			muestra = "Pagaste el viaje";
-		else if (estado.equalsIgnoreCase("finalizado"))
-			muestra = "El " + viaje.getChofer().getNombre() + " finalizo el viaje";
-		this.appendLog(muestra);
-		}
-		else
-			if (o == sistemaObservado)
-			{
-				
-			}
-			else
-				throw new IllegalArgumentException();
+		if (o != observado)
+			throw new IllegalArgumentException();
+		String cartel = (String) arg;
+		this.appendLog(cartel);		
 		
 	}
 

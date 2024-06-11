@@ -17,9 +17,10 @@ public class SubiQueTeLlevo implements ActionListener{
     	
     	
     	Sistema sistema = Sistema._getInstancia();
+    	sistema.despersistir();
         vGeneral = new Ventana_Inicial();
         Controlador cGeneral = new ControladorInicial(sistema, vGeneral);
-
+        
         vGeneral.setControlador(cGeneral);
         vGeneral.arranca();
         

@@ -117,16 +117,16 @@ public void setPedidoValido(boolean resp)
 				else
 				  zona = IVista.SINASFALTAR;
 			
-			int baulAux = (int) (Math.random());
+			int baulAux = (int) (Math.random()*2 +1);
 			boolean baul;
-			if(baulAux==0)
+			if(baulAux==1)
 			     baul = false;
 			else
 			     baul = true;
 			
-			int mascotaAux = (int) (Math.random());
+			int mascotaAux = (int) (Math.random()*2 +1);
 			boolean mascota;
-			if(mascotaAux==0)
+			if(mascotaAux==1)
 			     mascota = false;
 			else
 			     mascota = true;
@@ -135,14 +135,28 @@ public void setPedidoValido(boolean resp)
 
 			this.sistema.generaPedido(LocalDateTime.now(), zona, mascota, baul, cantPax, cantKm, this);
             Util.espera();
-            System.out.println(this.nombre + "Pasa 1ra espera en while del run");
+            setChanged();
+            notifyObservers("El " + this.nombre + " gernero un pedido");
             if (this.pedidoValido)
+            {
+            	setChanged();
+            	notifyObservers("El pedido del " + this.nombre + " fue aceptado");
             	this.sistema.pagaViaje(this);
-			viajesRealizados++; //el cliente pierde un viaje si el pedido es rechazado por falta de vehiculos que lo cumplan
+            	setChanged();
+                notifyObservers("El " + this.nombre + " pago el viaje");
+                viajesRealizados++;
+            }
+            else
+            {
+            	setChanged();
+            	notifyObservers("El pedido del " + this.nombre + " fue rechzado");
+            }
 		}
 		Cliente.CANTCLIENTESDISPONIBLES--;
+		setChanged();
+        notifyObservers("El " + this.nombre + " llego a destino");
 		if (Cliente.CANTCLIENTESDISPONIBLES == 0)
-		  notifyAll();
+		  this.sistema.terminoSimulacion();
 	}
 
 	public void setViaje(IViaje viaje) {

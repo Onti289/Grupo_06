@@ -20,15 +20,33 @@ public abstract class Controlador  implements ActionListener//es un controlador 
     public void creaInstancias()
     {
     	int i;
-    	int j;
+    	int tope;
     	
     	new SistemaThread(modelo).start();
     	
     	for (i = 1; i <= Chofer.CANTCONTRATADOS; i++)
       	  modelo.agregaChofer(Sistema.getAdmin(), new ChoferContratado(""+i*1000, "Chofer"+i, i*500, modelo));
-      	for (j = i+1; j <= Chofer.CANTPERMANENTES + i; j++)
-      	  modelo.agregaChofer(Sistema.getAdmin(), new ChoferPermanente(""+j*1000, "Chofer"+j, 5000, 1, 1, 1, modelo));
-      	for (i = j+1; i <= Chofer.CANTTEMPORARIOS + j; i++)
+    	i = Chofer.CANTCONTRATADOS + 1;
+    	if (Chofer.CANTCONTRATADOS == 0)
+    	  tope = Chofer.CANTPERMANENTES;
+    	else
+    		tope = i + Chofer.CANTPERMANENTES - 1;
+      	for (; i <= tope; i++)
+      	  modelo.agregaChofer(Sistema.getAdmin(), new ChoferPermanente(""+i*1000, "Chofer"+i, 5000, 1, 1, 1, modelo));
+      	if (Chofer.CANTCONTRATADOS == 0)
+      	{
+      		i = Chofer.CANTPERMANENTES + 1;
+      		if(Chofer.CANTPERMANENTES == 0)
+    	      tope = Chofer.CANTTEMPORARIOS;
+      		else
+      		  tope = i + Chofer.CANTTEMPORARIOS - 1;
+    	}
+    	else
+    	{
+      		i = tope + 1;
+      		tope = i + Chofer.CANTTEMPORARIOS - 1;
+    	}
+      	for (; i <= tope; i++)
       	  modelo.agregaChofer(Sistema.getAdmin(), new ChoferTemporario(""+i*1000, "Chofer"+i, 5000, 1, modelo));
     	
     	
@@ -45,17 +63,31 @@ public abstract class Controlador  implements ActionListener//es un controlador 
     	VehiculoFactory vehiculoFactory = new VehiculoFactory();
     	
     	for (i = 1; i <= this.vista.getVar_CantAutos(); i++)
-    		modelo.agregaVehiculoADisponibles(Sistema.getAdmin(), vehiculoFactory.crear("Automovil", "ABC"+i*100));
+    	{
+    		Vehiculo vehiculo = vehiculoFactory.crear("Automovil", "ABC"+i*100);
+    		modelo.agregaVehiculoADisponibles(Sistema.getAdmin(), vehiculo);
+    		modelo.agregaVehiculoATotal(Sistema.getAdmin(), vehiculo);
+    	}
     	for (i = 1; i <= this.vista.getVar_CantMotos(); i++)
-    		modelo.agregaVehiculoADisponibles(Sistema.getAdmin(), vehiculoFactory.crear("Moto", "DEF"+i*100));
+    	{
+    		Vehiculo vehiculo = vehiculoFactory.crear("Moto", "DEF"+i*100);
+    		modelo.agregaVehiculoADisponibles(Sistema.getAdmin(), vehiculo);
+    		modelo.agregaVehiculoATotal(Sistema.getAdmin(), vehiculo);
+    	}
     	for (i = 1; i <= this.vista.getVar_CantCombis(); i++)
-    		modelo.agregaVehiculoADisponibles(Sistema.getAdmin(), vehiculoFactory.crear("Combi", "GHI"+i*100));
+    	{
+    		Vehiculo vehiculo = vehiculoFactory.crear("Combi", "GHI"+i*100);
+    		modelo.agregaVehiculoADisponibles(Sistema.getAdmin(), vehiculo);
+    		modelo.agregaVehiculoATotal(Sistema.getAdmin(), vehiculo);
+    	}
 
     	modelo.persistir();
     	
     	for (i = 0; i < Sistema.getAdmin().getColaChoferes().size(); i++)
+    	{
+    		System.out.println("\n\n"+Sistema.getAdmin().getColaChoferes().get(i).getNombre()+Sistema.getAdmin().getColaChoferes().get(i).getTipo()+"\n\n");
     		new Thread((Runnable) Sistema.getAdmin().getColaChoferes().get(i)).start();
-    		
+    		}
     	for (i = 0; i < Sistema.getAdmin().getListaClientesRobot().size(); i++)
     	{
     		new Thread((Runnable) Sistema.getAdmin().getListaClientesRobot().get(i)).start();

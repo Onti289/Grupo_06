@@ -23,22 +23,8 @@ public class Ventana_Chofer1 extends Ventana implements Observer{
 	private JPanel contentPane;
 	private JScrollPane scrollPaneChofer1;
 	private JTextArea textAreaChofer1;
+	private Observable observado;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_Chofer1 frame = new Ventana_Chofer1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -58,12 +44,19 @@ public class Ventana_Chofer1 extends Ventana implements Observer{
 		
 		this.textAreaChofer1 = new JTextArea();
 		this.scrollPaneChofer1.setViewportView(this.textAreaChofer1);
+		this.observado = Sistema.getChofer1(Sistema.getAdmin());
+		this.observado.addObserver(this);
 		
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		if (o != observado)
+		{
+			throw new IllegalArgumentException();
+		}
+		String cartel = (String) arg;
+		this.appendLog(cartel);
 		
 	}
 

@@ -20,14 +20,14 @@ public class ControladorIniciaSesion extends Controlador {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals(IVista.CREARUSUARIO))
 	    {
-			if (this.modelo.existeNombreUsuario(Sistema.getAdmin(), this.vista.getNuevoNomUsua()))
+			if (this.modelo.existeNombreUsuarioHumano(Sistema.getAdmin(), this.vista.getNuevoNomUsua()))
 		    	  this.vista.setTextMsjCrea("Nombre de usuario ya existente");
 		    else
 		    {
 		      ClienteHumano c = new ClienteHumano(this.vista.getNuevoNomUsua(), this.vista.getNuevaContr(), this.vista.getNombreReal());
 		      this.modelo.agregaClienteHumano(Sistema.getAdmin(), c);
 		      this.vista.setTextMsjCrea("Usuario creado exitosamente");
-		    //guardar con persistencia
+		      this.modelo.persistir();
 		      this.vista.borraRegistrarse();
 		    }
 			
@@ -35,10 +35,10 @@ public class ControladorIniciaSesion extends Controlador {
 	    }
 		else  if (e.getActionCommand().equals(IVista.INICIARSESION))
 	    {
-	       if (!this.modelo.existeNombreUsuario(Sistema.getAdmin(), this.vista.getNomUsua()))
+	       if (!this.modelo.existeNombreUsuarioHumano(Sistema.getAdmin(), this.vista.getNomUsua()))
 	    	  this.vista.setTextMsjInicSes("Nombre de usuario no existente");
 	       else
-	         if (!this.modelo.contraseniaCorrecta(Sistema.getAdmin(), this.vista.getNomUsua(), this.vista.getContr()))
+	         if (!this.modelo.contraseniaCorrectaHumano(Sistema.getAdmin(), this.vista.getNomUsua(), this.vista.getContr()))
 	        	 this.vista.setTextMsjInicSes("Contraseña incorrecta");
 	         else
 	         {
@@ -65,10 +65,6 @@ public class ControladorIniciaSesion extends Controlador {
 	        	vHumano.setControlador(cHumano);
 	        	vHumano.arranca();
 	         }
-	        
-	        
-			//verificar contraseña y mensaje
-			
 	    }
 
 	}

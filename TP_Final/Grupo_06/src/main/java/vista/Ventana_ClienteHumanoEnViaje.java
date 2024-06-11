@@ -29,21 +29,6 @@ public class Ventana_ClienteHumanoEnViaje extends Ventana implements Observer {
 	private JPanel panel_1;
 	private JTextArea textAreaClienteHumano;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_ClienteHumanoEnViaje frame = new Ventana_ClienteHumanoEnViaje();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.

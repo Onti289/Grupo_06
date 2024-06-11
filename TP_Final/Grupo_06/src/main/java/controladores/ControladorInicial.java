@@ -47,29 +47,7 @@ public class ControladorInicial extends Controlador{
             this.modelo.setNuevaSim(false);
             this.vista.setVisible(false);
             
-            IPersistencia persistencia = new PersistenciaXML();
-
-            Administrador admin = null;
-
-              try
-                {
-                  persistencia.abrirInput("Admins.xml");
-                  AdministradorDTO adto=(AdministradorDTO) persistencia.leer();
-                  admin = UtilAdministrador.administradorfromAdministradorDTO(adto);
-                  this.modelo.setAdmin(admin);
-                  persistencia.cerrarInput();
-                }
-              catch (IOException e1)
-              {
-                  // TODO Auto-generated catch block
-                  System.out.println(e1.getMessage());
-              } catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (NombreDeUsuarioYaExistenteException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+            
             
             if (modelo.isHayHumano())
             {
