@@ -18,21 +18,20 @@ public class SistemaThread extends Thread implements Observer {
 
 	@Override
 	public void run() {
+		System.out.println("run del sistema");
 		while (Chofer.CANTCHOFERESDISPONIBLES > 0 && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
 		{
-			if (viaje != null)
-			{
-			  this.viaje.setVehiculo(observado.sacarVehiculoDeDisponibles(this.viaje));
-			  //iniciarviaje(this.viaje);
-			  this.viaje = null;
+			
+			  this.observado.asignaVehiculo(this);
+				//this.viaje.setVehiculo(observado.sacarVehiculoDeDisponibles(this.viaje));
+			  //this.viaje = null;
 			  
-			}
+	    }
 			
 			
 			
-		}
-
 	}
+
 
 	@Override
 	public void update(Observable o, Object arg) {

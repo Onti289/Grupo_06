@@ -150,23 +150,26 @@ public abstract class Chofer extends Observable implements Runnable{
     
 	public void setViaje(IViaje v)
 	{
-		this.viaje = viaje;
+		this.viaje = v;
 	}
     
 	@Override
 	public void run()
 	{
         int viajesRealizados = 0;
-		System.out.println("Entra run chofer");
+		System.out.println(this.nombre + "Entra en run");
 		while (viajesRealizados < cantMaxViajes && ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
 		{
-			System.out.println("Entra while del run chofer");
+			System.out.println(this.nombre + "Entra while del run");
 			this.sistema.iniciaViaje(this);
-			//Util.espera();
+			Util.espera();
+			System.out.println(this.nombre + "Pasa 1ra espera en while del run");
 			this.sistema.finalizaViaje(this);
+			Util.espera();
 			viajesRealizados ++;
 		}
 		Chofer.CANTCHOFERESDISPONIBLES--;
+		if (Chofer.CANTCHOFERESDISPONIBLES == 0)
 		
 	}
 

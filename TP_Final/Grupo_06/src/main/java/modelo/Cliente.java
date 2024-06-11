@@ -16,6 +16,7 @@ public class Cliente extends ClienteAbstracto implements Runnable{
 	private static int cantMaxViajes;
 	private Sistema sistema;
 	private IViaje viaje;
+	private boolean pedidoValido;
 
 	
 	/**
@@ -36,7 +37,10 @@ public class Cliente extends ClienteAbstracto implements Runnable{
     	cantMaxViajes = num;
     }
     
-
+public void setPedidoValido(boolean resp)
+{
+	this.pedidoValido = resp;
+}
 
 
 	public Sistema getSistema() {
@@ -99,9 +103,10 @@ public class Cliente extends ClienteAbstracto implements Runnable{
 	@Override
 	public void run(){
 		int viajesRealizados = 0;
-		System.out.println("Entra run de cliente");
+		System.out.println(this.nombre + "Entra run");
 		while (viajesRealizados < cantMaxViajes && Chofer.CANTCHOFERESDISPONIBLES > 0)
 		{
+			System.out.println(this.nombre + "Entra while del run");
 			int zonaAux =(int) (Math.random()*3 + 1);
 			String zona;
 			if (zonaAux == 1)
@@ -129,12 +134,15 @@ public class Cliente extends ClienteAbstracto implements Runnable{
 			int cantKm = (int) (Math.random()*20 + 1);
 
 			this.sistema.generaPedido(LocalDateTime.now(), zona, mascota, baul, cantPax, cantKm, this);
-            //Util.espera();
-			this.sistema.pagaViaje(this);
-			viajesRealizados++;
+            Util.espera();
+            System.out.println(this.nombre + "Pasa 1ra espera en while del run");
+            if (this.pedidoValido)
+            	this.sistema.pagaViaje(this);
+			viajesRealizados++; //el cliente pierde un viaje si el pedido es rechazado por falta de vehiculos que lo cumplan
 		}
 		Cliente.CANTCLIENTESDISPONIBLES--;
-		
+		if (Cliente.CANTCLIENTESDISPONIBLES == 0)
+		  notifyAll();
 	}
 
 	public void setViaje(IViaje viaje) {

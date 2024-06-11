@@ -86,6 +86,11 @@ public class Sistema extends Observable{
     	  }
     }
     
+    public boolean hayVehiculoCumple(Administrador a, Pedido p) {
+       return a.hayVehiculoCumple(p);
+    }
+    
+    
     public boolean hayConVehiculo()
     {
     	int i = 0;
@@ -96,41 +101,56 @@ public class Sistema extends Observable{
     
     public synchronized void generaPedido(LocalDateTime fecha, String zona, boolean mascotas, boolean equipaje, int cantidadPasajeros, int distancia, Cliente cliente) {
     	Pedido p = new Pedido(fecha, zona, mascotas, equipaje, cantidadPasajeros, cliente, distancia);
-    	ViajeFactory viajeFactory = new ViajeFactory();
-    	IViaje viaje = viajeFactory.getViaje(p, null, null);
-    	//System.out.println(viaje);
-    	cliente.setViaje(viaje);
-    	viaje.setEstado("solicitado");
-    	this.agregaViaje(viaje);
-    	System.out.println(Sistema.getAdmin().listarViajes()+"\n---------------------------");
-    	System.out.println("entra genera pedido en cliente");
-    	notifyAll();
-    	setChanged();
-    	notifyObservers(viaje);
+    	
+    	boolean aux = hayVehiculoCumple(admin, p);
+    	
+    	cliente.setPedidoValido(aux);
+    	if (aux);;
+    	{
+    	    ViajeFactory viajeFactory = new ViajeFactory();
+    	    IViaje viaje = viajeFactory.getViaje(p, null, null);
+    	    //System.out.println(viaje);
+    	    cliente.setViaje(viaje);
+    	    viaje.setEstado("solicitado");
+    	    this.agregaViaje(viaje);
+    	    System.out.println(Sistema.getAdmin().listarViajes()+"\n---------------------------");
+    	    System.out.println(cliente.getNombre()+" genero el viaje "+cliente.getViaje());
+    	    System.out.println("entra genera pedido en cliente");
+    	    setChanged();
+    	    notifyObservers(viaje);
+    	    notifyAll();
+    	}
+    	else
+    	{
+    		//completar
+    	}
     	
     }
     
     public synchronized void iniciaViaje(Chofer chofer)
     {
-
+    	System.out.println(chofer.getNombre()+" va a iniciar el viaje "+chofer.getViaje());
     	while (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0 && (admin.getListaViajes().isEmpty() || !hayConVehiculo()))
 			try {
-				System.out.println("saca viaje en sistema wait");
+				System.out.println(chofer.getNombre()+ "en wait de inicia viaje");
 				wait();
 				System.out.println("saca viaje en sistema sale del wait");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
     	if (ClienteAbstracto.CANTCLIENTESDISPONIBLES > 0)
-    	{IViaje viaje = sacaViaje();
+    	{
+    		IViaje viaje = sacaViaje();
+    		
     	System.out.println(viaje);
     		chofer.setViaje(viaje);
       chofer.getViaje().setChofer(chofer);
       chofer.getViaje().setEstado("Iniciado");
-      System.out.println("entra inicia viaje en sistema");
-      notifyAll();
+      System.out.println(chofer.getNombre()+" inicio el viaje "+chofer.getViaje());
+      
       setChanged();
       notifyObservers(chofer.getViaje());
+      notifyAll();
       }
       
     }
@@ -140,17 +160,22 @@ public class Sistema extends Observable{
 	 */
 	public synchronized void pagaViaje(Cliente cliente)
 	{
+		System.out.println(cliente.getNombre()+" va a pagar el viaje "+cliente.getViaje());
 		while (!cliente.getViaje().getEstado().equalsIgnoreCase("iniciado"))
 			try {
+				System.out.println(cliente.getNombre()+" en wait de paga viaje");
 				wait();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		System.out.println(cliente.getNombre()+" pago el viaje "+cliente.getViaje());
+
 		cliente.getViaje().setEstado("Pagado");
-		notifyAll();
+		
 		setChanged();
 		notifyObservers(cliente.getViaje());
+		notifyAll();
 		
 	}
 	/**
@@ -162,20 +187,24 @@ public class Sistema extends Observable{
 	 */
 	public synchronized void finalizaViaje(Chofer chofer){
 		
-
+   System.out.println(chofer.getNombre()+" va a finalizar el viaje "+chofer.getViaje());
 		while (!chofer.getViaje().getEstado().equalsIgnoreCase("pagado"))
 			try {
+				System.out.println(chofer.getNombre()+" en wait de finaliza viaje");
 				wait();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		System.out.println(chofer.getNombre()+" finalizo viaje "+chofer.getViaje());
 		chofer.getViaje().setEstado("Finalizado");
 		  chofer.sumaKMrecorridosMes(chofer.getViaje().getKM());
 		  chofer.sumaViajesMes();
-		  notifyAll();
+		  this.agregaVehiculoADisponibles(Sistema.admin, chofer.getViaje().getVehiculo());
+		  
 		  setChanged();
 		  notifyObservers(chofer.getViaje());
+		  notifyAll();
 		
 	}
     
@@ -580,20 +609,77 @@ public void agregaClienteHumano(Administrador a, ClienteHumano c)
 		return admin.getClienteHumano();
 	}
 
-	public synchronized Vehiculo sacarVehiculoDeDisponibles(IViaje v) {
+	public Vehiculo sacarVehiculoDeDisponibles(IViaje v) {
 		int i = 0;
+		System.out.println("El sistema esta buscando vehiculos");
 		Pedido p = v.getPedido();
 		while(i < admin.getColaVehiculosDisponibles().size() && !admin.getColaVehiculosDisponibles().get(i).cumpleCondicion(p))
 			i++;
 		
-		System.out.println("i = "+i+"\n"+"size = "+admin.getColaVehiculosDisponibles().size()+"\n cumple condicion= "+admin.getColaVehiculosDisponibles().get(i).cumpleCondicion(p));
 		if (i < admin.getColaVehiculosDisponibles().size())
 		{
-			v.setEstado("con Vehiculo");
-			notifyAll();
-			return admin.getColaVehiculosDisponibles().get(i);
-			}
+			System.out.println("El sistema encontro vehiculos");
+			return admin.getColaVehiculosDisponibles().remove(i);
+		}
 		else
+		{
+			System.out.println("El sistema no encontro vehiculo");
 		  return null;
+		  }
+	}
+
+	public boolean revisaSolicitados() {
+		int i = 0;
+		System.out.println("El sistema esta buscando solicitados");
+		while (i < getAdmin().getListaViajes().size() && !admin.getListaViajes().get(i).getEstado().equalsIgnoreCase("solicitado"))
+			i++;
+		if (i < getAdmin().getListaViajes().size())
+		{
+			System.out.println("El sistema encontro solicitados");
+			return true;
+		}		
+		else
+		{
+			System.out.println("El sistema no encontro solicitados");
+			return false;
+		}	
+	}
+
+	public synchronized void asignaVehiculo(SistemaThread sistemaThread) {
+		System.out.println("El sistema va a buscar solicitados");
+		while (!revisaSolicitados())
+			try {
+				System.out.println("El sistema va a esperar solicitados");
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		int i = 0;
+		
+		while (i < getAdmin().getListaViajes().size() && !admin.getListaViajes().get(i).getEstado().equalsIgnoreCase("solicitado"))
+			i++;
+		IViaje viaje = admin.getListaViajes().get(i);
+		System.out.println("El sistema tiene el viaje "+viaje);
+		
+		System.out.println("El sistema va a buscar vehiculos");
+		Vehiculo vehi = sacarVehiculoDeDisponibles(viaje);
+		while (vehi == null)
+			try {
+				System.out.println("El sistema va a esperar vehiculos");
+				wait();
+				vehi = sacarVehiculoDeDisponibles(viaje);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		viaje.setVehiculo(vehi);
+		viaje.setEstado("con Vehiculo");
+		System.out.println("El sistema asigno un vehiculos al viaje "+viaje);
+		setChanged();
+		notifyObservers(viaje);
+		notifyAll();
+		
+		
 	}
 }

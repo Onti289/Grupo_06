@@ -635,4 +635,11 @@ public class Administrador extends Usuario{
 		this.listaClientesHumanos.add(c);
 		
 	}
+
+	public boolean hayVehiculoCumple(Pedido p) {
+		int i = 0;
+		while (i < colaTotalVehiculos.size() && !colaTotalVehiculos.get(i).cumpleCondicion(p))
+			i++;
+		return i < colaTotalVehiculos.size();
+	}
 }
